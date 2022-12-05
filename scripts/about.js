@@ -47,6 +47,10 @@ function main() {
    console.log(thank_you);
    thank_you.style.cssText = "position: relative; text-align: left; font-family: Inter; border-radius:0%; border:none; outline:none; font-size:16px; color: #333333; background-color:transparent; left:50%; transform: translateX(-50%); width: 60%;";
    content.appendChild(thank_you);
+
+   let spacing = document.createElement("DIV");
+   spacing.style.cssText = "position:relative; width: 100%; height: 40px;"
+   content.appendChild(spacing);
 }
  
  main();
