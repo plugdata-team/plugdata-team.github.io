@@ -1,5 +1,5 @@
 let panels = [
-   ["Many, many objects", "./images/else.png", 60, 500, "#FFFFFF", "#333333", "plugdata comes with the ELSE and cyclone libraries installed by default. ELSE is a large set of general-purpose objects that offer more high-level abstraction on top of pure-data. Cyclone is included to make Max users feel at home when they first try plugdata."],
+   ["Many, many objects", "./images/else.png", 60, 500, "#FFFFFF", "#333333", "plugdata comes with the ELSE and cyclone libraries installed by default. ELSE is a large set of general-purpose objects that offer more high-level abstraction on top of pure-data. Cyclone is included to make Max users feel at home when they use plugdata."],
    ["Export patches to audio plugins, embedded platforms or raw code", "./images/hvcc.png", 40, 500, "#FFFFFF", "#333333", "By integrating the Heavy/hvcc project, you can convert patches into C/C++ code, all from plugdata. It ships with a compiler toolchain to make exporting plugins, or building patches for embedded platform a piece of cake."],
    ["Dark mode and theming capabilities", "./images/darkmode.png", 50, 500, "#333333", "#FFFFFF", "plugdata is fully themable, and has a light and dark mode option by default. Late night hackathons will now be less straining for the eyes"],
    ["Vanilla compatibility", "./images/vanilla.png", 40, 500, "#FFFFFF", "#333333", "plugdata is directly based on pd-vanilla, with minimal modifications to the original source code. This ensures very high compatibility between pure-data patches and plugdata patches."],
@@ -11,11 +11,16 @@ function main() {
    let alignment = true;
 
    let mainComponent = document.createElement("DIV");
-   mainComponent.style.cssText = "height: 900px; left: 10%; width: 80%; top: 10px; color: #333333; position:relative; margin-top: 20px; margin-bottom: 20px;";
+   mainComponent.style.cssText = "height: 1000px; left: 10%; width: 80%; top: 10px; color: #333333; position:relative; margin-top: 20px; margin-bottom: 20px;";
+
+   let logo = document.createElement("img");
+   logo.src = "./images/logo.png";
+   logo.style.cssText = "height:auto; width:8%; left:10%; position:relative; left: 50%; transform: translateX(-50%);";
+   mainComponent.appendChild(logo);
 
    let title = document.createElement("h2");
    title.innerHTML += "plugdata";
-   title.style.cssText = "text-align: center; font-family: InterBold; border-radius:0%; border:none; outline:none; font-size:36px; color: #333333; background-color:transparent";
+   title.style.cssText = "text-align: center; font-family: InterSemiBold; border-radius:0%; border:none; outline:none; font-size:36px; color: #333333; background-color:transparent";
    mainComponent.appendChild(title);
 
    let subtitle = document.createElement("h1");
@@ -74,13 +79,6 @@ for (let i = 0; i < panels.length; i++) {
    panel.style.zIndex = "1"; 
    panel.className += " tile";
 
-   var distInView = panel.getBoundingClientRect().top - window.innerHeight + 20;
-   if (distInView < 0) {
-      panel.classList.add("inView");
-   } else {
-      panel.classList.remove("inView");
-   }
-
    let png = document.createElement("img");
    png.src = img;
    png.style.cssText = "height:auto; width:$width; top: 50%; transform: translateY(-50%); $align:10px; position:absolute;".replace("$width", image_width_pct).replace("$align",  alignment ? "right" : "left");
@@ -101,18 +99,11 @@ for (let i = 0; i < panels.length; i++) {
    
    panel.appendChild(textPanel);
 
-
    content.appendChild(panel);
 
    alignment = !alignment;
 
    };
-
-
-
- let panel = document.createElement("DIV");
- panel.style.cssText = panel_css.replace("$text_colour", "white");
- content.appendChild(panel);
 }
 
 
