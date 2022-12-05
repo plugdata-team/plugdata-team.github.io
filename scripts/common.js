@@ -1,11 +1,17 @@
 
-let content = document.createElement("DIV");
+let meta = document.createElement("meta");
+meta.name = "viewport";
+meta.content = "width=device-width, initial-scale=1";
+document.head.appendChild(meta);
+
+let content = document.createElement("div");
 content.style.cssText = "border-radius:0%; border:none; outline:none; background-color:#FFFFFF;";
 content.style.position = "absolute";
 content.style.left = "0%";
 content.style.width = "100%";
 content.style.height = document.body.clientHeight;
 content.style.zIndex = "100";
+
 document.body.appendChild(content);
 document.body.style.background = "#FFFFFF"; 
 
