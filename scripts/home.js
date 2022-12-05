@@ -1,10 +1,9 @@
 let panels = [
-   ["Many, many objects", "./images/else.png", 60, 500, "#FFFFFF", "#333333", "plugdata comes with the ELSE and cyclone libraries installed by default. ELSE is a large set of general-purpose objects that offer more high-level abstraction on top of pure-data. Cyclone is included to make Max users feel at home when they use plugdata."],
-   ["Export patches to audio plugins, embedded platforms or raw code", "./images/hvcc.png", 40, 500, "#FFFFFF", "#333333", "By integrating the Heavy/hvcc project, you can convert patches into C/C++ code, all from plugdata. It ships with a compiler toolchain to make exporting plugins, or building patches for embedded platforms a piece of cake."],
+   ["Many, many objects", "./images/else.png", 60, 500, "#FFFFFF", "#333333", "plugdata comes with the ELSE and cyclone libraries installed by default. ELSE is a large set of general-purpose objects that offer more high-level abstraction on top of pure-data. Cyclone is included to make Max users feel at home when they use plugdata. Find out more about ELSE <a href='https://github.com/porres/pd-else/'> here. </a>"],
+   ["Export patches to audio plugins, embedded platforms or raw code", "./images/hvcc.png", 40, 500, "#FFFFFF", "#333333", "By integrating the Heavy/hvcc project, you can convert patches into C/C++ code, all from plugdata. It ships with a compiler toolchain to make exporting plugins, or building patches for embedded platforms a piece of cake. You can find out more about Heavy <a href='https://github.com/Wasted-Audio/hvcc'> here. </a>"],
    ["Dark mode and theming capabilities", "./images/darkmode.png", 50, 550, "#333333", "#FFFFFF", "plugdata is fully themable, and has a light and dark mode option by default. plugdata is built with customisability and accessibility in mind."],
    ["Vanilla compatibility", "./images/vanilla.png", 40, 500, "#FFFFFF", "#333333", "plugdata is directly based on pd-vanilla, with minimal modifications to the original source code. This ensures very high compatibility between pure-data and plugdata patches."],
  ];
-
 
 let small_screen = false;
 let zoom_listeners = [];
