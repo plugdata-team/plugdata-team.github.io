@@ -49,7 +49,7 @@ function main() {
 
    let other = document.createElement("h1");
    other.innerHTML += "All downloads";
-   other.style.cssText = "top: 50px; text-align: center; font-family: Inter; font-weight: 700;; padding-top: 160px; padding-bottom: 50px; font-size:36px; color: #333333; background-color:transparent";
+   other.style.cssText = "top: 50px; text-align: center; font-family: Inter; font-weight: 700; padding-top: 160px; padding-bottom: 50px; font-size:36px; color: #333333; background-color:transparent";
    content.appendChild(other);
 
   let downloads = [["macOS Universal", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.2/PlugData-MacOS-Universal.zip", "Download"], ["Windows x64", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.2/PlugData-Win64.zip", "Download"], ["Windows x86", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.2/PlugData-Win32.zip", "Download"], ["Linux Repositories", "https://software.opensuse.org//download.html?project=home%3Aplugdata&package=plugdata", "View"], ["Arch Linux AUR Repositories (stable)", "https://aur.archlinux.org/packages/plugdata-bin", "View"], ["Arch Linux AUR Repositories (latest)", "https://aur.archlinux.org/packages/plugdata-git", "View"], ["More Downloads", "https://github.com/plugdata-team/plugdata/releases/tag/v0.6.2", "View"]];
