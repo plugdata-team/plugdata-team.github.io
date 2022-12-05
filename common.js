@@ -39,7 +39,7 @@ function create_topbar() {
  
        logo.style.height = "28px";
        logo.style.width = "auto";
-       logo.style.top = "0px";
+       logo.style.top = "1px";
        logo.style.left = "10px"
        logo.style.position = "absolute";
        logo.style.zIndex = "100";
@@ -77,12 +77,12 @@ function create_topbar() {
 
       let github_logo = document.createElement("img");
       github_logo.src = "./images/github.png";
-      github_logo.style.cssText = "top: 1px; height:28px; width:auto; right:370px; position:absolute;";
+      github_logo.style.cssText = "top: 1px; height:28px; width:auto; right:355px; position:absolute;";
       github.appendChild(github_logo);
 
       let github_text = document.createElement("p");
       github_text.innerHTML = "View on GitHub";
-      github_text.style.cssText = "top: -10px; font-family: Inter; height:16px; width:150px; right:205px; position:absolute; color: #222222;";
+      github_text.style.cssText = "top: -10px; font-family: Inter; height:16px; width:150px; right:195px; position:absolute; color: #222222;";
 
 
       github.appendChild(github_text);
@@ -94,7 +94,7 @@ function create_topbar() {
        for (let i = 0; i < labels.length; i++) {
          buttons[i] = document.createElement("span");
          buttons[i].innerHTML = labels[i][0];
-         buttons[i].style.cssText = "border-radius:0%; border:none; outline:none; font-size:16px; color:#333333; background-color:transparent; position:relative; top:4px; left: 50px; padding: 0 12px;"
+         buttons[i].style.cssText = "border-radius:0%; border:none; outline:none; font-size:16px; color:#333333; background-color:transparent; position:relative; top:5px; left: 50px; padding: 0 14px;"
          buttons[i].className = "button";
          buttons[i].style.height = "40px";
          buttons[i].style.width = "85px";

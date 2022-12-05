@@ -30,7 +30,7 @@ function main() {
    about_div.appendChild(me_2);
    
    let me_3 = document.createElement("p");
-   me_3.innerHTML += "If you have any questions about plugdata or anything else, feel free to contact me, I'll always reply!";
+   me_3.innerHTML += "If you have any questions about plugdata or anything else, feel free to <a href='mailto:timschoen123@gmail.com'>contact me</a>, I'll always reply!";
    me_3.style.cssText = "text-align: justify; font-family: Inter; border-radius:0%; border:none; outline:none; font-size:16px; color: #333333; background-color:transparent";
    about_div.appendChild(me_3);
 
