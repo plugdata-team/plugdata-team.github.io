@@ -3,7 +3,7 @@ function main() {
    
    let contributors = document.createElement("h2");
    contributors.innerHTML += "Contributors";
-   contributors.style.cssText = "text-align: center; font-family: InterSemiBold; border-radius:0%; border:none; outline:none; font-size:36px; color: #333333; background-color:transparent; margin: 50px;";
+   contributors.style.cssText = "text-align: center; font-family: Inter; font-weight: 700; border-radius:0%; border:none; outline:none; font-size:36px; color: #333333; background-color:transparent; margin: 50px;";
    content.appendChild(contributors);
 
    let contributors_img = document.createElement("img");
@@ -13,7 +13,7 @@ function main() {
 
    let about_me = document.createElement("h1");
    about_me.innerHTML += "About me";
-   about_me.style.cssText = "text-align: center; font-family: InterSemiBold; border-radius:0%; border:none; outline:none; font-size:36px; color: #333333; background-color:transparent; margin: 50px;";
+   about_me.style.cssText = "text-align: center; font-family: Inter; font-weight: 700; border-radius:0%; border:none; outline:none; font-size:36px; color: #333333; background-color:transparent; margin: 50px;";
    content.appendChild(about_me);
 
    let about_div = document.createElement("DIV");
@@ -40,7 +40,7 @@ function main() {
 
    let thanks = document.createElement("h1");
    thanks.innerHTML += "Special thanks:";
-   thanks.style.cssText = "text-align: center; font-family: InterSemiBold; border-radius:0%; border:none; outline:none; font-size:36px; color: #333333; background-color:transparent; margin: 50px;";
+   thanks.style.cssText = "text-align: center; font-family: Inter; font-weight: 700;; border-radius:0%; border:none; outline:none; font-size:36px; color: #333333; background-color:transparent; margin: 50px;";
    content.appendChild(thanks);
 
    let thank_you = document.getElementById("thanks");

@@ -40,12 +40,12 @@ function main() {
 
    let title = document.createElement("h2");
    title.innerHTML += "plugdata";
-   title.style.cssText = "text-align: center; font-family: InterSemiBold; border-radius:0%; border:none; outline:none; font-size:36px; color: #333333; background-color:transparent";
+   title.style.cssText = "text-align: center; font-family: Inter; font-weight: 700; border-radius:0%; border:none; outline:none; font-size:36px; color: #333333; background-color:transparent";
    mainComponent.appendChild(title);
 
    let subtitle = document.createElement("h1");
    subtitle.innerHTML += "A visual programming environment for audio experimentation, prototyping and education";
-   subtitle.style.cssText = "font-family: InterThin; text-align: center; border-radius:0%; border:none; outline:none; font-size:25px; color: #333333; background-color:transparent;"
+   subtitle.style.cssText = "font-family: Inter; font-weight: 300; text-align: center; border-radius:0%; border:none; outline:none; font-size:25px; color: #333333; background-color:transparent;"
    mainComponent.append(subtitle);
 
    let png = document.createElement("img");
@@ -55,7 +55,7 @@ function main() {
 
    let description = document.createElement("h1");
    description.innerHTML +=  "plugdata is a free/open-source visual programming environment based on pure-data. Available for a wide range of operating systems, and can be used as a standalone app, or as a VST3, LV2 or AU plugin.";
-   description.style.cssText = "font-family: InterThin; text-align: center; border-radius:0%; border:none; outline:none; font-size:18px; color: #333333; margin-top: 50px; background-color:transparent;";
+   description.style.cssText = "font-family: Inter; font-weight: 300; text-align: center; border-radius:0%; border:none; outline:none; font-size:18px; color: #333333; margin-top: 50px; background-color:transparent;";
    mainComponent.append(description);
 
    let button_css = "font-family: Inter; border-radius:5px; border:0px; font-size:16px; color:white; background-color:$bg_color; position:relative; top:50px; width:150px; height:40px; left: 50%; transform: translateX(-50%); text-align:center;";
@@ -116,7 +116,7 @@ for (let i = 0; i < panels.length; i++) {
 
    let title = document.createElement("h2");
    title.innerHTML += name;
-   title.style.cssText = "font-family: InterSemiBold; border-radius:0%; border:none; outline:none; font-size:26px; color:$text_colour; background-color:transparent;".replace("$text_colour", txt_color).replace("$width", txt_width_pct).replace("$align", alignment_str);
+   title.style.cssText = "font-family: Inter; font-weight: 700; border-radius:0%; border:none; outline:none; font-size:26px; color:$text_colour; background-color:transparent;".replace("$text_colour", txt_color).replace("$width", txt_width_pct).replace("$align", alignment_str);
    textPanel.appendChild(title);
 
    let description = document.createElement("p");
