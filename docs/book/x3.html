@@ -3,11 +3,10 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Getting Pd to run · GitBook</title>
+        <title>Getting Pd to run · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="HonKit 4.0.4">
         
         
         
@@ -17,7 +16,7 @@
     
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
@@ -57,7 +56,7 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="x4.md" />
+    <link rel="next" href="x4.html" />
     
     
     <link rel="prev" href="x2.html" />
@@ -65,10 +64,8 @@
 
     </head>
     <body>
-
-        <script src="menubar.js"></script>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -104,20 +101,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="x1.html">
-            
-                <a href="x1.html">
-            
-                    
-                    Introduction
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="x2.html">
+        <li class="chapter " data-level="1.2" data-path="x2.html">
             
                 <a href="x2.html">
             
@@ -130,7 +114,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4" data-path="x3.html">
+        <li class="chapter active" data-level="1.3" data-path="x3.html">
             
                 <a href="x3.html">
             
@@ -143,9 +127,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="x4.md">
+        <li class="chapter " data-level="1.4" data-path="x4.html">
             
-                <span>
+                <a href="x4.html">
             
                     
                     Externals
@@ -162,8 +146,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
         </a>
     </li>
 </ul>
@@ -218,7 +202,7 @@ In case of trouble also consult the Pd mailing list archive on
 <a href="https://lists.puredata.info/listinfo/pd-list" target="_blank">https://lists.puredata.info/listinfo/pd-list</a>  .
 , which often has late-breaking news about configuration problems and solutions.
 The rest of this section describes how to get audio and MIDI to work.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>To test audio and MIDI, start Pd and select &quot;test Audio and MIDI&quot; from the
 &quot;Media&quot; menu.  You should see a window like this:</p>
 <p><img src="fig11.1.png" alt="test tone patch"></p>
@@ -307,7 +291,7 @@ give you a separate inlet to specify which of the open MIDI port numbers
 you want.</p>
 <p>System exclusive MIDI message input and output are theoretically supported
 but does not work uniformly across all operating systems..</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>Pd should work under any version of Windows since XP.  You can download as
 a self-extracting archive (a &quot;.exe&quot; file). Run this and select a destination
 directory when prompted, such as &quot;\pd&quot; or &quot;Program Files\pd&quot;.</p>
@@ -331,7 +315,7 @@ from the default (256 samples) and &quot;-audiobuf&quot; in milliseconds.  Pd wi
 round this down to a power of two buffers, each of &quot;-blocksize&quot; in sample
 frames.</p>
 <p>TIP:  You can use your built-in sound-card with the Universal ASIO Driver For WDM  <a href="http://www.asio4all.org/" target="_blank">http://www.asio4all.org/</a></p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>What to do depends on which flavor of Linux you are running (e.g., Debian
 or Red Hat). The instructions here should work for Pd 0.33 and up regardless of
 your situation.  (If not, you can read the Pd mailing list archives for
@@ -443,7 +427,7 @@ start showing up in Linux distros for at least some months.</p>
 which goes up to 6 in and out (analog) with 2 more as SP/DIF.  Things work
 OK for input or output separately but &quot;full duplex&quot; (in and out simultaneously)
 has sync problems.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>Pd version 0.35 and up support macOS.
 Recent versions of Pd require 10.6 or up.</p>
 <p>To install Pd you can always download  the sources and compile them
@@ -484,7 +468,7 @@ as needed.</p>
 <p>To get MIDI working, you have to do the macOS magic to get a USB
 MIDI interface installed.  I&apos;ve seen this done with Midisport devices and
 I think you just download the macOS driver and follow directions.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>Pd&apos;s behavior may be customized to instruct it where to find files, which
 audio devices to open, what font size to use, and so on.  Most of
 these may also be changed using the various dialogs you can open from Pd&apos;s
@@ -584,10 +568,10 @@ Pd.  Possible options include:</p>
 -ossmidi         -- use OSS midi API (Linux only)
 -alsamidi        -- use ALSA midi API (Linux only)</p>
 <p>general flags:</p>
-<p>-path <path></path>     -- add to file search path
+<p>-path <path>     -- add to file search path
 -nostdpath       -- don&apos;t search standard (&quot;extra&quot;) directory
 -stdpath         -- search standard directory (true by default)
--helppath <path></path> -- add to help file search path
+-helppath <path> -- add to help file search path
 -open <file>     -- open file(s) on startup
 -lib <file>      -- load object library(s) (omit file extensions)
 -font-size <n>      -- specify default font size in points
@@ -619,7 +603,7 @@ Pd.  Possible options include:</p>
 -nobatch         -- run interactively (true by default)
 -autopatch       -- enable auto-patching to new objects (true by default)
 -noautopatch     -- defeat auto-patching
--compatibility <f> -- set back-compatibility to version <f></f></f></s></file></file></n></n></n></name></name></n></file></file></p>
+-compatibility <f> -- set back-compatibility to version <f></f></f></s></file></file></n></n></n></name></name></n></file></file></path></path></p>
 <p>Here are some details on some of the audio, MIDI, and scheduler options (but
 see also the next section on file management.)</p>
 <h4 id="multiple-devices">multiple devices.</h4>
@@ -656,7 +640,7 @@ periods of computation.  This is normally the audio buffer divided by 4, but
 no less than 0.1 and no more than 5.  On most OSes, ingoing and outgoing MIDI
 is quantized to this value, so if you care about MIDI timing, reduce this to 1
 or less.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>Pd has a search path feature; you specify the path on the command line
 using the &quot;-path&quot; option.  Paths may contain any number of files.  If you
 specify several files in a single &quot;-path&quot; option they&apos;re separated by colons
@@ -729,7 +713,7 @@ path should work as of version 0.38.</p>
                 </a>
                 
                 
-                <a href="x4.md" class="navigation navigation-next " aria-label="Next page: Externals">
+                <a href="x4.html" class="navigation navigation-next " aria-label="Next page: Externals">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -740,12 +724,56 @@ path should work as of version 0.38.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Getting Pd to run","level":"1.4","depth":1,"next":{"title":"Externals","level":"1.5","depth":1,"path":"x4.md","ref":"x4.md","articles":[]},"previous":{"title":"Theory of operation","level":"1.3","depth":1,"path":"x2.md","ref":"x2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"x3.md","mtime":"2022-12-05T14:30:06.279Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-12-05T14:50:47.999Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Getting Pd to run","level":"1.3","depth":1,"next":{"title":"Externals","level":"1.4","depth":1,"path":"x4.md","ref":"x4.md","articles":[]},"previous":{"title":"Theory of operation","level":"1.2","depth":1,"path":"x2.md","ref":"x2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"x3.md","mtime":"2022-12-05T14:30:06.279Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2022-12-05T15:55:50.642Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="gitbook/gitbook.js"></script>
     <script src="gitbook/theme.js"></script>
     
@@ -763,10 +791,6 @@ path should work as of version 0.38.</p>
     
         
         <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
         
     
         

@@ -3,11 +3,10 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Theory of operation · GitBook</title>
+        <title>Theory of operation · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="generator" content="HonKit 4.0.4">
         
         
         
@@ -17,7 +16,7 @@
     
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
@@ -60,14 +59,13 @@
     <link rel="next" href="x3.html" />
     
     
-    <link rel="prev" href="x1.html" />
+    <link rel="prev" href="./" />
     
 
     </head>
     <body>
-        <script src="menubar.js"></script>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -103,20 +101,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="x1.html">
-            
-                <a href="x1.html">
-            
-                    
-                    Introduction
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.3" data-path="x2.html">
+        <li class="chapter active" data-level="1.2" data-path="x2.html">
             
                 <a href="x2.html">
             
@@ -129,7 +114,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="x3.html">
+        <li class="chapter " data-level="1.3" data-path="x3.html">
             
                 <a href="x3.html">
             
@@ -142,9 +127,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="x4.md">
+        <li class="chapter " data-level="1.4" data-path="x4.html">
             
-                <span>
+                <a href="x4.html">
             
                     
                     Externals
@@ -161,8 +146,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
         </a>
     </li>
 </ul>
@@ -208,14 +193,14 @@ supposed to work.  Practical details about how to obtain, install, and run Pd
 are described in the  <a href="x3.htm">next chapter</a>  .  Links to more extensive guides (and to
 more theoretical information about computer music) can be found in the
 <a href="x1.htm">previous chapter</a>  .</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>Pd is a real-time graphical programming environment for audio and graphical
 processing.  It resembles the Max/MSP system but is much simpler and more
 portable; also Pd has two features not (yet) showing up in Max/MSP: first,
 via Mark Dank&apos;s GEM package, Pd can be used for simultaneous computer
 animation and computer audio.  Second, an experimental facility is provided
 for defining and accessing data structures.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>When Pd is running, you&apos;ll see a main &quot;Pd&quot; window, and possibly one or more
 &quot;canvases&quot; or &quot;patches&quot;. The main Pd window looks like this:</p>
 <p><img src="fig1.1.png" alt="pd window"></p>
@@ -233,7 +218,7 @@ have zero or more inputs and/or outputs, with the inputs on top and the outputs
 on bottom.</p>
 <p>Pd&apos;s printout appears on the main &quot;Pd&quot; window,
 unless you redirect it elsewhere.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>Pd patches can have four types of boxes:   object, message, GUI,
 and   comment  .</p>
 <p>You make   objects    by typing text into object boxes.  The text is
@@ -286,7 +271,7 @@ others are control.  In general, a control connection may be made to a signal
 inlet; if numbers are sent over it they are automatically converted to
 signals.  Signal connections may not be made to control inlets; some sort
 of explicit conversion must be specified.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>The border of a box tells you how its text is interpreted and how the box
 functions.  Object boxes (as in the previous example) use the text to create
 objects when you load a patch or type text onto a new one.  If you retype the
@@ -311,7 +296,7 @@ control by clicking and dragging up and down, or by typing values in it.
 (There are also shift- and alt-click actions; see  <a href="x2.htm#s2.7">getting help</a>   to find out how to look this up).</p>
 <p>In addition to numbers, Pd defines GUI boxes to display and edit symbols
 or arbitrary lists of atoms.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>When you save a patch to a file, Pd doesn&apos;t save the entire state of all the
 objects in the patch, but only what you see: the objects&apos; creation arguments
 and their interconnections.  Certain data-storage objects have functions for
@@ -321,15 +306,15 @@ startup arguments.  The path specifies one or more directories, separated by
 colons (semicolons if you&apos;re using windows.)  Most objects which can read files
 search for them along the search path, but when Pd writes files they go to
 the directory where the patch was found.</p>
-<h2 id="">#</h2>
-<h2 id="">#</h2>
+<h2 id>#</h2>
+<h2 id>#</h2>
 <p>A patch can be in edit or run mode; this really only affects how mouse
 clicks affect the patch.  In edit mode, clicking and dragging selects and
 moves boxes or makes and cuts connections; in run mode clicking on boxes sends
 them messages which they react to in different ways.  In run mode, number and
 message boxes can be used as controls.  Normally, when you are in a performance
 you will stay in run mode; to change the patch you go to edit mode.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>You can create boxes (objects, messages, GUIs, and comments) using the
 &quot;put&quot; menu.   Note the handy accelerators.  Object and message boxes are empty
 at first; drag them where you want them and type in the text.  The GUI
@@ -338,7 +323,7 @@ place them.</p>
 <p>You will often find it more convenient to select a box and &quot;duplicate&quot; it
 (in the Edit menu) than to use the &quot;Put&quot; menu.  If you select and duplicate
 several items, any connections between them will be duplicated as well.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>Boxes in a Pd window may be selected by clicking on them.  To select more
 than one object you may use shift-click or click on a blank portion of
 the window and drag the cursor to select all objects within a rectangle.</p>
@@ -349,7 +334,7 @@ may type into it (replacing the selected text) or use the mouse to change the
 selection.</p>
 <p>You may also select a single connection (patch cord) by clicking on it.
 You can&apos;t have connections and boxes selected simultaneously.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>If you select a box, a connection, or several boxes, and if you haven&apos;t made
 any text active, you can &quot;delete&quot; the selection by hitting the backspace or
 delete key.  You can also &quot;cut&quot; &quot;copy&quot; and &quot;paste&quot; using menu items.  Notice
@@ -360,7 +345,7 @@ can see the new boxes.  You can drag them together to a new place on the  screen
 integrated with the OS in any way.  Cut/copy/paste for activated text in boxes
 isn&apos;t implemented yet, although in Linux at least you can &quot;X-paste&quot;
 into and out of &quot;text&quot; dialogs (created with the &quot;edit text&quot; menu item.)</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>To change a text item, you can select it and then edit the text.  If you
 only click once, the entire text is selected and your typing will replace
 everything. Click again and drag to select a portion of the text to retype.</p>
@@ -377,14 +362,14 @@ selecting text instead of moving the box.</p>
 <p>The updated text only becomes part of the patch when you de-select the
 object.    Changing the text in an &quot;object&quot; box deletes the old
 object and creates a new one; the internal state of the old one is lost.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>To make a connection between two boxes, click on any outlet of the first
 one, drag toward an inlet of the second one, and release.  You can
 release the mouse button anywhere within the target object and the connection
 will be made to the nearest inlet.</p>
 <p>Connections are broken by selecting them and using &quot;cut&quot; or the backspace
 or delete key.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>All the &quot;clicking&quot; mentioned above is done with the left mouse button.
 The right button, instead, gives a popup menu offering &quot;properties,&quot; &quot;open,&quot;
 and &quot;help&quot;.
@@ -399,18 +384,18 @@ by clicking on them, but for &quot;graph-on-parent&quot; ones, this is the only 
 do it.</p>
 <p>The &quot;properties&quot; dialog allows you to change certain settings of GUI
 objects, or of the patch itself (by clicking outside any box.)</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>Control-q &quot;quits&quot; Pd, but asks you to confirm the quit.  To quit without
 having to confirm, use command-shift-Q.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>In Pd, objects intercommunicate by sending messages and/or audio signals.
 Pd messages are sporadic, like MIDI messages or music N &quot;Note cards.&quot;</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>Messages contain a selector followed by
 any number of arguments.  The selector is a symbol, which appears in the patch
 as a non-numeric string with no white space, semicolons, or commas.  The
 arguments may be symbols or numbers.  Numbers in Pd are kept in 32-bit floating
-point, so that they can represent integers exactly between &#x2212;16777216 and</p>
+point, so that they can represent integers exactly between −16777216 and</p>
 <ol>
 <li>(In Max, there are separate data types for integers and floating
 point numbers; Pd uses only float.)</li>
@@ -433,7 +418,7 @@ so that objects can be interconnected with maximum flexibility.</p>
 which cannot be used as a selector.  A single number is always given the
 &quot;float&quot; selector automatically, and a message with a number followed by other
 arguments is given the selector &quot;list&quot;.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>In Pd whenever a message is initiated, the receiver may then send out
 further messages in turn, and the receivers of those messages can send yet
 others.  So each message sets off a tree of consequent messages.  This tree is
@@ -454,7 +439,7 @@ reporting a &quot;stack overflow&quot; if this happens.</p>
 in it.  When the &quot;delay&quot; receives a message it schedules a message for the
 future (even if the time delay is 0) and is then &quot;finished;&quot; Pd&apos;s internal
 scheduler will wake the delay back up later.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>With few exceptions (notably &quot;timer&quot;), objects treat their leftmost
 inlet as &quot;hot&quot; in the sense that messages to left inlets can result in output
 messages.  So the following is a legal (and reasonable) loop construct:</p>
@@ -492,7 +477,7 @@ next time you set it.  (The &quot;line&quot; exception is for sanity&apos;s sake
 the order in which two messages are sent to a single &quot;cold&quot; inlet.  In this
 situation, since the messages are merged, the last value to be received is
 the value that is used in the computation.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>Message boxes are text boxes in which you type a message.  When the message
 box is activated, either by clicking on it or sending something to its inlet,
 the message or messages are sent, either to the message box&apos;s outlet or
@@ -527,12 +512,12 @@ defined if you send a &quot;bang&quot; message or if you click on the message bo
 activate it.)  Dollar sign variables are either numbers or symbols depending
 on the incoming message; if symbols, you may even use them to specify variable
 message selectors or destinations.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>Using Pd you can build audio patches which can synthesize musical sounds,
 analyze incoming sounds, process incoming sounds to produce transformed
 audio outputs, or integrate audio processing with other media.  This section
 describes how Pd treats audio signals.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>Pd&apos;s audio signals are internally kept as 32-bit floating point numbers, so
 you have all the dynamic range you could want.  However, depending on your
 hardware, audio I/O is usually limited to 16 or 24 bits.  Inputs all appear
@@ -542,7 +527,7 @@ in Pd&apos;s command line or in the &quot;audio setup&quot; dialog).</p>
 <p>Pd can read or write samples to files either in 16-bit or 24-bit fixed point
 or in 32-bit floating point, in WAV, AIFF, or AU format, via the soundfiler,
 readsf, and writesf objects.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>Audio computations in Pd are carried out by &quot;tilde objects&quot; such as &quot;osc~&quot;
 whose names conventionally end in a tilde character to warn you what they
 are.  Tilde objects can intercommunicate via audio connections.  When audio
@@ -562,7 +547,7 @@ find the source of the error.  You can build algorithms with feedback using
 nonlocal signal connections.</p>
 <p>Your subpatches can have audio inlets and outlets via the inlet~ and outlet~
 objects.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>If you want to use a control value as a signal, you can use the sig~ object
 to convert it.  The +~, -~, *~, /~, osc~, and phasor~ objects can be configured
 to take control or signal inputs.</p>
@@ -571,7 +556,7 @@ moments you want the signal sampled.  This is handled by the snapshot~ object,
 but you can also sample a signal with tabwrite~ and then get access it via
 tabread or tabread4 (note the missing tildes!).  There are also analysis
 objects, the simplest of which is &quot;env~&quot;, the envelope follower.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>You can use the switch~ or block~ objects to turn portions of your audio
 computation on and off and to control the block size of computation.  There
 may be only one switch~ or block~ object in any window; it acts on the entire
@@ -598,7 +583,7 @@ value for the next time it comes back on.</p>
 <p>When a subpatch is switched off its audio outputs generate zeros; this
 costs a fairly small overhead; a cheaper way to get outputs is to use throw~
 inside the switched module and catch~ outside it.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>You may wish to pass signals non-locally, either to get from one window to another, or
 to feed a signal back to your algorithm&apos;s input.  This can be done using
 throw~/catch~, send~/receive~, or delwrite~/delread~ pairs.  Throw~ and catch~
@@ -621,11 +606,11 @@ simple flanger for example, you might wish to ensure that your delread~ is
 sorted after your delwrite~.  The only way to ensure this is to create the
 delread~ after you created the delwrite~; if things get out of whack, just
 delete and re-create the delread~.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>Pd uses 64-bit floating point numbers to represent time, providing sample
 accuracy and essentially never overflowing.  Time appears to the user
 in milliseconds.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>Audio and message processing are interleaved in Pd.  Audio processing is
 scheduled every 64 samples at Pd&apos;s sample rate; at 44100 Hz. this gives a
 period of 1.45 milliseconds.  You may turn DSP computation on and off by
@@ -640,7 +625,7 @@ simultaneously.</p>
 <p>In the middle of a message cascade you may schedule another one at a delay
 of zero.  This delayed cascade happens after the present cascade has finished,
 but at the same logical time.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>The Pd scheduler maintains a (user-specified) lead on its computations;
 that is, it tries to keep ahead of real time by a small amount in order to be
 able to absorb unpredictable, momentary increases in computation time.   This
@@ -657,7 +642,7 @@ having too much drawing going on while Pd is trying to make sound.  If a
 sub-window is closed, Pd suspends sending the GUI update messages for it;
 but not so for miniaturized windows as of version 0.32.  You should really
 close them when you aren&apos;t using them.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>All message cascades that are scheduled (via &quot;delay&quot; and
 its relatives) to happen before a given audio tick will happen as scheduled
 regardless of whether Pd as a whole is running on time; in other words,
@@ -674,10 +659,10 @@ theoretical value.  (There is, however, a &quot;realtime&quot; object that measu
 time, with nondeterministic results.)</p>
 <p>If two message cascades are scheduled for the same logical time, they are
 carried out in the order they were scheduled.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>This section describes how objects in Pd are created, how they store data and
 how object and other boxes pass messages among themselves.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>The text in a box has a different function depending on whether it is a message,
 atom (number/symbol), or object box.  In message boxes the text specifies the
 message or messages it will send as output.  In atom boxes the text changes
@@ -694,7 +679,7 @@ arguments (called &quot;creation arguments&quot;) are used to parameterize the o
 being created.  Thus in &quot;makenote 64 250&quot; the selector &quot;makenote&quot; determines
 the class of object to create and the creation arguments 64 and 250 become the
 initial velocity and duration.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>Among the design principles of Pd is that patches should be printable, in the
 sense that the appearance of a patch should fully determine its functionality.
 For this reason, if messages received by an object change its action, since the
@@ -712,7 +697,7 @@ changed.</p>
 <p>It is probably bad style to specify creation arguments ala &quot;makenote 64 250&quot;
 if you are going to override them later; this is confusing to anyone who tries
 to understand the patch.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>Messages in Pd consist of a selector (a symbol) and zero or more arguments
 (which may be symbols or numbers).  To pass a message to an object, Pd first
 checks the selector against the class of the object.  Message boxes all are
@@ -733,7 +718,7 @@ messages by setting their value and then outputting it.</p>
 <p>Each other class (like &quot;float&quot;) in Pd has its own protocol for responding
 to messages it is sent, and may take &quot;float&quot; and &quot;bang&quot; messages, or others
 in addition or instead of them.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>The leftmost connection point at the top of most objects represents the object
 itself.  Any other dark rectangle is a separate object called an &quot;inlet&quot;
 although in Pd there are 4 individual inlet classes.  The class of the inlet
@@ -744,7 +729,7 @@ one that the object creates for the occasion.</p>
 to the &quot;list&quot; message by distributing the arguments of the message to their
 inlets, except for the first argument which is passed as a &quot;float&quot; or
 &quot;symbol&quot; message to the object proper.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>In message or object boxes, message arguments starting with a dollar sign
 and a number (like &quot;$1&quot; or &quot;$3-bazoo&quot;) are variables which are substituted
 with values supplied as part of the environment the message is passed in.
@@ -774,7 +759,7 @@ example,   have an abstraction  &quot;a1&quot; that invokes an abstraction &quot
 &quot;a2   $1-food&quot; and &quot;a2 $1-ears&quot;, and then in a third patch call a1 twice,   as
 &quot;a1 cat&quot; and &quot;a1 dog&quot;.  Inside the four &quot;a2&quot; copioes,   $1 will evaluate to
 &quot;dog-food&quot;, &quot;cat-food&quot;, &quot;dog-ears&quot;, and &quot;cat-ears&quot;.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>Pd offers two mechanisms for making subpatches, called &quot;one-off subpatches&quot;
 and &quot;abstractions.&quot;  In either case the subpatch appears as an object box
 in a patch.  If you type &quot;pd&quot; or &quot;pd my-name&quot; into an object box, this creates
@@ -792,7 +777,7 @@ data messages. The inlet~ and outlet~ versions create inlets and outlets for aud
 signals. Note you can also mix control messages in an inlet~ with the &apos;fwd&apos; argument
 but a signal outlet only takes signals. Inlets and outlets appear on the invoking box
 in the same left-to-right order as they appear in the subpatch.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>To make an abstraction, save a patch with a name such as &quot;abstraction1.pd&quot;
 and then invoke it as &quot;abstraction1&quot; in an object box:</p>
 <p><img src="fig7.3.jpg" alt="abstraction"></p>
@@ -823,7 +808,7 @@ however, there is the disadvantage that it&apos;s confusing  to have &quot;$&quo
 a different time in an object box than in a message box.  In an object box, the
 &quot;$&quot; argument is expanded at creation time, and in a message box, at message
 time.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>If you open the &quot;properties&quot; dialog for a subpatch or an abstraction, you can
 check the &quot;graph on parent&quot; box to have the controls of the subpatch/abstraction
 appear on the parent.  For instance, here is an invocation of &quot;abstraction2&quot;:</p>
@@ -842,7 +827,7 @@ are sent to visible controls and/or arrays.</p>
 <p>When the sub-patch is closed, all controls in it appear on the object
 instead; so the number box in the sub-patch in the example above is the same
 one as you see in the box.  Only controls are made visible in this way</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>Linear arrays of numbers recur throughout the computer musician&apos;s bag of tricks,
 beginning with the wavetable oscillator.  The wavetable oscillator later was
 reinvented as the looping sampler.  Also, table lookup is used for nonlinear
@@ -914,7 +899,7 @@ range from 0 to 20,000.  Finally, you choose the screen size of the graph,
 width and height, in screen pixels.</p>
 <p>Many other operations are defined for arrays; see the related patches
 in the tutorial (starting at 2.control/15.array.pd) for more possibilities.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>(Note: this section is adapted from an article submitted to ICMC 2002.)</p>
 <p>The original idea in developing Pd was to make a real-time computer music
 performance environment like Max, but somehow to include also a facility for
@@ -987,7 +972,7 @@ color is given as 0, or black.  The second one plots &quot;pitch&quot; using the
 &quot;voiceno&quot;. In this way the color of the second trace is attached to the
 &quot;voiceno&quot; slot in the data structure, so that color will vary according to its
 &quot;voiceno&quot; slot.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>Pd objects are provided to traverse lists and arrays, and to address
 elements of data structures for getting and setting. Here is a patch showing
 how these facilities could be used, for example, to sequence the graphical
@@ -1052,7 +1037,7 @@ Finally, the voice abstraction puts its audio output on a summing bus.</p>
 <p>More general patches can easily be constructed which access heterogeneous lists
 of objects (having different templates).  In this way, an arbitrarily rich
 personal &quot;score language&quot; can be developed and sequenced.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>In general, accessing or changing data is done via &quot;pointers&quot; to
 &quot;scalars&quot;.  Numbers and symbols within scalars are accessed using the
 &quot;get&quot; object and changed, in the same way, using &quot;set&quot;.  Since lists
@@ -1085,7 +1070,7 @@ Deletion is less flexible; the only operation is to delete an entire list.
 (There&apos;s no reason not to provide finer-grain deletion mechanisms except that
 it&apos;s not clear how to protect against stale pointers efficiently, except by
 voiding the entire collection of pointers into a list.)</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>The graphical score shown above can be edited by dragging breakpoints, or
 by adding and deleting them, using mouse clicks.  Also, entire objects or
 collections of them may be copied, pasted, and dragged around the screen.
@@ -1121,7 +1106,7 @@ where data is left hanging without its structure definition, or where data ends
 up belonging to two or more structures of the same name.  The worst that can
 happen is that data may lose their drawing instructions, in which case Pd
 supplies a simple default shape.</p>
-<h2 id="">#</h2>
+<h2 id>#</h2>
 <p>When examples get more complicated and/or dense than the one shown here, it
 becomes difficult to see and select specific features of a data collection;
 more work is needed to facilitate this.
@@ -1169,7 +1154,7 @@ handling primitives and the graphical presentation and editing functions.</p>
 
             
                 
-                <a href="x1.html" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Introduction">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1185,12 +1170,56 @@ handling primitives and the graphical presentation and editing functions.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Theory of operation","level":"1.3","depth":1,"next":{"title":"Getting Pd to run","level":"1.4","depth":1,"path":"x3.md","ref":"x3.md","articles":[]},"previous":{"title":"Introduction","level":"1.2","depth":1,"path":"x1.md","ref":"x1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"x2.md","mtime":"2022-12-05T14:30:06.527Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-12-05T14:50:47.999Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Theory of operation","level":"1.2","depth":1,"next":{"title":"Getting Pd to run","level":"1.3","depth":1,"path":"x3.md","ref":"x3.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"x2.md","mtime":"2022-12-05T14:30:06.527Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2022-12-05T15:55:50.642Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="gitbook/gitbook.js"></script>
     <script src="gitbook/theme.js"></script>
     
@@ -1208,10 +1237,6 @@ handling primitives and the graphical presentation and editing functions.</p>
     
         
         <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
         
     
         
