@@ -43,6 +43,9 @@ function main() {
    download_button.style.cursor = "pointer";
    download_button.innerHTML += "Get plugdata";
    download_button.style.cssText = button_css.replace("$bg_color", "#3478F6");
+   download_button.onclick = function() {
+      location.href = "./download.html";
+    }
 
    apply_hover_effect(download_button);
 

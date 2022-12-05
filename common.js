@@ -24,7 +24,7 @@ function apply_hover_effect(element) {
 function create_topbar() {
 
    let buttons = [];
-   let labels = [["Home", "./index.html"], ["About", "./about.html"], ["Contact", "./contact.html"]];
+   let labels = [["Home", "./index.html"], ["About", "./about.html"], ["Contact", "./contact.html"], ["Download", "./download.html"]];
  
        let topbar = document.createElement("DIV");
        //topbar.style.cssText = "border-radius:0%; border:none; outline:none; font-size:12px; color:#333333; background-color: #FFFFFF; position:relative; top:0px; left:0px;";
