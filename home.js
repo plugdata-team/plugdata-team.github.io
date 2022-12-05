@@ -1,7 +1,7 @@
 let panels = [
    ["Many, many objects", "./images/else.png", 60, 500, "#FFFFFF", "#333333", "plugdata comes with the ELSE and cyclone libraries installed by default. ELSE is a large set of general-purpose objects that offer more high-level abstraction on top of pure-data. Cyclone is included to make Max users feel at home when they use plugdata."],
    ["Export patches to audio plugins, embedded platforms or raw code", "./images/hvcc.png", 40, 500, "#FFFFFF", "#333333", "By integrating the Heavy/hvcc project, you can convert patches into C/C++ code, all from plugdata. It ships with a compiler toolchain to make exporting plugins, or building patches for embedded platform a piece of cake."],
-   ["Dark mode and theming capabilities", "./images/darkmode.png", 50, 500, "#333333", "#FFFFFF", "plugdata is fully themable, and has a light and dark mode option by default. Late night hackathons will now be less straining for the eyes"],
+   ["Dark mode and theming capabilities", "./images/darkmode.png", 50, 500, "#333333", "#FFFFFF", "plugdata is fully themable, and has a light and dark mode option by default. plugdata is built with customisability and accessibility in mind."],
    ["Vanilla compatibility", "./images/vanilla.png", 40, 500, "#FFFFFF", "#333333", "plugdata is directly based on pd-vanilla, with minimal modifications to the original source code. This ensures very high compatibility between pure-data patches and plugdata patches."],
  ];
 

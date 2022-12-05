@@ -24,7 +24,7 @@ function apply_hover_effect(element) {
 function create_topbar() {
 
    let buttons = [];
-   let labels = [["Home", "./index.html"], ["About", "./about.html"], ["Contact", "./contact.html"], ["Download", "./download.html"]];
+   let labels = [["Home", "./index.html"], ["About", "./about.html"], ["Support", "./support.html"], ["Download", "./download.html"]];
  
        let topbar = document.createElement("DIV");
        //topbar.style.cssText = "border-radius:0%; border:none; outline:none; font-size:12px; color:#333333; background-color: #FFFFFF; position:relative; top:0px; left:0px;";
@@ -57,13 +57,13 @@ function create_topbar() {
 
       let discord_logo = document.createElement("img");
       discord_logo.src = "./images/discord.png";
-      discord_logo.style.cssText = "top: 1px; height:28px; width:auto; right:175px; position:absolute;";
+      discord_logo.style.cssText = "top: 1px; height:28px; width:auto; right:160px; position:absolute;";
       
       discord.appendChild(discord_logo);
 
       let discord_text = document.createElement("p");
       discord_text.innerHTML = "Join our Discord";
-      discord_text.style.cssText = "top: -10px; font-family: Inter; height:16px; width:150px; right:10px; position:absolute; color: #222222;";
+      discord_text.style.cssText = "top: -10px; font-family: Inter; height:16px; width:150px; right:0px; position:absolute; color: #222222;";
       discord.appendChild(discord_text);
    
       apply_hover_effect(discord);
@@ -92,9 +92,9 @@ function create_topbar() {
 
 
        for (let i = 0; i < labels.length; i++) {
-         buttons[i] = document.createElement("BUTTON");
+         buttons[i] = document.createElement("span");
          buttons[i].innerHTML = labels[i][0];
-         buttons[i].style.cssText = "border-radius:0%; border:none; outline:none; font-size:16px; color:#333333; background-color:transparent; position:relative; top:-5px; left:50px;"
+         buttons[i].style.cssText = "border-radius:0%; border:none; outline:none; font-size:16px; color:#333333; background-color:transparent; position:relative; top:4px; left: 50px; padding: 0 12px;"
          buttons[i].className = "button";
          buttons[i].style.height = "40px";
          buttons[i].style.width = "85px";

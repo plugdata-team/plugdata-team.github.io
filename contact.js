@@ -1,7 +1,0 @@
-function main() {
-   
-}
- 
- main();
-
- 
