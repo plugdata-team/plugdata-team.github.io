@@ -16,7 +16,7 @@ function main() {
     mainComponent.appendChild(bugs);
 
     let questions = document.createElement("a");
-    questions.innerHTML += "Join our discord";
+    questions.innerHTML += "Join our Discord";
     questions.style.cssText = "position: absolute; top: 160px; width: 100%; text-align: center; font-family: InterSemiBold; border-radius:0%; border:none; outline:none; font-size:24px; color: #333333; background-color:transparent";
     questions.href = "https://discord.gg/eT2RxdF9Nq";
     mainComponent.appendChild(questions);
