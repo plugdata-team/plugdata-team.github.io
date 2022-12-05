@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>plugdata</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -21,6 +23,17 @@
       font-family: "InterSemiBold";
       src: url("./fonts/InterSemiBold.ttf") format("truetype");
   }
+  @media (max-width: 500px) {
+    #wrapper {
+        flex-direction: column;
+    }
+    #right-content {
+        display: flex;
+    }
+
+    section {
+        flex: 1;   
+    }
 
   </style>
     <script type='text/javascript' src="common.js"></script>

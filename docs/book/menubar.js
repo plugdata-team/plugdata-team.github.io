@@ -1,14 +1,25 @@
-
 let content = document.createElement("DIV");
 content.style.cssText = "border-radius:0%; border:none; outline:none; background-color:#FFFFFF;";
 content.style.position = "absolute";
 content.style.left = "0%";
+content.style.top = "7px";
 content.style.width = "100%";
 content.style.height = document.body.clientHeight;
 content.style.zIndex = "100";
 document.body.appendChild(content);
-document.body.style.background = "#FFFFFF"; 
 
+
+let filler = document.createElement("DIV");
+filler.style.cssText = "border-radius:0%; border:none; outline:none; background-color:#FFFFFF;";
+filler.style.position = "fixed";
+filler.style.left = "0%";
+filler.style.top = "0%";
+filler.style.width = "100%";
+filler.style.height = "10px"
+filler.style.zIndex = "99";
+document.body.appendChild(filler);
+
+document.body.style.background = "#FFFFFF"; 
 
 function apply_hover_effect(element) {
    element.onmouseover = function() {
@@ -24,22 +35,23 @@ function apply_hover_effect(element) {
 function create_topbar() {
 
    let buttons = [];
-   let labels = [["Home", "./index.html"], ["About", "./about.html"], ["Support", "./support.html"], ["Download", "./download.html"], ["Documentation", "./docs/book/index.html"]];
+   let labels = [["Home", "../../index.html"], ["About", "../../about.html"], ["Support", "../../support.html"], ["Download", "../../download.html"], ["Documentation", "./index.html"]];
  
        let topbar = document.createElement("DIV");
        //topbar.style.cssText = "border-radius:0%; border:none; outline:none; font-size:12px; color:#333333; background-color: #FFFFFF; position:relative; top:0px; left:0px;";
        topbar.style.height = "48px";
-       topbar.style.left = "0%";
+       topbar.style.left = "5px";
+       topbar.style.top = "0px";
        topbar.style.width = "100%"
        topbar.style.zIndex = "100";
        content.appendChild(topbar);
  
        let logo = document.createElement("img");
-       logo.src = "./images/logo.png";
+       logo.src = "../../images/logo.png";
  
        logo.style.height = "28px";
        logo.style.width = "auto";
-       logo.style.top = "1px";
+       logo.style.top = "2px";
        logo.style.left = "10px"
        logo.style.position = "absolute";
        logo.style.zIndex = "100";
@@ -56,7 +68,7 @@ function create_topbar() {
        }
 
       let discord_logo = document.createElement("img");
-      discord_logo.src = "./images/discord.png";
+      discord_logo.src = "../../images/discord.png";
       discord_logo.style.cssText = "top: 1px; height:28px; width:auto; right:160px; position:absolute;";
       
       discord.appendChild(discord_logo);
@@ -76,7 +88,7 @@ function create_topbar() {
        }
 
       let github_logo = document.createElement("img");
-      github_logo.src = "./images/github.png";
+      github_logo.src = "../../images/github.png";
       github_logo.style.cssText = "top: 1px; height:28px; width:auto; right:355px; position:absolute;";
       github.appendChild(github_logo);
 
@@ -94,10 +106,8 @@ function create_topbar() {
        for (let i = 0; i < labels.length; i++) {
          buttons[i] = document.createElement("span");
          buttons[i].innerHTML = labels[i][0];
-         buttons[i].style.cssText = "border-radius:0%; border:none; outline:none; font-size:16px; color:#333333; background-color:transparent; position:relative; top:5px; left: 50px; padding: 0 14px;"
+         buttons[i].style.cssText = "letter-spacing: 0px; float: none; font-family: Inter; border-radius:0%; border:none; outline:none; font-size:16px; color:#333333; background-color:transparent; position:relative; top:5px; left: 50px; padding: 0px 14px;"
          buttons[i].className = "button";
-         buttons[i].style.height = "40px";
-         buttons[i].style.width = "85px";
          buttons[i].style.fontFamily = "Inter";
          buttons[i].style.zIndex = "100";
          buttons[i].style.cursor = "pointer";

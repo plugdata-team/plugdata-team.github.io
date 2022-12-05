@@ -1,11 +1,32 @@
 let panels = [
    ["Many, many objects", "./images/else.png", 60, 500, "#FFFFFF", "#333333", "plugdata comes with the ELSE and cyclone libraries installed by default. ELSE is a large set of general-purpose objects that offer more high-level abstraction on top of pure-data. Cyclone is included to make Max users feel at home when they use plugdata."],
    ["Export patches to audio plugins, embedded platforms or raw code", "./images/hvcc.png", 40, 500, "#FFFFFF", "#333333", "By integrating the Heavy/hvcc project, you can convert patches into C/C++ code, all from plugdata. It ships with a compiler toolchain to make exporting plugins, or building patches for embedded platforms a piece of cake."],
-   ["Dark mode and theming capabilities", "./images/darkmode.png", 50, 500, "#333333", "#FFFFFF", "plugdata is fully themable, and has a light and dark mode option by default. plugdata is built with customisability and accessibility in mind."],
+   ["Dark mode and theming capabilities", "./images/darkmode.png", 50, 550, "#333333", "#FFFFFF", "plugdata is fully themable, and has a light and dark mode option by default. plugdata is built with customisability and accessibility in mind."],
    ["Vanilla compatibility", "./images/vanilla.png", 40, 500, "#FFFFFF", "#333333", "plugdata is directly based on pd-vanilla, with minimal modifications to the original source code. This ensures very high compatibility between pure-data and plugdata patches."],
  ];
 
-let panel_css = "font-family: Inter; border:0px; outline:none; color:$txt_color; background-color:$bg_color; position:relative; top:100px; left:-10px; margin-top: 150px; margin-bottom: 150px; margin-right: 20px; margin-left: 0px; height:$height; width:100%; zIndex:1;";
+
+let small_screen = false;
+let zoom_listeners = [];
+window.onzoom = function(e) {
+   for(let i = 0; i < zoom_listeners.length; i++)
+   {
+      zoom_listeners[i]();
+   }
+}
+
+let oldresize = window.onresize;
+window.onresize = function(e) {
+   let event = window.event || e;
+   if(typeof(oldresize) === 'function' && !oldresize.call(window, event)) {
+      return false;
+   }
+   if(typeof(window.onzoom) === 'function') {
+      return window.onzoom.call(window, event);
+   }
+}
+
+let panel_css = "font-family: Inter; border:0px; outline:none; color:$txt_color; background-color:$bg_color; position:relative; top:100px; left:-10px; margin-top: 150px; margin-bottom: 150px; margin-right: 20px; margin-left: 0px; height:$height; width: 100%; zIndex:1;";
 
 function main() {
    let alignment = true;
@@ -15,7 +36,7 @@ function main() {
 
    let logo = document.createElement("img");
    logo.src = "./images/logo.png";
-   logo.style.cssText = "height:auto; width:8%; left:10%; position:relative; left: 50%; transform: translateX(-50%);";
+   logo.style.cssText = "height:auto; width:82px; left:10%; position:relative; left: 50%; transform: translateX(-50%);";
    mainComponent.appendChild(logo);
 
    let title = document.createElement("h2");
@@ -30,7 +51,7 @@ function main() {
 
    let png = document.createElement("img");
    png.src = "./images/app.png";
-   png.style.cssText = "height:auto; width:80%; left:10%; position:relative;";
+   png.style.cssText = "display: block; max-height:80%; max-width:80%; left:10%; position:relative;";
    mainComponent.appendChild(png);
 
    let description = document.createElement("h1");
@@ -65,30 +86,34 @@ for (let i = 0; i < panels.length; i++) {
 
    let alignment_str = alignment ? "left" : "right";
 
+
    let image_width_pct = img_scale + "%";
    let txt_width_pct = (92 - img_scale) + "%";
 
    let tile_css =
-   "-webkit-transition-delay: .2s;" +
-   "-o-transition-delay: .2s;" +
-   "transition-delay: .2s;" +
-   "-webkit-transition: .3s;" +
-   "-o-transition: .3s;" +
-   "transition: .3s;" +
+   "-webkit-transition-delay: .25s;" +
+   "-o-transition-delay: .25s;" +
+   "transition-delay: .25s;" +
+   "-webkit-transition: .4s;" +
+   "-o-transition: .4s;" +
+   "transition: .4s;" +
    "opacity: 0;";
 
-   let panel = document.createElement("DIV");
+   let panel = document.createElement("div");
    panel.style.cssText = tile_css + panel_css.replace("$bg_color", bg_color).replace("$txt_color", txt_color).replace("$height", panel_height + "px");
    panel.style.zIndex = "1"; 
    panel.className += " tile";
 
+   let panel_content = document.createElement("div");
+   panel_content.style.cssText = "position:relative; display: flex; flex-direction: row; max-width: 1300px; left:50%; transform: translateX(-50%);";
+
    let png = document.createElement("img");
    png.src = img;
-   png.style.cssText = "height:auto; width:$width; top: 50%; transform: translateY(-50%); $align:10px; position:absolute;".replace("$width", image_width_pct).replace("$align",  alignment ? "right" : "left");
-   panel.appendChild(png);
+   png.style.cssText = "order: $align; max-width:60%; max-height:30%;".replace("$align",  alignment ? "1" : "0");
+   panel_content.appendChild(png);
 
    let textPanel = document.createElement("DIV");
-   textPanel.style.cssText = "top: 50%; transform: translateY(-50%); $align: 50px; height: $height; width: $width; color: $txt_color; position:absolute; margin-top: 20px; margin-bottom: 20px;".replace("$width", txt_width_pct).replace("$txt_color", txt_color).replace("$align",  alignment ? "left" : "right").replace("$height", (panel_height / 2) + "px");
+   textPanel.style.cssText = "order: $align; color: $txt_color; margin: 40px; padding-top: 40px;".replace("$width", txt_width_pct).replace("$txt_color", txt_color).replace("$align",  alignment ? "0" : "1").replace("$height", (panel_height / 2) + "px");
 
    let title = document.createElement("h2");
    title.innerHTML += name;
@@ -100,14 +125,36 @@ for (let i = 0; i < panels.length; i++) {
    description.style.cssText = "line-height: 1.65; font-family: Inter; text-align: justify; border-radius:0%; border:none; outline:none; font-size:16px; color:$text_colour; background-color:transparent;".replace("$text_colour", txt_color).replace("$width", txt_width_pct).replace("$align", alignment_str).replace("$top", (title.clientTop + title.clientHeight + 20) + "%");
    textPanel.append(description);
    
-   panel.appendChild(textPanel);
-
+   panel_content.appendChild(textPanel);
+   panel.appendChild(panel_content);
    content.appendChild(panel);
+
+   zoom_listeners.push(function(){
+      console.log(document.documentElement.clientWidth);
+      if(document.documentElement.clientWidth < 1100) {
+         small_screen = true;
+         panel_content.style.cssText = "position:relative; display: flex; flex-direction: column; max-width: 700px; left:50%; transform: translateX(-50%);";
+         png.style.cssText = "order: $align; max-width:80%; max-height:100%;".replace("$align",  alignment ? "0" : "0");
+         textPanel.style.cssText = "order: $align; color: $txt_color; margin: 5px; padding-top: 0px;".replace("$width", txt_width_pct).replace("$txt_color", txt_color).replace("$align",  alignment ? "0" : "1").replace("$height", (panel_height / 2) + "px");
+      }
+      else {
+         small_screen = false;
+         panel_content.style.cssText = "position:relative; display: flex; flex-direction: row; max-width: 1300px; left:50%; transform: translateX(-50%);";
+         png.style.cssText = "order: $align; max-width:60%; max-height:100%;".replace("$align",  alignment ? "2" : "0");
+         textPanel.style.cssText = "order: $align; color: $txt_color; margin: 40px; padding-top: 40px;".replace("$width", txt_width_pct).replace("$txt_color", txt_color).replace("$align",  alignment ? "0" : "1").replace("$height", (panel_height / 2) + "px");
+      }
+   });      
 
    alignment = !alignment;
 
    };
+
+   for (let i = 0; i < zoom_listeners.length; i++) {
+      zoom_listeners[i]();
+   }
 }
+
+
 
 
  window.addEventListener('scroll', fadeIn ); 
@@ -118,13 +165,13 @@ for (let i = 0; i < panels.length; i++) {
    //let fadein_css =  "-webkit-transform: translateY(0px) rotate(0deg) translateZ(0);" +
    //"transform: translateY(0px) rotate(0deg) translateZ(0); ";
 
-     for (var i = 0; i < elementsArray.length; i++) {
-         var elem = elementsArray[i];
+     for (let i = 0; i < elementsArray.length; i++) {
+      let elem = elementsArray[i];
 
-         if (elem.getBoundingClientRect().top + 100 > 0 && elem.getBoundingClientRect().bottom - 100 <= (window.innerHeight || document.documentElement.clientHeight)) {
+         if (elem.getBoundingClientRect().top + 150 > 0 && elem.getBoundingClientRect().bottom - 150 <= (window.innerHeight || document.documentElement.clientHeight)) {
             elem.style.opacity = 1;
         } else {
-            elem.style.opacity = 0.45;
+            elem.style.opacity = small_screen ? 1.0 : 0.4;
         }
 
      }
