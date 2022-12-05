@@ -129,18 +129,19 @@ for (let i = 0; i < panels.length; i++) {
    content.appendChild(panel);
 
    zoom_listeners.push(function(){
-      console.log(document.documentElement.clientWidth);
       if(document.documentElement.clientWidth < 1100) {
          small_screen = true;
-         panel_content.style.cssText = "position:relative; display: flex; flex-direction: column; max-width: 700px; left:50%; transform: translateX(-50%);";
-         png.style.cssText = "order: $align; max-width:80%; max-height:100%;".replace("$align", i%2 ? "-1" : "-1");
-         textPanel.style.cssText = "order: $align; color: $txt_color; margin: 5px; padding-top: 0px;".replace("$width", txt_width_pct).replace("$txt_color", txt_color).replace("$align",  alignment ? "0" : "1").replace("$height", (panel_height / 2) + "px");
+         panel_content.style.cssText = "position:relative; max-width: 700px; left:50%; transform: translateX(-50%);";
+         png.style.cssText = "position: relative; max-width:90%; max-height:400px; left:50%; transform: translateX(-50%);".replace("$align", i%2 ? "-1" : "-1");
+         textPanel.style.cssText = "position: relative; color: $txt_color; margin: 5px; padding-top: 0px; left:50%; transform: translateX(-50%);".replace("$width", txt_width_pct).replace("$txt_color", txt_color).replace("$align",  alignment ? "0" : "1").replace("$height", (panel_height / 2) + "px");
+         mainComponent.style.cssText = "max-width: 700px; height: 700px; width: 80%; top: 10px; color: #333333; position:relative; margin-top: 20px; margin-bottom: 0px; left:50%; transform: translateX(-50%);";
       }
       else {
          small_screen = false;
          panel_content.style.cssText = "position:relative; display: flex; flex-direction: row; max-width: 1300px; left:50%; transform: translateX(-50%);";
          png.style.cssText = "order: $align; max-width:60%; max-height:100%;".replace("$align",  i%2 ? "0" : "1");
          textPanel.style.cssText = "order: $align; color: $txt_color; margin: 40px; padding-top: 40px;".replace("$width", txt_width_pct).replace("$txt_color", txt_color).replace("$align",  alignment ? "0" : "1").replace("$height", (panel_height / 2) + "px");
+         mainComponent.style.cssText = "height: 1000px; width: 80%; top: 10px; color: #333333; position:relative; margin-top: 20px; margin-bottom: 20px; left:50%; transform: translateX(-50%);";
       }
    });      
    };
@@ -150,16 +151,10 @@ for (let i = 0; i < panels.length; i++) {
    }
 }
 
-
-
-
  window.addEventListener('scroll', fadeIn ); 
  function fadeIn() {
    
    let elementsArray = document.querySelectorAll(".tile");
-
-   //let fadein_css =  "-webkit-transform: translateY(0px) rotate(0deg) translateZ(0);" +
-   //"transform: translateY(0px) rotate(0deg) translateZ(0); ";
 
      for (let i = 0; i < elementsArray.length; i++) {
       let elem = elementsArray[i];

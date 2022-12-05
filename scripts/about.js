@@ -44,7 +44,6 @@ function main() {
    content.appendChild(thanks);
 
    let thank_you = document.getElementById("thanks");
-   console.log(thank_you);
    thank_you.style.cssText = "position: relative; text-align: left; font-family: Inter; border-radius:0%; border:none; outline:none; font-size:16px; color: #333333; background-color:transparent; left:50%; transform: translateX(-50%); width: 60%;";
    content.appendChild(thank_you);
 
