@@ -84,7 +84,7 @@ for (let i = 0; i < panels.length; i++) {
    let txt_color = panels[i][5];
    let desc = panels[i][6];
 
-   let alignment_str = alignment ? "left" : "right";
+   let alignment_str = i%2 ? "right" : "left";
 
 
    let image_width_pct = img_scale + "%";
@@ -109,11 +109,11 @@ for (let i = 0; i < panels.length; i++) {
 
    let png = document.createElement("img");
    png.src = img;
-   png.style.cssText = "order: $align; max-width:60%; max-height:30%;".replace("$align",  alignment ? "1" : "0");
+   png.style.cssText = "order: $align; max-width:60%; max-height:30%;".replace("$align",  i%2 ? "0" : "1");
    panel_content.appendChild(png);
 
    let textPanel = document.createElement("DIV");
-   textPanel.style.cssText = "order: $align; color: $txt_color; margin: 40px; padding-top: 40px;".replace("$width", txt_width_pct).replace("$txt_color", txt_color).replace("$align",  alignment ? "0" : "1").replace("$height", (panel_height / 2) + "px");
+   textPanel.style.cssText = "order: $align; color: $txt_color; margin: 40px; padding-top: 40px;".replace("$width", txt_width_pct).replace("$txt_color", txt_color).replace("$align",  i%2 ? "1" : "0").replace("$height", (panel_height / 2) + "px");
 
    let title = document.createElement("h2");
    title.innerHTML += name;
@@ -134,19 +134,16 @@ for (let i = 0; i < panels.length; i++) {
       if(document.documentElement.clientWidth < 1100) {
          small_screen = true;
          panel_content.style.cssText = "position:relative; display: flex; flex-direction: column; max-width: 700px; left:50%; transform: translateX(-50%);";
-         png.style.cssText = "order: $align; max-width:80%; max-height:100%;".replace("$align",  alignment ? "0" : "0");
+         png.style.cssText = "order: $align; max-width:80%; max-height:100%;".replace("$align", i%2 ? "-1" : "-1");
          textPanel.style.cssText = "order: $align; color: $txt_color; margin: 5px; padding-top: 0px;".replace("$width", txt_width_pct).replace("$txt_color", txt_color).replace("$align",  alignment ? "0" : "1").replace("$height", (panel_height / 2) + "px");
       }
       else {
          small_screen = false;
          panel_content.style.cssText = "position:relative; display: flex; flex-direction: row; max-width: 1300px; left:50%; transform: translateX(-50%);";
-         png.style.cssText = "order: $align; max-width:60%; max-height:100%;".replace("$align",  alignment ? "2" : "0");
+         png.style.cssText = "order: $align; max-width:60%; max-height:100%;".replace("$align",  i%2 ? "0" : "1");
          textPanel.style.cssText = "order: $align; color: $txt_color; margin: 40px; padding-top: 40px;".replace("$width", txt_width_pct).replace("$txt_color", txt_color).replace("$align",  alignment ? "0" : "1").replace("$height", (panel_height / 2) + "px");
       }
    });      
-
-   alignment = !alignment;
-
    };
 
    for (let i = 0; i < zoom_listeners.length; i++) {
