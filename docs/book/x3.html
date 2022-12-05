@@ -86,11 +86,11 @@
 
     
         
-        
+    
     
         <li class="chapter " data-level="1.1" data-path="./">
             
-                <a href="./">
+                <a target="frame" href="./">
             
                     
                     Introduction
@@ -103,7 +103,7 @@
     
         <li class="chapter " data-level="1.2" data-path="x2.html">
             
-                <a href="x2.html">
+                <a target="frame" href="x2.html">
             
                     
                     Theory of operation
@@ -116,7 +116,7 @@
     
         <li class="chapter active" data-level="1.3" data-path="x3.html">
             
-                <a href="x3.html">
+                <a target="frame" href="x3.html">
             
                     
                     Getting Pd to run
@@ -129,7 +129,7 @@
     
         <li class="chapter " data-level="1.4" data-path="x4.html">
             
-                <a href="x4.html">
+                <a target="frame" href="x4.html">
             
                     
                     Externals
@@ -146,7 +146,7 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+        <a target="frame" href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
             Published with HonKit
         </a>
     </li>
@@ -170,7 +170,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Getting Pd to run</a>
+        <a target="frame" href="." >Getting Pd to run</a>
     </h1>
 </div>
 
@@ -187,10 +187,10 @@
                                 
                                 <p>Pd Manual 3</p>
 <h2 id="pd-manual-chapter-3-getting-pd-to-run">Pd Manual chapter 3: Getting Pd to run</h2>
-<p><a href="index.htm#s3">back to table of contents</a></p>
+<p><a target="frame" href="index.htm#s3">back to table of contents</a></p>
 <p>The following are basic instructions on how to get Pd installed and running
 on your machine.  More details are maintained online on the
-<a href="http://www.pure-data.info/" target="_blank">pure-data.info</a>   site.</p>
+<a target="frame" href="http://www.pure-data.info/" target="_blank">pure-data.info</a>   site.</p>
 <p>Pd runs under Microsoft Windows, Linux, and macOS.   How to
 get Pd up and running depends on your operating system, but the overall strategy
 is the same. You must first get and install it, and then untangle whatever
@@ -199,7 +199,7 @@ to meet its real-time obligations reliably.</p>
 <p>Installation instructions are platform-specific; the following three
 sections will describe what to do for various operating systems you might have.
 In case of trouble also consult the Pd mailing list archive on
-<a href="https://lists.puredata.info/listinfo/pd-list" target="_blank">https://lists.puredata.info/listinfo/pd-list</a>  .
+<a target="frame" href="https://lists.puredata.info/listinfo/pd-list" target="_blank">https://lists.puredata.info/listinfo/pd-list</a>  .
 , which often has late-breaking news about configuration problems and solutions.
 The rest of this section describes how to get audio and MIDI to work.</p>
 <h2 id>#</h2>
@@ -282,7 +282,7 @@ more than one, hit &quot;use multiple devices&quot; and you&apos;ll be allowed u
 in and 4 out.  Each audio device is 2 channels by default, but you may
 specify more if your hardware supports it.</p>
 <p>Other parameters may be tweaked using the command line; see under
-<a href="#s4">preferences and startup options</a>  .</p>
+<a target="frame" href="#s4">preferences and startup options</a>  .</p>
 <h6 id="midi">MIDI</h6>
 <p>The &quot;channel message&quot; midi objects in Pd
 such as notein or pgmout will take channels 1-16 to mean the first open MIDI
@@ -314,7 +314,7 @@ needed, specify &quot;-audiodev&quot; (etc.) flags to specify which device (see
 from the default (256 samples) and &quot;-audiobuf&quot; in milliseconds.  Pd will
 round this down to a power of two buffers, each of &quot;-blocksize&quot; in sample
 frames.</p>
-<p>TIP:  You can use your built-in sound-card with the Universal ASIO Driver For WDM  <a href="http://www.asio4all.org/" target="_blank">http://www.asio4all.org/</a></p>
+<p>TIP:  You can use your built-in sound-card with the Universal ASIO Driver For WDM  <a target="frame" href="http://www.asio4all.org/" target="_blank">http://www.asio4all.org/</a></p>
 <h2 id>#</h2>
 <p>What to do depends on which flavor of Linux you are running (e.g., Debian
 or Red Hat). The instructions here should work for Pd 0.33 and up regardless of
@@ -336,7 +336,7 @@ described here; as of 0.43 I still use that but I plan to discontinue this for
 0.44 and start using only the new one.  The following description applies to the
 old one.  Look in the INSTALL.txt file to see how to use the new one.</p>
 <p>Download Pd, perhaps from
-<a href="http://msp.ucsd.edu/software.html" target="_blank">http://msp.ucsd.edu/software.html</a>   ,
+<a target="frame" href="http://msp.ucsd.edu/software.html" target="_blank">http://msp.ucsd.edu/software.html</a>   ,
 to file such as &quot;pd-linux-033.tar.gz&quot;.  Open a &quot;shell&quot;
 window, cd to
 the directory containing the file, and type the command,</p>
@@ -386,7 +386,7 @@ information on Linux audio.</p>
 included in the standard Linux kernel since 2.4 or so.  However, for some
 audio cards you can find newer versions than are included in the kernel
 releases.  You can get ALSA from</p>
-<p><a href="http://www.alsa-project.org/" target="_blank">http://www.alsa-project.org/</a>   .</p>
+<p><a target="frame" href="http://www.alsa-project.org/" target="_blank">http://www.alsa-project.org/</a>   .</p>
 <p>ALSA is able to emulate OSS, so that you can usually run Pd using the
 &quot;OSS&quot; driver settings even if it&apos;s actually ALSA that&apos;s running.</p>
 <p>By default, Pd uses ALSA.  You can ask Pd to use ALSA&apos;s OSS emulation by
@@ -432,9 +432,9 @@ has sync problems.</p>
 Recent versions of Pd require 10.6 or up.</p>
 <p>To install Pd you can always download  the sources and compile them
 yourself, or (easier) just download the Mac binary from the download page:</p>
-<p><a href="http://msp.ucsd.edu/software.html" target="_blank">http://msp.ucsd.edu/software.html</a></p>
+<p><a target="frame" href="http://msp.ucsd.edu/software.html" target="_blank">http://msp.ucsd.edu/software.html</a></p>
 <p>or from the Pure Data community site:</p>
-<p><a href="https://puredata.info" target="_blank">https://puredata.info</a></p>
+<p><a target="frame" href="https://puredata.info" target="_blank">https://puredata.info</a></p>
 <p>This is in the form of a compressed tar.gz archive; just double click on it to
 extract the Pd application.  Open this and you should be running.</p>
 <p>You might get various warnings about Pd trying to open an internet port.
@@ -476,9 +476,9 @@ menus.  Others take effect only when Pd starts up; some of these appear
 on the &quot;startup&quot; dialog and some of them, too cranky to put in a GUI, must
 be typed as   command line arguments  .</p>
 <p>In addition to the Audio and MIDI settings (see
-<a href="#s1.0">Audio and MIDI</a>  ), you can customize font size (from the
+<a target="frame" href="#s1.0">Audio and MIDI</a>  ), you can customize font size (from the
 &quot;edit&quot; menu), directories to search for files (see
-<a href="#s5">How Pd searches for files</a>  ), and additional startup
+<a target="frame" href="#s5">How Pd searches for files</a>  ), and additional startup
 parameters described below.</p>
 <p>All of these settings may be saved automatically between Pd sessions.
 It is also possible to specify settings directly via the   command
@@ -494,7 +494,7 @@ dialog appears as follows:</p>
 These may be for Gem, pdp, zexy, iemlib, cyclone, and so on.  Typically, a
 single binary object (an &quot;extern&quot;) is left for Pd to load automatically;
 startup library loading is appropriate for collections of many objects
-specified by a single binary library. ( See 4. <a href="x4.htm">Externals</a>  for more on externals and how to load them)</p>
+specified by a single binary library. ( See 4. <a target="frame" href="x4.html">Externals</a>  for more on externals and how to load them)</p>
 <p>The &quot;defeat real-time scheduling&quot; control, if enabled, makes Pd run without
 its usual effort to become a real-time process (whatever this means in the
 operating system you are using.)  In Unix, Pd must usually be setuid to allow
@@ -675,12 +675,12 @@ specify a filename on the command line (as in &quot;pd -path c:\pdlib&quot;) the
 separator should agree with the operating system.</p>
 <p>A filename specified in a patch with any &quot;/&quot; characters in it (such as
 &quot;../sounds/sample1.wav&quot;) causes Pd to to look both in the path and relative
-to the directory containing the patch. You may also invoke externs that way. ( See 4. <a href="x4.htm">Externals</a>  for more on externals and how to load them)</p>
+to the directory containing the patch. You may also invoke externs that way. ( See 4. <a target="frame" href="x4.html">Externals</a>  for more on externals and how to load them)</p>
 <p>As of version 0.35, there may be spaces in the path to Pd itself; also,
 the &quot;openpanel&quot; and &quot;savepanel&quot; objects can handle spaces.  Spaces in the
 path should work as of version 0.38.</p>
-<p><a href="x4.htm">next chapter</a></p>
-<p><a href="index.htm#s3">back to table of contents</a></p>
+<p><a target="frame" href="x4.html">next chapter</a></p>
+<p><a target="frame" href="index.htm#s3">back to table of contents</a></p>
 
                                 
                                 </section>
@@ -708,12 +708,12 @@ path should work as of version 0.38.</p>
 
             
                 
-                <a href="x2.html" class="navigation navigation-prev " aria-label="Previous page: Theory of operation">
+                <a target="frame" href="x2.html" class="navigation navigation-prev " aria-label="Previous page: Theory of operation">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="x4.html" class="navigation navigation-next " aria-label="Next page: Externals">
+                <a target="frame" href="x4.html" class="navigation navigation-next " aria-label="Next page: Externals">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
