@@ -10,32 +10,36 @@ function main() {
    let osDetails = {
      name: 'Unknown OS',
      icon: 'fa-question-circle',
-     link: 'https://github.com/plugdata-team/plugdata/releases/tag/v0.6.2'
+     link: 'https://github.com/plugdata-team/plugdata/releases/tag/v0.6.2',
+     offset: 7
    };
    
    if (userAgent.includes('Macintosh')) {
      osDetails.name = 'macOS';
      osDetails.icon = 'fa-apple';
      osDetails.link = 'https://github.com/plugdata-team/plugdata/releases/download/v0.6.2/PlugData-MacOS-Universal.zip';
-   }
+     osDetails.offset = 0;
+    }
    
    if (userAgent.includes('Windows')) {
      osDetails.name = 'Windows';
      osDetails.icon = 'fa-windows';
      osDetails.link = 'https://github.com/plugdata-team/plugdata/releases/download/v0.6.2/PlugData-Win64.zip';
+     osDetails.offset = 5;
    }
    
    if (userAgent.includes('Linux')) {
      osDetails.name = 'Linux';
      osDetails.icon = 'fa-linux';
      osDetails.link = 'https://software.opensuse.org//download.html?project=home%3Aplugdata&package=plugdata';
-   }
+     osDetails.offset = 0;
+    }
    
-   let button_css = "font-family: Inter; border-radius:5px; border:0px; font-size:16px; color:white; background-color:$bg_color; position:relative; top:50px; width:225px; height:45px; left: 50%; transform: translateX(-50%); text-align:center; padding: 2px";
+   let button_css = "font-family: Inter; border-radius:5px; border:0px; font-size:16px; color:white; background-color:$bg_color; position:relative; top:50px; width:$width; height:45px; left: 50%; transform: translateX(-50%); text-align:center; padding: 2px";
 
    let download_button = document.createElement("div");
    download_button.style.cursor = "pointer";
-   download_button.style.cssText = button_css.replace("$bg_color", "#3478F6");
+   download_button.style.cssText = button_css.replace("$bg_color", "#3478F6").replace("$width", (225 + offset) + "px");
    download_button.onclick = function() {
     location.href = osDetails.link;
   }
