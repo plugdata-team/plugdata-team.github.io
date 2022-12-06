@@ -39,7 +39,7 @@ function main() {
 
    let download_button = document.createElement("div");
    download_button.style.cursor = "pointer";
-   download_button.style.cssText = button_css.replace("$bg_color", "#3478F6").replace("$width", (225 + offset) + "px");
+   download_button.style.cssText = button_css.replace("$bg_color", "#3478F6").replace("$width", (225 + osDetails.offset) + "px");
    download_button.onclick = function() {
     location.href = osDetails.link;
   }
