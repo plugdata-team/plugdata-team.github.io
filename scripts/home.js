@@ -131,7 +131,7 @@ for (let i = 0; i < panels.length; i++) {
    zoom_listeners.push(function(){
       if(document.documentElement.clientWidth < 1100) {
          small_screen = true;
-         panel_content.style.cssText = "position:relative; max-width: 700px; left:50%; transform: translateX(-50%);";
+         panel_content.style.cssText = "position:relative; max-width: 90%; left:50%; transform: translateX(-50%);";
          png.style.cssText = "position: relative; max-width:90%; max-height:400px; left:50%; transform: translateX(-50%);".replace("$align", i%2 ? "-1" : "-1");
          textPanel.style.cssText = "position: relative; color: $txt_color; margin: 5px; padding-top: 0px; left:50%; transform: translateX(-50%);".replace("$width", txt_width_pct).replace("$txt_color", txt_color).replace("$align",  alignment ? "0" : "1").replace("$height", (panel_height / 2) + "px");
          mainComponent.style.cssText = "max-width: 700px; height: 700px; width: 100%; top: 10px; color: #333333; position:relative; margin-top: 20px; margin-bottom: 0px; left:50%; transform: translateX(-50%);";
