@@ -44,7 +44,7 @@ function main() {
    content.appendChild(thanks);
 
    let thank_you = document.getElementById("thanks");
-   thank_you.style.cssText = "position: relative; text-align: left; font-family: Inter; border-radius:0%; border:none; outline:none; font-size:16px; color: #333333; background-color:transparent; left:50%; transform: translateX(-50%); width: 60%;";
+   thank_you.style.cssText = "position: relative; text-align: left; font-family: Inter; border-radius:0%; border:none; outline:none; font-size:16px; color: #333333; background-color:transparent; left:50%; transform: translateX(-50%); width: 700px; max-width: 80%;";
    content.appendChild(thank_you);
 
    let spacing = document.createElement("DIV");
