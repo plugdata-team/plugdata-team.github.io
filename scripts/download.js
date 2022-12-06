@@ -54,10 +54,13 @@ function main() {
 
   let downloads = [["macOS Universal", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.2/PlugData-MacOS-Universal.zip", "Download"], ["Windows x64", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.2/PlugData-Win64.zip", "Download"], ["Windows x86", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.2/PlugData-Win32.zip", "Download"], ["Linux Repositories", "https://software.opensuse.org//download.html?project=home%3Aplugdata&package=plugdata", "View"], ["Arch Linux AUR Repositories (stable)", "https://aur.archlinux.org/packages/plugdata-bin", "View"], ["Arch Linux AUR Repositories (latest)", "https://aur.archlinux.org/packages/plugdata-git", "View"], ["More Downloads", "https://github.com/plugdata-team/plugdata/releases/tag/v0.6.2", "View"]];
 
+  let panel_holder =  document.createElement("div");
+  panel_holder.style.margin = "15px";
+
   for (let i = 0; i < downloads.length; i++) 
   {
-    let panel = document.createElement("DIV");
-    panel.style.cssText = "font-family: Inter; position: relative; height: 40px; padding: 1px; margin-top: 1px; width: 600px; left: 50%; transform: translateX(-50%); outline: 1px solid #333333;";
+    let panel = document.createElement("div");
+    panel.style.cssText = "font-family: Inter; position: relative; height: 40px; padding: 1px; margin-top: 1px; max-width: 600px; left: 50%; transform: translateX(-50%); outline: 1px solid #333333;";
     
     if(i == 0) {
       panel.style.cssText += "border-top-left-radius: 9px";
@@ -71,11 +74,11 @@ function main() {
     panel.style.zIndex = "1"; 
 
     let name = document.createElement("a");
-    name.style.cssText = "font-family: Inter; position: absolute; left: 5px; width: 300px; top: 50%; transform: translateY(-50%);";
+    name.style.cssText = "font-family: Inter; position: absolute; left: 5px; max-width: 300px; top: 50%; transform: translateY(-50%);";
     name.innerHTML = downloads[i][0];
 
     let link = document.createElement("a");
-    link.style.cssText = "font-family: Inter; position: absolute; right: 50px; width: 200px; top: 50%; transform: translateY(-50%);";
+    link.style.cssText = "font-family: Inter; position: absolute; right: 50px; max-width: 200px; top: 50%; transform: translateY(-50%);";
     link.href = downloads[i][1];
     link.innerHTML = downloads[i][2];
 
@@ -83,9 +86,11 @@ function main() {
     panel.appendChild(name);
     panel.appendChild(link);
 
-    content.appendChild(panel);
+    panel_holder.appendChild(panel);
 
   }
+
+  content.appendChild(panel_holder);
 
   let spacing = document.createElement("DIV");
   spacing.style.cssText = "position: relative; height: 100px";

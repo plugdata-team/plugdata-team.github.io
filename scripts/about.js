@@ -17,7 +17,7 @@ function main() {
    content.appendChild(about_me);
 
    let about_div = document.createElement("DIV");
-   about_div.style.cssText = "position:relative; width: 60%; left:50%; transform: translateX(-50%);"
+   about_div.style.cssText = "position:relative; width: 700px; max-width: 80%; left:50%; transform: translateX(-50%);"
 
    let me_1 = document.createElement("p");
    me_1.innerHTML += "Hi, I'm Timothy Schoen, I started working on plugdata in November 2021, while studying Music Technology at HKU Utrecht. I'm interested in pure-data/Max, DSP, audio development, C/C++, JUCE and improving music perception for the hearing impaired. I started working on plugdata as a hobby project but it quickly grew into something bigger, largely thanks to the amazing Pd community. I'm especially aiming to make Pd more accessible and easier to learn, with the aim of creating an amazing tool for learning about creative programming.";
