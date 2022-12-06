@@ -11,7 +11,7 @@ function main() {
      name: 'Unknown OS',
      icon: 'fa-question-circle',
      link: 'https://github.com/plugdata-team/plugdata/releases/tag/v0.6.2',
-     offset: 10
+     offset: 40
    };
    
    if (userAgent.includes('Macintosh')) {
