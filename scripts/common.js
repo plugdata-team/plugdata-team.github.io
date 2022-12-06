@@ -1,8 +1,8 @@
 
-//let meta = document.createElement("meta");
-//meta.name = "viewport";
-//meta.content = "width=device-width, initial-scale=1";
-//document.head.appendChild(meta);
+let meta = document.createElement("meta");
+meta.name = "viewport";
+meta.content = "width=device-width, initial-scale=1";
+document.head.appendChild(meta);
 
 let content = document.createElement("div");
 content.style.cssText = "border-radius:0%; border:none; outline:none; background-color:#FFFFFF;";
