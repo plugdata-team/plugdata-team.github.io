@@ -31,9 +31,9 @@ function main() {
      osDetails.link = 'https://software.opensuse.org//download.html?project=home%3Aplugdata&package=plugdata';
    }
    
-   let button_css = "font-family: Inter; border-radius:5px; border:0px; font-size:16px; color:white; background-color:$bg_color; position:relative; top:50px; width:210px; height:50px; left: 50%; transform: translateX(-50%); text-align:center; padding: 2px";
+   let button_css = "font-family: Inter; border-radius:5px; border:0px; font-size:16px; color:white; background-color:$bg_color; position:relative; top:50px; width:225px; height:45px; left: 50%; transform: translateX(-50%); text-align:center; padding: 2px";
 
-   let download_button = document.createElement("BUTTON");
+   let download_button = document.createElement("div");
    download_button.style.cursor = "pointer";
    download_button.style.cssText = button_css.replace("$bg_color", "#3478F6");
    download_button.onclick = function() {
@@ -42,8 +42,17 @@ function main() {
 
    apply_hover_effect(download_button);
    
-   let iconHtml = '<i class="icon fa ' + osDetails.icon + '"></i>'
-   download_button.innerHTML =  iconHtml + 'Download for ' + osDetails.name;
+   let icon = document.createElement("div");
+   icon.className = "icon fa " + osDetails.icon;
+   icon.style.cssText = "position:absolute; display: inline-block; left: 20px; height: 20px; top: 50%; transform: translateY(-44%);"
+   download_button.appendChild(icon);
+
+   let button_text = document.createElement("div");
+   button_text.style.cssText = "position:absolute; display: inline-block; left: 45px; height: 20px; top: 50%; transform: translateY(-50%);"
+   button_text.innerHTML = 'Download for ' + osDetails.name;
+
+   download_button.appendChild(button_text);
+
 
    content.appendChild(download_button);
 
