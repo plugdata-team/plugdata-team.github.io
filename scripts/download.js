@@ -62,7 +62,7 @@ function main() {
 
    let other = document.createElement("h1");
    other.innerHTML += "All downloads";
-   other.style.cssText = "top: 50px; text-align: center; font-family: Inter; font-weight: 700; padding-top: 160px; padding-bottom: 10px; font-size:36px; color: #333333; background-color:transparent";
+   other.style.cssText = "top: 50px; text-align: center; font-family: Inter; font-weight: 700; padding-top: 140px; padding-bottom: 10px; font-size:36px; color: #333333; background-color:transparent";
    content.appendChild(other);
 
    let stable = document.createElement("h1");
@@ -78,7 +78,7 @@ function main() {
   for (let i = 0; i < stable_downloads.length; i++)
   {
     let panel = document.createElement("div");
-    panel.style.cssText = "font-family: Inter; position: relative; height: 40px; padding: 1px; margin-top: 1px; max-width: 600px; left: 50%; transform: translateX(-50%); outline: 1px solid #333333;";
+    panel.style.cssText = "font-family: Inter; position: relative; height: 40px; padding: 1px; margin-top: 1px; max-width: 700px; left: 50%; transform: translateX(-50%); outline: 1px solid #333333;";
 
     if(i == 0) {
       panel.style.cssText += "border-top-left-radius: 9px";
@@ -115,15 +115,34 @@ function main() {
   unstable.style.cssText = "top: 50px; text-align: center; font-family: Inter; font-weight: 500; padding-top: 20px; padding-bottom: 20px; font-size:24px; color: #333333; background-color:transparent";
   content.appendChild(unstable);
 
-  let unstable_downloads = [["macOS Universal", "https://glyphpress.com/plugdata/plugdata-macOS-Universal.pkg", "Download"], ["Arch (x64)", "https://glyphpress.com/plugdata/plugdata-Arch-x64.tar.gz", "Download"], ["Debian (x64)", "https://glyphpress.com/plugdata/plugdata-Debian-x64.tar.gz", "Download"], ["Fedora 36 (x64)", "https://glyphpress.com/plugdata/plugdata-Fedora-36-x64.tar.gz", "Download"], ["OpenSUSE (x64)", "https://glyphpress.com/plugdata/plugdata-OpenSUSE-x64.tar.gz", "Download"], ["Ubuntu 20.04 (x64)", "https://glyphpress.com/plugdata/plugdata-Ubuntu-22.04-x64.tar.gz", "Download"], ["Ubuntu 22.04 (x64)", "https://glyphpress.com/plugdata/plugdata-Ubuntu-22.04-x64.tar.gz", "Download"], ["Arch Linux AUR Repositories", "https://aur.archlinux.org/packages/plugdata-git", "View"]];
+  let unstable_downloads = [["macOS Universal", "https://glyphpress.com/plugdata/plugdata-macOS-Universal.pkg", "Download", true], ["Windows (x64)", "https://glyphpress.com/plugdata/plugdata-Win64.msi", "Download", true], ["Windows (x86)", "https://glyphpress.com/plugdata/plugdata-Win32.msi", "Download", true], ["Arch (x64)", "https://glyphpress.com/plugdata/plugdata-Arch-x64.tar.gz", "Download", true], ["Debian (x64)", "https://glyphpress.com/plugdata/plugdata-Debian-x64.tar.gz", "Download", true], ["Fedora 36 (x64)", "https://glyphpress.com/plugdata/plugdata-Fedora-36-x64.tar.gz", "Download", true], ["OpenSUSE (x64)", "https://glyphpress.com/plugdata/plugdata-OpenSUSE-x64.tar.gz", "Download", true], ["Ubuntu 20.04 (x64)", "https://glyphpress.com/plugdata/plugdata-Ubuntu-22.04-x64.tar.gz", "Download", true], ["Ubuntu 22.04 (x64)", "https://glyphpress.com/plugdata/plugdata-Ubuntu-22.04-x64.tar.gz", "Download", true], ["Arch Linux AUR Repositories", "https://aur.archlinux.org/packages/plugdata-git", "View", false]];
 
   let unstable_container =  document.createElement("div");
   unstable_container.style.margin = "15px";
 
+  let onHashUpdate = [];
+
+  let latest_hash = "";
+  const getLatestHash = async() => {
+      let response = await fetch ("https://glyphpress.com/plugdata/latest.txt");
+      const result = await response.text().then(( str ) => {
+          return str;    // return the string after splitting it.
+      });
+
+      latest_hash = result.substring(0, result.indexOf('\t'))
+      console.log(latest_hash);
+
+      for(let i = 0; i < onHashUpdate.length; i++) {
+          onHashUpdate[i]();
+      }
+  }
+
+  getLatestHash();
+
   for (let i = 0; i < unstable_downloads.length; i++)
   {
       let panel = document.createElement("div");
-      panel.style.cssText = "font-family: Inter; position: relative; height: 40px; padding: 1px; margin-top: 1px; max-width: 600px; left: 50%; transform: translateX(-50%); outline: 1px solid #333333;";
+      panel.style.cssText = "font-family: Inter; position: relative; height: 40px; padding: 1px; margin-top: 1px; max-width: 700px; left: 50%; transform: translateX(-50%); outline: 1px solid #333333;";
 
       if(i == 0) {
           panel.style.cssText += "border-top-left-radius: 9px";
@@ -145,6 +164,39 @@ function main() {
       link.href = unstable_downloads[i][1];
       link.innerHTML = unstable_downloads[i][2];
 
+      let has_info = unstable_downloads[i][3];
+
+      const getDownloadInfo = async() => {
+          let url = unstable_downloads[i][1] + ".txt";
+          let response = await fetch (url);
+          const result = await response.text().then(( str ) => {
+              return str.split('\n');    // return the string after splitting it.
+          });
+
+          let date = document.createElement("a");
+          date.style.cssText = "font-family: Inter; position: absolute; right: 200px; max-width: 400px; top: 50%; transform: translateY(-50%);";
+          date.innerHTML = result[0];
+
+          let hash = result[1];
+
+          let color = hash == latest_hash ? "#006400" : "#FFA500";
+
+          let commit_hash = document.createElement("a");
+          commit_hash.style.cssText = `font-family: Inter; position: absolute; right: 400px; max-width: 200px; top: 50%; transform: translateY(-50%); color: ${ color }`;
+          commit_hash.innerHTML = hash.substring(0, 7);
+
+          onHashUpdate.push(() => {
+              let color = hash == latest_hash ? "#006400" : "#FFA500";
+              commit_hash.style.cssText = `font-family: Inter; position: absolute; right: 400px; max-width: 200px; top: 50%; transform: translateY(-50%); color: ${ color }`;
+          });
+
+          panel.appendChild(date);
+          panel.appendChild(commit_hash);
+      }
+
+      if(has_info) {
+          getDownloadInfo();
+      }
 
       panel.appendChild(name);
       panel.appendChild(link);
