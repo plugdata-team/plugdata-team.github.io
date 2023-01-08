@@ -62,48 +62,97 @@ function main() {
 
    let other = document.createElement("h1");
    other.innerHTML += "All downloads";
-   other.style.cssText = "top: 50px; text-align: center; font-family: Inter; font-weight: 700; padding-top: 160px; padding-bottom: 50px; font-size:36px; color: #333333; background-color:transparent";
+   other.style.cssText = "top: 50px; text-align: center; font-family: Inter; font-weight: 700; padding-top: 160px; padding-bottom: 10px; font-size:36px; color: #333333; background-color:transparent";
    content.appendChild(other);
 
-  let downloads = [["macOS Universal", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.2/PlugData-MacOS-Universal.zip", "Download"], ["Windows x64", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.2/PlugData-Win64.zip", "Download"], ["Windows x86", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.2/PlugData-Win32.zip", "Download"], ["Linux Repositories", "https://software.opensuse.org//download.html?project=home%3Aplugdata&package=plugdata", "View"], ["Arch Linux AUR Repositories (stable)", "https://aur.archlinux.org/packages/plugdata-bin", "View"], ["Arch Linux AUR Repositories (latest)", "https://aur.archlinux.org/packages/plugdata-git", "View"], ["More Downloads", "https://github.com/plugdata-team/plugdata/releases/tag/v0.6.2", "View"]];
+   let stable = document.createElement("h1");
+   stable.innerHTML += "Stable";
+   stable.style.cssText = "top: 50px; text-align: center; font-family: Inter; font-weight: 500; padding-top: 20px; padding-bottom: 20px; font-size:24px; color: #333333; background-color:transparent";
+   content.appendChild(stable);
 
-  let panel_holder =  document.createElement("div");
-  panel_holder.style.margin = "15px";
+  let stable_downloads = [["macOS Universal", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.2/PlugData-MacOS-Universal.zip", "Download"], ["Windows (x64)", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.2/PlugData-Win64.zip", "Download"], ["Windows (x86)", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.2/PlugData-Win32.zip", "Download"], ["Linux Repositories", "https://software.opensuse.org//download.html?project=home%3Aplugdata&package=plugdata", "View"], ["Arch Linux AUR Repositories", "https://aur.archlinux.org/packages/plugdata-bin", "View"], ["More Downloads", "https://github.com/plugdata-team/plugdata/releases/tag/v0.6.2", "View"]];
 
-  for (let i = 0; i < downloads.length; i++) 
+  let stable_container =  document.createElement("div");
+  stable_container.style.margin = "15px";
+
+  for (let i = 0; i < stable_downloads.length; i++)
   {
     let panel = document.createElement("div");
     panel.style.cssText = "font-family: Inter; position: relative; height: 40px; padding: 1px; margin-top: 1px; max-width: 600px; left: 50%; transform: translateX(-50%); outline: 1px solid #333333;";
-    
+
     if(i == 0) {
       panel.style.cssText += "border-top-left-radius: 9px";
       panel.style.cssText += "border-top-right-radius: 9px";
     }
-    if(i == downloads.length - 1) {
+    if(i == stable_downloads.length - 1) {
       panel.style.cssText += "border-bottom-left-radius: 9px";
       panel.style.cssText += "border-bottom-right-radius: 9px";
     }
-    
-    panel.style.zIndex = "1"; 
+
+    panel.style.zIndex = "1";
 
     let name = document.createElement("a");
     name.style.cssText = "font-family: Inter; position: absolute; left: 5px; max-width: 300px; top: 50%; transform: translateY(-50%);";
-    name.innerHTML = downloads[i][0];
+    name.innerHTML = stable_downloads[i][0];
 
     let link = document.createElement("a");
     link.style.cssText = "font-family: Inter; position: absolute; right: 50px; max-width: 200px; top: 50%; transform: translateY(-50%);";
-    link.href = downloads[i][1];
-    link.innerHTML = downloads[i][2];
+    link.href = stable_downloads[i][1];
+    link.innerHTML = stable_downloads[i][2];
 
-  
+
     panel.appendChild(name);
     panel.appendChild(link);
 
-    panel_holder.appendChild(panel);
-
+    stable_container.appendChild(panel);
   }
 
-  content.appendChild(panel_holder);
+    content.appendChild(stable_container);
+
+
+  let unstable = document.createElement("h1");
+  unstable.innerHTML += "Nightly";
+  unstable.style.cssText = "top: 50px; text-align: center; font-family: Inter; font-weight: 500; padding-top: 20px; padding-bottom: 20px; font-size:24px; color: #333333; background-color:transparent";
+  content.appendChild(unstable);
+
+  let unstable_downloads = [["macOS Universal", "https://glyphpress.com/plugdata/plugdata-macOS-Universal.pkg", "Download"], ["Arch (x64)", "https://glyphpress.com/plugdata/plugdata-Arch-x64.tar.gz", "Download"], ["Debian (x64)", "https://glyphpress.com/plugdata/plugdata-Debian-x64.tar.gz", "Download"], ["Fedora 36 (x64)", "https://glyphpress.com/plugdata/plugdata-Fedora-36-x64.tar.gz", "Download"], ["OpenSUSE (x64)", "https://glyphpress.com/plugdata/plugdata-OpenSUSE-x64.tar.gz", "Download"], ["Ubuntu 20.04 (x64)", "https://glyphpress.com/plugdata/plugdata-Ubuntu-22.04-x64.tar.gz", "Download"], ["Ubuntu 22.04 (x64)", "https://glyphpress.com/plugdata/plugdata-Ubuntu-22.04-x64.tar.gz", "Download"], ["Arch Linux AUR Repositories", "https://aur.archlinux.org/packages/plugdata-git", "View"]];
+
+  let unstable_container =  document.createElement("div");
+  unstable_container.style.margin = "15px";
+
+  for (let i = 0; i < unstable_downloads.length; i++)
+  {
+      let panel = document.createElement("div");
+      panel.style.cssText = "font-family: Inter; position: relative; height: 40px; padding: 1px; margin-top: 1px; max-width: 600px; left: 50%; transform: translateX(-50%); outline: 1px solid #333333;";
+
+      if(i == 0) {
+          panel.style.cssText += "border-top-left-radius: 9px";
+          panel.style.cssText += "border-top-right-radius: 9px";
+      }
+      if(i == unstable_downloads.length - 1) {
+          panel.style.cssText += "border-bottom-left-radius: 9px";
+          panel.style.cssText += "border-bottom-right-radius: 9px";
+      }
+
+      panel.style.zIndex = "1";
+
+      let name = document.createElement("a");
+      name.style.cssText = "font-family: Inter; position: absolute; left: 5px; max-width: 300px; top: 50%; transform: translateY(-50%);";
+      name.innerHTML = unstable_downloads[i][0];
+
+      let link = document.createElement("a");
+      link.style.cssText = "font-family: Inter; position: absolute; right: 50px; max-width: 200px; top: 50%; transform: translateY(-50%);";
+      link.href = unstable_downloads[i][1];
+      link.innerHTML = unstable_downloads[i][2];
+
+
+      panel.appendChild(name);
+      panel.appendChild(link);
+
+      unstable_container.appendChild(panel);
+  }
+
+    content.appendChild(unstable_container);
 
   let spacing = document.createElement("DIV");
   spacing.style.cssText = "position: relative; height: 100px";
