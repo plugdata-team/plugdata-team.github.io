@@ -190,6 +190,7 @@ function main() {
               commit_hash.style.cssText = `font-family: Inter; position: absolute; right: 400px; max-width: 200px; top: 50%; transform: translateY(-50%); color: ${ color }`;
           });
 
+          //TODO: dynamically hide date and hash if width is small!
           panel.appendChild(date);
           panel.appendChild(commit_hash);
       }
