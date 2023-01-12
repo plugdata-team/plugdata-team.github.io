@@ -17,14 +17,14 @@ function main() {
    if (userAgent.includes('Macintosh')) {
      osDetails.name = 'macOS';
      osDetails.icon = 'fa-apple';
-     osDetails.link = 'https://github.com/plugdata-team/plugdata/releases/download/v0.6.3/PlugData-MacOS-Universal.zip';
+     osDetails.link = 'https://github.com/plugdata-team/plugdata/releases/download/v0.6.3/plugdata-macOS-Universal.pkg';
      osDetails.offset = 0;
     }
    
    if (userAgent.includes('Windows')) {
      osDetails.name = 'Windows';
      osDetails.icon = 'fa-windows';
-     osDetails.link = 'https://github.com/plugdata-team/plugdata/releases/download/v0.6.3/PlugData-Win64.zip';
+     osDetails.link = 'https://github.com/plugdata-team/plugdata/releases/download/v0.6.3/plugdata-Win64.msi';
      osDetails.offset = 5;
    }
    
@@ -70,7 +70,7 @@ function main() {
    stable.style.cssText = "top: 50px; text-align: center; font-family: Inter; font-weight: 500; padding-top: 20px; padding-bottom: 20px; font-size:24px; color: #333333; background-color:transparent";
    content.appendChild(stable);
 
-  let stable_downloads = [["macOS Universal", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.3/PlugData-MacOS-Universal.zip", "Download"], ["Windows (x64)", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.3/PlugData-Win64.zip", "Download"], ["Windows (x86)", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.3/PlugData-Win32.zip", "Download"], ["Linux Repositories", "https://software.opensuse.org//download.html?project=home%3Aplugdata&package=plugdata", "View"], ["Arch Linux AUR Repository", "https://aur.archlinux.org/packages/plugdata-bin", "View"], ["More Downloads", "https://github.com/plugdata-team/plugdata/releases/tag/v0.6.3", "View"]];
+  let stable_downloads = [["macOS Universal", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.3/plugdata-macOS-Universal.pkg", "Download"], ["Windows (x64)", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.3/plugdata-Win64.msi", "Download"], ["Windows (x86)", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.3/plugdata-Win32.msi", "Download"], ["Linux Repositories", "https://software.opensuse.org//download.html?project=home%3Aplugdata&package=plugdata", "View"], ["Arch Linux AUR Repository", "https://aur.archlinux.org/packages/plugdata-bin", "View"], ["More Downloads", "https://github.com/plugdata-team/plugdata/releases/tag/v0.6.3", "View"]];
 
   let stable_container =  document.createElement("div");
   stable_container.style.margin = "15px";
