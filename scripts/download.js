@@ -129,7 +129,7 @@ function main() {
           return str;    // return the string after splitting it.
       });
 
-      latest_hash = result.substring(0, result.trim())
+      latest_hash = result.trim();
       console.log(latest_hash);
 
       for(let i = 0; i < onHashUpdate.length; i++) {
