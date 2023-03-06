@@ -10,21 +10,21 @@ function main() {
    let osDetails = {
      name: 'Unknown OS',
      icon: 'fa-question-circle',
-     link: 'https://github.com/plugdata-team/plugdata/releases/tag/v0.6.4',
+     link: 'https://github.com/plugdata-team/plugdata/releases/tag/v0.7.0',
      offset: 40
    };
    
    if (userAgent.includes('Macintosh')) {
      osDetails.name = 'macOS';
      osDetails.icon = 'fa-apple';
-     osDetails.link = 'https://github.com/plugdata-team/plugdata/releases/download/v0.6.4/plugdata-macOS-Universal.pkg';
+     osDetails.link = 'https://github.com/plugdata-team/plugdata/releases/download/v0.7.0/plugdata-macOS-Universal.pkg';
      osDetails.offset = 0;
     }
    
    if (userAgent.includes('Windows')) {
      osDetails.name = 'Windows';
      osDetails.icon = 'fa-windows';
-     osDetails.link = 'https://github.com/plugdata-team/plugdata/releases/download/v0.6.4/plugdata-Win64.msi';
+     osDetails.link = 'https://github.com/plugdata-team/plugdata/releases/download/v0.7.0/plugdata-Win64.msi';
      osDetails.offset = 5;
    }
    
@@ -70,7 +70,7 @@ function main() {
    stable.style.cssText = "top: 50px; text-align: center; font-family: Inter; font-weight: 500; padding-top: 20px; padding-bottom: 20px; font-size:24px; color: #333333; background-color:transparent";
    content.appendChild(stable);
 
-   let stable_downloads = [["macOS Universal", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.4/plugdata-macOS-Universal.pkg", "Download"], ["Windows (x64)", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.4/plugdata-Win64.msi", "Download"], ["Windows (x86)", "https://github.com/plugdata-team/plugdata/releases/download/v0.6.4/plugdata-Win32.msi", "Download"], ["Linux Repositories", "https://software.opensuse.org//download.html?project=home%3Aplugdata&package=plugdata", "View"], ["Arch Linux AUR Repository", "https://aur.archlinux.org/packages/plugdata-bin", "View"], ["macOS Homebrew cask", "https://formulae.brew.sh/cask/plugdata", "View"], ["More Downloads", "https://github.com/plugdata-team/plugdata/releases/tag/v0.6.4", "View"]];
+   let stable_downloads = [["macOS Universal", "https://github.com/plugdata-team/plugdata/releases/download/v0.7.0/plugdata-macOS-Universal.pkg", "Download"], ["Windows (x64)", "https://github.com/plugdata-team/plugdata/releases/download/v0.7.0/plugdata-Win64.msi", "Download"], ["Windows (x86)", "https://github.com/plugdata-team/plugdata/releases/download/v0.7.0/plugdata-Win32.msi", "Download"], ["Linux Repositories", "https://software.opensuse.org//download.html?project=home%3Aplugdata&package=plugdata", "View"], ["Arch Linux AUR Repository", "https://aur.archlinux.org/packages/plugdata-bin", "View"], ["macOS Homebrew cask", "https://formulae.brew.sh/cask/plugdata", "View"], ["More Downloads", "https://github.com/plugdata-team/plugdata/releases/tag/v0.7.0", "View"]];
 
   let stable_container =  document.createElement("div");
   stable_container.style.margin = "15px";
