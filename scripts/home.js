@@ -58,7 +58,7 @@ function main() {
    description.style.cssText = "font-family: Inter; font-weight: 300; text-align: center; border-radius:0%; border:none; outline:none; font-size:18px; color: #333333; margin-top: 50px; background-color:transparent;";
    mainComponent.append(description);
 
-   let button_css = "font-family: Inter; border-radius:5px; border:0px; font-size:16px; color:white; background-color:$bg_color; position:relative; top:50px; width:150px; height:40px; left: 50%; transform: translateX(-50%); text-align:center;";
+   let button_css = "font-family: Inter; border-radius:5px; border:0px; font-size:16px; color:white; background-color:$bg_color; position:relative; top:15px; width:150px; height:40px; left: 50%; transform: translateX(-50%); text-align:center;";
    let download_button = document.createElement("BUTTON");
    download_button.style.cursor = "pointer";
    download_button.innerHTML += "Get plugdata";
