@@ -3,7 +3,7 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <title>Introduction · HonKit</title>
+        <title>2. Bitwig Studio · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 4.0.4">
@@ -56,6 +56,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="Setup_Reaper.html" />
+    
+    
+    <link rel="prev" href="Setup_Ableton.html" />
     
 
     </head>
@@ -84,7 +88,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -138,7 +142,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.1.2" data-path="Setup_Bitwig.html">
+        <li class="chapter active" data-level="1.2.1.2" data-path="Setup_Bitwig.html">
             
                 <a href="Setup_Bitwig.html">
             
@@ -282,7 +286,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >2. Bitwig Studio</a>
     </h1>
 </div>
 
@@ -297,8 +301,28 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="introduction">Introduction</h2>
-<p>Welcome to the plugdata documentation. This documentation page is still under construction, and currently contains only an unmodified version of the Pd manual from Miller Puckette&apos;s website.</p>
+                                <h1 id="bitwig-studio">Bitwig Studio</h1>
+<h2 id="midi-in">MIDI IN</h2>
+<ol>
+<li>Add <strong>plugdata</strong> to an empty MIDI track.</li>
+<li>In <strong>plugdata</strong>, use one of the MIDI IN objects and route MIDI data from it <em>(see example)</em>.</li>
+<li>Play notes on this MIDI track using any usual method — keyboard, piano roll, etc.
+<img src="images/pd-midiin.png" alt="bitwig-midiin"></li>
+</ol>
+<h2 id="midi-out">MIDI OUT</h2>
+<p><img src="images/bitwig-a1.png" alt="bitwig"></p>
+<ol>
+<li>Add the <strong>plugdata</strong> plugin to an empty MIDI track. </li>
+<li>In <strong>plugdata</strong> plug-in, use one of the objects that sends out MIDI data <em>(see examples)</em></li>
+<li>Add an instrument which will receive MIDI data on the same MIDI track, right after the <strong>plugdata</strong> plugin.   </li>
+</ol>
+<p><img src="images/pd-midiout.png" alt="pd-midi"></p>
+<h2 id="fx">FX</h2>
+<ol>
+<li>Add <strong>plugdata-fx</strong> as an effect device to an audio or MIDI track.</li>
+<li>In <strong>plugdata</strong>, use [adc~] object to receive audio from your DAW (see examples).  </li>
+</ol>
+<p><img src="images/pd-fx.png" alt="live-a3"></p>
 
                                 
                                 </section>
@@ -326,6 +350,14 @@
 
             
                 
+                <a href="Setup_Ableton.html" class="navigation navigation-prev " aria-label="Previous page: 1. Ableton">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Setup_Reaper.html" class="navigation navigation-next " aria-label="Next page: 3. Reaper">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -334,7 +366,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Setup","level":"1.2","depth":1,"ref":"","articles":[{"title":"DAW Integration","level":"1.2.1","depth":2,"ref":"","articles":[{"title":"1. Ableton","level":"1.2.1.1","depth":3,"path":"Setup_Ableton.md","ref":"Setup_Ableton.md","articles":[]},{"title":"2. Bitwig Studio","level":"1.2.1.2","depth":3,"path":"Setup_Bitwig.md","ref":"Setup_Bitwig.md","articles":[]},{"title":"3. Reaper","level":"1.2.1.3","depth":3,"path":"Setup_Reaper.md","ref":"Setup_Reaper.md","articles":[]}]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2023-03-06T18:39:27.653Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-03-07T18:50:57.158Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2. Bitwig Studio","level":"1.2.1.2","depth":3,"next":{"title":"3. Reaper","level":"1.2.1.3","depth":3,"path":"Setup_Reaper.md","ref":"Setup_Reaper.md","articles":[]},"previous":{"title":"1. Ableton","level":"1.2.1.1","depth":3,"path":"Setup_Ableton.md","ref":"Setup_Ableton.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Setup_Bitwig.md","mtime":"2023-03-07T18:46:39.266Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-03-07T18:50:57.158Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

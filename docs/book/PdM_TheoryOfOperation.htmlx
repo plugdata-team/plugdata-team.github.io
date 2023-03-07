@@ -56,10 +56,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="x3.html" />
+    <link rel="next" href="PdM_Run.html" />
     
     
-    <link rel="prev" href="x1.html" />
+    <link rel="prev" href="PdM_Introduction.html" />
     
 
     </head>
@@ -90,7 +90,7 @@
     
         <li class="chapter " data-level="1.1" data-path="./">
             
-                <a target="frame" href="./">
+                <a href="./">
             
                     
                     Introduction
@@ -106,6 +106,90 @@
                 <span>
             
                     
+                    Setup
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" >
+            
+                <span>
+            
+                    
+                    DAW Integration
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="Setup_Ableton.html">
+            
+                <a href="Setup_Ableton.html">
+            
+                    
+                    1. Ableton
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="Setup_Bitwig.html">
+            
+                <a href="Setup_Bitwig.html">
+            
+                    
+                    2. Bitwig Studio
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="Setup_Reaper.html">
+            
+                <a href="Setup_Reaper.html">
+            
+                    
+                    3. Reaper
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
                     Pd Manual
             
                 </span>
@@ -115,9 +199,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="x1.html">
+        <li class="chapter " data-level="2.1.1" data-path="PdM_Introduction.html">
             
-                <a target="frame" href="x1.html">
+                <a href="PdM_Introduction.html">
             
                     
                     1. Introduction
@@ -128,9 +212,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.2" data-path="x2.html">
+        <li class="chapter active" data-level="2.1.2" data-path="PdM_TheoryOfOperation.html">
             
-                <a target="frame" href="x2.html">
+                <a href="PdM_TheoryOfOperation.html">
             
                     
                     2. Theory of operation
@@ -141,9 +225,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="x3.html">
+        <li class="chapter " data-level="2.1.3" data-path="PdM_Run.html">
             
-                <a target="frame" href="x3.html">
+                <a href="PdM_Run.html">
             
                     
                     3. Getting Pd to run
@@ -154,9 +238,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="x4.html">
+        <li class="chapter " data-level="2.1.4" data-path="PdM_Externals.html">
             
-                <a target="frame" href="x4.html">
+                <a href="PdM_Externals.html">
             
                     
                     4. Externals
@@ -178,7 +262,7 @@
     <li class="divider"></li>
 
     <li>
-        <a target="frame" href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
             Published with HonKit
         </a>
     </li>
@@ -202,7 +286,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a target="frame" href="." >2. Theory of operation</a>
+        <a href="." >2. Theory of operation</a>
     </h1>
 </div>
 
@@ -219,7 +303,7 @@
                                 
                                 <p>  Pd Manual 2   </p>
 <h2 id="pd-manual-chapter-2-theory-of-operation">Pd Manual chapter 2: theory of operation</h2>
-<p>The purpose of this chapter is to describe Pd&apos;s design and how it is supposed to work. Practical details about how to obtain, install, and run Pd are described in the <a target="frame" href="x3.html">next chapter</a>. Links to more extensive guides (and to more theoretical information about computer music) can be found in the <a target="frame" href="x1.html">previous chapter</a>.</p>
+<p>The purpose of this chapter is to describe Pd&apos;s design and how it is supposed to work. Practical details about how to obtain, install, and run Pd are described in the <a href="x3.html">next chapter</a>. Links to more extensive guides (and to more theoretical information about computer music) can be found in the <a href="x1.html">previous chapter</a>.</p>
 <h3 id="21-overview">2.1 overview</h3>
 <p>Pd is a real-time graphical programming environment for audio and graphical processing. It resembles the Max/MSP system but is much simpler and more portable; also Pd has two features not (yet) showing up in Max/MSP: first, via Mark Dank&apos;s GEM package, Pd can be used for simultaneous computer animation and computer audio. Second, an experimental facility is provided for defining and accessing data structures.</p>
 <h3 id="211-the-main-window-canvases-and-printout">2.1.1. the main window, canvases, and printout</h3>
@@ -247,7 +331,7 @@
 <p>The border of a box tells you how its text is interpreted and how the box functions. Object boxes (as in the previous example) use the text to create objects when you load a patch or type text onto a new one. If you retype the text in an object box, the old one is discarded and a new one is created, using the new creation arguments. The contents of an object box describe a message which is sent to Pd to create the object.</p>
 <p><em>Message</em> boxes interpret the text as a message to send whenever the box is activated (by an incoming message or with the mouse.) The message may be sent many times while the patch is running (as opposed to object boxes whose message is used once to create the object). Instead of going straight to Pd, the message box&apos;s message (or messages) go either to the box&apos;s outlet or to other specified receiving objects. In the example below, the message box, when clicked, sends the message &quot;21&quot; to an object box which adds 13 to it.</p>
 <p><img src="fig1.5.jpg" alt="[message( --&gt; [object] -&gt; [number]"></p>
-<p>The third box shown is a <em>GUI</em> (&quot;graphical user interface&quot;) box. GUI boxes come in many forms including number boxes (as in this example), toggles, sliders, and so on. Whereas the appearance of an object or message box is static when a patch is running, a number box&apos;s contents (the text) changes to reflect the current value held by the box. You can also use a number box as a control by clicking and dragging up and down, or by typing values in it. (There are also shift- and alt-click actions; see <a target="frame" href="x2.html#s2.7">getting help</a> to find out how to look this up).</p>
+<p>The third box shown is a <em>GUI</em> (&quot;graphical user interface&quot;) box. GUI boxes come in many forms including number boxes (as in this example), toggles, sliders, and so on. Whereas the appearance of an object or message box is static when a patch is running, a number box&apos;s contents (the text) changes to reflect the current value held by the box. You can also use a number box as a control by clicking and dragging up and down, or by typing values in it. (There are also shift- and alt-click actions; see <a href="x2.html#s2.7">getting help</a> to find out how to look this up).</p>
 <p>In addition to numbers, Pd defines GUI boxes to display and edit symbols or arbitrary lists of atoms.</p>
 <h3 id="214-patches-and-files">2.1.4. patches and files</h3>
 <p>When you save a patch to a file, Pd doesn&apos;t save the entire state of all the objects in the patch, but only what you see: the objects&apos; creation arguments and their interconnections. Certain data-storage objects have functions for reading and writing other files to save and restore their internal state.</p>
@@ -352,7 +436,7 @@
 <p>In the intervals between, delays might time out or external conditions might arise (incoming MIDI, mouse clicks, or whatnot). These may cause a cascade of depth-first message passing; each such message cascade is completely run out before the next message or DSP tick is computed. Messages are never passed to objects during a DSP tick; the ticks are atomic and parameter changes sent to different objects in any given message cascade take effect simultaneously.</p>
 <p>In the middle of a message cascade you may schedule another one at a delay of zero. This delayed cascade happens after the present cascade has finished, but at the same logical time.</p>
 <h3 id="252-computation-load">2.5.2. computation load</h3>
-<p>The Pd scheduler maintains a (user-specified) lead on its computations; that is, it tries to keep ahead of real time by a small amount in order to be able to absorb unpredictable, momentary increases in computation time. This is specified using the &quot;audiobuffer&quot; or &quot;frags&quot; command line flags (see <a target="frame" href="x3.html">getting Pd to run</a> ).</p>
+<p>The Pd scheduler maintains a (user-specified) lead on its computations; that is, it tries to keep ahead of real time by a small amount in order to be able to absorb unpredictable, momentary increases in computation time. This is specified using the &quot;audiobuffer&quot; or &quot;frags&quot; command line flags (see <a href="x3.html">getting Pd to run</a> ).</p>
 <p>If Pd gets late with respect to real time, gaps (either occasional or frequent) will appear in both the input and output audio streams. On the other hand, disk streaming objects will work correctly, so that you may use Pd as a batch program with soundfile input and/or output. The &quot;-nogui&quot; and &quot;-send&quot; startup flags are provided to aid in doing this.</p>
 <p>Pd&apos;s &quot;realtime&quot; computations compete for CPU time with its own GUI, which runs as a separate process. A flow control mechanism will be provided someday to prevent this from causing trouble, but it is in any case wise to avoid having too much drawing going on while Pd is trying to make sound. If a sub-window is closed, Pd suspends sending the GUI update messages for it; but not so for miniaturized windows as of version 0.32. You should really close them when you aren&apos;t using them.</p>
 <h3 id="253-determinism">2.5.3. determinism</h3>
@@ -495,12 +579,12 @@
 
             
                 
-                <a target="frame" href="x1.html" class="navigation navigation-prev " aria-label="Previous page: 1. Introduction">
+                <a href="PdM_Introduction.html" class="navigation navigation-prev " aria-label="Previous page: 1. Introduction">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a target="frame" href="x3.html" class="navigation navigation-next " aria-label="Next page: 3. Getting Pd to run">
+                <a href="PdM_Run.html" class="navigation navigation-next " aria-label="Next page: 3. Getting Pd to run">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -511,7 +595,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2. Theory of operation","level":"1.2.2","depth":2,"next":{"title":"3. Getting Pd to run","level":"1.2.3","depth":2,"path":"x3.md","ref":"x3.md","articles":[]},"previous":{"title":"1. Introduction","level":"1.2.1","depth":2,"path":"x1.md","ref":"x1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"x2.md","mtime":"2022-12-05T16:16:16.240Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2022-12-05T21:20:06.961Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2. Theory of operation","level":"2.1.2","depth":2,"next":{"title":"3. Getting Pd to run","level":"2.1.3","depth":2,"path":"PdM_Run.md","ref":"PdM_Run.md","articles":[]},"previous":{"title":"1. Introduction","level":"2.1.1","depth":2,"path":"PdM_Introduction.md","ref":"PdM_Introduction.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PdM_TheoryOfOperation.md","mtime":"2023-03-06T18:39:27.665Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-03-07T18:50:57.158Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
