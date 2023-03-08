@@ -57,7 +57,7 @@
 
     
     
-    <link rel="prev" href="Setup_Logic.html" />
+    <link rel="prev" href="PdM_Externals.html" />
     
 
     </head>
@@ -99,7 +99,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" >
+        <li class="chapter " data-level="1.2" data-path="FAQ.html">
+            
+                <a href="FAQ.html">
+            
+                    
+                    F.A.Q.
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
             
                 <span>
             
@@ -113,7 +126,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" >
+        <li class="chapter " data-level="1.3.1" >
             
                 <span>
             
@@ -127,7 +140,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1.1" data-path="Setup_Ableton.html">
+        <li class="chapter " data-level="1.3.1.1" data-path="Setup_Ableton.html">
             
                 <a href="Setup_Ableton.html">
             
@@ -140,7 +153,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.1.2" data-path="Setup_Bitwig.html">
+        <li class="chapter " data-level="1.3.1.2" data-path="Setup_Bitwig.html">
             
                 <a href="Setup_Bitwig.html">
             
@@ -153,7 +166,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.1.3" data-path="Setup_Reaper.html">
+        <li class="chapter " data-level="1.3.1.3" data-path="Setup_Reaper.html">
             
                 <a href="Setup_Reaper.html">
             
@@ -166,7 +179,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.1.4" data-path="Setup_Ardour.html">
+        <li class="chapter " data-level="1.3.1.4" data-path="Setup_Ardour.html">
             
                 <a href="Setup_Ardour.html">
             
@@ -179,7 +192,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.1.5" data-path="Setup_FL.html">
+        <li class="chapter " data-level="1.3.1.5" data-path="Setup_FL.html">
             
                 <a href="Setup_FL.html">
             
@@ -192,7 +205,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.1.6" data-path="Setup_One.html">
+        <li class="chapter " data-level="1.3.1.6" data-path="Setup_One.html">
             
                 <a href="Setup_One.html">
             
@@ -205,7 +218,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.1.7" data-path="Setup_Logic.html">
+        <li class="chapter " data-level="1.3.1.7" data-path="Setup_Logic.html">
             
                 <a href="Setup_Logic.html">
             
@@ -235,27 +248,7 @@
         
         
     
-        <li class="chapter active" data-level="2.1" data-path="Resources.html">
-            
-                <a href="Resources.html">
-            
-                    
-                    Resources
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-    
-        
-        <li class="divider"></li>
-        
-        
-    
-        <li class="chapter " data-level="3.1" >
+        <li class="chapter " data-level="2.1" >
             
                 <span>
             
@@ -269,7 +262,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="3.1.1" data-path="PdM_Introduction.html">
+        <li class="chapter " data-level="2.1.1" data-path="PdM_Introduction.html">
             
                 <a href="PdM_Introduction.html">
             
@@ -282,7 +275,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.2" data-path="PdM_TheoryOfOperation.html">
+        <li class="chapter " data-level="2.1.2" data-path="PdM_TheoryOfOperation.html">
             
                 <a href="PdM_TheoryOfOperation.html">
             
@@ -295,7 +288,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.3" data-path="PdM_Run.html">
+        <li class="chapter " data-level="2.1.3" data-path="PdM_Run.html">
             
                 <a href="PdM_Run.html">
             
@@ -308,7 +301,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.4" data-path="PdM_Externals.html">
+        <li class="chapter " data-level="2.1.4" data-path="PdM_Externals.html">
             
                 <a href="PdM_Externals.html">
             
@@ -323,6 +316,26 @@
     
 
             </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter active" data-level="3.1" data-path="Resources.html">
+            
+                <a href="Resources.html">
+            
+                    
+                    Resources
+            
+                </a>
+            
+
             
         </li>
     
@@ -374,21 +387,36 @@
                                 <h1 id="resources">Resources</h1>
 <p>A list of useful links for learning <strong>plugdata</strong>/<strong>Pure Data</strong>.</p>
 <h2 id="books">Books</h2>
-<p><a href="https://www.wolke-verlag.de/musikbuecher/johannes-kreidler-loadbang/" target="_blank">loadbang</a> — <em>free to download and <a href="http://www.pd-tutorial.com/english/index.html" target="_blank">read online</a></em></p>
+<ul>
+<li><a href="https://www.wolke-verlag.de/musikbuecher/johannes-kreidler-loadbang/" target="_blank">loadbang</a> — <em>free to download and <a href="http://www.pd-tutorial.com/english/index.html" target="_blank">read online</a></em></li>
+</ul>
 <p>&quot;Each lesson is comprised of a theory part, a practice part and an appendix, as well as individual aspects that are explained in greater detail at the end of each section.&quot;</p>
-<p><a href="https://www.amazon.com/Designing-Sound-Press-Andy-Farnell/dp/0262014416" target="_blank">Designing Sound</a> - <em>paid</em></p>
+<ul>
+<li><a href="https://www.amazon.com/Designing-Sound-Press-Andy-Farnell/dp/0262014416" target="_blank">Designing Sound</a> - <em>paid</em></li>
+</ul>
 <p>Teaches sound design from first principles in pure data, you will learn to design everyday sounds from scratch. The book follows a practical and systematic methodology to deconstructing sounds and building them procedurally.</p>
-<p><a href="https://www.contemponet.com/shop/pure-data-electronic-music-and-sound-design-1/" target="_blank">Pure Data: Electronic Music and Sound Design - Theory and Practice - Volume 1</a> - <em>paid</em></p>
+<ul>
+<li><a href="https://www.contemponet.com/shop/pure-data-electronic-music-and-sound-design-1/" target="_blank">Pure Data: Electronic Music and Sound Design - Theory and Practice - Volume 1</a> - <em>paid</em></li>
+</ul>
 <p>Chapters are split into parts explaining sound design theory and how to apply it in pure data.</p>
 <h2 id="tutorials">Tutorials</h2>
-<h2 id="video-courses">Video Courses</h2>
-<p><a href="http://msp.ucsd.edu/syllabi/index.htm" target="_blank">Classes taught by Miller Puckette at UCSD</a></p>
+<h2 id="videos">Videos</h2>
+<ul>
+<li><a href="http://msp.ucsd.edu/syllabi/index.htm" target="_blank">Classes taught by Miller Puckette at UCSD</a></li>
+</ul>
 <p>Classes from Miller Puckette, the creator of Pure Data, with some of them being available in video format. Not only about <strong>Pure Data</strong> but music in general. This is a great resource and highly recommended to check out.</p>
-<p><a href="https://www.youtube.com/playlist?list=PLyFkFo29zHvD4eRftIAjcLqIXCtSo7w8g" target="_blank">Sound Simulator</a></p>
-<p><a href="https://www.youtube.com/playlist?list=PLuxj2jXSuTvvqYcDLJ-poN-JxvqX0wq-m" target="_blank">QCGInteractiveMusic</a></p>
-<p><a href="https://www.youtube.com/playlist?list=PLqJgTfn3kSMW3AAAl2liJRKd-7DhZwLlq" target="_blank">Really Useful Plugins</a></p>
-<p><a href="https://www.youtube.com/playlist?list=PL12DC9A161D8DC5DC" target="_blank">cheetomoskeeto</a></p>
-<p><a href="https://www.youtube.com/playlist?list=PL0dqIhYnzlnPeQAC5mRzKq5HLwfBGRYaO" target="_blank">Q Visible</a></p>
+<ul>
+<li><p><a href="https://www.youtube.com/playlist?list=PLyFkFo29zHvD4eRftIAjcLqIXCtSo7w8g" target="_blank">Sound Simulator</a></p>
+</li>
+<li><p><a href="https://www.youtube.com/playlist?list=PLuxj2jXSuTvvqYcDLJ-poN-JxvqX0wq-m" target="_blank">QCGInteractiveMusic</a></p>
+</li>
+<li><p><a href="https://www.youtube.com/playlist?list=PLqJgTfn3kSMW3AAAl2liJRKd-7DhZwLlq" target="_blank">Really Useful Plugins</a></p>
+</li>
+<li><p><a href="https://www.youtube.com/playlist?list=PL12DC9A161D8DC5DC" target="_blank">cheetomoskeeto</a></p>
+</li>
+<li><p><a href="https://www.youtube.com/playlist?list=PL0dqIhYnzlnPeQAC5mRzKq5HLwfBGRYaO" target="_blank">Q Visible</a></p>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -416,7 +444,7 @@
 
             
                 
-                <a href="Setup_Logic.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 7. Logic">
+                <a href="PdM_Externals.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 4. Externals">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -428,7 +456,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Resources","level":"2.1","depth":1,"next":{"title":"Pd Manual","level":"3.1","depth":1,"ref":"","articles":[{"title":"1. Introduction","level":"3.1.1","depth":2,"path":"PdM_Introduction.md","ref":"PdM_Introduction.md","articles":[]},{"title":"2. Theory of operation","level":"3.1.2","depth":2,"path":"PdM_TheoryOfOperation.md","ref":"PdM_TheoryOfOperation.md","articles":[]},{"title":"3. Getting Pd to run","level":"3.1.3","depth":2,"path":"PdM_Run.md","ref":"PdM_Run.md","articles":[]},{"title":"4. Externals","level":"3.1.4","depth":2,"path":"PdM_Externals.md","ref":"PdM_Externals.md","articles":[]}]},"previous":{"title":"7. Logic","level":"1.2.1.7","depth":3,"path":"Setup_Logic.md","ref":"Setup_Logic.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Resources.md","mtime":"2023-03-08T17:30:04.982Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-03-08T18:52:06.874Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Resources","level":"3.1","depth":1,"previous":{"title":"4. Externals","level":"2.1.4","depth":2,"path":"PdM_Externals.md","ref":"PdM_Externals.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Resources.md","mtime":"2023-03-08T21:46:59.429Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-03-08T21:57:01.923Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

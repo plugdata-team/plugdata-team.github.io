@@ -1,5 +1,6 @@
 # Summary
 *** 
+* [F.A.Q.](FAQ.md)
 * Setup
   * DAW Integration
     * [1. Ableton](Setup_Ableton.md)
@@ -10,9 +11,7 @@
     * [6. Studio One](Setup_One.md)
     * [7. Logic](Setup_Logic.md)
 
-***
-* [Resources](Resources.md)
-    
+
 *** 
 * Pd Manual
   * [1. Introduction](PdM_Introduction.md)
@@ -20,4 +19,6 @@
   * [3. Getting Pd to run](PdM_Run.md)
   * [4. Externals](PdM_Externals.md)
 
+***
+* [Resources](Resources.md)
 

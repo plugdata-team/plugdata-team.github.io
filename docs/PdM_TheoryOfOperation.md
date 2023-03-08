@@ -13,13 +13,13 @@ Pd is a real-time graphical programming environment for audio and graphical proc
 
 When Pd is running, you'll see a main "Pd" window, and possibly one or more "canvases" or "patches". The main Pd window looks like this:
 
-![pd window](fig1.1.png)
+![pd window](images\fig1.1.png)
 
 The bottom part of the Pd window is an area for printout from objects in patches, and/or for messages from Pd itself. The menus and console font size can be changed using the **Edit/Font** menu dialog when the Pd window is focused. Make your adjustments if you are having troubles reading on HiDPI screens.
 
 Pd documents are called "patches" or "canvases." Each open document has one main window and any number of sub-windows. The sub-windows can be opened and closed but are always running whether you can see them or not. Here is a simple Pd patch:
 
-![hello world patch](fig1.2.jpg)
+![hello world patch](images\fig1.2.jpg)
 
 There are four _text boxes_ in this patch: a number box (showing zero), an object box showing "print," and two comments. The number box and the object box are connected, the number box's output to the print box's input. Boxes may have zero or more inputs and/or outputs, with the inputs on top and the outputs on bottom.
 
@@ -31,7 +31,7 @@ Pd patches can have four types of boxes: _object, message, GUI,_ and _comment_ .
 
 You make _objects_ by typing text into object boxes. The text is divided into _atoms_ separated by white space. The first atom specifies what type of object Pd will make, and the other atoms, called _creation arguments_ , tell Pd how to initialize the object. If you type for example,
 
-![object](fig1.3.jpg)
+![object](images\fig1.3.jpg)
 
 the "+" specifies the _class_ of the object. In this case the object will be the kind that carries out addition, and the "13" initializes the amount to add.
 
@@ -43,7 +43,7 @@ The text you type into an object box determines how many and what kinds of inlet
 
 Here for example is a simple MIDI synthesizer:
 
-![simple MIDI synthesizer](fig1.4.png)
+![simple MIDI synthesizer](images\fig1.4.png)
 
 This patch mixes _control_ objects (notein, stripnote, and ftom) with _tilde_ objects osc~, \*~, and dac~. The control objects carry out their function sporadically, as a result of one or more type of _event_ . In this case, incoming MIDI note messages set off the control computation. The result of the computation is, when the note happens to be a "note on" (and not a "note off", to compute the frequency in cycles per second and pass it on to the oscillator ("osc~").
 
@@ -57,7 +57,7 @@ The border of a box tells you how its text is interpreted and how the box functi
 
 _Message_ boxes interpret the text as a message to send whenever the box is activated (by an incoming message or with the mouse.) The message may be sent many times while the patch is running (as opposed to object boxes whose message is used once to create the object). Instead of going straight to Pd, the message box's message (or messages) go either to the box's outlet or to other specified receiving objects. In the example below, the message box, when clicked, sends the message "21" to an object box which adds 13 to it.
 
-![[message( --> [object] -> [number]](fig1.5.jpg)
+![[message( --> [object] -> [number]](images\fig1.5.jpg)
 
 The third box shown is a _GUI_ ("graphical user interface") box. GUI boxes come in many forms including number boxes (as in this example), toggles, sliders, and so on. Whereas the appearance of an object or message box is static when a patch is running, a number box's contents (the text) changes to reflect the current value held by the box. You can also use a number box as a control by clicking and dragging up and down, or by typing values in it. (There are also shift- and alt-click actions; see [getting help](x2.html#s2.7) to find out how to look this up).
 
@@ -147,13 +147,13 @@ It is possible to type messages which start with a number, which cannot be used 
 
 In Pd whenever a message is initiated, the receiver may then send out further messages in turn, and the receivers of those messages can send yet others. So each message sets off a tree of consequent messages. This tree is executed in depth first fashion. For instance in the patch below:
 
-![depth first message passing](fig3.2.jpg)
+![depth first message passing](images\fig3.2.jpg)
 
 the order of arrival of messages is either A-B-C-D or A-C-D-B. The "C" message is not done until the "D" one is also, and the "A" is not done until all four are. It is indeterminate which of "B" or "C" is done first; this depends on what order you made the connections in (in Max, it's automatically sorted right to left).
 
 Message-passing can give rise to infinite loops of the sort shown here:
 
-![infinite message passing loop](fig3.3.jpg)
+![infinite message passing loop](images\fig3.3.jpg)
 
 Here the left-hand "+" can't finish processing until the right-hand one has been sent the result "2", which can't finish processing that until the left-hand one has been sent "3", and so on. Pd will print an error message reporting a "stack overflow" if this happens.
 
@@ -163,7 +163,7 @@ However, it is legal to make a loop if there is a "delay" object somewhere in it
 
 With few exceptions (notably "timer"), objects treat their leftmost inlet as "hot" in the sense that messages to left inlets can result in output messages. So the following is a legal (and reasonable) loop construct:
 
-![hot and cold inlets](fig3.4.jpg)
+![hot and cold inlets](images\fig3.4.jpg)
 
 Here the "f" is an abbreviation for "float". Note that the "+ 1" output is connected to the right-hand inlet of "f". This "cold" inlet merely stores the value for the next time the "f" is sent the "bang" message.
 
@@ -171,13 +171,13 @@ It is frequently desirable to send messages to two or more inlets of an object t
 
 Problems can arise when a single outlet is connected (either directly or through arbitrarily long chains of message passing) to different inlets of a single object. In this case it is indeterminate which order the two inlets will receive their messages. Suppose for example you wish to use "+" to double a number. The following is incorrect:
 
-![incorrect inlet connection](fig3.5.jpg)
+![incorrect inlet connection](images\fig3.5.jpg)
 
 Here, I connected the left inlet before connecting the right hand one (although this is not evident in the appearance of the patch.) The "+" thus adds the new input (at left) to the previous input (at right).
 
 The "trigger" object, abbreviated "t", can be used to split out connections from a single outlet in a determinate order. By convention, all objects in Pd, when sending messages out more than one outlet, do so from right to left. If you connect these to inlets of a second object without crossing wires, the second object will get its leftmost inlet last, which is usually what you want. Here is how to use "trigger" to disambiguate the previous example:
 
-![trigger to disambiguate](fig3.6.jpg)
+![trigger to disambiguate](images\fig3.6.jpg)
 
 "Cold" (non-leftmost) inlets are almost universally used to store single values (either numbers or symbols.) With the exception of "line" and "line~", these values are "sticky," i.e., once you set the value it is good until the next time you set it. (The "line" exception is for sanity's sake.)
 
@@ -187,25 +187,25 @@ One more question sometimes comes up in execution order, which is the order in w
 
 Message boxes are text boxes in which you type a message. When the message box is activated, either by clicking on it or sending something to its inlet, the message or messages are sent, either to the message box's outlet or elsewhere as specified.
 
-![message boxes](fig3.7.jpg)
+![message boxes](images\fig3.7.jpg)
 
 The first of the message boxes above contains the single number 1.5; this message has an implicit selector of "float." The second is a list with three numbers in it, and in the third, the selector is "my" and the two arguments are the number 5 and the symbol "toes."
 
 Multiple messages may be separated by commas as shown:
 
-![multiple messages in one box](fig3.8.jpg)
+![multiple messages in one box](images\fig3.8.jpg)
 
 Here the three messages are the numbers 1, 2, and 3, and they are sent in sequence (with no intervening time between them, as with the "trigger" object, and having depth-first consequences so that whatever chain of actions depending on "1" takes place before anything depending on "2" and so on.)
 
 Semicolons may also separate messages. A message following a semicolon must specify a symbol giving a destination (in other words, semicolons are like commas except that they clear the "current destination" so that the next message specifies a new one). The "current destination" is at first the message box's own outlet. In the example below, the leading semicolon immediately redirects messages from the outlet to an object named "fred" (which is here a receive object), and likewise the next message is sent to "sue."
 
-![semicolons to send messages](fig3.9.jpg)
+![semicolons to send messages](images\fig3.9.jpg)
 
 Certain other objects (Pd windows, for example, and arrays) have Pd names and can be sent messages this way. Also, the special object "pd" is defined to which you may send messages to start and stop DSP.
 
 You can put variables in message boxes as shown below:
 
-![variables in message boxes](fig3.10.jpg)
+![variables in message boxes](images\fig3.10.jpg)
 
 Here, "$1", etc., refer to the arguments of the arriving message (and aren't defined if you send a "bang" message or if you click on the message box to activate it.) Dollar sign variables are either numbers or symbols depending on the incoming message; if symbols, you may even use them to specify variable message selectors or destinations.
 
@@ -335,11 +335,11 @@ For example, if you want to get dog-food, dog-ears, and cat-food, for example, h
 
 Pd offers two mechanisms for making subpatches, called "one-off subpatches" and "abstractions." In either case the subpatch appears as an object box in a patch. If you type "pd" or "pd my-name" into an object box, this creates a one-off subpatch. For instance, in this fragment:
 
-![subpatch](fig7.1.jpg)
+![subpatch](images\fig7.1.jpg)
 
 the box in the middle, if clicked on, opens the sub-patch shown here:
 
-![open subpatch window](fig7.2.jpg)
+![open subpatch window](images\fig7.2.jpg)
 
 The contents of the subpatch are saved as part of the parent patch, in one file. If you make several copies of a subpatch you may change them individually.
 
@@ -349,7 +349,7 @@ The objects, "inlet,", "inlet~," "outlet," and "outlet~,", when put in a subpatc
 
 To make an abstraction, save a patch with a name such as "abstraction1.pd" and then invoke it as "abstraction1" in an object box:
 
-![abstraction](fig7.3.jpg)
+![abstraction](images\fig7.3.jpg)
 
 Here we're invoking a separate file, "abstraction1.pd", which holds the patch shown here (the border is the same as for the subpatch above):
 
@@ -365,11 +365,11 @@ The corresponding feature in Max (both Opcode and Ircam) was the "#1" construct.
 
 If you open the "properties" dialog for a subpatch or an abstraction, you can check the "graph on parent" box to have the controls of the subpatch/abstraction appear on the parent. For instance, here is an invocation of "abstraction2":
 
-![graph-on-parent abstraction](fig7.5.jpg)
+![graph-on-parent abstraction](images\fig7.5.jpg)
 
 where the patch "abstraction2.pd" contains:
 
-![inside graph-on-parent abstraction](fig7.6.jpg)
+![inside graph-on-parent abstraction](images\fig7.6.jpg)
 
 Here, the number box in the abstraction shows up on the box that invoked the abstraction. The "graph on parent" flag is set in the abstraction (and is saved as part of the abstraction); to set it, open the "properties" dialog for the "abstraction2" canvas by right-clicking on any white space in the patch.
 
@@ -389,21 +389,21 @@ Arrays are also useful as transfer functions, for example for nonlinear distorti
 
 Arrays usually appear within subpatches created to house them, whether in "graph on parent" form (so that you see them within a rectangle drawn on the containing patch), or as a regular subpatch (which you see as a text box.) In the "graph on parent" form, an array appears as shown:
 
-![array](fig8.1.jpg)
+![array](images\fig8.1.jpg)
 
 Arrays are indexed from 0 to N-1 where N is the number of points in the array. You can read an array value using the tabread object:
 
-![array indexing](fig8.2.jpg)
+![array indexing](images\fig8.2.jpg)
 
 Here we see that the third point of the array (index 2) has the value 0.4. To write into the array you can use the tabwrite object:
 
-![setting an value in an array](fig8.3.jpg)
+![setting an value in an array](images\fig8.3.jpg)
 
 In this example, sending the message sets the third element to 0.5. (You may also send the two numbers to the two inlets separately.)
 
 The two previous examples showed control operations to read and write from and to arrays. These may also be done using audio signals. For example, the patch below creates a 440 Hz. tone with "array1" as a waveform:
 
-![setting an array with a waveform](fig8.4.jpg)
+![setting an array with a waveform](images\fig8.4.jpg)
 
 Here phasor~'s outputs a sawtooth wave, repeating 440 times per second, whose output range is from 0 to 1. The multiplier and adder adjust the range from 1 to 11, and then the values are used as indices for tabread4~, which is a 4-point interpolating table lookup module. (Much more detail is available in the audio example patches in the "pure documentation" series.)
 
@@ -411,7 +411,7 @@ To create a new array, select "array" from the "put" menu. Up will come a dialog
 
 If you select "properties" on an array in a graph, you two dialogs, one for the array and one for the graph. The array dialog looks like this:
 
-![array properties window](fig8.5.jpg)
+![array properties window](images\fig8.5.jpg)
 
 You may use this to change the name and size, in addition to another property, "save contents". If "save contents" is selected, the array's values are stored in the containing patch; otherwise they're initialized to zero each time the patch is reloaded. If you intend to use arrays to store sounds, you will probably not wish to store them in the patch but as separate soundfiles. This will be more efficient, and you may also then use a sound editor to modify them outside Pd.
 
@@ -419,7 +419,7 @@ If you check "delete me" and then "OK", the array will be deleted. This is an od
 
 The graph dialog (which also pops up) is shown here:
 
-![graph properties](fig8.6.jpg)
+![graph properties](images\fig8.6.jpg)
 
 The X bounds initially range from 0 to the number of points in the table minus one (this is a good choice for arrays, although graphs holding other kinds of objects might require other X bounds.) The Y bounds should be chosen to reflect the natural range of the table, so that stored sounds would naturally range from -1 to 1, but a sequence of frequency values might range from 0 to 20,000. Finally, you choose the screen size of the graph, width and height, in screen pixels.
 
@@ -433,7 +433,7 @@ The original idea in developing Pd was to make a real-time computer music perfor
 
 Pd is designed to to offer an extremely unstructured environment for describing data structures and their graphical appearance. The underlying idea is to allow the user to display any kind of data he or she wants to, associating it in any way with the display. To accomplish this Pd introduces a graphical data structure, somewhat like a data structure out of the C programming language, but with a facility for attaching shapes and colors to the data, so that the user can visualize and/or edit it. The data itself can be edited from scratch or can be imported from files, generated algorithmically, or derived from analyses of incoming sounds or other data streams. Here is one simple example of a very short musical sketch realized using Pd:
 
-![graphical score](fig9.1.jpg)
+![graphical score](images\fig9.1.jpg)
 
 The example, which only lasts a few seconds, is a polyphonic collection of time-varying noise bands. The graphical "score" consists of six objects, each having a small grab point at left, a black shape to show dynamic, and a colored shape to show changing frequency and bandwidth. The horizontal axis represents time and the vertical axis, frequency (although, as explained later, this behavior isn't built into pd). The dynamic and frequency shapes aren't constrained to be connected or even to be proximate, but since they pertain to the same sound their horizontal positions line up. In this example the last (furthest-right) object is percussive (as seen by the black shape) and has a fixed frequency and bandwidth, whereas the large, articulated shape in the center has a complicated trajectory in both frequency and dynamic. The color of the frequency trace determines the voice number used to realize it.
 
@@ -441,7 +441,7 @@ Each object is thus composed of a combination of scalar values (color; aggregate
 
 Here is the template associated with the graphical objects shown above:
 
-![template for graphical score](fig9.2.jpg)
+![template for graphical score](images\fig9.2.jpg)
 
 Templates consist of a data structure definition (the "struct" object) and zero or more drawing instructions ("filledpolygon" and "plot"). The "struct" object gives the template the name, "template-toplevel." The data structure is defined to contain three floating point numbers named "x", "y", and "voiceno," and two arrays, one named "pitch" whose elements belong to another template named "template-pitch," and similarly for the array "amp."
 
@@ -455,7 +455,7 @@ After the "struct" object in the template shown above, the remaining three objec
 
 Pd objects are provided to traverse lists and arrays, and to address elements of data structures for getting and setting. Here is a patch showing how these facilities could be used, for example, to sequence the graphical score shown above:
 
-![traversal example patch](fig9.3.jpg)
+![traversal example patch](images\fig9.3.jpg)
 
 Pd has no built-in sequencer, nor even any notion that "x" values should be used as a time axis. (However, a "sort" function is provided, which reorders a list from left to right, on the assumption that users might often want to use Pd data collections as x-ordered sequences.) Recording sequences of events into lists, and/or playing the lists back as sequences, are functionalities that the user is expected to supply on top of Pd's offerings, which, it is hoped, would allow those functionalities within a much larger range of possibilities, to include random re-orderings of events, score following, self-modifying scores, reactive improvisation, and perhaps much more.
 
