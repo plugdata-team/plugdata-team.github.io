@@ -1,5 +1,4 @@
 # Resources
-A list of useful links for learning **plugdata**/**Pure Data**.
 
 ## Books
 * [loadbang](https://www.wolke-verlag.de/musikbuecher/johannes-kreidler-loadbang/) — *free to download and [read online](http://www.pd-tutorial.com/english/index.html)*
