@@ -168,6 +168,58 @@
             
         </li>
     
+        <li class="chapter " data-level="1.2.1.4" data-path="Setup_Ardour.html">
+            
+                <a href="Setup_Ardour.html">
+            
+                    
+                    4. Ardour
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.5" data-path="Setup_FL.html">
+            
+                <a href="Setup_FL.html">
+            
+                    
+                    5. FL Studio
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.6" data-path="Setup_One.html">
+            
+                <a href="Setup_One.html">
+            
+                    
+                    6. Studio One
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.7" data-path="Setup_Logic.html">
+            
+                <a href="Setup_Logic.html">
+            
+                    
+                    7. Logic
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -185,7 +237,27 @@
         
         
     
-        <li class="chapter " data-level="2.1" >
+        <li class="chapter " data-level="2.1" data-path="Resources.html">
+            
+                <a href="Resources.html">
+            
+                    
+                    Resources
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
             
                 <span>
             
@@ -199,7 +271,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.1" data-path="PdM_Introduction.html">
+        <li class="chapter " data-level="3.1.1" data-path="PdM_Introduction.html">
             
                 <a href="PdM_Introduction.html">
             
@@ -212,7 +284,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.2" data-path="PdM_TheoryOfOperation.html">
+        <li class="chapter " data-level="3.1.2" data-path="PdM_TheoryOfOperation.html">
             
                 <a href="PdM_TheoryOfOperation.html">
             
@@ -225,7 +297,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.1.3" data-path="PdM_Run.html">
+        <li class="chapter active" data-level="3.1.3" data-path="PdM_Run.html">
             
                 <a href="PdM_Run.html">
             
@@ -238,7 +310,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.4" data-path="PdM_Externals.html">
+        <li class="chapter " data-level="3.1.4" data-path="PdM_Externals.html">
             
                 <a href="PdM_Externals.html">
             
@@ -569,7 +641,7 @@ make
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"3. Getting Pd to run","level":"2.1.3","depth":2,"next":{"title":"4. Externals","level":"2.1.4","depth":2,"path":"PdM_Externals.md","ref":"PdM_Externals.md","articles":[]},"previous":{"title":"2. Theory of operation","level":"2.1.2","depth":2,"path":"PdM_TheoryOfOperation.md","ref":"PdM_TheoryOfOperation.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PdM_Run.md","mtime":"2023-03-06T18:39:27.665Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-03-07T18:50:57.158Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"3. Getting Pd to run","level":"3.1.3","depth":2,"next":{"title":"4. Externals","level":"3.1.4","depth":2,"path":"PdM_Externals.md","ref":"PdM_Externals.md","articles":[]},"previous":{"title":"2. Theory of operation","level":"3.1.2","depth":2,"path":"PdM_TheoryOfOperation.md","ref":"PdM_TheoryOfOperation.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PdM_Run.md","mtime":"2023-03-06T18:39:27.665Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-03-08T18:52:06.874Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

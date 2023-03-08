@@ -3,7 +3,7 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <title>2. Bitwig Studio · HonKit</title>
+        <title>7. Logic · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 4.0.4">
@@ -56,10 +56,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="Setup_Reaper.html" />
+    <link rel="next" href="Resources.html" />
     
     
-    <link rel="prev" href="Setup_Ableton.html" />
+    <link rel="prev" href="Setup_One.html" />
     
 
     </head>
@@ -90,7 +90,7 @@
     
         <li class="chapter " data-level="1.1" data-path="./">
             
-                <a target="frame" href="./">
+                <a href="./">
             
                     
                     Introduction
@@ -131,7 +131,7 @@
     
         <li class="chapter " data-level="1.2.1.1" data-path="Setup_Ableton.html">
             
-                <a target="frame" href="Setup_Ableton.html">
+                <a href="Setup_Ableton.html">
             
                     
                     1. Ableton
@@ -142,9 +142,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.1.2" data-path="Setup_Bitwig.html">
+        <li class="chapter " data-level="1.2.1.2" data-path="Setup_Bitwig.html">
             
-                <a target="frame" href="Setup_Bitwig.html">
+                <a href="Setup_Bitwig.html">
             
                     
                     2. Bitwig Studio
@@ -157,7 +157,7 @@
     
         <li class="chapter " data-level="1.2.1.3" data-path="Setup_Reaper.html">
             
-                <a target="frame" href="Setup_Reaper.html">
+                <a href="Setup_Reaper.html">
             
                     
                     3. Reaper
@@ -170,7 +170,7 @@
     
         <li class="chapter " data-level="1.2.1.4" data-path="Setup_Ardour.html">
             
-                <a target="frame" href="Setup_Ardour.html">
+                <a href="Setup_Ardour.html">
             
                     
                     4. Ardour
@@ -183,7 +183,7 @@
     
         <li class="chapter " data-level="1.2.1.5" data-path="Setup_FL.html">
             
-                <a target="frame" href="Setup_FL.html">
+                <a href="Setup_FL.html">
             
                     
                     5. FL Studio
@@ -196,7 +196,7 @@
     
         <li class="chapter " data-level="1.2.1.6" data-path="Setup_One.html">
             
-                <a target="frame" href="Setup_One.html">
+                <a href="Setup_One.html">
             
                     
                     6. Studio One
@@ -207,9 +207,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.1.7" data-path="Setup_Logic.html">
+        <li class="chapter active" data-level="1.2.1.7" data-path="Setup_Logic.html">
             
-                <a target="frame" href="Setup_Logic.html">
+                <a href="Setup_Logic.html">
             
                     
                     7. Logic
@@ -239,7 +239,7 @@
     
         <li class="chapter " data-level="2.1" data-path="Resources.html">
             
-                <a target="frame" href="Resources.html">
+                <a href="Resources.html">
             
                     
                     Resources
@@ -273,7 +273,7 @@
     
         <li class="chapter " data-level="3.1.1" data-path="PdM_Introduction.html">
             
-                <a target="frame" href="PdM_Introduction.html">
+                <a href="PdM_Introduction.html">
             
                     
                     1. Introduction
@@ -286,7 +286,7 @@
     
         <li class="chapter " data-level="3.1.2" data-path="PdM_TheoryOfOperation.html">
             
-                <a target="frame" href="PdM_TheoryOfOperation.html">
+                <a href="PdM_TheoryOfOperation.html">
             
                     
                     2. Theory of operation
@@ -299,7 +299,7 @@
     
         <li class="chapter " data-level="3.1.3" data-path="PdM_Run.html">
             
-                <a target="frame" href="PdM_Run.html">
+                <a href="PdM_Run.html">
             
                     
                     3. Getting Pd to run
@@ -312,7 +312,7 @@
     
         <li class="chapter " data-level="3.1.4" data-path="PdM_Externals.html">
             
-                <a target="frame" href="PdM_Externals.html">
+                <a href="PdM_Externals.html">
             
                     
                     4. Externals
@@ -334,7 +334,7 @@
     <li class="divider"></li>
 
     <li>
-        <a target="frame" href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
             Published with HonKit
         </a>
     </li>
@@ -358,7 +358,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a target="frame" href="." >2. Bitwig Studio</a>
+        <a href="." >7. Logic</a>
     </h1>
 </div>
 
@@ -373,29 +373,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="bitwig-studio">Bitwig Studio</h1>
-<h2 id="midi-in">MIDI IN</h2>
-<ol>
-<li>Add <strong>plugdata</strong> to an empty MIDI track.</li>
-<li>In <strong>plugdata</strong>, use one of the MIDI IN objects and route MIDI data from it <em>(see example)</em>.</li>
-<li>Play notes on this MIDI track using any usual method — keyboard, piano roll, etc.
-<img src="images/pd-midiin.png" alt="bitwig-midiin"></li>
-</ol>
-<h2 id="midi-out">MIDI OUT</h2>
-<p><img src="images/bitwig-a1.png" alt="bitwig"></p>
-<ol>
-<li>Add the <strong>plugdata</strong> plugin to an empty MIDI track. </li>
-<li>In <strong>plugdata</strong> plug-in, use one of the objects that sends out MIDI data <em>(see examples)</em></li>
-<li>Add an instrument which will receive MIDI data on the same MIDI track, right after the <strong>plugdata</strong> plugin.   </li>
-</ol>
-<p><img src="images/pd-midiout.png" alt="pd-midi"></p>
-<h2 id="fx">FX</h2>
-<ol>
-<li>Add <strong>plugdata-fx</strong> as an effect device to an audio or MIDI track.</li>
-<li>In <strong>plugdata</strong>, use [adc~] object to receive audio from your DAW (see examples).  </li>
-</ol>
-<p><img src="images/pd-fx.png" alt="live-a3"></p>
-
+                                
                                 
                                 </section>
                             
@@ -422,12 +400,12 @@
 
             
                 
-                <a target="frame" href="Setup_Ableton.html" class="navigation navigation-prev " aria-label="Previous page: 1. Ableton">
+                <a href="Setup_One.html" class="navigation navigation-prev " aria-label="Previous page: 6. Studio One">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a target="frame" href="Setup_Reaper.html" class="navigation navigation-next " aria-label="Next page: 3. Reaper">
+                <a href="Resources.html" class="navigation navigation-next " aria-label="Next page: Resources">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -438,7 +416,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2. Bitwig Studio","level":"1.2.1.2","depth":3,"next":{"title":"3. Reaper","level":"1.2.1.3","depth":3,"path":"Setup_Reaper.md","ref":"Setup_Reaper.md","articles":[]},"previous":{"title":"1. Ableton","level":"1.2.1.1","depth":3,"path":"Setup_Ableton.md","ref":"Setup_Ableton.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Setup_Bitwig.md","mtime":"2023-03-07T18:46:39.266Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-03-08T18:52:06.874Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7. Logic","level":"1.2.1.7","depth":3,"next":{"title":"Resources","level":"2.1","depth":1,"path":"Resources.md","ref":"Resources.md","articles":[]},"previous":{"title":"6. Studio One","level":"1.2.1.6","depth":3,"path":"Setup_One.md","ref":"Setup_One.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Setup_Logic.md","mtime":"2023-03-08T18:48:58.287Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-03-08T18:52:06.874Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
