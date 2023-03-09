@@ -5,6 +5,7 @@
 1. Add **plugdata** to an empty track.
 2. In **plugdata**, use one of the MIDI IN objects and route MIDI data from it *(see example)*.
 3. Play notes on this MIDI track using any usual method — keyboard, piano roll, etc.
+
 ![reaper-midiin](images\pd-midiin.png)
 
 ## MIDI OUT
@@ -20,6 +21,6 @@
 
 ## FX
 1. Add **plugdata-fx** as an effect device to an audio or MIDI track.
-2. In **plugdata**, use [adc~] object to receive audio from your DAW (see examples).  
+2. In **plugdata**, use [adc~] object to receive audio from your DAW *(see examples)*.  
 
 ![reaper-fx](images\pd-fx.png)

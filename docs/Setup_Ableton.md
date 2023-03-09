@@ -11,7 +11,7 @@
 
 ## MIDI OUT
 
-Routing MIDI data out of **plugdata** in Live is a bit more complicated than in other DAWs. 
+In Live, routing MIDI data out of **plugdata** is a bit more complicated than in other DAWs. 
 
 ![live-midiout](images\live-midiout.png)
 
@@ -28,6 +28,6 @@ Routing MIDI data out of **plugdata** in Live is a bit more complicated than in 
 ## FX
 
 1. Add **plugdata-fx** as an effect device to an audio or MIDI track.
-2. In **plugdata**, use [adc~] object to receive audio from your DAW (see examples).  
+2. In **plugdata**, use [adc~] object to receive audio from your DAW *(see examples)*.  
 
 ![live-a3](images\pd-fx.png)

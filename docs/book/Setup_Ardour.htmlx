@@ -250,14 +250,14 @@
         
         
     
-        <li class="chapter " data-level="2.1" >
+        <li class="chapter " data-level="2.1" data-path="PdM.html">
             
-                <span>
+                <a href="PdM.html">
             
                     
                     Pd Manual
             
-                </span>
+                </a>
             
 
             
@@ -362,11 +362,26 @@
                                 
                                 <h1 id="ardour">Ardour</h1>
 <h2 id="midi-in">MIDI IN</h2>
-<p><img src="images/pd-midiin.png" alt="ardour-midiin"></p>
+<ol>
+<li>Add <strong>plugdata</strong> as an instrument to an empty MIDI track.</li>
+<li>In <strong>plugdata</strong>, use one of the MIDI IN objects and route MIDI data from it <em>(see example)</em>.</li>
+<li>Play notes on this MIDI track using any usual method — keyboard, piano roll, etc.</li>
+</ol>
+<p><img src="images/pd-midiin.png" alt="live-midiin"></p>
 <h2 id="midi-out">MIDI OUT</h2>
+<p><img src="images/ardour-midiout.png" alt="ardour-midiout"></p>
+<ol>
+<li>Add <strong>plugdata</strong> as an instrument to an empty MIDI track.</li>
+<li>In the <strong>Editor Mixer</strong> (<em>Shift-E</em> to toggle) for the <strong>plugdata</strong> track, add an instrument which will receive MIDI data, right below the <strong>plugdata</strong> plugin <em>(a)</em>.</li>
+<li>In <strong>plugdata</strong> plugin, use one of the objects that sends out MIDI data <em>(see examples)</em>.</li>
+</ol>
 <p><img src="images/pd-midiout.png" alt="pd-midi"></p>
 <h2 id="fx">FX</h2>
-<p><img src="images/pd-fx.png" alt="ardour-fx"></p>
+<ol>
+<li>Add <strong>plugdata-fx</strong> as an effect device to an audio or MIDI track.</li>
+<li>In <strong>plugdata</strong>, use [adc~] object to receive audio from your DAW <em>(see examples)</em>.  </li>
+</ol>
+<p><img src="images/pd-fx.png" alt="live-a3"></p>
 
                                 
                                 </section>
@@ -410,7 +425,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4. Ardour","level":"1.3.1.4","depth":3,"next":{"title":"5. FL Studio","level":"1.3.1.5","depth":3,"path":"Setup_FL.md","ref":"Setup_FL.md","articles":[]},"previous":{"title":"3. Reaper","level":"1.3.1.3","depth":3,"path":"Setup_Reaper.md","ref":"Setup_Reaper.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Setup_Ardour.md","mtime":"2023-03-08T21:50:29.747Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-03-08T22:07:43.078Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4. Ardour","level":"1.3.1.4","depth":3,"next":{"title":"5. FL Studio","level":"1.3.1.5","depth":3,"path":"Setup_FL.md","ref":"Setup_FL.md","articles":[]},"previous":{"title":"3. Reaper","level":"1.3.1.3","depth":3,"path":"Setup_Reaper.md","ref":"Setup_Reaper.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Setup_Ardour.md","mtime":"2023-03-09T13:34:25.749Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-03-09T13:35:06.926Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

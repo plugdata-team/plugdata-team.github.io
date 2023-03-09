@@ -2,7 +2,7 @@
 
 ## Pd Manual chapter 4: externals
 
-### 4\. Externals
+### 4. Externals
 
 This section explains what are external objects and libraries. It also describes everything on how to install and load them in Pure Data.
 

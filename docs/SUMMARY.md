@@ -13,7 +13,7 @@
 
 
 *** 
-* Pd Manual
+* [Pd Manual](PdM.md)
   * [Theory of operation](PdM_TheoryOfOperation.md)
   * [Externals](PdM_Externals.md)
 

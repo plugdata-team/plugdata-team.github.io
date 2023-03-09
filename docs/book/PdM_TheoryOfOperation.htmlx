@@ -59,6 +59,8 @@
     <link rel="next" href="PdM_Externals.html" />
     
     
+    <link rel="prev" href="PdM.html" />
+    
 
     </head>
     <body>
@@ -248,14 +250,14 @@
         
         
     
-        <li class="chapter " data-level="2.1" >
+        <li class="chapter " data-level="2.1" data-path="PdM.html">
             
-                <span>
+                <a href="PdM.html">
             
                     
                     Pd Manual
             
-                </span>
+                </a>
             
 
             
@@ -358,9 +360,9 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>  Pd Manual 2   </p>
-<h2 id="pd-manual-chapter-2-theory-of-operation">Pd Manual chapter 2: theory of operation</h2>
-<p>The purpose of this chapter is to describe Pd&apos;s design and how it is supposed to work. Practical details about how to obtain, install, and run Pd are described in the <a href="x3.html">next chapter</a>. Links to more extensive guides (and to more theoretical information about computer music) can be found in the <a href="x1.html">previous chapter</a>.</p>
+                                <h2 id="pd-manual">Pd Manual</h2>
+<h3 id="chapter-2-theory-of-operation">chapter 2: theory of operation</h3>
+<p>The purpose of this chapter is to describe Pd&apos;s design and how it is supposed to work. [...]</p>
 <h3 id="21-overview">2.1 overview</h3>
 <p>Pd is a real-time graphical programming environment for audio and graphical processing. It resembles the Max/MSP system but is much simpler and more portable; also Pd has two features not (yet) showing up in Max/MSP: first, via Mark Dank&apos;s GEM package, Pd can be used for simultaneous computer animation and computer audio. Second, an experimental facility is provided for defining and accessing data structures.</p>
 <h3 id="211-the-main-window-canvases-and-printout">2.1.1. the main window, canvases, and printout</h3>
@@ -535,7 +537,7 @@
 <p>To make an abstraction, save a patch with a name such as &quot;abstraction1.pd&quot; and then invoke it as &quot;abstraction1&quot; in an object box:</p>
 <p><img src="images/fig7.3.jpg" alt="abstraction"></p>
 <p>Here we&apos;re invoking a separate file, &quot;abstraction1.pd&quot;, which holds the patch shown here (the border is the same as for the subpatch above):</p>
-<p><img src="fig7.4.jpg" alt="abstraction example"></p>
+<p><img src="images/ifig7.4.jpg" alt="abstraction example"></p>
 <p>You may create many instances of &quot;abstraction1&quot; or invoke it from several different patches; and changing the contents of &quot;abstraction1&quot; will affect all invocations of it as they are created. An analogy from the &quot;c&quot; programming language is that one-off subpatches are like bracketed blocks of code and abstractions are like subroutines.</p>
 <p>Abstractions are instantiated by typing the name of a patch (minus the &quot;.pd&quot; extension) into an object box. You may also type arguments; for instance if you have a file &quot;my-abstraction.pd&quot; you may type &quot;my-abstraction 5&quot; to set the variable $1 to 5. This is defined only for object boxes (not for messages) in the abstraction. (For message boxes, &quot;$1&quot;, etc, have a different meaning as described above.) If you want to send a message with a $1 in the sense of a creation argument of an abstraction, you must generate it with an object box such as &quot;float $1&quot;, &quot;symbol $1&quot;, or perhaps &quot;pack $1 $2&quot;, which may then be sent to a message box.</p>
 <p>The corresponding feature in Max (both Opcode and Ircam) was the &quot;#1&quot; construct. In a Max abstraction, &quot;#1&quot;, etc., are replaced by the creation argument. This has the disadvantage that you can&apos;t edit the abstraction as instantiated in the patch since the &quot;#&quot; variables are substituted. In Pd the &quot;$&quot; variables in object boxes are spelled literally as &quot;$&quot; variables so that it&apos;s meaningful to edit them from within their calling patch. On the Pd side, however, there is the disadvantage that it&apos;s confusing to have &quot;$&quot; expanded at a different time in an object box than in a message box. In an object box, the &quot;$&quot; argument is expanded at creation time, and in a message box, at message time.</p>
@@ -636,8 +638,12 @@
 
             
                 
+                <a href="PdM.html" class="navigation navigation-prev " aria-label="Previous page: Pd Manual">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="PdM_Externals.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Externals">
+                
+                <a href="PdM_Externals.html" class="navigation navigation-next " aria-label="Next page: Externals">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -648,7 +654,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Theory of operation","level":"2.1.1","depth":2,"next":{"title":"Externals","level":"2.1.2","depth":2,"path":"PdM_Externals.md","ref":"PdM_Externals.md","articles":[]},"previous":{"title":"Pd Manual","level":"2.1","depth":1,"ref":"","articles":[{"title":"Theory of operation","level":"2.1.1","depth":2,"path":"PdM_TheoryOfOperation.md","ref":"PdM_TheoryOfOperation.md","articles":[]},{"title":"Externals","level":"2.1.2","depth":2,"path":"PdM_Externals.md","ref":"PdM_Externals.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PdM_TheoryOfOperation.md","mtime":"2023-03-08T19:13:28.072Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-03-08T22:07:43.078Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Theory of operation","level":"2.1.1","depth":2,"next":{"title":"Externals","level":"2.1.2","depth":2,"path":"PdM_Externals.md","ref":"PdM_Externals.md","articles":[]},"previous":{"title":"Pd Manual","level":"2.1","depth":1,"path":"PdM.md","ref":"PdM.md","articles":[{"title":"Theory of operation","level":"2.1.1","depth":2,"path":"PdM_TheoryOfOperation.md","ref":"PdM_TheoryOfOperation.md","articles":[]},{"title":"Externals","level":"2.1.2","depth":2,"path":"PdM_Externals.md","ref":"PdM_Externals.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PdM_TheoryOfOperation.md","mtime":"2023-03-09T11:16:46.899Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-03-09T13:35:06.926Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

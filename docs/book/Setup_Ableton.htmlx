@@ -248,14 +248,14 @@
         
         
     
-        <li class="chapter " data-level="2.1" >
+        <li class="chapter " data-level="2.1" data-path="PdM.html">
             
-                <span>
+                <a href="PdM.html">
             
                     
                     Pd Manual
             
-                </span>
+                </a>
             
 
             
@@ -367,7 +367,7 @@
 </ol>
 <p><img src="images/pd-midiin.png" alt="live-midiin"></p>
 <h2 id="midi-out">MIDI OUT</h2>
-<p>Routing MIDI data out of <strong>plugdata</strong> in Live is a bit more complicated than in other DAWs. </p>
+<p>In Live, routing MIDI data out of <strong>plugdata</strong> is a bit more complicated than in other DAWs. </p>
 <p><img src="images/live-midiout.png" alt="live-midiout"></p>
 <ol>
 <li>Create a MIDI track with the VST3 (not AUV3) version of <strong>plugdata</strong> on it <em>(a)</em>.</li>
@@ -382,7 +382,7 @@
 <h2 id="fx">FX</h2>
 <ol>
 <li>Add <strong>plugdata-fx</strong> as an effect device to an audio or MIDI track.</li>
-<li>In <strong>plugdata</strong>, use [adc~] object to receive audio from your DAW (see examples).  </li>
+<li>In <strong>plugdata</strong>, use [adc~] object to receive audio from your DAW <em>(see examples)</em>.  </li>
 </ol>
 <p><img src="images/pd-fx.png" alt="live-a3"></p>
 
@@ -424,7 +424,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1. Ableton","level":"1.3.1.1","depth":3,"next":{"title":"2. Bitwig Studio","level":"1.3.1.2","depth":3,"path":"Setup_Bitwig.md","ref":"Setup_Bitwig.md","articles":[]},"previous":{"title":"DAW Integration","level":"1.3.1","depth":2,"ref":"","articles":[{"title":"1. Ableton","level":"1.3.1.1","depth":3,"path":"Setup_Ableton.md","ref":"Setup_Ableton.md","articles":[]},{"title":"2. Bitwig Studio","level":"1.3.1.2","depth":3,"path":"Setup_Bitwig.md","ref":"Setup_Bitwig.md","articles":[]},{"title":"3. Reaper","level":"1.3.1.3","depth":3,"path":"Setup_Reaper.md","ref":"Setup_Reaper.md","articles":[]},{"title":"4. Ardour","level":"1.3.1.4","depth":3,"path":"Setup_Ardour.md","ref":"Setup_Ardour.md","articles":[]},{"title":"5. FL Studio","level":"1.3.1.5","depth":3,"path":"Setup_FL.md","ref":"Setup_FL.md","articles":[]},{"title":"6. Studio One","level":"1.3.1.6","depth":3,"path":"Setup_One.md","ref":"Setup_One.md","articles":[]},{"title":"7. Logic","level":"1.3.1.7","depth":3,"path":"Setup_Logic.md","ref":"Setup_Logic.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Setup_Ableton.md","mtime":"2023-03-08T18:20:18.344Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-03-08T22:07:43.078Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1. Ableton","level":"1.3.1.1","depth":3,"next":{"title":"2. Bitwig Studio","level":"1.3.1.2","depth":3,"path":"Setup_Bitwig.md","ref":"Setup_Bitwig.md","articles":[]},"previous":{"title":"DAW Integration","level":"1.3.1","depth":2,"ref":"","articles":[{"title":"1. Ableton","level":"1.3.1.1","depth":3,"path":"Setup_Ableton.md","ref":"Setup_Ableton.md","articles":[]},{"title":"2. Bitwig Studio","level":"1.3.1.2","depth":3,"path":"Setup_Bitwig.md","ref":"Setup_Bitwig.md","articles":[]},{"title":"3. Reaper","level":"1.3.1.3","depth":3,"path":"Setup_Reaper.md","ref":"Setup_Reaper.md","articles":[]},{"title":"4. Ardour","level":"1.3.1.4","depth":3,"path":"Setup_Ardour.md","ref":"Setup_Ardour.md","articles":[]},{"title":"5. FL Studio","level":"1.3.1.5","depth":3,"path":"Setup_FL.md","ref":"Setup_FL.md","articles":[]},{"title":"6. Studio One","level":"1.3.1.6","depth":3,"path":"Setup_One.md","ref":"Setup_One.md","articles":[]},{"title":"7. Logic","level":"1.3.1.7","depth":3,"path":"Setup_Logic.md","ref":"Setup_Logic.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Setup_Ableton.md","mtime":"2023-03-09T13:32:14.567Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-03-09T13:35:06.926Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

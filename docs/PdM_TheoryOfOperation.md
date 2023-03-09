@@ -1,9 +1,9 @@
-  Pd Manual 2   
+  
+## Pd Manual 
+### chapter 2: theory of operation
 
-## Pd Manual chapter 2: theory of operation
 
-
-The purpose of this chapter is to describe Pd's design and how it is supposed to work. Practical details about how to obtain, install, and run Pd are described in the [next chapter](x3.html). Links to more extensive guides (and to more theoretical information about computer music) can be found in the [previous chapter](x1.html).
+The purpose of this chapter is to describe Pd's design and how it is supposed to work. [...]
 
 ### 2.1 overview
 
@@ -353,7 +353,7 @@ To make an abstraction, save a patch with a name such as "abstraction1.pd" and t
 
 Here we're invoking a separate file, "abstraction1.pd", which holds the patch shown here (the border is the same as for the subpatch above):
 
-![abstraction example](fig7.4.jpg)
+![abstraction example](images\ifig7.4.jpg)
 
 You may create many instances of "abstraction1" or invoke it from several different patches; and changing the contents of "abstraction1" will affect all invocations of it as they are created. An analogy from the "c" programming language is that one-off subpatches are like bracketed blocks of code and abstractions are like subroutines.
 

@@ -3,7 +3,7 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <title>4. Ardour · HonKit</title>
+        <title>Pd Manual · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 4.0.4">
@@ -56,10 +56,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="Setup_FL.html" />
+    <link rel="next" href="PdM_TheoryOfOperation.html" />
     
     
-    <link rel="prev" href="Setup_Reaper.html" />
+    <link rel="prev" href="Setup_Logic.html" />
     
 
     </head>
@@ -90,7 +90,7 @@
     
         <li class="chapter " data-level="1.1" data-path="./">
             
-                <a target="frame" href="./">
+                <a href="./">
             
                     
                     Introduction
@@ -103,7 +103,7 @@
     
         <li class="chapter " data-level="1.2" data-path="FAQ.html">
             
-                <a target="frame" href="FAQ.html">
+                <a href="FAQ.html">
             
                     
                     F.A.Q.
@@ -144,7 +144,7 @@
     
         <li class="chapter " data-level="1.3.1.1" data-path="Setup_Ableton.html">
             
-                <a target="frame" href="Setup_Ableton.html">
+                <a href="Setup_Ableton.html">
             
                     
                     1. Ableton
@@ -157,7 +157,7 @@
     
         <li class="chapter " data-level="1.3.1.2" data-path="Setup_Bitwig.html">
             
-                <a target="frame" href="Setup_Bitwig.html">
+                <a href="Setup_Bitwig.html">
             
                     
                     2. Bitwig Studio
@@ -170,7 +170,7 @@
     
         <li class="chapter " data-level="1.3.1.3" data-path="Setup_Reaper.html">
             
-                <a target="frame" href="Setup_Reaper.html">
+                <a href="Setup_Reaper.html">
             
                     
                     3. Reaper
@@ -181,9 +181,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.1.4" data-path="Setup_Ardour.html">
+        <li class="chapter " data-level="1.3.1.4" data-path="Setup_Ardour.html">
             
-                <a target="frame" href="Setup_Ardour.html">
+                <a href="Setup_Ardour.html">
             
                     
                     4. Ardour
@@ -196,7 +196,7 @@
     
         <li class="chapter " data-level="1.3.1.5" data-path="Setup_FL.html">
             
-                <a target="frame" href="Setup_FL.html">
+                <a href="Setup_FL.html">
             
                     
                     5. FL Studio
@@ -209,7 +209,7 @@
     
         <li class="chapter " data-level="1.3.1.6" data-path="Setup_One.html">
             
-                <a target="frame" href="Setup_One.html">
+                <a href="Setup_One.html">
             
                     
                     6. Studio One
@@ -222,7 +222,7 @@
     
         <li class="chapter " data-level="1.3.1.7" data-path="Setup_Logic.html">
             
-                <a target="frame" href="Setup_Logic.html">
+                <a href="Setup_Logic.html">
             
                     
                     7. Logic
@@ -250,9 +250,9 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="PdM.html">
+        <li class="chapter active" data-level="2.1" data-path="PdM.html">
             
-                <a target="frame" href="PdM.html">
+                <a href="PdM.html">
             
                     
                     Pd Manual
@@ -266,7 +266,7 @@
     
         <li class="chapter " data-level="2.1.1" data-path="PdM_TheoryOfOperation.html">
             
-                <a target="frame" href="PdM_TheoryOfOperation.html">
+                <a href="PdM_TheoryOfOperation.html">
             
                     
                     Theory of operation
@@ -279,7 +279,7 @@
     
         <li class="chapter " data-level="2.1.2" data-path="PdM_Externals.html">
             
-                <a target="frame" href="PdM_Externals.html">
+                <a href="PdM_Externals.html">
             
                     
                     Externals
@@ -304,7 +304,7 @@
     
         <li class="chapter " data-level="3.1" data-path="Resources.html">
             
-                <a target="frame" href="Resources.html">
+                <a href="Resources.html">
             
                     
                     Resources
@@ -321,7 +321,7 @@
     <li class="divider"></li>
 
     <li>
-        <a target="frame" href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
             Published with HonKit
         </a>
     </li>
@@ -345,7 +345,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a target="frame" href="." >4. Ardour</a>
+        <a href="." >Pd Manual</a>
     </h1>
 </div>
 
@@ -360,28 +360,8 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="ardour">Ardour</h1>
-<h2 id="midi-in">MIDI IN</h2>
-<ol>
-<li>Add <strong>plugdata</strong> as an instrument to an empty MIDI track.</li>
-<li>In <strong>plugdata</strong>, use one of the MIDI IN objects and route MIDI data from it <em>(see example)</em>.</li>
-<li>Play notes on this MIDI track using any usual method — keyboard, piano roll, etc.</li>
-</ol>
-<p><img src="images/pd-midiin.png" alt="live-midiin"></p>
-<h2 id="midi-out">MIDI OUT</h2>
-<p><img src="images/ardour-midiout.png" alt="ardour-midiout"></p>
-<ol>
-<li>Add <strong>plugdata</strong> as an instrument to an empty MIDI track.</li>
-<li>In the <strong>Editor Mixer</strong> (<em>Shift-E</em> to toggle) for the <strong>plugdata</strong> track, add an instrument which will receive MIDI data, right below the <strong>plugdata</strong> plugin <em>(a)</em>.</li>
-<li>In <strong>plugdata</strong> plugin, use one of the objects that sends out MIDI data <em>(see examples)</em>.</li>
-</ol>
-<p><img src="images/pd-midiout.png" alt="pd-midi"></p>
-<h2 id="fx">FX</h2>
-<ol>
-<li>Add <strong>plugdata-fx</strong> as an effect device to an audio or MIDI track.</li>
-<li>In <strong>plugdata</strong>, use [adc~] object to receive audio from your DAW <em>(see examples)</em>.  </li>
-</ol>
-<p><img src="images/pd-fx.png" alt="live-a3"></p>
+                                <h2 id="pd-manual">Pd Manual</h2>
+<p>We publish chapters 2 and 4 of Miller Puckette&apos;s <strong>Pd Manual</strong>, as we believe they are the most relevant parts of that document with regard to <strong>plugdata</strong>. Although they may not translate perfectly to users&apos; experience with <strong>plugdata</strong>, they still provide an excellent way of learning the core concepts. You can read the full version of <strong>Pd Manual</strong> <a href="http://msp.ucsd.edu/Pd_documentation/index.htm#s2" target="_blank">here</a>. </p>
 
                                 
                                 </section>
@@ -409,12 +389,12 @@
 
             
                 
-                <a target="frame" href="Setup_Reaper.html" class="navigation navigation-prev " aria-label="Previous page: 3. Reaper">
+                <a href="Setup_Logic.html" class="navigation navigation-prev " aria-label="Previous page: 7. Logic">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a target="frame" href="Setup_FL.html" class="navigation navigation-next " aria-label="Next page: 5. FL Studio">
+                <a href="PdM_TheoryOfOperation.html" class="navigation navigation-next " aria-label="Next page: Theory of operation">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -425,7 +405,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4. Ardour","level":"1.3.1.4","depth":3,"next":{"title":"5. FL Studio","level":"1.3.1.5","depth":3,"path":"Setup_FL.md","ref":"Setup_FL.md","articles":[]},"previous":{"title":"3. Reaper","level":"1.3.1.3","depth":3,"path":"Setup_Reaper.md","ref":"Setup_Reaper.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Setup_Ardour.md","mtime":"2023-03-09T13:34:25.749Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-03-09T13:35:06.926Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Pd Manual","level":"2.1","depth":1,"next":{"title":"Theory of operation","level":"2.1.1","depth":2,"path":"PdM_TheoryOfOperation.md","ref":"PdM_TheoryOfOperation.md","articles":[]},"previous":{"title":"7. Logic","level":"1.3.1.7","depth":3,"path":"Setup_Logic.md","ref":"Setup_Logic.md","articles":[]},"articles":[{"title":"Theory of operation","level":"2.1.1","depth":2,"path":"PdM_TheoryOfOperation.md","ref":"PdM_TheoryOfOperation.md","articles":[]},{"title":"Externals","level":"2.1.2","depth":2,"path":"PdM_Externals.md","ref":"PdM_Externals.md","articles":[]}],"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"PdM.md","mtime":"2023-03-09T13:24:16.050Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-03-09T13:35:06.926Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
