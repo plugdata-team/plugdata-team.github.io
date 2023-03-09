@@ -353,7 +353,7 @@ To make an abstraction, save a patch with a name such as "abstraction1.pd" and t
 
 Here we're invoking a separate file, "abstraction1.pd", which holds the patch shown here (the border is the same as for the subpatch above):
 
-![abstraction example](images\ifig7.4.jpg)
+![abstraction example](images\fig7.4.jpg)
 
 You may create many instances of "abstraction1" or invoke it from several different patches; and changing the contents of "abstraction1" will affect all invocations of it as they are created. An analogy from the "c" programming language is that one-off subpatches are like bracketed blocks of code and abstractions are like subroutines.
 
