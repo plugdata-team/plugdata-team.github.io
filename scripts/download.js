@@ -10,21 +10,21 @@ function main() {
    let osDetails = {
      name: 'Unknown OS',
      icon: 'fa-question-circle',
-     link: 'https://github.com/plugdata-team/plugdata/releases/tag/v0.7.0',
+     link: 'https://github.com/plugdata-team/plugdata/releases/tag/v0.7.1',
      offset: 40
    };
    
    if (userAgent.includes('Macintosh')) {
      osDetails.name = 'macOS';
      osDetails.icon = 'fa-apple';
-     osDetails.link = 'https://github.com/plugdata-team/plugdata/releases/download/v0.7.0/plugdata-macOS-Universal.pkg';
+     osDetails.link = 'https://github.com/plugdata-team/plugdata/releases/download/v0.7.1/plugdata-macOS-Universal.pkg';
      osDetails.offset = 0;
     }
    
    if (userAgent.includes('Windows')) {
      osDetails.name = 'Windows';
      osDetails.icon = 'fa-windows';
-     osDetails.link = 'https://github.com/plugdata-team/plugdata/releases/download/v0.7.0/plugdata-Win64.msi';
+     osDetails.link = 'https://github.com/plugdata-team/plugdata/releases/download/v0.7.1/plugdata-Win64.msi';
      osDetails.offset = 5;
    }
    
@@ -70,7 +70,7 @@ function main() {
    stable.style.cssText = "top: 50px; text-align: center; font-family: Inter; font-weight: 500; padding-top: 20px; padding-bottom: 20px; font-size:24px; color: #333333; background-color:transparent";
    content.appendChild(stable);
 
-   let stable_downloads = [["macOS Universal", "https://github.com/plugdata-team/plugdata/releases/download/v0.7.0/plugdata-macOS-Universal.pkg", "Download"], ["Windows (x64)", "https://github.com/plugdata-team/plugdata/releases/download/v0.7.0/plugdata-Win64.msi", "Download"], ["Windows (x86)", "https://github.com/plugdata-team/plugdata/releases/download/v0.7.0/plugdata-Win32.msi", "Download"], ["Linux Repositories", "https://software.opensuse.org//download.html?project=home%3Aplugdata&package=plugdata", "View"], ["Arch Linux AUR Repository", "https://aur.archlinux.org/packages/plugdata-bin", "View"], ["macOS Homebrew cask", "https://formulae.brew.sh/cask/plugdata", "View"], ["More Downloads", "https://github.com/plugdata-team/plugdata/releases/tag/v0.7.0", "View"]];
+   let stable_downloads = [["macOS Universal", "https://github.com/plugdata-team/plugdata/releases/download/v0.7.1/plugdata-macOS-Universal.pkg", "Download"], ["Windows (x64)", "https://github.com/plugdata-team/plugdata/releases/download/v0.7.1/plugdata-Win64.msi", "Download"], ["Windows (x86)", "https://github.com/plugdata-team/plugdata/releases/download/v0.7.1/plugdata-Win32.msi", "Download"], ["Linux Repositories", "https://software.opensuse.org//download.html?project=home%3Aplugdata&package=plugdata", "View"], ["Arch Linux AUR Repository", "https://aur.archlinux.org/packages/plugdata-bin", "View"], ["macOS Homebrew cask", "https://formulae.brew.sh/cask/plugdata", "View"], ["More Downloads", "https://github.com/plugdata-team/plugdata/releases/tag/v0.7.1", "View"]];
 
   let stable_container =  document.createElement("div");
   stable_container.style.margin = "15px";
@@ -115,7 +115,7 @@ function main() {
   unstable.style.cssText = "top: 50px; text-align: center; font-family: Inter; font-weight: 500; padding-top: 20px; padding-bottom: 20px; font-size:24px; color: #333333; background-color:transparent";
   content.appendChild(unstable);
 
-  let unstable_downloads = [["macOS Universal", "https://glyphpress.com/plugdata/plugdata-macOS-Universal.pkg", "Download", true], ["Windows (x64)", "https://glyphpress.com/plugdata/plugdata-Win64.msi", "Download", true], ["Windows (x86)", "https://glyphpress.com/plugdata/plugdata-Win32.msi", "Download", true], ["Arch (x64)", "https://glyphpress.com/plugdata/plugdata-Arch-x64.tar.gz", "Download", true], ["Debian (x64)", "https://glyphpress.com/plugdata/plugdata-Debian-x64.tar.gz", "Download", true], ["Fedora 37 (x64)", "https://glyphpress.com/plugdata/plugdata-Fedora-37-x64.tar.gz", "Download", true], ["OpenSUSE Leap (x64)", "https://glyphpress.com/plugdata/plugdata-OpenSUSE-Leap-x64.tar.gz", "Download", true], ["Ubuntu 20.04 (x64)", "https://glyphpress.com/plugdata/plugdata-Ubuntu-20.04-x64.tar.gz", "Download", true], ["Ubuntu 22.04 (x64)", "https://glyphpress.com/plugdata/plugdata-Ubuntu-22.04-x64.tar.gz", "Download", true], ["Arch Linux AUR Repository", "https://aur.archlinux.org/packages/plugdata-git", "View", false]];
+  let unstable_downloads = [["macOS Universal", "https://glyphpress.com/plugdata/plugdata-macOS-Universal.pkg", "Download", true], ["Windows (x64)", "https://glyphpress.com/plugdata/plugdata-Win64.msi", "Download", true], ["Windows (x86)", "https://glyphpress.com/plugdata/plugdata-Win32.msi", "Download", true], ["Arch (x64)", "https://glyphpress.com/plugdata/plugdata-Arch-x64.tar.gz", "Download", true], ["Debian (x64)", "https://glyphpress.com/plugdata/plugdata-Debian-x64.tar.gz", "Download", true], ["Fedora 37 (x64)", "https://glyphpress.com/plugdata/plugdata-Fedora-37-x64.tar.gz", "Download", true], ["Fedora 37 (x64)", "https://glyphpress.com/plugdata/plugdata-Fedora-38-x64.tar.gz", "Download", true], ["OpenSUSE Leap (x64)", "https://glyphpress.com/plugdata/plugdata-OpenSUSE-Leap-x64.tar.gz", "Download", true], ["Ubuntu 20.04 (x64)", "https://glyphpress.com/plugdata/plugdata-Ubuntu-20.04-x64.tar.gz", "Download", true], ["Ubuntu 22.04 (x64)", "https://glyphpress.com/plugdata/plugdata-Ubuntu-22.04-x64.tar.gz", "Download", true], ["Arch Linux AUR Repository", "https://aur.archlinux.org/packages/plugdata-git", "View", false]];
 
   let unstable_container =  document.createElement("div");
   unstable_container.style.margin = "15px";
