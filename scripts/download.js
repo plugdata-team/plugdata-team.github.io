@@ -66,7 +66,7 @@ function main() {
    content.appendChild(other);
 
    let stable = document.createElement("h1");
-   stable.innerHTML += "Stable";
+   stable.innerHTML += "Latest stable (v0.7.1)";
    stable.style.cssText = "top: 50px; text-align: center; font-family: Inter; font-weight: 500; padding-top: 20px; padding-bottom: 20px; font-size:24px; color: #333333; background-color:transparent";
    content.appendChild(stable);
 
@@ -111,11 +111,11 @@ function main() {
 
 
   let unstable = document.createElement("h1");
-  unstable.innerHTML += "Nightly";
+  unstable.innerHTML += "Latest nightly";
   unstable.style.cssText = "top: 50px; text-align: center; font-family: Inter; font-weight: 500; padding-top: 20px; padding-bottom: 20px; font-size:24px; color: #333333; background-color:transparent";
   content.appendChild(unstable);
 
-  let unstable_downloads = [["macOS Universal", "https://glyphpress.com/plugdata/plugdata-macOS-Universal.pkg", "Download", true], ["Windows (x64)", "https://glyphpress.com/plugdata/plugdata-Win64.msi", "Download", true], ["Windows (x86)", "https://glyphpress.com/plugdata/plugdata-Win32.msi", "Download", true], ["Arch (x64)", "https://glyphpress.com/plugdata/plugdata-Arch-x64.tar.gz", "Download", true], ["Debian (x64)", "https://glyphpress.com/plugdata/plugdata-Debian-x64.tar.gz", "Download", true], ["Fedora 37 (x64)", "https://glyphpress.com/plugdata/plugdata-Fedora-37-x64.tar.gz", "Download", true], ["Fedora 37 (x64)", "https://glyphpress.com/plugdata/plugdata-Fedora-38-x64.tar.gz", "Download", true], ["OpenSUSE Leap (x64)", "https://glyphpress.com/plugdata/plugdata-OpenSUSE-Leap-x64.tar.gz", "Download", true], ["Ubuntu 20.04 (x64)", "https://glyphpress.com/plugdata/plugdata-Ubuntu-20.04-x64.tar.gz", "Download", true], ["Ubuntu 22.04 (x64)", "https://glyphpress.com/plugdata/plugdata-Ubuntu-22.04-x64.tar.gz", "Download", true], ["Arch Linux AUR Repository", "https://aur.archlinux.org/packages/plugdata-git", "View", false]];
+  let unstable_downloads = [["macOS Universal", "https://glyphpress.com/plugdata/plugdata-macOS-Universal.pkg", "Download", true], ["Windows (x64)", "https://glyphpress.com/plugdata/plugdata-Win64.msi", "Download", true], ["Windows (x86)", "https://glyphpress.com/plugdata/plugdata-Win32.msi", "Download", true], ["Arch (x64)", "https://glyphpress.com/plugdata/plugdata-Arch-x64.tar.gz", "Download", true], ["Debian (x64)", "https://glyphpress.com/plugdata/plugdata-Debian-x64.tar.gz", "Download", true], ["Fedora 37 (x64)", "https://glyphpress.com/plugdata/plugdata-Fedora-37-x64.tar.gz", "Download", true], ["Fedora 38 (x64)", "https://glyphpress.com/plugdata/plugdata-Fedora-38-x64.tar.gz", "Download", true], ["OpenSUSE Leap (x64)", "https://glyphpress.com/plugdata/plugdata-OpenSUSE-Leap-x64.tar.gz", "Download", true], ["Ubuntu 20.04 (x64)", "https://glyphpress.com/plugdata/plugdata-Ubuntu-20.04-x64.tar.gz", "Download", true], ["Ubuntu 22.04 (x64)", "https://glyphpress.com/plugdata/plugdata-Ubuntu-22.04-x64.tar.gz", "Download", true], ["Arch Linux AUR Repository", "https://aur.archlinux.org/packages/plugdata-git", "View", false]];
 
   let unstable_container =  document.createElement("div");
   unstable_container.style.margin = "15px";
