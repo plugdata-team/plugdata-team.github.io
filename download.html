@@ -1,13 +1,144 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>plugdata - Download</title>
-    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./fonts/inter.css">
-  </head>
-  <body>
-    <script type='text/javascript' src="scripts/common.js"></script>
-    <script type='text/javascript' src="scripts/download.js"></script>
-  </body>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>plugdata - Download</title>
+  <link rel="icon" type="image/x-icon" href="https://plugdata.org/images/favicon.ico">
+  <link rel="stylesheet" href="download_files/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="./main.css">
+  <link rel="stylesheet" type="text/css" media="all" href="./downloads.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body style="background: rgb(255, 255, 255);">
+  <nav>
+    <button class="menu-button enabled" title="Toggle navigation menu" aria-label="Toggle navigation menu"
+      aria-expanded="false"><svg aria-hidden="true" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 6v1h24V6zm0 6v1h24v-1zm0 6v1h24v-1z"></path>
+      </svg></button>
+    <div class="nav-content">
+      <ul>
+
+        <li><a href="https://plugdata.org/" class="logomark"><img src="./images/logo.png" alt="plugdata"
+              style="width: 24px; height: auto;"></a></li>
+        <li><a href="https://plugdata.org/">Home</a></li>
+        <li><a href="https://plugdata.org/about.html" target="_self">About</a></li>
+        <li><a href="https://plugdata.org/support.html">Support</a></li>
+        <li><a href="https://plugdata.org/download.html" target="_self">Download</a></li>
+        <li><a href="https://plugdata.org/documentation.html" target="_self">Documentation</a></li>
+      </ul>
+
+      <style>
+        .social {
+          display: inline-block;
+          cursor: pointer;
+          margin-right: 12px;
+        }
+
+        .logo {
+          display: inline-block;
+          height: 28px;
+          width: auto;
+          position: relative;
+          margin-right: -8px;
+          top: 8px;
+        }
+      </style>
+
+      <div class="right">
+        <div class="social" onclick="location.href = 'https://github.com/plugdata-team/plugdata';">
+          <img src="./images/github.png" class="logo">
+          <a>View on GitHub</a>
+        </div>
+
+        <div class="social" onclick="location.href = 'https://discord.gg/eT2RxdF9Nq';">
+          <img src="./images/discord.png" class="logo">
+          <a>Join our Discord</a>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+    <h2
+      style="text-align: center; font-family: Inter; font-weight: 700; border-radius: 0%; border: medium none; outline: none; font-size: 48px; color: rgb(51, 51, 51); background-color: transparent; margin-top: 70px;">
+      Download plugdata</h2>
+      <h1
+      style="top: 50px; text-align: center; font-family: Inter; font-weight: 500; padding-top: 20px; padding-bottom: 20px; font-size: 32px; color: rgb(51, 51, 51); background-color: transparent;">
+      Latest stable (v0.7.1)</h1>
+      <section class="docs">
+      <div class="card" target="_blank">
+        <img class="os_logo" src="./images/windows.svg" alt="Windows"> 
+        <div class="download_container"> 
+          <div class="download_text"> Windows (x64)</div>
+          <a class="download_button" href="https://github.com/plugdata-team/plugdata/releases/download/v0.7.1/plugdata-Win64.msi">Download</a>
+        </div>
+        <div class="download_container"> 
+          <div class="download_text"> Windows (x86)</div>
+          <a class="download_button" href="https://github.com/plugdata-team/plugdata/releases/download/v0.7.1/plugdata-Win32.msi">Download</a>
+        </div>
+        <div style="font-size: 12px; margin-top: 60px;"> Requires Windows 7 or later.</div>
+      </div>
+      <div class="card" target="_blank">
+        <img class="os_logo" src="./images/macos.svg" alt="macOS"> 
+        <div class="download_container"> 
+          <div class="download_text"> macOS Universal</div>
+          <a class="download_button" href="https://github.com/plugdata-team/plugdata/releases/download/v0.7.1/plugdata-macOS-Universal.pkg">Download</a>
+        </div>
+        <div class="download_container"> 
+          <div class="download_text"> Homebrew Cask</div>
+          <a class="download_button" href="https://formulae.brew.sh/cask/plugdata">View</a>
+        </div>
+        <div style="font-size: 12px; margin-top: 50px;"> Requires macOS 10.11 or later. Homebrew package is unofficial and may be outdated.</div>
+      </div>
+      <div class="card" target="_blank">
+        <img class="os_logo" src="./images/linux.svg" alt="Linux"> 
+        <div class="download_container"> 
+          <div class="download_text">Repositories</div>
+          <a class="download_button" href="https://software.opensuse.org//download.html?project=home%3Aplugdata&package=plugdata">View</a>
+        </div>
+        <div class="download_container"> 
+          <div class="download_text">Arch AUR Repository</div>
+          <a class="download_button" href="https://aur.archlinux.org/packages/plugdata-bin">View</a>
+        </div>
+        <div class="download_container"> 
+          <div class="download_text">More downloads</div>
+          <a class="download_button" href="https://github.com/plugdata-team/plugdata/releases/tag/v0.7.1">View</a>
+        </div>
+      </div>
+      </section>
+
+      <h1
+      style="top: 50px; text-align: center; font-family: Inter; font-weight: 500; padding-top: 20px; padding-bottom: 20px; font-size: 32px; color: rgb(51, 51, 51); background-color: transparent;">
+      Latest nightly</h1>
+    <div class="table-container">
+    <table id="nightly-table">
+      <tr>
+        <th>Platform</th>
+        <th>Date</th>
+        <th>Commit</th>
+        <th>Download</th>
+      </tr>
+      <!-- Add more rows as needed -->
+    </table>
+  </div>
+
+
+<div id="nightly-div" style="margin: 15px;"> </div>
+<script type="text/javascript" src="download.js"></script>
+
+  <footer>
+    <div>
+    <p> Copyright © 2023 Timothy Schoen. </p>
+    </div>
+    <ul>
+    <li><a href="https://plugdata.org/">Home</a></li>
+    <li><a href="https://plugdata.org/about.html" target="_self">About</a></li>
+    <li><a href="https://plugdata.org/support.html">Support</a></li>
+    <li><a href="https://plugdata.org/download.html" target="_self">Download</a></li>
+    <li><a href="https://plugdata.org/documentation.html" target="_self">Documentation</a></li>
+    </ul>
+    </footer>
+</body>
+
 </html>

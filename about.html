@@ -1,34 +1,134 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>plugdata - About</title>
-    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="fonts/inter.css">
-  </head>
-  <body>
-      <div id="thanks">
-          <p>OBS packages for Linux maintained by Konstantin Voinov (<a href="https://github.com/KottV">@KottV</a>)</p>
-          <p>AUR packages for Arch Linux maintained by Lejun Min (<a href="https://github.com/aik2mlj">@aik2mlj</a>)</p>
-          
-          <li>Logo by <a href="https://glyphpress.com/talk/">Joshua A.C. Newman</a> </li>
-          <li><a href="https://github.com/pierreguillot/Camomile">Camomile</a> by Pierre Guillot</li>
-          <li><a href="https://github.com/porres/pd-else">ELSE</a> by Alexandre Torres Porres</li>
-          <li><a href="https://github.com/porres/pd-cyclone">cyclone</a> by Krzysztof Czaja, Hans-Christoph Steiner, Fred Jan Kraan, Alexandre Torres Porres, Derek Kwan, Matt Barber and others</li>
-          <li><a href="https://puredata.info">Pure Data</a> by Miller Puckette and others</li>
-          <li><a href="https://github.com/libpd/libpd">libpd</a> by the Peter Brinkmann, Dan Wilcox and others</li>
-          <li><a href="https://github.com/Wasted-Audio/hvcc">Heavy/hvcc</a> originally by Enzien Audio, maintained and modernised by Wasted-Audio</li>
-          <li><a href="https://github.com/WeAreROLI/JUCE">Juce</a> by ROLI Ltd.</li>
-          <li><a href="https://github.com/cameron314/concurrentqueue">MoodyCamel</a> by Cameron Desrochers</li>
-          <li><a href="https://rsms.me/inter/">Inter</a> font by Rasmus Andersson</li>
-          <li> Design inspired by the <a href="elementary.io/">elementaryOS</a> project</li>
-          <li><a href="https://github.com/Musicoll/Kiwi">Kiwi</a> by Eliott Paris, Pierre Guillot and Jean Millot</li>
-          <li><a href="http://lv2plug.in">LV2 PlugIn Technology</a> by Steve Harris, David Robillard and others</li>
-          <li><a href="https://www.steinberg.net/en/company/technologies/vst3.html">VST PlugIn Technology</a> by Steinberg Media Technologies</li>
-          <li><a href="https://developer.apple.com/documentation/audiounit">Audio Unit PlugIn Technology</a> by Apple</li>
-    </div>
-    <script type='text/javascript' src="scripts/common.js"></script>
-    <script type='text/javascript' src="scripts/about.js"></script>
 
-  </body>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>plugdata - About</title>
+  <link rel="icon" type="image/x-icon" href="https://plugdata.org/images/favicon.ico">
+  <link rel="stylesheet" type="text/css" media="all" href="./main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body style="background: rgb(255, 255, 255);">
+  <nav>
+    <button class="menu-button enabled" title="Toggle navigation menu" aria-label="Toggle navigation menu"
+      aria-expanded="false"><svg aria-hidden="true" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 6v1h24V6zm0 6v1h24v-1zm0 6v1h24v-1z"></path>
+      </svg></button>
+    <div class="nav-content">
+      <ul>
+
+        <li><a href="https://plugdata.org/" class="logomark"><img src="./images/logo.png" alt="plugdata"
+              style="width: 24px; height: auto;"></a></li>
+        <li><a href="https://plugdata.org/">Home</a></li>
+        <li><a href="https://plugdata.org/about.html" target="_self">About</a></li>
+        <li><a href="https://plugdata.org/support.html">Support</a></li>
+        <li><a href="https://plugdata.org/download.html" target="_self">Download</a></li>
+        <li><a href="https://plugdata.org/documentation.html" target="_self">Documentation</a></li>
+      </ul>
+
+      <style>
+        .social {
+          display: inline-block;
+          cursor: pointer;
+          margin-right: 12px;
+        }
+
+        .logo {
+          display: inline-block;
+          height: 28px;
+          width: auto;
+          position: relative;
+          margin-right: -8px;
+          top: 8px;
+        }
+      </style>
+
+      <div class="right">
+        <div class="social" onclick="location.href = 'https://github.com/plugdata-team/plugdata';">
+          <img src="./images/github.png" class="logo">
+          <a>View on GitHub</a>
+        </div>
+
+        <div class="social" onclick="location.href = 'https://discord.gg/eT2RxdF9Nq';">
+          <img src="./images/discord.png" class="logo">
+          <a>Join our Discord</a>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+  <h2
+    style="text-align: center; font-family: Inter; font-weight: 700; border-radius: 0%; border: medium none; outline: none; font-size: 36px; color: rgb(51, 51, 51); background-color: transparent; margin: 50px;">
+    Contributors</h2><img src="https://contrib.rocks/image?repo=plugdata-team/plugdata"
+    style="height: auto; width: 35%; position: relative; left: 50%; transform: translateX(-50%); margin-bottom: 50px;">
+  <h1
+    style="text-align: center; font-family: Inter; font-weight: 700; border-radius: 0%; border: medium none; outline: none; font-size: 36px; color: rgb(51, 51, 51); background-color: transparent; margin: 50px;">
+    About me</h1>
+  <div style="position: relative; width: 700px; max-width: 80%; left: 50%; transform: translateX(-50%);">
+    <p
+      style="text-align: justify; font-family: Inter; border-radius: 0%; border: medium none; outline: none; font-size: 16px; color: rgb(51, 51, 51); background-color: transparent;">
+      Hi,
+      I'm Timothy Schoen, I started working on plugdata in November 2021,
+      while studying Music Technology at HKU Utrecht. I'm interested in
+      pure-data/Max, DSP, audio development, C/C++, JUCE and improving music
+      perception for the hearing impaired. I started working on plugdata as a
+      hobby project but it quickly grew into something bigger, largely thanks
+      to the amazing Pd community. I'm especially aiming to make Pd more
+      accessible and easier to learn, with the aim of creating an amazing tool
+      for learning about creative programming.</p>
+    <p
+      style="text-align: justify; font-family: Inter; border-radius: 0%; border: medium none; outline: none; font-size: 16px; color: rgb(51, 51, 51); background-color: transparent;">
+      Since
+      plugdata is a fully free/open-source application available under the
+      GPLv3 license, I am reliant on the generosity of my sponsors to spend
+      more time on plugdata. If you like this project and think it's worth
+      helping, consider <a href="https://github.com/sponsors/timothyschoen">making a donation.</a></p>
+    <p
+      style="text-align: justify; font-family: Inter; border-radius: 0%; border: medium none; outline: none; font-size: 16px; color: rgb(51, 51, 51); background-color: transparent;">
+      If you have any questions about plugdata or anything else, feel free to <a
+        href="mailto:timschoen123@gmail.com">contact me</a>, I'll always reply!</p>
+  </div>
+  <h1
+    style="text-align: center; font-family: Inter; font-weight: 700; border-radius: 0%; border: medium none; outline: none; font-size: 36px; color: rgb(51, 51, 51); background-color: transparent; margin: 50px;">
+    Special thanks:</h1>
+  <div id="thanks"
+    style="position: relative; text-align: left; font-family: Inter; border-radius: 0%; border: medium none; outline: none; font-size: 16px; color: rgb(51, 51, 51); background-color: transparent; left: 50%; transform: translateX(-50%); width: 700px; max-width: 80%;">
+    <p>OBS packages for Linux maintained by Konstantin Voinov (<a href="https://github.com/KottV">@KottV</a>)</p>
+    <p>AUR packages for Arch Linux maintained by Lejun Min (<a href="https://github.com/aik2mlj">@aik2mlj</a>)</p>
+
+    <li>Logo by <a href="https://glyphpress.com/talk/">Joshua A.C. Newman</a> </li>
+    <li><a href="https://github.com/pierreguillot/Camomile">Camomile</a> by Pierre Guillot</li>
+    <li><a href="https://github.com/porres/pd-else">ELSE</a> by Alexandre Torres Porres</li>
+    <li><a href="https://github.com/porres/pd-cyclone">cyclone</a> by Krzysztof Czaja, Hans-Christoph Steiner, Fred Jan
+      Kraan, Alexandre Torres Porres, Derek Kwan, Matt Barber and others</li>
+    <li><a href="https://puredata.info/">Pure Data</a> by Miller Puckette and others</li>
+    <li><a href="https://github.com/libpd/libpd">libpd</a> by the Peter Brinkmann, Dan Wilcox and others</li>
+    <li><a href="https://github.com/Wasted-Audio/hvcc">Heavy/hvcc</a> originally by Enzien Audio, maintained and
+      modernised by Wasted-Audio</li>
+    <li><a href="https://github.com/WeAreROLI/JUCE">Juce</a> by ROLI Ltd.</li>
+    <li><a href="https://github.com/cameron314/concurrentqueue">MoodyCamel</a> by Cameron Desrochers</li>
+    <li><a href="https://rsms.me/inter/">Inter</a> font by Rasmus Andersson</li>
+    <li> Design inspired by the <a href="https://plugdata.org/elementary.io/">elementaryOS</a> project</li>
+    <li><a href="https://github.com/Musicoll/Kiwi">Kiwi</a> by Eliott Paris, Pierre Guillot and Jean Millot</li>
+    <li><a href="http://lv2plug.in/">LV2 PlugIn Technology</a> by Steve Harris, David Robillard and others</li>
+    <li><a href="https://www.steinberg.net/en/company/technologies/vst3.html">VST PlugIn Technology</a> by Steinberg
+      Media Technologies</li>
+    <li><a href="https://developer.apple.com/documentation/audiounit">Audio Unit PlugIn Technology</a> by Apple</li>
+  </div>
+  <div style="position: relative; width: 100%; height: 40px;"></div>
+  </div>
+  <footer>
+    <div>
+    <p> Copyright © 2023 Timothy Schoen. </p>
+    </div>
+    <ul>
+    <li><a href="https://plugdata.org/">Home</a></li>
+    <li><a href="https://plugdata.org/about.html" target="_self">About</a></li>
+    <li><a href="https://plugdata.org/support.html">Support</a></li>
+    <li><a href="https://plugdata.org/download.html" target="_self">Download</a></li>
+    <li><a href="https://plugdata.org/documentation.html" target="_self">Documentation</a></li>
+    </ul>
+    </footer>
+</body>
 </html>

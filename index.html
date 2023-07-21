@@ -1,12 +1,244 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>plugdata</title>
-    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-    <link rel="stylesheet" href="./fonts/inter.css">
-  </head>
-  <body>
-    <script type='text/javascript' src="scripts/common.js"></script>
-    <script type='text/javascript' src="scripts/home.js"></script>
-  </body>
-</html>
+<!--[if IE]><html lang="en" class="ie-legacy"><![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<meta name="description" content="A visual programming environment for audio experimentation, prototyping and education">
+<meta name="author" content="plugdata">
+<meta name="theme-color" content="#3689e6">
+<meta property="og:title" content="A visual programming environment for audio experimentation, prototyping and education ⋅ plugdata">
+<meta property="og:description" content="A visual programming environment for audio experimentation, prototyping and education">
+<meta itemprop="name" content="A visual programming environment for audio experimentation, prototyping and education ⋅ plugdata">
+<meta itemprop="description" content="A visual programming environment for audio experimentation, prototyping and education">
+<meta name="apple-mobile-web-app-title" content="plugdata">
+<!-- <link rel="manifest" href="MANIFEST_LINK"> -->
+<title>A visual programming environment for audio experimentation, prototyping and education ⋅ plugdata</title>
+<link rel="shortcut icon" href="https://plugdata.org/images/favicon.ico">
+<!--<link rel="apple-touch-icon" href="TOUCH_ICON_LINK"> -->
+<!-- <link rel="icon" type="image/png" href="FAVICON_LINK" sizes="256x256">-->
+<link rel="alternate" type="text/html" hreflang="en" href="https://plugdata.org/">
+<link rel="stylesheet" type="text/css" media="all" href="./main.css">
+<link rel="stylesheet" type="text/css" media="all" href="./home.css">
+<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+</head>
+<body class="page-index">
+<nav>
+<button class="menu-button enabled" title="Toggle navigation menu" aria-label="Toggle navigation menu" aria-expanded="false"><svg aria-hidden="true" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 6v1h24V6zm0 6v1h24v-1zm0 6v1h24v-1z"></path></svg></button>
+<div class="nav-content">
+<ul>
+    
+<li><a href="https://plugdata.org/" class="logomark"><img src="./images/logo.png" alt="plugdata" style="width: 24px; height: auto;"></a></li>
+<li><a href="https://plugdata.org/">Home</a></li>
+<li><a href="https://plugdata.org/about.html" target="_self">About</a></li>
+<li><a href="https://plugdata.org/support.html">Support</a></li>
+<li><a href="https://plugdata.org/download.html" target="_self">Download</a></li>
+<li><a href="https://plugdata.org/documentation.html" target="_self">Documentation</a></li>
+</ul>
+
+<style>
+    .social {
+      display: inline-block;
+      cursor: pointer;
+      margin-right: 12px;
+    }
+  
+    .logo {
+      display: inline-block;
+      height: 28px;
+      width: auto;
+      position: relative;
+      margin-right: -8px;
+      top: 8px;
+    }
+  </style>
+  
+<div class="right">
+    <div class="social" onclick="location.href = 'https://github.com/plugdata-team/plugdata';">
+    <img src="./images/github.png" class="logo">
+    <a>View on GitHub</a>
+    </div>
+
+    <div class="social" onclick="location.href = 'https://discord.gg/eT2RxdF9Nq';">
+    <img src="./images/discord.png" class="logo">
+    <a>Join our Discord</a>
+    </div>
+</div>
+  
+</div>
+</nav>
+<div id="content-container">
+<script>
+            </script>
+<section class="section--hero section--stretched">
+<div class="section__detail grid">
+<div class="whole">
+<h1 alt="plugdata"><img src="./images/logo.png" alt="plugdata" style="width: 5%; height: auto; margin-bottom: 10px;"></h1>
+<h1>plugdata</h1>
+<h2>A visual programming environment for audio experimentation, prototyping and education</h2>
+</div>
+</div>
+<div class="section__showcase">
+<img class="bg" src="./images/app.png" alt="plugdata app">
+<div class="gif-container">
+  <img src="./images/oscope.gif" alt="GIF Overlay">
+</div>
+</div>
+</section></div>
+
+<section id="whats-new" class="grey">
+<div class="grid">
+<div class="section__detail grid">
+<div class="two-thirds">
+<p>plugdata is a free/open-source visual programming environment based on pure-data. It is available for a wide range of operating systems, and can be used both as a standalone app, or as a VST3, LV2, CLAP or AU plugin. <br><br> plugdata allows you to create and manipulate audio systems using visual elements, rather than writing code. Think of it as building with virtual blocks – simply connect them together to design your unique audio setups. It's a user-friendly and intuitive way to experiment with audio and programming.</bar></p>
+</div>
+<div class="row">
+<a class="button suggested-action" href="https://plugdata.org/download.html">Download plugdata</a>
+<p class="small-label">
+<a href="FAQ_LINK" target="_blank" rel="noopener">FAQ</a>
+</p>
+</div>
+<div style="clear:both;"></div>
+</div>
+</div>
+<section id="home-card">
+<div class="app-display app-display--overflow">
+  <div class="grid-container app-display__image">
+    <img class="grid-image" id="grid-image" src="./images/object_grid.png" alt="Grid of Objects"> 
+  </div>
+<script>
+function updateScroll() {
+  const image = document.getElementById('grid-image');
+
+  const scrollPosition = (((window.scrollY - 700) / 2) % 1000)
+  image.style.webkitMaskPositionX = `${scrollPosition - 500}px`;
+  image.style.maskPositionX = `${scrollPosition - 500}px`;
+  image.style.transform = `translateX(-${scrollPosition}px)`;
+}
+
+window.addEventListener('scroll', updateScroll);
+</script>
+<div class="app-display__description">
+<h2>Many, Many Objects</h2>
+<p>plugdata comes with the ELSE library installed by default, providing a wide range of general-purpose objects that offer high-level abstraction on top of pure-data. plugdata also ships with the cyclone library, to make Max users feel at home when they use plugdata.</p>
+<div class="buttons">
+<a href="https://github.com/porres/pd-else/" class="button flat">About ELSE</a>
+<a href="https://github.com/porres/pd-cyclone/" target="_blank" rel="noopener" class="button flat">About Cyclone</a>
+</div>
+</div>
+</div>
+</section>
+<section id="workflow" class="grey">
+<div class="grid">
+<div class="two-thirds">
+<h1>Run Your Patches Anywhere.</h1>
+<p>With Heavy integration, audio plugin capabilities and cross-platform builds, your patches are going places.</p>
+</div>
+</div>
+<div class="grid">
+<div class="third">
+<img class="app-display__image" src="./images/hvcc.png" alt="hvcc" width="auto" height="100px" style="max-width:100%">
+<h4>Heavy Integration</h4>
+<p>plugdata integrates with the Heavy/hvcc project to allow patches to be converted into C/C++ code. It ships with a compiler toolchain to make exporting plugins, or running patches on the Electro-Smith Daisy platform a piece of cake.</p>
+</div>
+<div class="third">
+<figure class="pip">
+<div class="workspace">
+<img class="app-display__image" src="./images/daw.png" alt="daw" width="auto" height="100px" style="max-width:100%">
+</div>
+</figure>
+<h4>Plugin Capabilities</h4>
+<p>Seamlessly integrate plugdata into your DAW workflow as a VST3, AU, LV2, or CLAP plugin. Mix and match with other plugins or control them with MIDI: the possibilities are endless! </p>
+</div>
+<div class="third">
+<figure class="dnd">
+<div class="workspace">
+<img class="app-display__image" src="./images/cross_platform.png" alt="cross-platform" width="auto" height="100px" style="max-width:100%; padding: 50px">
+</div>
+</figure>
+<h4>Cross-platform</h4>
+<p>plugdata is fully cross-platform, and is available for most common processor architectures. Officially supporter operating systems are Windows, macOS and a wide variety of Linux distros. Run your patches on a PC, Mac and even Raspberry Pi. plugdata can also run on FreeBSD when compiled from scratch.</p>
+</div>
+</div>
+</section>
+<section>
+<div class="grid">
+<div class="two-thirds" style="margin: 80px">
+<h1>Community Made</h1>
+<p>plugdata is fueled by a passionate group of volunteers who are dedicated to providing an exceptional user experience. Our commitment to open-source principles ensures that plugdata will always be free and open for everyone to use and contribute to. </p>
+</div>
+</section>
+<section>
+</div>
+<div class="grid">
+<div class="half">
+<img src="images/education.svg" alt="education" width="20%" style="padding: 30px;">
+<h2>plugdata for education</h2>
+<p>From high schools to universities, plugdata has found its place in classrooms and workshops, providing a simple yet powerful environment to learn the fundamentals of programming and explore the depths of audio creation.</p>
+</div>
+<div class="half">
+<img src="images/music.svg" alt="arts" width="20%" style="padding: 30px;">
+<h2>plugdata for artists</h2>
+<p>For artists seeking to push the boundaries of sonic expression, plugdata offers limitless possibilities. Craft unique soundscapes, experiment with audio synthesis, or encorporate it into your effects chain. plugdata provides the tools and freedom you need to bring your artistic vision to life.</p>
+</div>
+</div>
+</section>
+<section id="home-card" style="background-color: #333333; background-image: linear-gradient(to right bottom,#222222,#333333);">
+<div class="app-display app-display--overflow">
+<img class="app-display__image" src="./images/darkmode.png" alt="plugdata dark mode" width="1165" height="912">
+<div class="app-display__description">
+<h2>Fully Themable</h2>
+<p>Customizability and accessibility are at the core of our platform. Adapt plugdata to your style with full theming, including a light and dark mode, or use the font, color, and scaling features to enhance accessibility and cater to your specific needs. </p>
+</div>
+</div>
+</section>
+<section id="shortcuts" class="grey">
+<div class="app-display app-display--horizontal">
+<img class="app-display__image" src="images/pd-vanilla.png" alt="pd-vanilla" width="885" height="656">
+<div class="app-display__description">
+<h1>Vanilla Compatible</h1>
+<p>plugdata is directly based on pd-vanilla, with minimal modifications to the original source code. This ensures very high compatibility between pure-data and plugdata patches. This also means that your pure-data skills seamlessly transfer to plugdata, and vice versa!</p>
+</div>
+</div>
+</section>
+<section>
+<div id="showcase" class="row grey initialized" style="height: 420.2px; background-color: #222222">
+<div id="showcase-index" class="active">
+<div>
+  <h2>A Rock-Solid Foundation</h2>
+  <p> We have built plugdata on top of JUCE, the industry standard framework for plugin and audio application development.<br><br> On top of that, plugdata integrates with some of the best projects in the pure-data ecosystem to expand upon its capabilities.</p>
+  </div>
+  <ul id="showcase-grid">
+  <a href="https://puredata.info"><li class="read-more"><img src="./images/pd.png" alt="pure-data logo">pure-data</li></a>
+  <a href="https://juce.com"><li class="read-more"><img src="./images/juce.png" alt="JUCE logo">JUCE</li></a>
+  <a href="https://github.com/Wasted-Audio/hvcc"><li class="read-more"><img src="./images/hvcc_logo.png" alt="Heavy logo">Heavy</li></a>
+  <a href="https://github.com/porres/pd-else/"><li class="read-more"><img src="./images/else.png" alt="ELSE logo">ELSE</li></a>
+  <a href="https://github.com/porres/pd-cyclone/"><li class="read-more"><img src="./images/cyclone.png" alt="Cyclone logo">Cyclone</li></a>
+  </ul>
+  </div>
+</div>
+</div>
+</section>
+<section class="cta">
+  <img src="./images/logo.png" alt="plugdata logo" style="max-width:8%; padding:30px;">
+  <h1>Get plugdata</h1>
+  <p>A visual programming environment for audio experimentation, prototyping and education</p>
+  <a class="button suggested-action" href="https://plugdata.org/download.html">Go to downloads</a>
+  </section>
+<section>
+<footer>
+<div>
+<p> Copyright © 2023 Timothy Schoen. </p>
+</div>
+<ul>
+<li><a href="https://plugdata.org/">Home</a></li>
+<li><a href="https://plugdata.org/about.html" target="_self">About</a></li>
+<li><a href="https://plugdata.org/support.html">Support</a></li>
+<li><a href="https://plugdata.org/download.html" target="_self">Download</a></li>
+<li><a href="https://plugdata.org/documentation.html" target="_self">Documentation</a></li>
+</ul>
+</footer>
+
+
+</section></section></body></html>
