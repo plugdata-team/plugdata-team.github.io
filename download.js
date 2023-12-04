@@ -10,21 +10,17 @@ function main() {
 
   let latest_hash = "";
   const getLatestHash = async() => {
-      let response = await fetch ("https://glyphpress.com/plugdata/latest.txt");
-      const result = await response.text().then(( str ) => {
-          return str;    // return the string after splitting it.
-      });
-
-      latest_hash = result.trim();
-      console.log(latest_hash);
-
-      for(let i = 0; i < onHashUpdate.length; i++) {
-          onHashUpdate[i]();
-      }
+        fetch(`https://api.github.com/repos/plugdata-team/plugdata/commits/develop`)
+        .then(response => response.json())
+        .then(data => {
+        const lastCommitHash = data.sha;
+        console.log('Last Commit Hash:', lastCommitHash);
+        for(let i = 0; i < onHashUpdate.length; i++) {
+            onHashUpdate[i]();
+        }
+        }).catch(error => console.error('Error:', error));
   }
-
-  getLatestHash();
-
+  
   const table = document.getElementById("nightly-table");
 
   for (let i = 0; i < unstable_downloads.length; i++)
