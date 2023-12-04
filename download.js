@@ -13,7 +13,7 @@ function main() {
         fetch(`https://api.github.com/repos/plugdata-team/plugdata/commits/develop`)
         .then(response => response.json())
         .then(data => {
-        latest_hash = data.sha.substring(0, 7);
+        latest_hash = data.sha;
         console.log('Last Commit Hash:', latest_hash);
         for(let i = 0; i < onHashUpdate.length; i++) {
             onHashUpdate[i]();
