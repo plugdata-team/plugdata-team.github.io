@@ -20,7 +20,8 @@ function main() {
         }
         }).catch(error => console.error('Error:', error));
   }
-  
+  getLatestHash();
+
   const table = document.getElementById("nightly-table");
 
   for (let i = 0; i < unstable_downloads.length; i++)
