@@ -72,6 +72,7 @@ function main() {
           onHashUpdate.push(() => {
               let color = hash == latest_hash ? "#006400" : "#FFA500";
               commit_hash.style.cssText = `color: ${ color }`;
+              console.log(hash == latest_hash  ? "hash was equal" : "hash was not equal")
           });
 
           downloadRow.removeChild(name);
