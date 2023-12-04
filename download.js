@@ -20,7 +20,6 @@ function main() {
         }
         }).catch(error => console.error('Error:', error));
   }
-  getLatestHash();
 
   const table = document.getElementById("nightly-table");
 
@@ -94,6 +93,8 @@ function main() {
       // Append the row to the table
       table.appendChild(downloadRow);
   }
+
+  getLatestHash();
 }
  
  main();
