@@ -1,6 +1,6 @@
 # Compiling and Compilation Mode
 
-Not only can you run Plug Data as an audio plugin inside your DAW, Plug Data provides the ability to compile your Plug Data code for multiple tarlgets, including audio plugins. The currently supported targets are:
+Not only can you run Plug Data as an audio plugin inside your DAW, Plug Data provides the ability to compile your Plug Data code for multiple targets, including audio plugins. The currently supported targets are:
 
 - C++ code
   - C/C++ source code for use in other DSP projects
@@ -9,7 +9,7 @@ Not only can you run Plug Data as an audio plugin inside your DAW, Plug Data pro
 - DPF Audio Plugin
   - An audio plugin that can be an audio effect, instrument, or custom MIDI plugin. To be used by itself in the majority of DAWs.
 - Pd External
-  - Compile your plugdata into an external object that can be used in PureData or plugdata like a built-in object.
+  - Compile your patch into a Pd external object that can be used in PureData or plugdata like a built-in object.
 
 >[!WARNING]
 >When exporting code or plugin binaries, as of writing, the destination path cannot contain *any* spaces.
@@ -20,7 +20,7 @@ In the main plugdata menu, you will find a toggle box labelled ***Compiled Mode*
 
 ![plugdata Compilated Mode-screenShot](images/heavy_compiled_mode.png)
 
-Compiled mode checks your patch for compliance with the compilation tools included in plugdata.
+Compiled mode checks your patch for compliance with the plugdata compilation tools.
 Included with plugdata is the [Heavy hvcc compiler](https://wasted-audio.github.io/hvcc/docs/01.introduction.html#what-is-heavy) maintained by [Wasted Audio](https://wasted.audio/). hvcc can only compile plugins using a portion of the objects included with plugdata, which are a subset of the Pure Data Vanilla set of objects.
 
 ***Compiled Mode*** indicates if there are objects in your patch that cannot be used in a compiled patch by posting a message to the Console, and outlining the object in question. The auto-completion in plugdata will also only provide compatible objects when this mode is activated.
@@ -54,7 +54,7 @@ This section is found in every compilation mode, with the following fields:
 
 <img width="634" alt="Plugdata Compiler C++ Code" src="images/heavy_cpp_menu.png">
 
-In the C++ Code mode, your plugdata patch isn't actually compiled, instead it is [transpiled/transcompiled](https://en.wikipedia.org/wiki/Source-to-source_compiler) from one coding language (Pd) to another (C/C++). The plugdata patch is transpiled a generic C/C++ output and the raw code will need to be adapted for a specific application. Read more about the C/C++ API in the [official documentation](https://wasted-audio.github.io/hvcc/docs/05.c.html).
+In the C++ Code mode, your plugdata patch isn't actually compiled, instead it is [transpiled/transcompiled](https://en.wikipedia.org/wiki/Source-to-source_compiler) from one coding language (Pd) to another (C/C++). The plugdata patch is transpiled to a generic C/C++ output and the raw code will need to be adapted for a specific application. Read more about the C/C++ API in the [official documentation](https://wasted-audio.github.io/hvcc/docs/05.c.html).
 
 ## Electro-Smith Daisy
 
@@ -92,13 +92,13 @@ While plugdata itself can run as a plugin, you can also export self contained ve
   - **Instrument** is a plugin that accepts MIDI input to control the software instrument contained in the plugin, and outputs audio. Will not accept audio nor output MIDI.
   - **Custom** allows you to break with the effect or instrument conventions. This would be the type to choose if you wanted to create a plugin that modifies MIDI, for instance, as you can set the plugin to accept MIDI input but set it to also output MIDI data (also known as a MIDI effect). Not all hosts will allow such plugins.
 
-The Heavy Compiler supports many more options for the DPF target, however these are not included in the plugdata options menu yet. You can read more about the DPF exporter in the [official documentation](https://wasted-audio.github.io/hvcc/docs/03.gen.dpf.html).
+The Heavy Compiler supports many more options for the DPF target, however these are not included in the plugdata export menu yet. You can read more about the DPF exporter in the [official documentation](https://wasted-audio.github.io/hvcc/docs/03.gen.dpf.html).
   
 ### Plugin formats
 
 <img width="425" alt="Plugdata Compiler Plugin Formats" src="images/heavy_dpf_formats.png">
 
-Here you define the formats you wish to output your patch as. You can select as many or as few of formats as you like. JACK standalone is deselected by default, as many users do not have a JACK server available on their system.
+Here you select the formats you wish to output your patch as. You can select as many or as few formats as you like. JACK standalone is deselected by default, as many users do not have a JACK server available on their system.
 
 ## Pd External
 
