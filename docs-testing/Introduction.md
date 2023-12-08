@@ -1,11 +1,9 @@
 # Introduction
 
-something something
 
-## About plugdata
+### About plugdata
  
-wow!
 
-## Documentation guide
+### Documentation guide
 
 

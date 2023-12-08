@@ -2,7 +2,7 @@
 
 ## Ableton Live
 
-### MIDI IN
+#### MIDI IN
 
 1. Add **plugdata** as an instrument to an empty MIDI track.
 2. In **plugdata**, use one of the MIDI IN objects and route MIDI data from it *(see example)*.
@@ -10,7 +10,7 @@
 
 ![live-midiin](images\pd-midiin.png)
 
-### MIDI OUT
+#### MIDI OUT
 
 In Live, routing MIDI data out of **plugdata** is a bit more complicated than in other DAWs. 
 
@@ -26,7 +26,7 @@ In Live, routing MIDI data out of **plugdata** is a bit more complicated than in
 
 ![pd-midi](images\pd-midiout.png)
 
-### FX
+#### FX
 
 1. Add **plugdata-fx** as an effect device to an audio or MIDI track.
 2. In **plugdata**, use [adc~] object to receive audio from your DAW *(see examples)*.  
@@ -35,14 +35,14 @@ In Live, routing MIDI data out of **plugdata** is a bit more complicated than in
 
 ## Bitwig Studio
 
-### MIDI IN
+#### MIDI IN
 1. Add **plugdata** to an empty MIDI track.
 2. In **plugdata**, use one of the MIDI IN objects and route MIDI data from it *(see example)*.
 3. Play notes on this MIDI track using any usual method — keyboard, piano roll, etc.
 
 ![bitwig-midiin](images\pd-midiin.png)
 
-### MIDI OUT
+#### MIDI OUT
 
 ![bitwig](images\bitwig-a1.png)
 
@@ -52,7 +52,7 @@ In Live, routing MIDI data out of **plugdata** is a bit more complicated than in
 
 ![pd-midi](images\pd-midiout.png)
 
-### FX
+#### FX
 1. Add **plugdata-fx** as an effect device to an audio or MIDI track.
 2. In **plugdata**, use [adc~] object to receive audio from your DAW *(see examples)*.  
 
@@ -60,14 +60,14 @@ In Live, routing MIDI data out of **plugdata** is a bit more complicated than in
 
 ## Reaper
 
-### MIDI IN
+#### MIDI IN
 1. Add **plugdata** to an empty track.
 2. In **plugdata**, use one of the MIDI IN objects and route MIDI data from it *(see example)*.
 3. Play notes on this MIDI track using any usual method — keyboard, piano roll, etc.
 
 ![reaper-midiin](images\pd-midiin.png)
 
-### MIDI OUT
+#### MIDI OUT
 
 ![reaper-midiout](images\reaper-midiout.png)
 
@@ -78,7 +78,7 @@ In Live, routing MIDI data out of **plugdata** is a bit more complicated than in
 
 ![pd-midi](images\pd-midiout.png)
 
-### FX
+#### FX
 1. Add **plugdata-fx** as an effect device to an audio or MIDI track.
 2. In **plugdata**, use [adc~] object to receive audio from your DAW *(see examples)*.  
 
@@ -86,7 +86,7 @@ In Live, routing MIDI data out of **plugdata** is a bit more complicated than in
 
 ## Ardour
 
-### MIDI IN
+#### MIDI IN
 
 1. Add **plugdata** as an instrument to an empty MIDI track.
 2. In **plugdata**, use one of the MIDI IN objects and route MIDI data from it *(see example)*.
@@ -94,7 +94,7 @@ In Live, routing MIDI data out of **plugdata** is a bit more complicated than in
 
 ![live-midiin](images\pd-midiin.png)
 
-### MIDI OUT
+#### MIDI OUT
 
 ![ardour-midiout](images\ardour-midiout.png)
 
@@ -104,7 +104,7 @@ In Live, routing MIDI data out of **plugdata** is a bit more complicated than in
 
 ![pd-midi](images\pd-midiout.png)
 
-### FX
+#### FX
 
 1. Add **plugdata-fx** as an effect device to an audio or MIDI track.
 2. In **plugdata**, use [adc~] object to receive audio from your DAW *(see examples)*.  
@@ -113,7 +113,7 @@ In Live, routing MIDI data out of **plugdata** is a bit more complicated than in
 
 ## FL Studio
 
-### MIDI IN
+#### MIDI IN
 
 1. Add **plugdata** to your channel rack. 
 2. In **plugdata**, use one of the MIDI IN objects and route MIDI data from it *(see example)*.
@@ -121,7 +121,7 @@ In Live, routing MIDI data out of **plugdata** is a bit more complicated than in
 
 ![fl-midiin](images\pd-midiin.png)
 
-### MIDI OUT
+#### MIDI OUT
 
 ![fl-midiout](images\fl-midiout1.png)
 
@@ -135,7 +135,7 @@ In **plugdata** plugin, use one of the objects that sends out MIDI data *(see ex
 
 ![pd-midi](images\pd-midiout.png)
 
-### FX
+#### FX
 
 1. In the Mixer window, add **plugdata-fx** to an empty slot of any channel that you wish to affect.
 2. In **plugdata**, use [adc~] object to receive audio from your DAW *(see examples)*.
@@ -144,14 +144,14 @@ In **plugdata** plugin, use one of the objects that sends out MIDI data *(see ex
 
 ## Studio One
 
-### MIDI IN
+#### MIDI IN
 1. Add **plugdata** to an empty track.
 2. In **plugdata**, use one of the MIDI IN objects and route MIDI data from it *(see example)*.
 3. Play notes on this MIDI track using any usual method — keyboard, piano roll, etc.
 
 ![one-midiin](images\pd-midiin.png)
 
-### MIDI OUT
+#### MIDI OUT
 
 ![one-midiout](images\one-midiout.png)
 
@@ -161,7 +161,7 @@ In **plugdata** plugin, use one of the objects that sends out MIDI data *(see ex
 
 ![pd-midi](images\pd-midiout.png)
 
-### FX
+#### FX
 
 1. In your project's **Mixer** panel (press F3 to toggle), add **plugdata-fx** as an insert effect to an audio or instrument track.  
 2. In **plugdata**, use [adc~] object to receive audio from your DAW *(see examples)*.  
@@ -170,14 +170,14 @@ In **plugdata** plugin, use one of the objects that sends out MIDI data *(see ex
 
 ## Logic
 
-### MIDI IN
+#### MIDI IN
 1. Add **plugdata** to an empty MIDI track.
 2. In **plugdata**, use one of the MIDI IN objects and route MIDI data from it *(see example)*.
 3. Play notes on this MIDI track using any usual method — keyboard, piano roll, etc.
 
 ![logic-midiin](images\pd-midiin.png)
 
-### MIDI OUT
+#### MIDI OUT
 
 ![logic-midiout](images\logic-midiout.png)
 
@@ -187,7 +187,7 @@ In **plugdata** plugin, use one of the objects that sends out MIDI data *(see ex
 
 ![pd-midi](images\pd-midiout.png)
 
-### FX
+#### FX
 1. Add **plugdata-fx** as an Audio FX to an audio or MIDI track.
 2. In **plugdata**, use [adc~] object to receive audio from your DAW *(see examples)*.
 
