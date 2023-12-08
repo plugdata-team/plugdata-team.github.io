@@ -1,3 +1,0 @@
-## Pd Manual 
-
-We publish chapters 2 and 4 of Miller Puckette's **Pd Manual**, as we believe they are the most relevant parts of that document with regard to **plugdata**. Although they may not translate perfectly to users' experience with **plugdata**, they still provide an excellent way of learning the core concepts. You can read the full version of **Pd Manual** [here](http://msp.ucsd.edu/Pd_documentation/index.htm#s2). 

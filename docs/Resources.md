@@ -31,3 +31,11 @@ Classes from Miller Puckette, the creator of Pure Data, with some of them being 
 * [cheetomoskeeto](https://www.youtube.com/playlist?list=PL12DC9A161D8DC5DC)
 
 * [Q Visible](https://www.youtube.com/playlist?list=PL0dqIhYnzlnPeQAC5mRzKq5HLwfBGRYaO)
+<<<<<<< Updated upstream
+=======
+
+## Discord
+## FAQ
+## PD Manual
+## patchstorage
+>>>>>>> Stashed changes
