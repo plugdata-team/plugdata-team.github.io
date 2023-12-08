@@ -1,4 +1,4 @@
-# Compiling and Compilation Mode
+# Compiling and Compiled Mode
 
 Not only can you run Plug Data as an audio plugin inside your DAW, Plug Data provides the ability to compile your Plug Data code for multiple targets, including audio plugins. The currently supported targets are:
 
