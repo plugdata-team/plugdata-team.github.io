@@ -1,4 +1,4 @@
-≈
+* [Introduction](Introduction.md)
     * [About plugdata](Introduction.md#About_plugdata)
     * [Documentation guide](Introduction.md#Documentation_guide)
 
@@ -13,12 +13,12 @@
 
 * [FAQ](FAQ.md)
 
-* [Creating your first patch](CreatingFirstPatch.md)
-    * [Browsing and adding modules and objects](CreatingFirstPatch.md#BrowsingAdding_ModulesObjects)
-    * [Creating connections](CreatingFirstPatch.md#Creating_Connections)
-    * [Adding effects](CreatingFirstPatch.md#Adding_Effects)
-    * [Finding the included examples](CreatingFirstPatch.md#Finding_IncludedExamples)
-    * [Next steps](CreatingFirstPatch.md#Next_Steps)
+* [Creating your first patch](CreatingYourFirstPatch.md)
+    * [Browsing and adding modules and objects](CreatingYourFirstPatch.md#BrowsingAdding_ModulesObjects)
+    * [Creating connections](CreatingYourFirstPatch.md#Creating_Connections)
+    * [Adding effects](CreatingYourFirstPatch.md#Adding_Effects)
+    * [Finding the included examples](CreatingYourFirstPatch.md#Finding_IncludedExamples)
+    * [Next steps](CreatingYourFirstPatch.md#Next_Steps)
 
 * [Troubleshooting](Troubleshooting.md)
     * [Sound not working](Troubleshooting.md#SoundNot_Working)
@@ -86,7 +86,7 @@
     * [DAW parameter automation](DAWIntegration.md#Parameter_AutomationExample)
     * [Tempo syncing a plugin's internal clock to its host DAW](DAWIntegration.md#Tempo_Syncing)
 
-* [Standalone MIDI communication and networking](StandaloneMIDICommunication.md)
+* [Standalone MIDI and networking](StandaloneMIDICommunication.md)
     * [MIDI communication examples for standalone](StandaloneMIDICommunication.md#Examples)
     * [Using Ableton Link](StandaloneMIDICommunication.md#Ableton_Link)
     * [OSC and other networking options](StandaloneMIDICommunication.md#OSC_NetworkingOptions)

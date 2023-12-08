@@ -2,10 +2,10 @@
 ## Sound not working
 
 
-## DSP and volume
+### DSP and volume
 
 
-## DAW configuration
+### DAW configuration
 
 
 ## MIDI not working

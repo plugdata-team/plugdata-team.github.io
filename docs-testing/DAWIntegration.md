@@ -1,4 +1,4 @@
-# DAWIntegration
+# DAW Integration
 
 ## Ableton Live
 

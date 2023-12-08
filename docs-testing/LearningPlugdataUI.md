@@ -1,88 +1,89 @@
-# LearningPlugdataUI
-## Interface Overview
+# Learning plugdata UI
+
+### Interface Overview
 
 
-## Main menu
+### Main menu
 
 
-## Primary / secondary themes and zoom options
+### Primary / secondary themes and zoom options
 
 
-## File options
+### File options
 
 
-## Workspaces
+### Workspaces
 
 
-## Settings window
+### Settings window
 
 
-## Themes
+### Themes
 
 
-## Paths
+### Paths
 
 
-## Keyboard shortcuts
+### Keyboard shortcuts
 
 
-## Advanced options
+### Advanced options
 
 
-## Popup menu
+### Popup menu
 
 
-## Selecting and cut / copy / paste / delete
+### Selecting and cut / copy / paste / delete
 
 
-## Object reference
+### Object reference
 
 
-## Object help
+### Object help
 
 
-## Properties inspector
+### Properties inspector
 
 
-## Adjusting tabs
+### Adjusting tabs
 
 
-## Palette sidebar
+### Palette sidebar
 
 
-## Panel sidebar
+### Panel sidebar
 
 
-## Console panel
+### Console panel
 
 
-## Documentation panel
+### Documentation panel
 
 
-## Automation panel
+### Automation panel
 
 
-## Search panel
+### Search panel
 
 
-## Display modes
+### Display modes
 
 
-## Edit mode
+### Edit mode
 
 
-## Run mode
+### Run mode
 
 
-## Presentation mode
+### Presentation mode
 
 
-## Plugin mode
+### Plugin mode
 
 
-## Compiled mode
+### Compiled mode
 
 
-## Display overlays
+### Display overlays
 
 

@@ -1,22 +1,23 @@
-# GettingStarted
-## Installing plugdata
+# Getting Started
+
+### Installing plugdata
 
 
-## Differences between running plugdata standalone and as a plugin
+### Differences between running plugdata standalone and as a plugin
 
 
-## Setting up plugdata
+### Setting up plugdata
 
 
-## Configuring audio and MIDI devices
+### Configuring audio and MIDI devices
 
 
-## Testing audio and MIDI IO
+### Testing audio and MIDI IO
 
 
-## Installing external libraries
+### Installing external libraries
 
 
-## Building from source
+### Building from source
 
 

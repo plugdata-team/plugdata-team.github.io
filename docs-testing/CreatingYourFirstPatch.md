@@ -1,16 +1,17 @@
-# CreatingYourFirstPatch
-## Browsing and adding modules and objects
+# Creating your first patch
+
+### Browsing and adding modules and objects
 
 
-## Creating connections
+### Creating connections
 
 
-## Adding effects
+### Adding effects
 
 
-## Finding the included examples
+### Finding the included examples
 
 
-## Next steps
+### Next steps
 
 
