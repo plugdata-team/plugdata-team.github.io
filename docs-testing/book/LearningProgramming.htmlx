@@ -1,0 +1,1578 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <title>Learning programming in plugdata and Pd · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 4.0.4">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="DAWIntegration.html" />
+    
+    
+    <link rel="prev" href="LearningPlugdataUI.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="GettingStarted.html">
+            
+                <a href="GettingStarted.html">
+            
+                    
+                    Getting started
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="GettingStarted.html">
+            
+                <a href="GettingStarted.html#Installing_plugdata">
+            
+                    
+                    Installing plugdata
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="GettingStarted.html">
+            
+                <a href="GettingStarted.html#Run_StandaloneVsPlugin">
+            
+                    
+                    Differences between running plugdata standalone and as a plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="GettingStarted.html">
+            
+                <a href="GettingStarted.html#Setting_up_plugdata">
+            
+                    
+                    Setting up plugdata
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.3.1" data-path="GettingStarted.html">
+            
+                <a href="GettingStarted.html#ConfiguringAudioMIDI_Devices">
+            
+                    
+                    Configuring audio and MIDI devices
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.2" data-path="GettingStarted.html">
+            
+                <a href="GettingStarted.html#TestingAudioMIDI_IO">
+            
+                    
+                    Testing audio and MIDI IO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.3" data-path="GettingStarted.html">
+            
+                <a href="GettingStarted.html#InstallingExternal_Libraries">
+            
+                    
+                    Installing external libraries
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="GettingStarted.html">
+            
+                <a href="GettingStarted.html#BuildingFrom_Source">
+            
+                    
+                    Building from source
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="FAQ.html">
+            
+                <a href="FAQ.html">
+            
+                    
+                    FAQ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="CreatingFirstPatch.md">
+            
+                <span>
+            
+                    
+                    Creating your first patch
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="CreatingFirstPatch.md">
+            
+                <span>
+            
+                    
+                    Browsing and adding modules and objects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="CreatingFirstPatch.md">
+            
+                <span>
+            
+                    
+                    Creating connections
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="CreatingFirstPatch.md">
+            
+                <span>
+            
+                    
+                    Adding effects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="CreatingFirstPatch.md">
+            
+                <span>
+            
+                    
+                    Finding the included examples
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="CreatingFirstPatch.md">
+            
+                <span>
+            
+                    
+                    Next steps
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="Troubleshooting.html">
+            
+                <a href="Troubleshooting.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="Troubleshooting.html">
+            
+                <a href="Troubleshooting.html#SoundNot_Working">
+            
+                    
+                    Sound not working
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="Troubleshooting.html">
+            
+                <a href="Troubleshooting.html#DSP_AndVolume">
+            
+                    
+                    DSP and volume
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2" data-path="Troubleshooting.html">
+            
+                <a href="Troubleshooting.html#Daw_Configuration">
+            
+                    
+                    DAW configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="Troubleshooting.html">
+            
+                <a href="Troubleshooting.html#MIDI_NotWorking">
+            
+                    
+                    MIDI not working
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="Troubleshooting.html">
+            
+                <a href="Troubleshooting.html#Finding_ConsoleErrorMessages">
+            
+                    
+                    Finding console error messages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="Troubleshooting.html">
+            
+                <a href="Troubleshooting.html#Fixing_ClicksAndPops">
+            
+                    
+                    Fixing clicks and pops
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="Troubleshooting.html">
+            
+                <a href="Troubleshooting.html#Finding_Help">
+            
+                    
+                    Finding help
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html">
+            
+                    
+                    Learning the plugdata UI
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Interface_Overview">
+            
+                    
+                    Interface Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Main_Menu">
+            
+                    
+                    Main menu
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.2.1" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Themes_ZoomOptions">
+            
+                    
+                    Primary / secondary themes and zoom options
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.2" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#File_Options">
+            
+                    
+                    File options
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.3" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Workspaces">
+            
+                    
+                    Workspaces
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Settings_Window">
+            
+                    
+                    Settings window
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.3.1" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Themes">
+            
+                    
+                    Themes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.2" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Paths">
+            
+                    
+                    Paths
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.3" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Keyboard_Shortcuts">
+            
+                    
+                    Keyboard shortcuts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.4" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Advanced_Options">
+            
+                    
+                    Advanced options
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Popup_Menu">
+            
+                    
+                    Popup menu
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.4.1" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Selecting_CutCopyPasteDelete">
+            
+                    
+                    Selecting and cut / copy / paste / delete
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.2" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Object_Reference">
+            
+                    
+                    Object reference
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.3" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Object_Help">
+            
+                    
+                    Object help
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Properties_Inspector">
+            
+                    
+                    Properties inspector
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Adjusting_Tabs">
+            
+                    
+                    Adjusting tabs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Palette_Sidebar">
+            
+                    
+                    Palette sidebar
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Panel_Sidebar">
+            
+                    
+                    Panel sidebar
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Console_Panel">
+            
+                    
+                    Console panel
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.9.1" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Documentation_Panel">
+            
+                    
+                    Documentation panel
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9.2" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Automation_Panel">
+            
+                    
+                    Automation panel
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9.3" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Search_Panel">
+            
+                    
+                    Search panel
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Display_Modes">
+            
+                    
+                    Display modes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.10.1" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Edit_Mode">
+            
+                    
+                    Edit mode
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10.2" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Run_Mode">
+            
+                    
+                    Run mode
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10.3" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Presentation_Mode">
+            
+                    
+                    Presentation mode
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10.4" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Plugin_Mode">
+            
+                    
+                    Plugin mode
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10.5" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Compiled_Mode">
+            
+                    
+                    Compiled mode
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="LearningPlugdataUI.html">
+            
+                <a href="LearningPlugdataUI.html#Display_Overlays">
+            
+                    
+                    Display overlays
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7" data-path="LearningProgramming.html">
+            
+                <a href="LearningProgramming.html">
+            
+                    
+                    Learning programming in plugdata and Pd
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="LearningProgramming.html">
+            
+                <a href="LearningProgramming.html#Audio_ControlSignals">
+            
+                    
+                    Audio and control signals
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="LearningProgramming.html">
+            
+                <a href="LearningProgramming.html#Object_PropertiesArguments">
+            
+                    
+                    Object properties and arguments
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="LearningProgramming.html">
+            
+                <a href="LearningProgramming.html#Subpatches_Abstractions">
+            
+                    
+                    Subpatches and abstractions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="LearningProgramming.html">
+            
+                <a href="LearningProgramming.html#UI_Elements">
+            
+                    
+                    UI elements
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="LearningProgramming.html">
+            
+                <a href="LearningProgramming.html#Graph_OnParent">
+            
+                    
+                    Graph on Parent
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="LearningProgramming.html">
+            
+                <a href="LearningProgramming.html#Hot_ColdInlets">
+            
+                    
+                    Hot and cold inlets
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="LearningProgramming.html">
+            
+                <a href="LearningProgramming.html#Datastructures">
+            
+                    
+                    Datastructures: Floats, symbols, lists and bangs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="LearningProgramming.html">
+            
+                <a href="LearningProgramming.html#Arrays_TablesGraphs">
+            
+                    
+                    Arrays, tables and graphs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="LearningProgramming.html">
+            
+                <a href="LearningProgramming.html#Messages">
+            
+                    
+                    Messages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="LearningProgramming.html">
+            
+                <a href="LearningProgramming.html#Blocksizes">
+            
+                    
+                    Blocksizes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11" data-path="LearningProgramming.html">
+            
+                <a href="LearningProgramming.html#Debugging_Tips">
+            
+                    
+                    Debugging tips
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="DAWIntegration.html">
+            
+                <a href="DAWIntegration.html">
+            
+                    
+                    DAW integration
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="DAWIntegration.html">
+            
+                <a href="DAWIntegration.html#InstrumentFX_Setup">
+            
+                    
+                    Instrument and FX setup
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1.1" data-path="DAWIntegration.html">
+            
+                <a href="DAWIntegration.html#Ableton_Live">
+            
+                    
+                    Ableton Live
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.2" data-path="DAWIntegration.html">
+            
+                <a href="DAWIntegration.html#Bitwig_Studio">
+            
+                    
+                    Bitwig Studio
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.3" data-path="DAWIntegration.html">
+            
+                <a href="DAWIntegration.html#Reaper">
+            
+                    
+                    Reaper
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.4" data-path="DAWIntegration.html">
+            
+                <a href="DAWIntegration.html#Ardour">
+            
+                    
+                    Ardour
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.5" data-path="DAWIntegration.html">
+            
+                <a href="DAWIntegration.html#FL_Studio">
+            
+                    
+                    FL Studio
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.6" data-path="DAWIntegration.html">
+            
+                <a href="DAWIntegration.html#Studio_One">
+            
+                    
+                    Studio One
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.7" data-path="DAWIntegration.html">
+            
+                <a href="DAWIntegration.html#Logic">
+            
+                    
+                    Logic
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="DAWIntegration.html">
+            
+                <a href="DAWIntegration.html#SettingUp_MIDICC">
+            
+                    
+                    Setting up MIDI CC messages in a DAW
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="DAWIntegration.html">
+            
+                <a href="DAWIntegration.html#Parameter_AutomationExample">
+            
+                    
+                    DAW parameter automation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="DAWIntegration.html">
+            
+                <a href="DAWIntegration.html#Tempo_Syncing">
+            
+                    
+                    Tempo syncing a plugin's internal clock to its host DAW
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="StandaloneMIDICommunication.md">
+            
+                <span>
+            
+                    
+                    Standalone MIDI communication and networking
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="StandaloneMIDICommunication.md">
+            
+                <span>
+            
+                    
+                    MIDI communication examples for standalone
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="StandaloneMIDICommunication.md">
+            
+                <span>
+            
+                    
+                    Using Ableton Link
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="StandaloneMIDICommunication.md">
+            
+                <span>
+            
+                    
+                    OSC and other networking options
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="CompilingPatches.html">
+            
+                <a href="CompilingPatches.html">
+            
+                    
+                    Compiling Patches
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="Resources.html">
+            
+                <a href="Resources.html">
+            
+                    
+                    Resources
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="Development.html">
+            
+                <a href="Development.html">
+            
+                    
+                    Development
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="Development.html">
+            
+                <a href="Development.html#Known_issues">
+            
+                    
+                    Known issues
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="Development.html">
+            
+                <a href="Development.html#Reporting_bugs_and_requesting_new_features">
+            
+                    
+                    Reporting bugs and requesting new features
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="ObjectReference.html">
+            
+                <a href="ObjectReference.html">
+            
+                    
+                    Object reference
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="ObjectReference.html">
+            
+                <a href="ObjectReference.html#GUI_elements">
+            
+                    
+                    GUI elements
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="ObjectReference.html">
+            
+                <a href="ObjectReference.html#Objects">
+            
+                    
+                    Objects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="ObjectReference.html">
+            
+                <a href="ObjectReference.html#Libraries">
+            
+                    
+                    Libraries
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="Glossary.html">
+            
+                <a href="Glossary.html">
+            
+                    
+                    Glossary of terms
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="SpecialThanks.md">
+            
+                <span>
+            
+                    
+                    Special thanks
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Learning programming in plugdata and Pd</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="learningprogramming">LearningProgramming</h1>
+<h2 id="audio-and-control-signals">Audio and control signals</h2>
+<h2 id="object-properties-and-arguments">Object properties and arguments</h2>
+<h2 id="subpatches-and-abstractions">Subpatches and abstractions</h2>
+<h2 id="ui-elements">UI elements</h2>
+<h2 id="graph-on-parent">Graph on Parent</h2>
+<h2 id="hot-and-cold-inlets">Hot and cold inlets</h2>
+<h2 id="datastructures-floats-symbols-lists-and-bangs">Datastructures: Floats, symbols, lists and bangs</h2>
+<h2 id="arrays-tables-and-graphs">Arrays, tables and graphs</h2>
+<h2 id="messages">Messages</h2>
+<h2 id="blocksizes">Blocksizes</h2>
+<h2 id="debugging-tips">Debugging tips</h2>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="LearningPlugdataUI.html" class="navigation navigation-prev " aria-label="Previous page: Learning the plugdata UI">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="DAWIntegration.html" class="navigation navigation-next " aria-label="Next page: DAW integration">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Learning programming in plugdata and Pd","level":"1.7","depth":1,"next":{"title":"DAW integration","level":"1.8","depth":1,"path":"DAWIntegration.md","ref":"DAWIntegration.md","articles":[{"title":"Instrument and FX setup","level":"1.8.1","depth":2,"anchor":"#InstrumentFX_Setup","path":"DAWIntegration.md","ref":"DAWIntegration.md#InstrumentFX_Setup","articles":[{"title":"Ableton Live","level":"1.8.1.1","depth":3,"anchor":"#Ableton_Live","path":"DAWIntegration.md","ref":"DAWIntegration.md#Ableton_Live","articles":[]},{"title":"Bitwig Studio","level":"1.8.1.2","depth":3,"anchor":"#Bitwig_Studio","path":"DAWIntegration.md","ref":"DAWIntegration.md#Bitwig_Studio","articles":[]},{"title":"Reaper","level":"1.8.1.3","depth":3,"anchor":"#Reaper","path":"DAWIntegration.md","ref":"DAWIntegration.md#Reaper","articles":[]},{"title":"Ardour","level":"1.8.1.4","depth":3,"anchor":"#Ardour","path":"DAWIntegration.md","ref":"DAWIntegration.md#Ardour","articles":[]},{"title":"FL Studio","level":"1.8.1.5","depth":3,"anchor":"#FL_Studio","path":"DAWIntegration.md","ref":"DAWIntegration.md#FL_Studio","articles":[]},{"title":"Studio One","level":"1.8.1.6","depth":3,"anchor":"#Studio_One","path":"DAWIntegration.md","ref":"DAWIntegration.md#Studio_One","articles":[]},{"title":"Logic","level":"1.8.1.7","depth":3,"anchor":"#Logic","path":"DAWIntegration.md","ref":"DAWIntegration.md#Logic","articles":[]}]},{"title":"Setting up MIDI CC messages in a DAW","level":"1.8.2","depth":2,"anchor":"#SettingUp_MIDICC","path":"DAWIntegration.md","ref":"DAWIntegration.md#SettingUp_MIDICC","articles":[]},{"title":"DAW parameter automation","level":"1.8.3","depth":2,"anchor":"#Parameter_AutomationExample","path":"DAWIntegration.md","ref":"DAWIntegration.md#Parameter_AutomationExample","articles":[]},{"title":"Tempo syncing a plugin's internal clock to its host DAW","level":"1.8.4","depth":2,"anchor":"#Tempo_Syncing","path":"DAWIntegration.md","ref":"DAWIntegration.md#Tempo_Syncing","articles":[]}]},"previous":{"title":"Learning the plugdata UI","level":"1.6","depth":1,"path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md","articles":[{"title":"Interface Overview","level":"1.6.1","depth":2,"anchor":"#Interface_Overview","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Interface_Overview","articles":[]},{"title":"Main menu","level":"1.6.2","depth":2,"anchor":"#Main_Menu","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Main_Menu","articles":[{"title":"Primary / secondary themes and zoom options","level":"1.6.2.1","depth":3,"anchor":"#Themes_ZoomOptions","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Themes_ZoomOptions","articles":[]},{"title":"File options","level":"1.6.2.2","depth":3,"anchor":"#File_Options","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#File_Options","articles":[]},{"title":"Workspaces","level":"1.6.2.3","depth":3,"anchor":"#Workspaces","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Workspaces","articles":[]}]},{"title":"Settings window","level":"1.6.3","depth":2,"anchor":"#Settings_Window","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Settings_Window","articles":[{"title":"Themes","level":"1.6.3.1","depth":3,"anchor":"#Themes","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Themes","articles":[]},{"title":"Paths","level":"1.6.3.2","depth":3,"anchor":"#Paths","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Paths","articles":[]},{"title":"Keyboard shortcuts","level":"1.6.3.3","depth":3,"anchor":"#Keyboard_Shortcuts","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Keyboard_Shortcuts","articles":[]},{"title":"Advanced options","level":"1.6.3.4","depth":3,"anchor":"#Advanced_Options","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Advanced_Options","articles":[]}]},{"title":"Popup menu","level":"1.6.4","depth":2,"anchor":"#Popup_Menu","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Popup_Menu","articles":[{"title":"Selecting and cut / copy / paste / delete","level":"1.6.4.1","depth":3,"anchor":"#Selecting_CutCopyPasteDelete","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Selecting_CutCopyPasteDelete","articles":[]},{"title":"Object reference","level":"1.6.4.2","depth":3,"anchor":"#Object_Reference","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Object_Reference","articles":[]},{"title":"Object help","level":"1.6.4.3","depth":3,"anchor":"#Object_Help","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Object_Help","articles":[]}]},{"title":"Properties inspector","level":"1.6.5","depth":2,"anchor":"#Properties_Inspector","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Properties_Inspector","articles":[]},{"title":"Adjusting tabs","level":"1.6.6","depth":2,"anchor":"#Adjusting_Tabs","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Adjusting_Tabs","articles":[]},{"title":"Palette sidebar","level":"1.6.7","depth":2,"anchor":"#Palette_Sidebar","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Palette_Sidebar","articles":[]},{"title":"Panel sidebar","level":"1.6.8","depth":2,"anchor":"#Panel_Sidebar","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Panel_Sidebar","articles":[]},{"title":"Console panel","level":"1.6.9","depth":2,"anchor":"#Console_Panel","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Console_Panel","articles":[{"title":"Documentation panel","level":"1.6.9.1","depth":3,"anchor":"#Documentation_Panel","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Documentation_Panel","articles":[]},{"title":"Automation panel","level":"1.6.9.2","depth":3,"anchor":"#Automation_Panel","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Automation_Panel","articles":[]},{"title":"Search panel","level":"1.6.9.3","depth":3,"anchor":"#Search_Panel","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Search_Panel","articles":[]}]},{"title":"Display modes","level":"1.6.10","depth":2,"anchor":"#Display_Modes","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Display_Modes","articles":[{"title":"Edit mode","level":"1.6.10.1","depth":3,"anchor":"#Edit_Mode","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Edit_Mode","articles":[]},{"title":"Run mode","level":"1.6.10.2","depth":3,"anchor":"#Run_Mode","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Run_Mode","articles":[]},{"title":"Presentation mode","level":"1.6.10.3","depth":3,"anchor":"#Presentation_Mode","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Presentation_Mode","articles":[]},{"title":"Plugin mode","level":"1.6.10.4","depth":3,"anchor":"#Plugin_Mode","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Plugin_Mode","articles":[]},{"title":"Compiled mode","level":"1.6.10.5","depth":3,"anchor":"#Compiled_Mode","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Compiled_Mode","articles":[]}]},{"title":"Display overlays","level":"1.6.11","depth":2,"anchor":"#Display_Overlays","path":"LearningPlugdataUI.md","ref":"LearningPlugdataUI.md#Display_Overlays","articles":[]}]},"articles":[{"title":"Audio and control signals","level":"1.7.1","depth":2,"anchor":"#Audio_ControlSignals","path":"LearningProgramming.md","ref":"LearningProgramming.md#Audio_ControlSignals","articles":[]},{"title":"Object properties and arguments","level":"1.7.2","depth":2,"anchor":"#Object_PropertiesArguments","path":"LearningProgramming.md","ref":"LearningProgramming.md#Object_PropertiesArguments","articles":[]},{"title":"Subpatches and abstractions","level":"1.7.3","depth":2,"anchor":"#Subpatches_Abstractions","path":"LearningProgramming.md","ref":"LearningProgramming.md#Subpatches_Abstractions","articles":[]},{"title":"UI elements","level":"1.7.4","depth":2,"anchor":"#UI_Elements","path":"LearningProgramming.md","ref":"LearningProgramming.md#UI_Elements","articles":[]},{"title":"Graph on Parent","level":"1.7.5","depth":2,"anchor":"#Graph_OnParent","path":"LearningProgramming.md","ref":"LearningProgramming.md#Graph_OnParent","articles":[]},{"title":"Hot and cold inlets","level":"1.7.6","depth":2,"anchor":"#Hot_ColdInlets","path":"LearningProgramming.md","ref":"LearningProgramming.md#Hot_ColdInlets","articles":[]},{"title":"Datastructures: Floats, symbols, lists and bangs","level":"1.7.7","depth":2,"anchor":"#Datastructures","path":"LearningProgramming.md","ref":"LearningProgramming.md#Datastructures","articles":[]},{"title":"Arrays, tables and graphs","level":"1.7.8","depth":2,"anchor":"#Arrays_TablesGraphs","path":"LearningProgramming.md","ref":"LearningProgramming.md#Arrays_TablesGraphs","articles":[]},{"title":"Messages","level":"1.7.9","depth":2,"anchor":"#Messages","path":"LearningProgramming.md","ref":"LearningProgramming.md#Messages","articles":[]},{"title":"Blocksizes","level":"1.7.10","depth":2,"anchor":"#Blocksizes","path":"LearningProgramming.md","ref":"LearningProgramming.md#Blocksizes","articles":[]},{"title":"Debugging tips","level":"1.7.11","depth":2,"anchor":"#Debugging_Tips","path":"LearningProgramming.md","ref":"LearningProgramming.md#Debugging_Tips","articles":[]}],"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"LearningProgramming.md","mtime":"2023-12-08T15:23:38.822Z","type":"markdown"},"gitbook":{"version":"4.0.4","time":"2023-12-08T16:28:40.174Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
