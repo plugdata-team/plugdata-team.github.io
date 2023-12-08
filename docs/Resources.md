@@ -1,6 +1,7 @@
 # Resources
 
 ## Books
+
 * [loadbang](https://www.wolke-verlag.de/musikbuecher/johannes-kreidler-loadbang/) — *free to download and [read online](http://www.pd-tutorial.com/english/index.html)*
 
 "Each lesson is comprised of a theory part, a practice part and an appendix, as well as individual aspects that are explained in greater detail at the end of each section."
