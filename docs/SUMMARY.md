@@ -1,22 +1,21 @@
-# Summary
-*** 
-* [F.A.Q.](FAQ.md)
-* Setup
-  * DAW Integration
-    * [1. Ableton](Setup_Ableton.md)
-    * [2. Bitwig Studio](Setup_Bitwig.md)
-    * [3. Reaper](Setup_Reaper.md)
-    * [4. Ardour](Setup_Ardour.md)
-    * [5. FL Studio](Setup_FL.md)
-    * [6. Studio One](Setup_One.md)
-    * [7. Logic](Setup_Logic.md)
+* [Getting started](GettingStarted.md)
+    * [Installing plugdata](GettingStarted.md#installing-plugdata)
+    * [Building from Source](GettingStarted.md#building-from-source)
 
+* [FAQ](FAQ.md)
 
-*** 
-* [Pd Manual](PdM.md)
-  * [Theory of operation](PdM_TheoryOfOperation.md)
-  * [Externals](PdM_Externals.md)
+* [Troubleshooting](Troubleshooting.md)
+    * [Keyboard input in DAW not working](Troubleshooting.md#keyboard-input-in-daw-not-working)
+    * [Sound not working](Troubleshooting.md#sound-not-working)
 
-***
+* [DAW setup](DAWIntegration.md)
+    * [Ableton Live](DAWIntegration.md#ableton-live)
+    * [Bitwig Studio](DAWIntegration.md#bitwig-studio)
+    * [Reaper](DAWIntegration.md#reaper)
+    * [Ardour](DAWIntegration.md#ardour)
+    * [FL Studio](DAWIntegration.md#fl-studio)
+    * [Studio One](DAWIntegration.md#studio-one)
+    * [Logic](DAWIntegration.md#logic)
+
+* [Compiling Patches](CompilingPatches.md)
 * [Resources](Resources.md)
-
