@@ -14,13 +14,9 @@ Teaches sound design from first principles in pure data, you will learn to desig
 
 Chapters are split into parts explaining sound design theory and how to apply it in pure data.
 
-## Tutorials
-
 ## Videos
 
 * [Classes taught by Miller Puckette at UCSD](http://msp.ucsd.edu/syllabi/index.htm)
-
-Classes from Miller Puckette, the creator of Pure Data, with some of them being available in video format. Not only about **Pure Data** but music in general. This is a great resource and highly recommended to check out.
 
 * [Sound Simulator](https://www.youtube.com/playlist?list=PLyFkFo29zHvD4eRftIAjcLqIXCtSo7w8g)
 
@@ -33,6 +29,14 @@ Classes from Miller Puckette, the creator of Pure Data, with some of them being 
 * [Q Visible](https://www.youtube.com/playlist?list=PL0dqIhYnzlnPeQAC5mRzKq5HLwfBGRYaO)
 
 ## Discord
-## FAQ
+* [plugdata Discord](https://discord.gg/5zu6vKEErj)
+
+* [pure-data Discord](https://discord.gg/cvtK6xVsYx)
+
 ## PD Manual
-## patchstorage
+- [Official manual by Miller Puckette](https://msp.ucsd.edu/Pd_documentation/index.htm)
+
+## PatchStorage
+- [plugdata on PatchStorage](https://patchstorage.com/platform/plugdata/)
+
+- [pure-data on PatchStorage](https://patchstorage.com/platform/pd-vanilla/)
