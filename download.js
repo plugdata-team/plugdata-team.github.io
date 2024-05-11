@@ -1,7 +1,7 @@
 
 function main() {
- 
-  let unstable_downloads = [["macOS Universal", "https://glyphpress.com/plugdata/plugdata-macOS-Universal.pkg", "Download", true], ["Windows (x64)", "https://glyphpress.com/plugdata/plugdata-Win64.msi", "Download", true], ["Windows (x86)", "https://glyphpress.com/plugdata/plugdata-Win32.msi", "Download", true], ["Arch (x64)", "https://glyphpress.com/plugdata/plugdata-Arch-x64.tar.gz", "Download", true], ["Debian (x64)", "https://glyphpress.com/plugdata/plugdata-Debian-x64.tar.gz", "Download", true], ["Fedora 37 (x64)", "https://glyphpress.com/plugdata/plugdata-Fedora-37-x64.tar.gz", "Download", true], ["Fedora 38 (x64)", "https://glyphpress.com/plugdata/plugdata-Fedora-38-x64.tar.gz", "Download", true], ["Ubuntu 20.04 (x64)", "https://glyphpress.com/plugdata/plugdata-Ubuntu-20.04-x64.tar.gz", "Download", true], ["Ubuntu 22.04 (x64)", "https://glyphpress.com/plugdata/plugdata-Ubuntu-22.04-x64.tar.gz", "Download", true], ["Arch Linux AUR Repository", "https://aur.archlinux.org/packages/plugdata-git", "View", false]];
+
+  let unstable_downloads = [["macOS Universal", "https://glyphpress.com/plugdata/plugdata-macOS-Universal.pkg", "Download", true], ["macOS Legacy", "https://glyphpress.com/plugdata/plugdata-macOS-Legacy.pkg", "Download", true], ["Windows (x64)", "https://glyphpress.com/plugdata/plugdata-Win64.msi", "Download", true], ["Windows (x86)", "https://glyphpress.com/plugdata/plugdata-Win32.msi", "Download", true], ["Arch (x64)", "https://glyphpress.com/plugdata/plugdata-Arch-x64.tar.gz", "Download", true], ["Debian (x64)", "https://glyphpress.com/plugdata/plugdata-Debian-x64.tar.gz", "Download", true], ["Fedora 37 (x64)", "https://glyphpress.com/plugdata/plugdata-Fedora-37-x64.tar.gz", "Download", true], ["Fedora 38 (x64)", "https://glyphpress.com/plugdata/plugdata-Fedora-38-x64.tar.gz", "Download", true], ["Ubuntu 20.04 (x64)", "https://glyphpress.com/plugdata/plugdata-Ubuntu-20.04-x64.tar.gz", "Download", true], ["Ubuntu 22.04 (x64)", "https://glyphpress.com/plugdata/plugdata-Ubuntu-22.04-x64.tar.gz", "Download", true], ["Arch Linux AUR Repository", "https://aur.archlinux.org/packages/plugdata-git", "View", false]];
 
   let unstable_container =  document.getElementById("nightly-div");
   unstable_container.style.margin = "15px";
@@ -36,7 +36,7 @@ function main() {
       clickableLink.href = unstable_downloads[i][1];
       clickableLink.textContent = unstable_downloads[i][2];
       link.appendChild(clickableLink);
-      
+
       let has_info = unstable_downloads[i][3];
 
       const dummy1 = document.createElement("td");
@@ -54,7 +54,7 @@ function main() {
           const result = await response.text().then(( str ) => {
               return str.split('\n');    // return the string after splitting it.
           });
-          
+
           // Create new cells and set their content
           const date = document.createElement("td");
           date.textContent = result[0];
@@ -96,7 +96,5 @@ function main() {
 
   getLatestHash();
 }
- 
- main();
 
- 
+ main();
