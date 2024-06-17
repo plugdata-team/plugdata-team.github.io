@@ -66,7 +66,7 @@ function main() {
           const commit_hash = document.createElement("td");
           commit_hash.textContent = hash.substring(0, 7);
           commit_hash.style.cssText = `color: ${ color }`;
-
+          commit_hash.href = "https://github.com/plugdata-team/plugdata/commits/" + commit_hash;
 
           onHashUpdate.push(() => {
               let color = hash == latest_hash ? "#006400" : "#FFA500";
