@@ -7,7 +7,7 @@
       "Download": "https://ewanbristow.gumroad.com/l/freakytable",
       "Description": "Converts harmonics from an audio file into a filter shape",
       "Price": "Free",
-      "StoreThumb": "thumbnails/eb-freakytable.png"
+      "StoreThumb": "eb-freakytable.png"
     },
     {
       "Title": "Florah(LITE)",
@@ -16,7 +16,7 @@
       "Download": "https://ewanbristow.gumroad.com/l/FlorahLITE",
       "Description": "Spectral multi-band compressor and resonance filter (free)",
       "Price": "Free",
-      "StoreThumb": "thumbnails/florah-lite.png"
+      "StoreThumb": "florah-lite.png"
     },
     {
       "Title": "Florah",
@@ -25,7 +25,7 @@
       "Download": "https://ewanbristow.gumroad.com/l/Florah",
       "Description": "Spectral multi-band compressor and resonance filter",
       "Price": "£9.99",
-      "StoreThumb": "thumbnails/florah.png"
+      "StoreThumb": "florah.png"
     },
     {
       "Title": "EB-Blasphemy",
@@ -34,7 +34,7 @@
       "Download": "https://ewanbristow.gumroad.com/l/Blasphemy",
       "Description": "Drumbreak sampler effects",
       "Price": "Free",
-      "StoreThumb": "thumbnails/eb-blasphemy.png"
+      "StoreThumb": "eb-blasphemy.png"
     },
     {
       "Title": "EB-Morph",
@@ -43,7 +43,7 @@
       "Download": "https://ewanbristow.gumroad.com/l/rrsdkv",
       "Description": "Cepstral morphing effect",
       "Price": "Free",
-      "StoreThumb": "thumbnails/eb-morph.png"
+      "StoreThumb": "eb-morph.png"
     },
     {
       "Title": "EB-SpectralSquish",
@@ -52,7 +52,7 @@
       "Download": "https://ewanbristow.gumroad.com/l/SpectralSquish",
       "Description": "Spectral squishing filter",
       "Price": "Free",
-      "StoreThumb": "thumbnails/eb-spectralsquish.png"
+      "StoreThumb": "eb-spectralsquish.png"
     },
     {
       "Title": "EB-Resonator",
@@ -61,7 +61,7 @@
       "Download": "https://ewanbristow.gumroad.com/l/EBResonator",
       "Description": "Spectral resonator effect",
       "Price": "Free",
-      "StoreThumb": "thumbnails/eb-resonator.png"
+      "StoreThumb": "eb-resonator.png"
     },
     {
       "Title": "EB-DynamicAllPass",
@@ -70,7 +70,7 @@
       "Download": "https://ewanbristow.gumroad.com/l/EB-DynamicAllPass",
       "Description": "Dynamic all-pass filter effect",
       "Price": "£5",
-      "StoreThumb": "thumbnails/eb-dynamicallpass.png"
+      "StoreThumb": "eb-dynamicallpass.png"
     },
     {
       "Title": "ChameleonX",
@@ -79,7 +79,7 @@
       "Download": "https://ewanbristow.gumroad.com/l/chameleonxbeta",
       "Description": "Colour bass resynthesis powerhouse",
       "Price": "$15",
-      "StoreThumb": "thumbnails/chameleon-x.png"
+      "StoreThumb": "chameleon-x.png"
     },
     {
       "Title": "N-SUB",
@@ -88,7 +88,7 @@
       "Download": "https://www.patreon.com/posts/n-sub-plugdata-115682326",
       "Description": "Sub-bass enhancer for low-end frequencies.",
       "Price": "Free",
-      "StoreThumb": "thumbnails/nasko.png"
+      "StoreThumb": "nasko.png"
     },
     {
       "Title": "N-SPEC GATE",
@@ -97,7 +97,7 @@
       "Download": "https://www.patreon.com/posts/n-spec-gate-fx-112905340",
       "Description": "Spectral gating for detailed audio control.",
       "Price": "Free",
-      "StoreThumb": "thumbnails/nasko.png"
+      "StoreThumb": "nasko.png"
     },
     {
       "Title": "N-PHASE SHIFT",
@@ -106,7 +106,7 @@
       "Download": "https://www.patreon.com/posts/n-phase-shift-fx-110714959",
       "Description": "Phase-shifting effects for creative design.",
       "Price": "Free",
-      "StoreThumb": "thumbnails/nasko.png"
+      "StoreThumb": "nasko.png"
     },
     {
       "Title": "N-SPEC COMP LITE",
@@ -115,7 +115,7 @@
       "Download": "https://www.patreon.com/posts/n-spec-comp-lite-110333394",
       "Description": "Lite version of the spectral compressor.",
       "Price": "Free",
-      "StoreThumb": "thumbnails/spec.png"
+      "StoreThumb": "spec.png"
     },
     {
       "Title": "N-SPEC CLIP",
@@ -123,7 +123,7 @@
       "Release date": "2024-06-04",
       "Download": "https://www.patreon.com/posts/n-spec-clip-fx-105527346",
       "Price": "Free",
-      "StoreThumb": "thumbnails/nasko.png",
+      "StoreThumb": "nasko.png",
       "StoreScreenshot": "nspecclip.webp"
     },
     {
@@ -133,7 +133,7 @@
       "Download": "https://www.patreon.com/posts/n-spec-comp-fx-103688179",
       "Description": "Full version of spectral compressor.",
       "Price": "Free",
-      "StoreThumb": "thumbnails/nasko.png"
+      "StoreThumb": "nasko.png"
     },
     {
       "Title": "N-SPECTRAL MASK",
@@ -142,7 +142,7 @@
       "Download": "https://www.patreon.com/posts/n-spectral-mask-100980671",
       "Description": "Spectral masking for advanced sound design.",
       "Price": "Free",
-      "StoreThumb": "thumbnails/nasko.png"
+      "StoreThumb": "nasko.png"
     },
     {
       "Title": "PureCLIP",
@@ -151,7 +151,7 @@
       "Download": "https://oruaudio.gumroad.com/l/pureclip",
       "Description": "Pure clipping for precise audio control.",
       "Price": "Free",
-      "StoreThumb": "thumbnails/pureclip.png"
+      "StoreThumb": "pureclip.png"
     },
     {
       "Title": "coarsedelay (free)",
@@ -160,7 +160,7 @@
       "Download": "https://payhip.com/b/UPhVE",
       "Description": "Post-apocalyptic sound design toolkit.",
       "Price": "Free",
-      "StoreThumb": "thumbnails/coursedelay.avif"
+      "StoreThumb": "coursedelay.avif"
     },
     {
       "Title": "spectralsand2 (full edition)",
@@ -169,7 +169,7 @@
       "Download": "https://unfamiliartunes.gumroad.com/l/spectralsand",
       "Description": "Spectral delay and filter plugin",
       "Price": "$19.99",
-      "StoreThumb": "thumbnails/spectralsand.png"
+      "StoreThumb": "spectralsand.png"
     },
     {
       "Title": "spectralsand2 (mud edition)",
@@ -178,7 +178,7 @@
       "Download": "https://unfamiliartunes.gumroad.com/l/spectralsand",
       "Description": "Spectral delay and filter plugin",
       "Price": "Free",
-      "StoreThumb": "thumbnails/spectralsand.png"
+      "StoreThumb": "spectralsand.png"
     },
     {
       "Title": "coarsedelay (full)",
@@ -186,7 +186,7 @@
       "Release date": "2024-10-18",
       "Description": "A modular delay tool for creative sound effects.",
       "Price": "Paid",
-      "StoreThumb": "thumbnails/coursedelay.avif",
+      "StoreThumb": "coursedelay.avif",
       "Download": "https://payhip.com/b/UPhVE"
     },
     {
@@ -195,7 +195,7 @@
       "Release date": "2024-10-27",
       "Description": "Unique audio transformations with bit-morphing techniques.",
       "Price": "Free",
-      "StoreThumb": "thumbnails/bmthumb.webp",
+      "StoreThumb": "bmthumb.webp",
       "Download": "https://lightningpig.gumroad.com/l/bitmorph"
     },
     {
@@ -205,7 +205,7 @@
       "Download": "https://ewanbristow.gumroad.com/l/spectraveil",
       "Description": "Spectral audio reshaper",
       "Price": "Free",
-      "StoreThumb": "thumbnails/eb-spectraveil.png"
+      "StoreThumb": "eb-spectraveil.png"
     },
     {
       "Title": "EB-SpectralGate",
@@ -214,7 +214,7 @@
       "Download": "https://ewanbristow.gumroad.com/l/SpectralGate",
       "Description": "Spectral gating effect",
       "Price": "Free",
-      "StoreThumb": "thumbnails/eb-spectralgate.png"
+      "StoreThumb": "eb-spectralgate.png"
     },
     {
       "Title": "N-SLoMo",
@@ -223,7 +223,7 @@
       "Download": "https://www.patreon.com/posts/n-slomo-plugdata-106385744",
       "Description": "Slow-motion audio effects for experimental sound.",
       "Price": "Free",
-      "StoreThumb": "thumbnails/nasko.png"
+      "StoreThumb": "nasko.png"
     }
   ]
 }
