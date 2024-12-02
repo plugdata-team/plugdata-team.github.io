@@ -4,7 +4,7 @@
       "Title": "EB-FreakyTable",
       "Author": "Ewan Bristow",
       "Release date": "2024-11-22",
-      "Download": "https://storage.cloud.google.com/plugdata-discovery/EB-FreakyTable(V1.7).zip",
+      "Download": "https://storage.googleapis.com/plugdata-discovery/EB-FreakyTable(V1.7).zip",
       "Description": "Converts harmonics from an audio file into a filter shape",
       "Price": "Free",
       "StoreThumb": "eb-freakytable"
