@@ -146,10 +146,10 @@
     },
     {
       "Title": "PureCLIP",
-      "Author": "ORU",
-      "Release date": "2024-11-19",
+      "Author": "ORU Audio",
+      "Release date": "2024-11-18",
       "Download": "https://oruaudio.gumroad.com/l/pureclip",
-      "Description": "Pure clipping for precise audio control.",
+      "Description": "A full-featured clipper for precise audio control.",
       "Price": "Free",
       "StoreThumb": "thumbnails/pureclip.png"
     },
@@ -224,6 +224,53 @@
       "Description": "Slow-motion audio effects for experimental sound.",
       "Price": "Free",
       "StoreThumb": "thumbnails/nasko.png"
-    }
+    },    
+    {
+      "Title": "Disperse-X",
+      "Author": "ORU Audio",
+      "Release date": "2024-11-25",
+      "Download": "https://oruaudio.gumroad.com/l/disperse-x",
+      "Description": "A magical phase dispersion machine.",
+      "Price": "Free",
+      "StoreThumb": "thumbnails/Disperse-X.png"
+    },    
+    {
+      "Title": "T4-PE",
+      "Author": "ORU Audio",
+      "Release date": "2024-11-18",
+      "Download": "https://oruaudio.gumroad.com/l/t4pe/plugdatashop",
+      "Description": "An inspiring tape sound design tool.",
+      "Price": "13.99",
+      "StoreThumb": "thumbnails/T4-PE.png"
+    },    
+    {
+      "Title": "T4-PE Lite",
+      "Author": "ORU Audio",
+      "Release date": "2024-11-18",
+      "Download": "https://oruaudio.gumroad.com/l/t4pelite",
+      "Description": "A one-knob vibe machine.",
+      "Price": "Free",
+      "StoreThumb": "thumbnails/T4-PE-Lite.png"
+    },    
+    {
+      "Title": "HOLO-106",
+      "Author": "ORU Audio",
+      "Release date": "2024-11-18",
+      "Download": "https://oruaudio.gumroad.com/l/holo106/plugdatashop",
+      "Description": "A faithful emulation of the iconic Juno-106 chorus ciruit with some additional modern features.",
+      "Price": "13.99",
+      "StoreThumb": "thumbnails/HOLO-106.png"
+    },    
+    {
+      "Title": "HOLO-106 Lite",
+      "Author": "ORU Audio",
+      "Release date": "2024-11-18",
+      "Download": "https://oruaudio.gumroad.com/l/holo106lite",
+      "Description": "Holographic analog magic with no bells or whistles.",
+      "Price": "Free",
+      "StoreThumb": "thumbnails/HOLO-106-Lite.png"
+    },
+    
+    
   ]
 }
