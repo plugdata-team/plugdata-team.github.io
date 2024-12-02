@@ -99,7 +99,7 @@ fetch("store.json")
         slide.classList.add("slide");
 
         slide.innerHTML = `
-          <img src="containers/webp/${highlight.Image}.webp" alt="${highlight.Title || "Highlight"}">
+          <img src="thumbnails/webp/${highlight.Image}.webp" alt="${highlight.Title || "Highlight"}">
         `;
 
         // Add click event to open the popup if "Data" exists
