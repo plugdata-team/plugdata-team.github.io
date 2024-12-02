@@ -1,0 +1,159 @@
+.store-container {
+    display: flex;
+    width: 78%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.tile {
+    flex: 1 1 calc(25% - 20px);
+    max-width: 320px; /* Prevent tiles from growing too large */
+    min-width: 250px; /* Prevent tiles from shrinking too much */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px;
+    height: 420px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+}
+
+.store-container::after {
+    content: "";
+    flex: auto; /* Fills the remaining space in the row */
+}
+
+store-container > .tile {
+    margin-bottom: 20px; /* Ensure consistent vertical spacing */
+}
+
+.tile:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.tile img {
+    width: 100%;
+    height: 55%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.tile-content {
+    position: relative;
+    padding: 15px;
+    height: 185px;
+}
+
+.tile-title {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.tile-author {
+    color: #555;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.tile-description {
+    font-size: 0.95em;
+    margin: 10px 0;
+}
+
+.price {
+    position: absolute;
+    bottom: 15px; /* 5px from the bottom of the parent */
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+}
+
+body {
+    display: flex; /* Use flexbox to align children */
+    justify-content: center; /* Horizontally center children */
+    align-items: center; /* Optionally center children vertically */
+    min-height: 100vh; /* Ensure the body fills the viewport height */
+    margin: 0; /* Remove default body margin */
+}
+
+.carousel-container {
+    width: 78%;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.slide img {
+    width: 100%;
+    height: 480px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    width: 56px;
+    height: 56px;
+    transform: translateY(-100%);
+    background: rgba(0, 0, 0, 0); /* Semi-transparent background */
+    color: white;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 100; /* Ensure it's above the slides */
+    padding: 17px 17px;
+    border-radius: 100%;
+}
+
+.carousel-nav:focus {
+    outline: none; /* Ensure no focus outline is visible */
+    box-shadow: none; /* Disable any focus-related box shadow */
+}
+
+/* Position for the previous button */
+.carousel-nav.prev {
+    left: 10px; /* Move it to the left of the carousel */
+}
+
+/* Position for the next button */
+.carousel-nav.next {
+    right: 10px; /* Move it to the right of the carousel */
+}
+
+/* Ensure slides are clickable */
+.carousel .slide {
+    pointer-events: auto; /* Allow slides to capture clicks */
+    z-index: 1; /* Place slides below nav buttons */
+}
+
+/* Optional: add hover effects for nav buttons */
+.carousel-nav:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+    .slide img {
+        width: 100%;
+        height: 100%;
+    }
+}

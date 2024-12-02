@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="download_files/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="./main.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="./store.css" />
+        <title>Store Item</title>
+        <style>
+            .container {
+                width: 80%;
+                margin: 2rem auto;
+                background: #fff;
+                padding: 2rem;
+                border-radius: 8px;
+            }
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 2px solid #ddd;
+                padding-bottom: 1rem;
+                margin-bottom: 1rem;
+            }
+            .header h1 {
+                margin: 0;
+                font-size: 1.8rem;
+            }
+            .header .author {
+                font-size: 1rem;
+                color: #555;
+            }
+            .screenshot-container {
+                background-color: #f0f0f0; /* Light grey background */
+                padding: 20px;
+                border-radius: 8px;
+                margin-bottom: 1rem;
+                width: 100vw; /* Full viewport width */
+                position: relative;
+                left: 50%; /* Offset from the left side */
+                right: 50%; /* Offset from the right side */
+                margin-left: -50vw; /* Offset to center it */
+                margin-right: -50vw; /* Offset to center it */
+                display: flex;
+                justify-content: center; /* Center image horizontally */
+            }
+
+            .screenshot {
+                width: auto;
+                max-width: 100%;
+                height: auto; /* Keep original aspect ratio */
+                border-radius: 8px;
+            }
+            .description {
+                margin-bottom: 2rem;
+            }
+            .related-patches {
+                margin-top: 2rem;
+            }
+            .related-patches h2 {
+                font-size: 1.4rem;
+                border-bottom: 2px solid #ddd;
+                padding-bottom: 0.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .header .download-button {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                background-color: #2196f3; /* Blue background */
+                color: white;
+                border: none;
+                bottom: 3px;
+                right: 3px;
+                border-radius: 8px;
+                padding: 10px 14px;
+                padding-right: 22px;
+                font-size: 15px;
+                font-weight: bold;
+                cursor: pointer;
+                transition:
+                    background-color 0.3s ease,
+                    transform 0.2s ease;
+            }
+            .header .download-button:hover {
+                background-color: #1976d2; /* Darker blue on hover */
+            }
+
+            .header .download-button:active {
+                transform: scale(0.95); /* Slight scale-down effect */
+            }
+
+            .header .download-button svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .header .download-button span {
+                line-height: 24px;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <button
+                class="menu-button enabled"
+                title="Toggle navigation menu"
+                aria-label="Toggle navigation menu"
+                aria-expanded="false"
+            >
+                <svg
+                    aria-hidden="true"
+                    height="24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path d="M0 6v1h24V6zm0 6v1h24v-1zm0 6v1h24v-1z"></path>
+                </svg>
+            </button>
+            <div class="nav-content">
+                <ul>
+                    <li>
+                        <a href="https://plugdata.org/" class="logomark"
+                            ><img
+                                src="./images/logo.png"
+                                alt="plugdata"
+                                style="width: 24px; height: auto"
+                        /></a>
+                    </li>
+                    <li><a href="https://plugdata.org/">Home</a></li>
+                    <li>
+                        <a href="https://plugdata.org/about.html" target="_self"
+                            >About</a
+                        >
+                    </li>
+                    <li>
+                        <a href="https://plugdata.org/support.html">Support</a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://plugdata.org/download.html"
+                            target="_self"
+                            >Download</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://plugdata.org/documentation.html"
+                            target="_self"
+                            >Documentation</a
+                        >
+                    </li>
+                    <li>
+                        <a href="https://plugdata.org/store.html" target="_self"
+                            >Store</a
+                        >
+                    </li>
+                </ul>
+
+                <style>
+                    .social {
+                        display: inline-block;
+                        cursor: pointer;
+                        margin-right: 12px;
+                    }
+
+                    .logo {
+                        display: inline-block;
+                        height: 28px;
+                        width: auto;
+                        position: relative;
+                        margin-right: -8px;
+                        top: 8px;
+                    }
+                </style>
+
+                <div class="right">
+                    <div
+                        class="social"
+                        onclick="location.href = 'https://github.com/plugdata-team/plugdata';"
+                    >
+                        <img src="./images/github.png" class="logo" />
+                        <a>View on GitHub</a>
+                    </div>
+
+                    <div
+                        class="social"
+                        onclick="location.href = 'https://discord.gg/eT2RxdF9Nq';"
+                    >
+                        <img src="./images/discord.png" class="logo" />
+                        <a>Join our Discord</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="header">
+                <div>
+                    <h1 id="item-title">Item Title</h1>
+                    <p class="author" id="item-author">by Author Name</p>
+                </div>
+                <a href="#" class="download-button" id="item-download"
+                    >Download</a
+                >
+            </div>
+            <div class="description" id="item-description">
+                <p>
+                    Item description goes here. It will be replaced dynamically.
+                </p>
+            </div>
+            <div class="screenshot-container">
+                <img
+                    src="#"
+                    alt="Screenshot"
+                    class="screenshot"
+                    id="item-thumb"
+                />
+            </div>
+            <div class="related-patches">
+                <h2>More patches</h2>
+                <ul class="store-container" id="related-patches"></ul>
+            </div>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const itemId = urlParams.get("id");
+
+                fetch("store.json")
+                    .then((response) => response.json())
+                    .then((data) => {
+                        const patches = data.Patches;
+                        const item = patches.find((i) => i.Title === itemId);
+
+                        if (!item) {
+                            document.querySelector(".container").innerHTML =
+                                "<p>Item not found.</p>";
+                            return;
+                        }
+
+                        // Populate main item details
+                        document.getElementById("item-title").textContent =
+                            item.Title;
+                        document.getElementById("item-author").textContent =
+                            `by ${item.Author}`;
+                        document.getElementById(
+                            "item-description",
+                        ).textContent = item.Description;
+                        document.getElementById("item-thumb").src =
+                            item.StoreThumb;
+                        document.getElementById("item-thumb").alt = item.Title;
+
+                        let downloadButton =
+                            document.getElementById("item-download");
+                        if (item.Price === "Free") {
+                            downloadButton.innerHTML = `
+                          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5.25 20.5h13.498a.75.75 0 0 1 .101 1.493l-.101.007H5.25a.75.75 0 0 1-.102-1.494l.102-.006h13.498H5.25Zm6.633-18.498L12 1.995a1 1 0 0 1 .993.883l.007.117v12.59l3.294-3.293a1 1 0 0 1 1.32-.083l.094.084a1 1 0 0 1 .083 1.32l-.083.094-4.997 4.996a1 1 0 0 1-1.32.084l-.094-.083-5.004-4.997a1 1 0 0 1 1.32-1.498l.094.083L11 15.58V2.995a1 1 0 0 1 .883-.993L12 1.995l-.117.007Z" fill="#ffffff"/></svg>
+                          <span>Download</span>
+                        `;
+                        } else {
+                            downloadButton.innerHTML = `
+                            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10.495 14.501v7.498H7.498v-7.498h2.996Zm6.76-1.5h-3.502a.75.75 0 0 0-.75.75v3.502c0 .414.336.75.75.75h3.502a.75.75 0 0 0 .75-.75v-3.502a.75.75 0 0 0-.75-.75Zm-.751 1.5v2.002h-2.001v-2.002h2ZM8.166 7.002H3.5v1.165c0 1.18.878 2.157 2.016 2.311l.157.016.16.005c1.234 0 2.245-.959 2.327-2.173l.005-.16V7.003Zm6.165 0H9.666v1.165c0 1.18.878 2.157 2.016 2.311l.157.016.16.005c1.234 0 2.245-.959 2.327-2.173l.005-.16V7.003Zm6.167 0h-4.665v1.165c0 1.18.878 2.157 2.017 2.311l.156.016.16.005c1.235 0 2.245-.959 2.327-2.173l.006-.16-.001-1.164ZM9.06 3.5H6.326L4.469 5.502h3.977L9.06 3.5Zm4.307 0H10.63l-.616 2.002h3.97L13.369 3.5Zm4.305 0h-2.734l.614 2.002h3.977L17.673 3.5ZM2.2 5.742l3.25-3.502a.75.75 0 0 1 .446-.233L6 2h12a.75.75 0 0 1 .474.169l.076.07 3.272 3.53.03.038c.102.136.148.29.148.44L22 8.168c0 .994-.379 1.9-1 2.58V21.25a.75.75 0 0 1-.649.743L20.25 22l-8.254-.001v-8.248a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v8.248L3.75 22a.75.75 0 0 1-.743-.648l-.007-.102V10.748a3.818 3.818 0 0 1-.995-2.384l-.005-.197V6.29a.728.728 0 0 1 .096-.408l.05-.076.054-.065Z" fill="#ffffff"/></svg>
+                          <span>Go to store</span>
+                        `;
+                        }
+                        downloadButton.addEventListener("click", () => {
+                            window.open(
+                                item.Download,
+                                "_blank", // <- This is what makes it open in a new window.
+                            );
+                        });
+
+                        // Shuffle patches
+                        for (let i = patches.length - 1; i > 0; i--) {
+                            const j = Math.floor(Math.random() * (i + 1));
+                            [patches[i], patches[j]] = [patches[j], patches[i]];
+                        }
+
+                        // Find related patches by the same author
+                        let relatedPatches = patches
+                            .filter(
+                                (i) =>
+                                    i.Author === item.Author &&
+                                    i.Title !== item.Title,
+                            )
+                            .slice(0, 4);
+
+                        if (relatedPatches.length == 0) {
+                            relatedPatches = patches.slice(0, 4);
+                        }
+                        const relatedPatchesContainer =
+                            document.getElementById("related-patches");
+
+                        relatedPatchesContainer.style.width = "100%";
+                        relatedPatches.forEach((patch) => {
+                            // Create tile container
+                            const tile = document.createElement("div");
+                            tile.classList.add("tile");
+
+                            // Add thumbnail
+                            const thumb = document.createElement("img");
+                            thumb.src = patch.StoreThumb;
+                            thumb.alt = patch.Title;
+                            tile.appendChild(thumb);
+
+                            // Add content section
+                            const content = document.createElement("div");
+                            content.classList.add("tile-content");
+
+                            // Add title
+                            const title = document.createElement("h3");
+                            title.classList.add("tile-title");
+                            title.textContent = patch.Title;
+                            content.appendChild(title);
+
+                            // Add author
+                            const author = document.createElement("p");
+                            author.classList.add("tile-author");
+                            author.textContent = `By ${patch.Author}`;
+                            content.appendChild(author);
+
+                            // Add description
+                            const description = document.createElement("p");
+                            description.classList.add("tile-description");
+                            description.textContent = patch.Description;
+                            content.appendChild(description);
+
+                            // Price
+                            const price = document.createElement("span");
+                            price.classList.add("price");
+                            price.textContent = patch.Price;
+                            content.appendChild(price);
+
+                            tile.appendChild(content);
+                            tile.addEventListener("click", () => {
+                                window.location.href = `store-item.html?id=${encodeURIComponent(patch.Title)}`;
+                            });
+
+                            // Append tile to store container
+                            relatedPatchesContainer.appendChild(tile);
+                        });
+
+                        for (let i = 0; i < 8; i++) {
+                            const tile = document.createElement("div");
+                            tile.classList.add("tile");
+                            tile.style.height = 0;
+                            tile.style.visibility = "hidden";
+                            relatedPatchesContainer.appendChild(tile);
+                        }
+                    })
+                    .catch((error) =>
+                        console.error("Error loading item data:", error),
+                    );
+            });
+        </script>
+    </body>
+</html>
