@@ -250,7 +250,7 @@
                             "item-description",
                         ).textContent = item.Description;
                         document.getElementById("item-thumb").src =
-                            "thumbnails/webp/" + item.StoreThumb;
+                            "thumbnails/webp/" + item.StoreThumb + ".webp";
                         document.getElementById("item-thumb").alt = item.Title;
 
                         let downloadButton =
@@ -302,7 +302,8 @@
 
                             // Add thumbnail
                             const thumb = document.createElement("img");
-                            thumb.src = "thumbnails/webp/" + patch.StoreThumb;
+                            thumb.src =
+                                "thumbnails/webp/" + patch.StoreThumb + ".webp";
                             thumb.alt = patch.Title;
                             tile.appendChild(thumb);
 

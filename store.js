@@ -31,7 +31,7 @@ fetch("store.json")
 
       // Add thumbnail
       const thumb = document.createElement("img");
-      thumb.src = "thumbnails/webp/" + patch.StoreThumb;
+      thumb.src = "thumbnails/webp/" + patch.StoreThumb + ".webp";
       thumb.alt = patch.Title;
       tile.appendChild(thumb);
 
