@@ -6,7 +6,12 @@
         <link rel="stylesheet" href="download_files/font-awesome.min.css" />
         <link rel="stylesheet" type="text/css" media="all" href="./main.css" />
         <link rel="stylesheet" type="text/css" media="all" href="./store.css" />
-        <title>Store Item</title>
+        <title>plugdata - Store</title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="https://plugdata.org/images/favicon.ico"
+        />
         <style>
             .container {
                 width: 80%;
@@ -254,7 +259,20 @@
                         </svg>
                         <span>Download</span>
                     </div>
-                    <div class="dropdown-toggle" id="dropdown-toggle">▼</div>
+                    <div class="dropdown-toggle" id="dropdown-toggle">
+                        <svg
+                            width="24"
+                            height="24"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M4.293 8.293a1 1 0 0 1 1.414 0L12 14.586l6.293-6.293a1 1 0 1 1 1.414 1.414l-7 7a1 1 0 0 1-1.414 0l-7-7a1 1 0 0 1 0-1.414Z"
+                                fill="#ffffff"
+                            />
+                        </svg>
+                    </div>
                     <div class="dropdown-menu" id="dropdown-menu">
                         <a href="#" class="dropdown-item" id="download-plugdata"
                             >Download as .plugdata</a
@@ -331,10 +349,55 @@
                         `;
                         }
                         downloadButton.addEventListener("click", () => {
-                            window.open(
-                                item.Download,
-                                "_blank", // <- This is what makes it open in a new window.
-                            );
+                            window.open(item.Download, "_blank");
+                        });
+
+                        const downloadZip =
+                            document.getElementById("download-zip");
+                        const downloadPlugdata =
+                            document.getElementById("download-plugdata");
+
+                        downloadZip.addEventListener("click", () => {
+                            window.open(item.Download, "_blank");
+                        });
+
+                        downloadPlugdata.addEventListener("click", () => {
+                            fetch(item.Download)
+                                .then((response) => {
+                                    if (!response.ok) {
+                                        throw new Error(
+                                            "Network response was not ok " +
+                                                response.statusText,
+                                        );
+                                    }
+                                    return response.blob(); // Convert the response to a Blob
+                                })
+                                .then((blob) => {
+                                    // Create a link element
+                                    const link = document.createElement("a");
+
+                                    // Set the download attribute with the new file name and extension
+                                    link.download = item.Title + ".plugdata"; // The desired file name with the new extension
+
+                                    // Create a URL for the Blob and set it as the href of the link
+                                    link.href = URL.createObjectURL(blob);
+
+                                    // Append the link to the document
+                                    document.body.appendChild(link);
+
+                                    // Programmatically click the link to trigger the download
+                                    link.click();
+
+                                    // Clean up by revoking the object URL and removing the link
+                                    URL.revokeObjectURL(link.href);
+                                    document.body.removeChild(link);
+                                })
+                                .catch((error) => {
+                                    console.error(
+                                        "There has been a problem with your fetch operation:",
+                                        error,
+                                    );
+                                });
                         });
 
                         // Shuffle patches
@@ -430,6 +493,7 @@
                             ? "none"
                             : "block";
                 });
+
                 document.addEventListener("click", () => {
                     dropdownMenu.style.display = "none";
                 });
