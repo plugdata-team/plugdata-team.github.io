@@ -432,7 +432,11 @@
                             document.getElementById("download-main");
                         const toggleButton =
                             document.getElementById("dropdown-toggle");
-                        if (item.Price === "Free") {
+                        let directDownload =
+                            item.Price === "Free" &&
+                            (item.Download.endsWith(".zip") ||
+                                item.Download.endsWith(".plugdata"));
+                        if (directDownload) {
                             downloadButton.innerHTML = `
                           <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5.25 20.5h13.498a.75.75 0 0 1 .101 1.493l-.101.007H5.25a.75.75 0 0 1-.102-1.494l.102-.006h13.498H5.25Zm6.633-18.498L12 1.995a1 1 0 0 1 .993.883l.007.117v12.59l3.294-3.293a1 1 0 0 1 1.32-.083l.094.084a1 1 0 0 1 .083 1.32l-.083.094-4.997 4.996a1 1 0 0 1-1.32.084l-.094-.083-5.004-4.997a1 1 0 0 1 1.32-1.498l.094.083L11 15.58V2.995a1 1 0 0 1 .883-.993L12 1.995l-.117.007Z" fill="#ffffff"/></svg>
                           <span>Download</span>
@@ -447,7 +451,18 @@
                         `;
                         }
                         downloadButton.addEventListener("click", () => {
-                            window.open(item.Download, "_blank");
+                            if (directDownload) {
+                                window.open(
+                                    "store-download.html?title=" +
+                                        item.Title +
+                                        "&download=" +
+                                        item.Download +
+                                        "&type=zip",
+                                    "_blank",
+                                );
+                            } else {
+                                window.open(item.Download, "_blank");
+                            }
                         });
 
                         const downloadZip =
@@ -456,46 +471,25 @@
                             document.getElementById("download-plugdata");
 
                         downloadZip.addEventListener("click", () => {
-                            window.open(item.Download, "_blank");
+                            window.open(
+                                "store-download.html?title=" +
+                                    item.Title +
+                                    "&download=" +
+                                    item.Download +
+                                    "&type=zip",
+                                "_blank",
+                            );
                         });
 
                         downloadPlugdata.addEventListener("click", () => {
-                            fetch(item.Download)
-                                .then((response) => {
-                                    if (!response.ok) {
-                                        throw new Error(
-                                            "Network response was not ok " +
-                                                response.statusText,
-                                        );
-                                    }
-                                    return response.blob(); // Convert the response to a Blob
-                                })
-                                .then((blob) => {
-                                    // Create a link element
-                                    const link = document.createElement("a");
-
-                                    // Set the download attribute with the new file name and extension
-                                    link.download = item.Title + ".plugdata"; // The desired file name with the new extension
-
-                                    // Create a URL for the Blob and set it as the href of the link
-                                    link.href = URL.createObjectURL(blob);
-
-                                    // Append the link to the document
-                                    document.body.appendChild(link);
-
-                                    // Programmatically click the link to trigger the download
-                                    link.click();
-
-                                    // Clean up by revoking the object URL and removing the link
-                                    URL.revokeObjectURL(link.href);
-                                    document.body.removeChild(link);
-                                })
-                                .catch((error) => {
-                                    console.error(
-                                        "There has been a problem with your fetch operation:",
-                                        error,
-                                    );
-                                });
+                            window.open(
+                                "store-download.html?title=" +
+                                    item.Title +
+                                    "&download=" +
+                                    item.Download +
+                                    "&type=plugdata",
+                                "_blank",
+                            );
                         });
 
                         // Shuffle patches
@@ -597,5 +591,31 @@
                 });
             });
         </script>
+        <footer>
+            <div>
+                <p>Copyright © 2023 Timothy Schoen.</p>
+            </div>
+            <ul>
+                <li><a href="https://plugdata.org/">Home</a></li>
+                <li>
+                    <a href="https://plugdata.org/about.html" target="_self"
+                        >About</a
+                    >
+                </li>
+                <li><a href="https://plugdata.org/support.html">Support</a></li>
+                <li>
+                    <a href="https://plugdata.org/download.html" target="_self"
+                        >Download</a
+                    >
+                </li>
+                <li>
+                    <a
+                        href="https://plugdata.org/documentation.html"
+                        target="_self"
+                        >Documentation</a
+                    >
+                </li>
+            </ul>
+        </footer>
     </body>
 </html>

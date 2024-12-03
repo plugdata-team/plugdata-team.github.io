@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <title>plugdata - Store</title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="https://plugdata.org/images/favicon.ico"
+        />
+        <link rel="stylesheet" href="download_files/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="./main.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+
+    <body>
+        <nav>
+            <script type="text/javascript">
+                function toggleMenu() {
+                    var e = document
+                        .getElementById("menu-button")
+                        .getAttribute("aria-expanded");
+                    (e = "true" == e ? "false" : "true"),
+                        document
+                            .getElementById("menu-button")
+                            .setAttribute("aria-expanded", e);
+                }
+            </script>
+            <button
+                class="menu-button enabled"
+                title="Toggle navigation menu"
+                aria-label="Toggle navigation menu"
+                aria-expanded="false"
+                id="menu-button"
+                onclick="toggleMenu()"
+            >
+                <svg
+                    aria-hidden="true"
+                    height="24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path d="M0 6v1h24V6zm0 6v1h24v-1zm0 6v1h24v-1z"></path>
+                </svg>
+            </button>
+            <div class="nav-content">
+                <ul>
+                    <li>
+                        <a href="https://plugdata.org/" class="logomark"
+                            ><img
+                                src="./images/logo.png"
+                                alt="plugdata"
+                                style="width: 24px; height: auto"
+                        /></a>
+                    </li>
+                    <li><a href="https://plugdata.org/">Home</a></li>
+                    <li>
+                        <a href="https://plugdata.org/about.html" target="_self"
+                            >About</a
+                        >
+                    </li>
+                    <li>
+                        <a href="https://plugdata.org/support.html">Support</a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://plugdata.org/download.html"
+                            target="_self"
+                            >Download</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://plugdata.org/documentation.html"
+                            target="_self"
+                            >Documentation</a
+                        >
+                    </li>
+                    <li>
+                        <a href="https://plugdata.org/store.html" target="_self"
+                            >Store</a
+                        >
+                    </li>
+                </ul>
+
+                <style>
+                    .social {
+                        display: inline-block;
+                        cursor: pointer;
+                        margin-right: 12px;
+                    }
+
+                    .logo {
+                        display: inline-block;
+                        height: 28px;
+                        width: auto;
+                        position: relative;
+                        margin-right: -8px;
+                        top: 8px;
+                    }
+                    body {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center; /* Centers the content horizontally */
+                        justify-content: flex-start; /* Aligns content to the top */
+                        min-height: 100vh;
+                        margin: 0;
+                    }
+
+                    .container {
+                        width: 100%;
+                        max-width: 1200px; /* Set a max-width for larger screens */
+                        margin: 0 auto;
+                        padding: 20px;
+                    }
+                </style>
+
+                <div class="right">
+                    <div
+                        class="social"
+                        onclick="location.href = 'https://github.com/plugdata-team/plugdata';"
+                    >
+                        <img src="./images/github.png" class="logo" />
+                        <a>View on GitHub</a>
+                    </div>
+
+                    <div
+                        class="social"
+                        onclick="location.href = 'https://discord.gg/eT2RxdF9Nq';"
+                    >
+                        <img src="./images/discord.png" class="logo" />
+                        <a>Join our Discord</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <h2
+                id="status-message"
+                style="
+                    width: 100%;
+                    text-align: center;
+                    font-family: Inter;
+                    font-weight: 700;
+                    border-radius: 0%;
+                    border: medium none;
+                    outline: none;
+                    font-size: 36px;
+                    margin-top: 40px;
+                    margin-bottom: 60px;
+                    color: rgb(51, 51, 51);
+                    background-color: transparent;
+                "
+            >
+                Downloading...
+            </h2>
+            <a
+                style="
+                    margin-bottom: 30px;
+                    width: 100%;
+                    text-align: center;
+                    font-family: Inter;
+                    font-weight: 700;
+                    border-radius: 0%;
+                    border: medium none;
+                    outline: none;
+                    font-size: 24px;
+                    color: rgb(51, 51, 51);
+                    background-color: transparent;
+                "
+                href="store.html"
+                class="read-more"
+                >Return to store</a
+            >
+        </div>
+
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const item = {
+                Title: params.get("title"),
+                Download: params.get("download"),
+                Type: params.get("type"),
+            };
+
+            // Update the status message with the patch title
+            const statusMessage = document.getElementById("status-message");
+            if (item.Title) {
+                statusMessage.textContent = `Downloading ${item.Title}...`;
+            }
+
+            if (item.Type == "zip") {
+                window.open(item.Download, "_blank");
+            } else {
+                fetch(item.Download)
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error(
+                                "Network response was not ok " +
+                                    response.statusText,
+                            );
+                        }
+                        return response.blob(); // Convert the response to a Blob
+                    })
+                    .then((blob) => {
+                        // Create a link element
+                        const link = document.createElement("a");
+
+                        // Set the download attribute with the new file name and extension
+                        link.download = item.Title + ".plugdata"; // The desired file name with the new extension
+
+                        // Create a URL for the Blob and set it as the href of the link
+                        link.href = URL.createObjectURL(blob);
+
+                        // Append the link to the document
+                        document.body.appendChild(link);
+
+                        // Programmatically click the link to trigger the download
+                        link.click();
+
+                        // Change the status message to "Download complete"
+                        statusMessage.textContent = `Download complete: ${item.Title}`;
+
+                        // Clean up by revoking the object URL and removing the link
+                        URL.revokeObjectURL(link.href);
+                        document.body.removeChild(link);
+                    })
+                    .catch((error) => {
+                        console.error(
+                            "There has been a problem with your fetch operation:",
+                            error,
+                        );
+                    });
+            }
+        </script>
+
+        <footer>
+            <div>
+                <p>Copyright © 2023 Timothy Schoen.</p>
+            </div>
+            <ul>
+                <li><a href="https://plugdata.org/">Home</a></li>
+                <li>
+                    <a href="https://plugdata.org/about.html" target="_self"
+                        >About</a
+                    >
+                </li>
+                <li><a href="https://plugdata.org/support.html">Support</a></li>
+                <li>
+                    <a href="https://plugdata.org/download.html" target="_self"
+                        >Download</a
+                    >
+                </li>
+                <li>
+                    <a
+                        href="https://plugdata.org/documentation.html"
+                        target="_self"
+                        >Documentation</a
+                    >
+                </li>
+            </ul>
+        </footer>
+    </body>
+</html>
