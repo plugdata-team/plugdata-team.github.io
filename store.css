@@ -15,7 +15,7 @@
     border-radius: 8px;
     overflow: hidden;
     width: 300px;
-    height: 420px;
+    height: 475px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s;
 }
@@ -43,7 +43,7 @@ store-container > .tile {
 .tile-content {
     position: relative;
     padding: 15px;
-    height: 185px;
+    height: 195px;
 }
 
 .tile-title {
@@ -64,7 +64,7 @@ store-container > .tile {
 
 .price {
     position: absolute;
-    bottom: 15px; /* 5px from the bottom of the parent */
+    bottom: 0px; /* 5px from the bottom of the parent */
     font-size: 1em;
     font-weight: bold;
     color: #333;
