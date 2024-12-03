@@ -31,7 +31,7 @@ fetch("store.json")
 
       // Add thumbnail
       const thumb = document.createElement("img");
-      thumb.src = patch.StoreThumb;
+      thumb.src = "thumbnails/webp/" + patch.StoreThumb + ".webp";
       thumb.alt = patch.Title;
       tile.appendChild(thumb);
 
@@ -75,13 +75,13 @@ fetch("store.json")
     const highlightData = {
       Highlights: [
         {
-          Image: "thumbnails/freakytable.png",
+          Image: "freakytable",
           Data: jsonData.Patches.find(
             (patch) => patch.Title === "EB-FreakyTable",
           ),
         },
         {
-          Image: "thumbnails/photosynthesis.png",
+          Image: "photosynthesis",
           Data: jsonData.Patches.find(
             (patch) => patch.Title === "Photosynthesis",
           ),
@@ -99,7 +99,7 @@ fetch("store.json")
         slide.classList.add("slide");
 
         slide.innerHTML = `
-          <img src="${highlight.Image}" alt="${highlight.Title || "Highlight"}">
+          <img src="thumbnails/webp/${highlight.Image}.webp" alt="${highlight.Title || "Highlight"}">
         `;
 
         // Add click event to open the popup if "Data" exists
