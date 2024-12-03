@@ -184,14 +184,19 @@
             };
 
             // Update the status message with the patch title
-            const statusMessage = document.getElementById("status-message");
-            if (item.Title) {
-                statusMessage.textContent = `Downloading ${item.Title}...`;
-            }
 
             if (item.Type == "zip") {
+                const statusMessage = document.getElementById("status-message");
+                if (item.Title) {
+                    statusMessage.textContent = `${item.Title} download started`;
+                }
                 window.open(item.Download, "_blank");
             } else {
+                const statusMessage = document.getElementById("status-message");
+                if (item.Title) {
+                    statusMessage.textContent = `Downloading ${item.Title}...`;
+                }
+
                 fetch(item.Download)
                     .then((response) => {
                         if (!response.ok) {
