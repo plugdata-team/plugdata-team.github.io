@@ -148,7 +148,7 @@
       "Title": "PureCLIP",
       "Author": "ORU Audio",
       "Release date": "2024-11-18",
-      "Download": "https://oruaudio.gumroad.com/l/pureclip",
+      "Download": "https://storage.googleapis.com/plugdata-discovery/PureCLIP.zip",
       "Description": "A full-featured clipper for precise audio control.",
       "Price": "Free",
       "StoreThumb": "PureCLIP"
@@ -196,7 +196,7 @@
       "Description": "Unique audio transformations with bit-morphing techniques.",
       "Price": "Free",
       "StoreThumb": "bmthumb",
-      "Download": "https://lightningpig.gumroad.com/l/bitmorph"
+      "Download": "https://storage.googleapis.com/plugdata-discovery/LP-Bitmorph%20v0.1.zip"
     },
     {
       "Title": "EB-SpectraVeil",
@@ -229,7 +229,7 @@
       "Title": "Disperse-X",
       "Author": "ORU Audio",
       "Release date": "2024-11-25",
-      "Download": "https://oruaudio.gumroad.com/l/disperse-x",
+      "Download": "https://storage.googleapis.com/plugdata-discovery/Disperse-X.zip",
       "Description": "A magical phase dispersion machine.",
       "Price": "Free",
       "StoreThumb": "Disperse-X"
@@ -265,7 +265,7 @@
       "Title": "HOLO-106 Lite",
       "Author": "ORU Audio",
       "Release date": "2024-11-18",
-      "Download": "https://oruaudio.gumroad.com/l/holo106lite",
+      "Download": "https://storage.googleapis.com/plugdata-discovery/HOLO-106%20Lite.zip",
       "Description": "Holographic analog magic with no bells or whistles.",
       "Price": "Free",
       "StoreThumb": "HOLO-106-Lite"
