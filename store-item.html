@@ -452,6 +452,7 @@
                         }
                         downloadButton.addEventListener("click", () => {
                             if (directDownload) {
+                                window.open(item.Download, "_blank");
                                 window.open(
                                     "store-download.html?title=" +
                                         item.Title +
@@ -471,6 +472,7 @@
                             document.getElementById("download-plugdata");
 
                         downloadZip.addEventListener("click", () => {
+                            window.open(item.Download, "_blank");
                             window.open(
                                 "store-download.html?title=" +
                                     item.Title +
