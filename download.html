@@ -21,11 +21,24 @@
 
     <body style="background: rgb(255, 255, 255)">
         <nav>
+            <script type="text/javascript">
+                function toggleMenu() {
+                    var e = document
+                        .getElementById("menu-button")
+                        .getAttribute("aria-expanded");
+                    (e = "true" == e ? "false" : "true"),
+                        document
+                            .getElementById("menu-button")
+                            .setAttribute("aria-expanded", e);
+                }
+            </script>
             <button
                 class="menu-button enabled"
                 title="Toggle navigation menu"
                 aria-label="Toggle navigation menu"
                 aria-expanded="false"
+                id="menu-button"
+                onclick="toggleMenu()"
             >
                 <svg
                     aria-hidden="true"

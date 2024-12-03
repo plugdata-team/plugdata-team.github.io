@@ -25,10 +25,11 @@
 </head>
 <body class="page-index">
 <nav>
-<button class="menu-button enabled" title="Toggle navigation menu" aria-label="Toggle navigation menu" aria-expanded="false"><svg aria-hidden="true" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 6v1h24V6zm0 6v1h24v-1zm0 6v1h24v-1z"></path></svg></button>
+<script type="text/javascript">function toggleMenu(){var e=document.getElementById("menu-button").getAttribute("aria-expanded");e="true"==e?"false":"true",document.getElementById("menu-button").setAttribute("aria-expanded",e)}</script>
+<button class="menu-button enabled" title="Toggle navigation menu" aria-label="Toggle navigation menu" aria-expanded="false" id="menu-button" onclick="toggleMenu()"><svg aria-hidden="true" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 6v1h24V6zm0 6v1h24v-1zm0 6v1h24v-1z"></path></svg></button>
 <div class="nav-content">
 <ul>
-    
+
 <li><a href="https://plugdata.org/" class="logomark"><img src="./images/logo_small.png" alt="plugdata" style="width: 24px; height: auto;"></a></li>
 <li><a href="https://plugdata.org/">Home</a></li>
 <li><a href="https://plugdata.org/about.html" target="_self">About</a></li>
@@ -43,7 +44,7 @@
       cursor: pointer;
       margin-right: 12px;
     }
-  
+
     .logo {
       display: inline-block;
       height: 28px;
@@ -53,7 +54,7 @@
       top: 8px;
     }
   </style>
-  
+
 <div class="right">
     <div class="social" onclick="location.href = 'https://github.com/plugdata-team/plugdata';">
     <img src="./images/github.png" class="logo">
@@ -65,7 +66,7 @@
     <a>Join our Discord</a>
     </div>
 </div>
-  
+
 </div>
 </nav>
 <div id="content-container">
@@ -105,7 +106,7 @@
 <section id="home-card">
 <div class="app-display app-display--overflow">
   <div class="grid-container app-display__image">
-    <img class="grid-image" id="grid-image" src="./images/object_grid.png" alt="Grid of Objects"> 
+    <img class="grid-image" id="grid-image" src="./images/object_grid.png" alt="Grid of Objects">
   </div>
 <script>
 function updateScroll() {

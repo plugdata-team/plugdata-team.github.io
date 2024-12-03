@@ -305,6 +305,12 @@ nav ul:first-of-type {
     flex-direction: column;
 }
 
+nav .right {
+    display: inherit;
+    flex-direction: inherit;
+    padding: 0 18px;
+}
+
 nav a,
 nav a:visited,
 nav li {
@@ -382,6 +388,7 @@ nav .logomark {
     line-height: 14px;
     padding: 12px;
     vertical-align: middle;
+    display: none;
 }
 
 nav .logomark .logomark-svg,
@@ -425,8 +432,16 @@ nav .logomark:focus .logomark-svg {
         padding: 0;
     }
 
+    nav .right {
+        padding: 0;
+    }
+
     nav ul:first-of-type {
         flex-direction: row;
+    }
+
+    nav .logomark {
+        display: inline-block;
     }
 }
 
