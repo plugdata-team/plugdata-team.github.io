@@ -269,6 +269,24 @@
       "Description": "Holographic analog magic with no bells or whistles.",
       "Price": "Free",
       "StoreThumb": "HOLO-106-Lite"
+    },
+    {
+      "Title": "WiCo-1",
+      "Author": "Ensonic",
+      "Release date": "2025-01-05",
+      "Download": "https://github.com/ensonic/ensonic-pd/releases/download/v0.1.0/wico1.zip",
+      "Description": "Single band phase-scope with stereo width control.",
+      "Price": "Free",
+      "StoreThumb": "Ensonic-WiCo-1"
+    },
+    {
+      "Title": "WiCo-3",
+      "Author": "Ensonic",
+      "Release date": "2025-01-05",
+      "Download": "https://github.com/ensonic/ensonic-pd/releases/download/v0.1.0/wico3.zip",
+      "Description": "Single band phase-scope with stereo width control.",
+      "Price": "Free",
+      "StoreThumb": "Ensonic-WiCo-3"
     }
   ]
 }
