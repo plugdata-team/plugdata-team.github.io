@@ -287,6 +287,204 @@
       "Description": "Single band phase-scope with stereo width control.",
       "Price": "Free",
       "StoreThumb": "Ensonic-WiCo-3"
-    }
+    },
+    {
+     "Title": "Data Sampler",
+     "Author": "Tadej Supukovic",
+     "Release date": "2024-11-29",
+     "Download": "https://tdspkaudio.gumroad.com/l/datasampler",
+     "Description": "wavetable sampler that can load any file",
+     "Price": "Free",
+     "StoreThumb": "ts_data-sampler"
+    },
+    {
+     "Title": "GS77",
+     "Author": "Knaps",
+     "Release date": "2024-11-27",
+     "Download": "https://www.patreon.com/posts/gs77-full-116821234",
+     "Description": "combination of standard synthesis with the sound of granular synthesis",
+     "Price": "Paid",
+     "StoreThumb": "ks_gs77"
+    },
+    {
+     "Title": "QWERTY-Beats",
+     "Author": "jimfrize",
+     "Release date": "2024-11-16",
+     "Download": "https://github.com/jimfrize/qwerty-beats",
+     "Description": "realtime beat mashing tool",
+     "Price": "Free",
+     "StoreThumb": "jf_qwerty-beats"
+    },
+    {
+     "Title": "SGate",
+     "Author": "Knaps",
+     "Release date": "2024-11-04",
+     "Download": "https://www.patreon.com/posts/sgate-free-for-115304470",
+     "Description": "spectral gate",
+     "Price": "Free",
+     "StoreThumb": "ks_sgate"
+    },
+    {
+     "Title": "SpectralArrayMod",
+     "Author": "Knaps",
+     "Release date": "2024-10-13",
+     "Download": "https://www.patreon.com/posts/spectral-array-113919514",
+     "Description": "FFT effect using arrays to modulate multiple parameters",
+     "Price": "Paid",
+     "StoreThumb": "ks_spectralarraymod"
+    },
+    {
+     "Title": "Corruption Crusher",
+     "Author": "-LightningPig",
+     "Release date": "2024-10-22",
+     "Download": "https://lightningpig.gumroad.com/l/Corruptioncrusher",
+     "Description": "bitcrusher/glitch effect",
+     "Price": "Free",
+     "StoreThumb": "lp_corruption-crusher"
+    },
+    {
+     "Title": "Shutterstock",
+     "Author": "-LightningPig",
+     "Release date": "2024-12-15",
+     "Download": "https://lightningpig.gumroad.com/l/Stuttershock",
+     "Description": "stutter and blur effect",
+     "Price": "Free",
+     "StoreThumb": "lp_shutterstock"
+    },
+    {
+     "Title": "RBLD POLYSHIFTER",
+     "Author": "RBLD Audio",
+     "Release date": "2024-10-18",
+     "Download": "https://rbldaudio.gumroad.com/l/polyshifter",
+     "Description": "multi pitch shifter and octaver", 
+     "Price": "$3",
+     "StoreThumb": "rbld-polyshifter"
+    },
+    {
+     "Title": "mulekick",
+     "Author": "Sound Codex",
+     "Release date": "2024-10-18",
+     "Download": "https://www.patreon.com/posts/free-kick-plugin-114234438",
+     "Description": "Kick designer",
+     "Price": "Free",
+     "StoreThumb": "sc_mulekick"
+    },
+    {
+     "Title": "cyberdrum",
+     "Author": "Sound Codex",
+     "Release date": "2024-10-07",
+     "Download": "https://www.patreon.com/posts/cyberdrum-v1-0-0-113553292",
+     "Description": "experimental drum synth with randomized patterns",
+     "Price": "Paid",
+     "StoreThumb": "sc_cyberdrum"
+    },
+    {
+     "Title": "photosynthesis",
+     "Author": "Sound Codex",
+     "Release date": "2024-09-21",
+     "Download": "Botanica Synth",
+     "Description": "https://www.patreon.com/posts/free-botanica-v1-112494633",
+     "Price": "Free",
+     "StoreThumb": "sc_photosynthesis"
+   },
+   {
+     "Title": "wasteland",
+     "Author": "Sound Codex",
+     "Release date": "2024-09-15",
+     "Download": "https://www.patreon.com/posts/wasteland-v1-0-1-112121744",
+     "Description": "Post-apocalyptic synthesizer",
+     "Price": "Paid",
+     "StoreThumb": "sc_wasteland"
+   },
+   {
+     "Title": "Daedalus",
+     "Author": "Sound Codex",
+     "Release date": "2024-08-05",
+     "Download": "https://www.patreon.com/posts/daedalus-v1-0-2-109511951",
+     "Description": "dual sequencer generative synthesizer, inspired the by Moog Labyrinth",
+     "Price": "Paid",
+     "StoreThumb": "sc_daedalus"
+   },
+   {
+     "Title": "Seq-1",
+     "Author": "Sound Codex",
+     "Release date": "2024-07-06",
+     "Download": "https://www.patreon.com/posts/seq-1-patch-107603506",
+     "Description": "16 step sequencer inspired by the Korg SQ-1",
+     "Price": "Paid",
+     "StoreThumb": "sc_seq-1"
+   },
+    {
+     "Title": "the gusher",
+     "Author": "(un)familiar.",
+     "Release date": "2024-09-22",
+     "Download": "https://unfamiliartunes.gumroad.com/l/the-gusher",
+     "Description": "volume and pitch tracking square wave oscilator effect",
+     "Price": "Free",
+     "StoreThumb": "uf_the-gusher"
+    },
+    {
+      "Title": "Reso-Tape",
+      "Author": "Ben Cheal",
+      "Release date": " 2024-12-24",
+      "Download": "https://bencheal.gumroad.com/l/ResoTape?layout=profile",
+      "Description": "Pitch Shifter inspired by Shepard tones, Karplus strong string synthesis, and tape delays",
+      "Price": "Free",
+      "StoreThumb": "bc_reso-tape"
+     },
+     {
+      "Title": "Gran's Mirror",
+      "Author": "Ben Cheal",
+      "Release date": "2024-08-26",
+      "Download": "https://bencheal.gumroad.com/l/GransMirror",
+      "Description": "granular delay using mirrored spectral filtering and delay sequencing",
+      "Price": "Free",
+      "StoreThumb": "bc_grans-mirror"
+     },
+     {
+      "Title": "EB-Meow",
+      "Author": "Ewan Bristow",
+      "Release date": "XYZ",
+      "Download": "https://ewanbristow.gumroad.com/l/MEOW?layout=profile",
+      "Description": "cat meme based visualizer and rompler",
+      "Price": "Free",
+      "StoreThumb": "eb_meow"
+     },
+     {
+      "Title": "EB-Diøne",
+      "Author": "Ewan Bristow",
+      "Release date": "2024-12-26",
+      "Download": "https://ewanbristow.gumroad.com/l/cbxsb?layout=profile",
+      "Description": "paulstretch inspired spectral resynthesis",
+      "Price": "Free",
+      "StoreThumb": "eb_dione"
+     },
+     {
+      "Title": "EB-SpectralDelay",
+      "Author": "Ewan Bristow",
+      "Release date": "2025-01-09",
+      "Download": "https://ewanbristow.gumroad.com/l/SpectralDelay?layout=profile",
+      "Description": "Multiband Delay with delay, feedback and spectral gate per band",
+      "Price": "Free",
+      "StoreThumb": "eb_spectraldelay"
+     },
+     {
+      "Title": "EB-CatNip",
+      "Author": "Ewan Bristow",
+      "Release date": "2025-01-18",
+      "Download": "https://ewanbristow.gumroad.com/l/CatNip?layout=profile",
+      "Description": "Frequency shifting delay, with some unique features",
+      "Price": "Free",
+      "StoreThumb": "eb_catnip"
+     },
+     {
+      "Title": "N-Prysm",
+      "Author": "Nasko",
+      "Release date": " 2024-12-21",
+      "Download": "https://www.patreon.com/posts/n-prysm-plugdata-118376369",
+      "Description": "realtime resynthesizer that uses a filterbank to drive tuned sine oscillators",
+      "Price": "Paid",
+      "StoreThumb": "n_prysm"
+     }
   ]
 }
