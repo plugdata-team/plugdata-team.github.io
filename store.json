@@ -4,7 +4,7 @@
       "Title": "EB-FreakyTable",
       "Author": "Ewan Bristow",
       "Release date": "2024-11-22",
-      "Download": "https://storage.googleapis.com/plugdata-discovery/EB-FreakyTable(V1.7).zip",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-FreakyTable(V1.7).zip",
       "Description": "Converts harmonics from an audio file into a filter shape",
       "Price": "Free",
       "StoreThumb": "eb-freakytable"
@@ -13,7 +13,7 @@
       "Title": "Florah(LITE)",
       "Author": "Ewan Bristow",
       "Release date": "2024-11-14",
-      "Download": "https://storage.googleapis.com/plugdata-discovery/FlorahLITE(1.2).zip",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/FlorahLITE(1.2).zip",
       "Description": "Spectral multi-band compressor and resonance filter (free)",
       "Price": "Free",
       "StoreThumb": "florah-lite"
@@ -31,7 +31,7 @@
       "Title": "EB-Blasphemy",
       "Author": "Ewan Bristow",
       "Release date": "2024-10-12",
-      "Download": "https://storage.googleapis.com/plugdata-discovery/EB-Blasphemy(V2.0).zip",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-Blasphemy(V2.0).zip",
       "Description": "Drumbreak sampler effects",
       "Price": "Free",
       "StoreThumb": "eb-blasphemy"
@@ -40,7 +40,7 @@
       "Title": "EB-Morph",
       "Author": "Ewan Bristow",
       "Release date": "2024-09-06",
-      "Download": "https://storage.googleapis.com/plugdata-discovery/EB-Morph.zip",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-Morph.zip",
       "Description": "Cepstral morphing effect",
       "Price": "Free",
       "StoreThumb": "eb-morph"
@@ -49,7 +49,7 @@
       "Title": "EB-SpectralSquish",
       "Author": "Ewan Bristow",
       "Release date": "2024-08-19",
-      "Download": "https://storage.googleapis.com/plugdata-discovery/EB-SpectralSquish.zip",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-SpectralSquish.zip",
       "Description": "Spectral squishing filter",
       "Price": "Free",
       "StoreThumb": "eb-spectralsquish"
@@ -58,7 +58,7 @@
       "Title": "EB-Resonator",
       "Author": "Ewan Bristow",
       "Release date": "2024-08-07",
-      "Download": "https://storage.googleapis.com/plugdata-discovery/EB-Resonator(V1.4).zip",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-Resonator(V1.4).zip",
       "Description": "Spectral resonator effect",
       "Price": "Free",
       "StoreThumb": "eb-resonator"
@@ -86,8 +86,8 @@
       "Author": "Nasko",
       "Release date": "2024-11-09",
       "Download": "https://www.patreon.com/posts/n-sub-plugdata-115682326",
-      "Description": "Sub-bass enhancer for low-end frequencies.",
-      "Price": "Free",
+      "Description": "Audio driven harmonic sub synth",
+      "Price": "Paid",
       "StoreThumb": "n_sub"
     },
     {
@@ -95,16 +95,16 @@
       "Author": "Nasko",
       "Release date": "2024-09-28",
       "Download": "https://www.patreon.com/posts/n-spec-gate-fx-112905340",
-      "Description": "Spectral gating effect",
-      "Price": "Free",
+      "Description": "Flexible spectral gate",
+      "Price": "Paid",
       "StoreThumb": "n_spec_gate"
     },
     {
       "Title": "N-PHASE SHIFT",
       "Author": "Nasko",
       "Release date": "2024-08-24",
-      "Download": "https://storage.googleapis.com/plugdata-discovery/N-PHASE%20SHIFT.zip",
-      "Description": "Phase-shifting effect",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/N-PHASE+SHIFT.zip",
+      "Description": "Freeform spectral delay",
       "Price": "Free",
       "StoreThumb": "n_phase_shift"
     },
@@ -113,8 +113,8 @@
       "Author": "Nasko",
       "Release date": "2024-08-18",
       "Download": "https://www.patreon.com/posts/n-spec-comp-lite-110333394",
-      "Description": "Lite version of the spectral compressor.",
-      "Price": "Free",
+      "Description": "Efficient spectral compressor",
+      "Price": "Paid",
       "StoreThumb": "spec"
     },
     {
@@ -122,7 +122,8 @@
       "Author": "Nasko",
       "Release date": "2024-06-04",
       "Download": "https://www.patreon.com/posts/n-spec-clip-fx-105527346",
-      "Price": "Free",
+      "Description": "Ultra-transparent spectral clipper",
+      "Price": "Paid",
       "StoreThumb": "n_spec_clip"
     },
     {
@@ -130,8 +131,8 @@
       "Author": "Nasko",
       "Release date": "2024-05-05",
       "Download": "https://www.patreon.com/posts/n-spec-comp-fx-103688179",
-      "Description": "Full version of spectral compressor.",
-      "Price": "Free",
+      "Description": "Versatile spectral compressor.",
+      "Price": "Paid",
       "StoreThumb": "n_spec_comp"
     },
     {
@@ -139,15 +140,15 @@
       "Author": "Nasko",
       "Release date": "2024-03-24",
       "Download": "https://www.patreon.com/posts/n-spectral-mask-100980671",
-      "Description": "Spectral masking for advanced sound design.",
-      "Price": "Free",
+      "Description": "Lightweight spectral masker",
+      "Price": "Paid",
       "StoreThumb": "n_spec_mask"
     },
     {
       "Title": "PureCLIP",
       "Author": "ORU Audio",
       "Release date": "2024-11-18",
-      "Download": "https://storage.googleapis.com/plugdata-discovery/PureCLIP.zip",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/PureCLIP.zip",
       "Description": "A full-featured clipper for precise audio control.",
       "Price": "Free",
       "StoreThumb": "PureCLIP"
@@ -156,7 +157,7 @@
       "Title": "coarsedelay (free)",
       "Author": "zeff",
       "Release date": "2024-10-18",
-      "Download": "https://storage.googleapis.com/plugdata-discovery/coarsedelay_free.zip",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/coarsedelay_free.zip",
       "Description": "A modular delay tool for creative sound effects",
       "Price": "Free",
       "StoreThumb": "coursedelay"
@@ -195,13 +196,13 @@
       "Description": "Unique audio transformations with bit-morphing techniques.",
       "Price": "Free",
       "StoreThumb": "bmthumb",
-      "Download": "https://storage.googleapis.com/plugdata-discovery/LP-Bitmorph%20v0.1.zip"
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/LP-Bitmorph+v0.1.zip"
     },
     {
       "Title": "EB-SpectraVeil",
       "Author": "Ewan Bristow",
       "Release date": "2024-11-05",
-      "Download": "https://storage.googleapis.com/plugdata-discovery/EB-SpectraVeil(V1.2).zip",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-SpectraVeil(V1.2).zip",
       "Description": "Spectral audio reshaper",
       "Price": "Free",
       "StoreThumb": "eb-spectraveil"
@@ -210,7 +211,7 @@
       "Title": "EB-SpectralGate",
       "Author": "Ewan Bristow",
       "Release date": "2024-08-02",
-      "Download": "https://storage.googleapis.com/plugdata-discovery/EB-DynamicSpectralGate.zip",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-DynamicSpectralGate.zip",
       "Description": "Spectral gating effect",
       "Price": "Free",
       "StoreThumb": "eb-spectralgate"
@@ -219,8 +220,8 @@
       "Title": "N-SLoMo",
       "Author": "Nasko",
       "Release date": "2024-07-17",
-      "Download": "https://storage.googleapis.com/plugdata-discovery/N-SloMo.zip",
-      "Description": "Slow-motion audio effects for experimental sound.",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/N-SloMo.zip",
+      "Description": "Seamless halftime effect",
       "Price": "Free",
       "StoreThumb": "n_slo_mo"
     },
@@ -228,7 +229,7 @@
       "Title": "Disperse-X",
       "Author": "ORU Audio",
       "Release date": "2024-11-25",
-      "Download": "https://storage.googleapis.com/plugdata-discovery/Disperse-X.zip",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/Disperse-X.zip",
       "Description": "A magical phase dispersion machine.",
       "Price": "Free",
       "StoreThumb": "Disperse-X"
@@ -246,7 +247,7 @@
       "Title": "T4-PE Lite",
       "Author": "ORU Audio",
       "Release date": "2024-11-18",
-      "Download": "https://storage.googleapis.com/plugdata-discovery/T4-PE%20Lite.zip",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/T4-PE+Lite.zip",
       "Description": "A one-knob vibe machine.",
       "Price": "Free",
       "StoreThumb": "T4-PE-Lite"
@@ -264,7 +265,7 @@
       "Title": "HOLO-106 Lite",
       "Author": "ORU Audio",
       "Release date": "2024-11-18",
-      "Download": "https://storage.googleapis.com/plugdata-discovery/HOLO-106%20Lite.zip",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/HOLO-106+Lite.zip",
       "Description": "Holographic analog magic with no bells or whistles.",
       "Price": "Free",
       "StoreThumb": "HOLO-106-Lite"
@@ -481,7 +482,7 @@
       "Author": "Nasko",
       "Release date": " 2024-12-21",
       "Download": "https://www.patreon.com/posts/n-prysm-plugdata-118376369",
-      "Description": "realtime resynthesizer that uses a filterbank to drive tuned sine oscillators",
+      "Description": "Realtime Chromatic Resynthesizer",
       "Price": "Paid",
       "StoreThumb": "n_prysm"
     }
