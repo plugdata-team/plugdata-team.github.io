@@ -240,7 +240,7 @@
       "Release date": "2024-11-18",
       "Download": "https://oruaudio.gumroad.com/l/t4pe/plugdatashop",
       "Description": "An inspiring tape sound design tool.",
-      "Price": "13.99",
+      "Price": "$24,99",
       "StoreThumb": "T4-PE"
     },
     {
@@ -258,7 +258,7 @@
       "Release date": "2024-11-18",
       "Download": "https://oruaudio.gumroad.com/l/holo106/plugdatashop",
       "Description": "A faithful emulation of the iconic Juno-106 chorus ciruit with some additional modern features.",
-      "Price": "13.99",
+      "Price": "$24,99",
       "StoreThumb": "HOLO-106"
     },
     {
@@ -293,7 +293,7 @@
       "Author": "Tadej Supukovic",
       "Release date": "2024-11-29",
       "Download": "https://tdspkaudio.gumroad.com/l/datasampler",
-      "Description": "wavetable sampler that can load any file",
+      "Description": "Wavetable sampler that can load any file",
       "Price": "Free",
       "StoreThumb": "ts_data-sampler"
     },
@@ -302,7 +302,7 @@
       "Author": "Knaps",
       "Release date": "2024-11-27",
       "Download": "https://www.patreon.com/posts/gs77-full-116821234",
-      "Description": "combination of standard synthesis with the sound of granular synthesis",
+      "Description": "Combination of standard synthesis with the sound of granular synthesis",
       "Price": "Paid",
       "StoreThumb": "ks_gs77"
     },
@@ -311,7 +311,7 @@
       "Author": "jimfrize",
       "Release date": "2024-11-16",
       "Download": "https://github.com/jimfrize/qwerty-beats",
-      "Description": "realtime beat mashing tool",
+      "Description": "Realtime beat mashing tool",
       "Price": "Free",
       "StoreThumb": "jf_qwerty-beats"
     },
@@ -320,7 +320,7 @@
       "Author": "Knaps",
       "Release date": "2024-11-04",
       "Download": "https://www.patreon.com/posts/sgate-free-for-115304470",
-      "Description": "spectral gate",
+      "Description": "Spectral gate",
       "Price": "Free",
       "StoreThumb": "ks_sgate"
     },
@@ -337,8 +337,8 @@
       "Title": "Corruption Crusher",
       "Author": "-LightningPig",
       "Release date": "2024-10-22",
-      "Download": "https://lightningpig.gumroad.com/l/Corruptioncrusher",
-      "Description": "bitcrusher/glitch effect",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/-LP-Corruption Crusher(v0.5).zip",
+      "Description": "Bitcrusher/glitch effect",
       "Price": "Free",
       "StoreThumb": "lp_corruption-crusher"
     },
@@ -346,8 +346,8 @@
       "Title": "Shutterstock",
       "Author": "-LightningPig",
       "Release date": "2024-12-15",
-      "Download": "https://lightningpig.gumroad.com/l/Stuttershock",
-      "Description": "stutter and blur effect",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/-LP-Stuttershock(v0.3.1).zip",
+      "Description": "Stutter and blur effect",
       "Price": "Free",
       "StoreThumb": "lp_shutterstock"
     },
@@ -356,7 +356,7 @@
       "Author": "RBLD Audio",
       "Release date": "2024-10-18",
       "Download": "https://rbldaudio.gumroad.com/l/polyshifter",
-      "Description": "multi pitch shifter and octaver",
+      "Description": "Multi pitch shifter and octaver",
       "Price": "$3",
       "StoreThumb": "rbld-polyshifter"
     },
@@ -364,7 +364,7 @@
       "Title": "mulekick",
       "Author": "Sound Codex",
       "Release date": "2024-10-18",
-      "Download": "https://www.patreon.com/posts/free-kick-plugin-114234438",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/",
       "Description": "Kick designer",
       "Price": "Free",
       "StoreThumb": "sc_mulekick"
@@ -374,7 +374,7 @@
       "Author": "Sound Codex",
       "Release date": "2024-10-07",
       "Download": "https://www.patreon.com/posts/cyberdrum-v1-0-0-113553292",
-      "Description": "experimental drum synth with randomized patterns",
+      "Description": "Experimental drum synth with randomized patterns",
       "Price": "Paid",
       "StoreThumb": "sc_cyberdrum"
     },
@@ -382,7 +382,7 @@
       "Title": "photosynthesis",
       "Author": "Sound Codex",
       "Release date": "2024-09-21",
-      "Download": "https://www.patreon.com/posts/free-botanica-v1-112494633",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/",
       "Description": "Botanica Synth",
       "Price": "Free",
       "StoreThumb": "sc_photosynthesis"
@@ -401,7 +401,7 @@
       "Author": "Sound Codex",
       "Release date": "2024-08-05",
       "Download": "https://www.patreon.com/posts/daedalus-v1-0-2-109511951",
-      "Description": "dual sequencer generative synthesizer, inspired the by Moog Labyrinth",
+      "Description": "Dual sequencer generative synthesizer, inspired the by Moog Labyrinth",
       "Price": "Paid",
       "StoreThumb": "sc_daedalus"
     },
@@ -419,7 +419,7 @@
       "Author": "(un)familiar.",
       "Release date": "2024-09-22",
       "Download": "https://unfamiliartunes.gumroad.com/l/the-gusher",
-      "Description": "volume and pitch tracking square wave oscilator effect",
+      "Description": "Volume and pitch tracking square wave oscilator effect",
       "Price": "Free",
       "StoreThumb": "uf_the-gusher"
     },
@@ -437,7 +437,7 @@
       "Author": "Ben Cheal",
       "Release date": "2024-08-26",
       "Download": "https://bencheal.gumroad.com/l/GransMirror",
-      "Description": "granular delay using mirrored spectral filtering and delay sequencing",
+      "Description": "Granular delay using mirrored spectral filtering and delay sequencing",
       "Price": "Free",
       "StoreThumb": "bc_grans-mirror"
     },
@@ -445,8 +445,8 @@
       "Title": "EB-Meow",
       "Author": "Ewan Bristow",
       "Release date": "2024-12-26",
-      "Download": "https://ewanbristow.gumroad.com/l/MEOW?layout=profile",
-      "Description": "cat meme based visualizer and rompler",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-Meow.zip",
+      "Description": "Cat meme based visualizer and rompler",
       "Price": "Free",
       "StoreThumb": "eb_meow"
     },
@@ -454,8 +454,8 @@
       "Title": "EB-Diøne",
       "Author": "Ewan Bristow",
       "Release date": "2024-12-26",
-      "Download": "https://ewanbristow.gumroad.com/l/cbxsb?layout=profile",
-      "Description": "paulstretch inspired spectral resynthesis",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-Dione(1.2.6).zip",
+      "Description": "Paulstretch inspired spectral resynthesis",
       "Price": "Free",
       "StoreThumb": "eb_dione"
     },
@@ -463,7 +463,7 @@
       "Title": "EB-SpectralDelay",
       "Author": "Ewan Bristow",
       "Release date": "2025-01-09",
-      "Download": "https://ewanbristow.gumroad.com/l/SpectralDelay?layout=profile",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-SpectralDelay(V1.0).zip",
       "Description": "Multiband Delay with delay, feedback and spectral gate per band",
       "Price": "Free",
       "StoreThumb": "eb_spectraldelay"
@@ -472,7 +472,7 @@
       "Title": "EB-CatNip",
       "Author": "Ewan Bristow",
       "Release date": "2025-01-18",
-      "Download": "https://ewanbristow.gumroad.com/l/CatNip?layout=profile",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-CatNip(1.0).zip",
       "Description": "Frequency shifting delay, with some unique features",
       "Price": "Free",
       "StoreThumb": "eb_catnip"
