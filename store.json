@@ -7,6 +7,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-FreakyTable(V1.7).zip",
       "Description": "Converts harmonics from an audio file into a filter shape",
       "Price": "Free",
+      "Version": "1.7",
       "StoreThumb": "eb-freakytable"
     },
     {
@@ -16,6 +17,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/FlorahLITE(1.2).zip",
       "Description": "Spectral multi-band compressor and resonance filter (free)",
       "Price": "Free",
+      "Version": "1.2",
       "StoreThumb": "florah-lite"
     },
     {
@@ -24,7 +26,7 @@
       "Release date": "2024-11-12",
       "Download": "https://ewanbristow.gumroad.com/l/Florah",
       "Description": "Spectral multi-band compressor and resonance filter",
-      "Price": "£9.99",
+      "Price": "$9.99",
       "StoreThumb": "florah"
     },
     {
@@ -34,6 +36,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-Blasphemy(V2.0).zip",
       "Description": "Drumbreak sampler effects",
       "Price": "Free",
+      "Version": "2.0",
       "StoreThumb": "eb-blasphemy"
     },
     {
@@ -43,6 +46,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-Morph.zip",
       "Description": "Cepstral morphing effect",
       "Price": "Free",
+      "Version": "1.0",
       "StoreThumb": "eb-morph"
     },
     {
@@ -52,6 +56,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-SpectralSquish.zip",
       "Description": "Spectral squishing filter",
       "Price": "Free",
+      "Version": "1.0",
       "StoreThumb": "eb-spectralsquish"
     },
     {
@@ -61,6 +66,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-Resonator(V1.4).zip",
       "Description": "Spectral resonator effect",
       "Price": "Free",
+      "Version": "1.4",
       "StoreThumb": "eb-resonator"
     },
     {
@@ -69,7 +75,7 @@
       "Release date": "2024-06-11",
       "Download": "https://ewanbristow.gumroad.com/l/EB-DynamicAllPass",
       "Description": "Dynamic all-pass filter effect",
-      "Price": "£5",
+      "Price": "$5",
       "StoreThumb": "eb-dynamicallpass"
     },
     {
@@ -106,6 +112,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/N-PHASE+SHIFT.zip",
       "Description": "Freeform spectral delay",
       "Price": "Free",
+      "Version": "1.0",
       "StoreThumb": "n_phase_shift"
     },
     {
@@ -151,6 +158,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/PureCLIP.zip",
       "Description": "A full-featured clipper for precise audio control.",
       "Price": "Free",
+      "Version": "1.0",
       "StoreThumb": "PureCLIP"
     },
     {
@@ -160,6 +168,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/coarsedelay_free.zip",
       "Description": "A modular delay tool for creative sound effects",
       "Price": "Free",
+      "Version": "1.0",
       "StoreThumb": "coursedelay"
     },
     {
@@ -195,6 +204,7 @@
       "Release date": "2024-10-27",
       "Description": "Unique audio transformations with bit-morphing techniques.",
       "Price": "Free",
+      "Version": "0.1",
       "StoreThumb": "bmthumb",
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/LP-Bitmorph+v0.1.zip"
     },
@@ -205,6 +215,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-SpectraVeil(V1.2).zip",
       "Description": "Spectral audio reshaper",
       "Price": "Free",
+      "Version": "1.2",
       "StoreThumb": "eb-spectraveil"
     },
     {
@@ -214,6 +225,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-DynamicSpectralGate.zip",
       "Description": "Spectral gating effect",
       "Price": "Free",
+      "Version": "1.0",
       "StoreThumb": "eb-spectralgate"
     },
     {
@@ -223,6 +235,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/N-SloMo.zip",
       "Description": "Seamless halftime effect",
       "Price": "Free",
+      "Version": "1.0",
       "StoreThumb": "n_slo_mo"
     },
     {
@@ -232,6 +245,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/Disperse-X.zip",
       "Description": "A magical phase dispersion machine.",
       "Price": "Free",
+      "Version": "1.0",
       "StoreThumb": "Disperse-X"
     },
     {
@@ -250,6 +264,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/T4-PE+Lite.zip",
       "Description": "A one-knob vibe machine.",
       "Price": "Free",
+      "Version": "1.0",
       "StoreThumb": "T4-PE-Lite"
     },
     {
@@ -268,6 +283,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/HOLO-106+Lite.zip",
       "Description": "Holographic analog magic with no bells or whistles.",
       "Price": "Free",
+      "Version": "1.0",
       "StoreThumb": "HOLO-106-Lite"
     },
     {
@@ -277,6 +293,7 @@
       "Download": "https://github.com/ensonic/ensonic-pd/releases/download/v0.1.0/wico1.zip",
       "Description": "Single band phase-scope with stereo width control.",
       "Price": "Free",
+      "Version": "0.1.0",
       "StoreThumb": "Ensonic-WiCo-1"
     },
     {
@@ -286,6 +303,7 @@
       "Download": "https://github.com/ensonic/ensonic-pd/releases/download/v0.1.0/wico3.zip",
       "Description": "Single band phase-scope with stereo width control.",
       "Price": "Free",
+      "Version": "0.1.0",
       "StoreThumb": "Ensonic-WiCo-3"
     },
     {
@@ -340,6 +358,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/-LP-Corruption Crusher(v0.5).zip",
       "Description": "Bitcrusher/glitch effect",
       "Price": "Free",
+      "Version": "0.5",
       "StoreThumb": "lp_corruption-crusher"
     },
     {
@@ -349,6 +368,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/-LP-Stuttershock(v0.3.1).zip",
       "Description": "Stutter and blur effect",
       "Price": "Free",
+      "Version": "0.3.1",
       "StoreThumb": "lp_shutterstock"
     },
     {
@@ -367,6 +387,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/mulekick(v1.0.1).zip",
       "Description": "Kick designer",
       "Price": "Free",
+      "Version": "1.0.1",
       "StoreThumb": "sc_mulekick"
     },
     {
@@ -376,6 +397,7 @@
       "Download": "https://www.patreon.com/posts/cyberdrum-v1-0-0-113553292",
       "Description": "Experimental drum synth with randomized patterns",
       "Price": "Paid",
+      "Version": "1.0.0",
       "StoreThumb": "sc_cyberdrum"
     },
     {
@@ -385,6 +407,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/photosynthesis(v1.2.1).zip",
       "Description": "Botanica Synth",
       "Price": "Free",
+      "Version": "1.2.1",
       "StoreThumb": "sc_photosynthesis"
     },
     {
@@ -448,6 +471,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-Meow.zip",
       "Description": "Cat meme based visualizer and rompler",
       "Price": "Free",
+      "Version": "1.0",
       "StoreThumb": "eb_meow"
     },
     {
@@ -457,6 +481,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-Dione(1.2.6).zip",
       "Description": "Paulstretch inspired spectral resynthesis",
       "Price": "Free",
+      "Version": "1.2.6",
       "StoreThumb": "eb_dione"
     },
     {
@@ -466,6 +491,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-SpectralDelay(V1.0).zip",
       "Description": "Multiband Delay with delay, feedback and spectral gate per band",
       "Price": "Free",
+      "Version": "1.0",
       "StoreThumb": "eb_spectraldelay"
     },
     {
@@ -475,6 +501,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/EB-CatNip(1.0).zip",
       "Description": "Frequency shifting delay, with some unique features",
       "Price": "Free",
+      "Version": "1.0",
       "StoreThumb": "eb_catnip"
     },
     {
