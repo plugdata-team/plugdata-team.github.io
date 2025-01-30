@@ -512,6 +512,16 @@
       "Description": "Realtime Chromatic Resynthesizer",
       "Price": "Paid",
       "StoreThumb": "n_prysm"
+    },
+    {
+      "Title": "Peak-O Synth",
+      "Author": "RBLD Audio",
+      "Release date": "2025-01-29",
+      "Download": "https://rbldaudio.gumroad.com/l/peakosynth",
+      "Description": "Poyiphonic peak EQs playable by midi notes",
+      "Price": "Free",
+      "Version": "1.0",
+      "StoreThumb": "peak_o_synth"
     }
   ]
 }
