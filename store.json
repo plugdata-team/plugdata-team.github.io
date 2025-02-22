@@ -522,6 +522,36 @@
       "Price": "Free",
       "Version": "1.0",
       "StoreThumb": "peak_o_synth"
+    },
+    {
+      "Title": "EB-QuasaiCrystal",
+      "Author": "Ewan Bristow",
+      "Release date": "2025-02-22",
+      "Download": "https://ewanbristow.gumroad.com/l/quasaicrystal",
+      "Description": "Unique granular synth with built-in effects and remote control",
+      "Price": "$9.99",
+      "Version": "1.0",
+      "StoreThumb": "quasai_crystal"
+    },
+    {
+      "Title": "N-TILT",
+      "Author": "Nasko",
+      "Release date": "2025-02-13",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/N-TILT.zip",
+      "Description": "Flat spectrum tilt filter with unipolar modes, center frequency offset and a fast workflow",
+      "Price": "Free",
+      "Version": "1.0",
+      "StoreThumb": "n_tilt"
+    },
+    {
+      "Title": "RedKrush",
+      "Author": "Sound Codex",
+      "Release date": "2025-01-23",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/RedKrush-1.0.zip",
+      "Description": "RedKrush is a delay based distortion plugin that features a bit crusher in the feedback loop with separate control over bit reduction and sampling rate",
+      "Price": "Free",
+      "Version": "1.0",
+      "StoreThumb": "red_krush"
     }
   ]
 }
