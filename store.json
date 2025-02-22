@@ -548,7 +548,7 @@
       "Author": "Sound Codex",
       "Release date": "2025-01-23",
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/RedKrush-1.0.zip",
-      "Description": "RedKrush is a delay based distortion plugin that features a bit crusher in the feedback loop with separate control over bit reduction and sampling rate",
+      "Description": "Delay based distortion plugin including a bit crusher in the feedback loop with separate control over bit reduction and sampling rate",
       "Price": "Free",
       "Version": "1.0",
       "StoreThumb": "red_krush"
