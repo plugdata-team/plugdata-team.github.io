@@ -290,7 +290,7 @@
       "Title": "WiCo-1",
       "Author": "Ensonic",
       "Release date": "2025-01-05",
-      "Download": "https://github.com/ensonic/ensonic-pd/releases/download/v0.1.0/wico1.zip",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/wico1.zip",
       "Description": "Single band phase-scope with stereo width control.",
       "Price": "Free",
       "Version": "0.1.0",
@@ -300,7 +300,7 @@
       "Title": "WiCo-3",
       "Author": "Ensonic",
       "Release date": "2025-01-05",
-      "Download": "https://github.com/ensonic/ensonic-pd/releases/download/v0.1.0/wico3.zip",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/wico3.zip",
       "Description": "Single band phase-scope with stereo width control.",
       "Price": "Free",
       "Version": "0.1.0",
@@ -557,17 +557,17 @@
       "Title": "Clippex",
       "Author": "Diego Serrano",
       "Release date": "2025-07-16",
-      "Download": "https://github.com/DSBhproject/Clippex/releases/download/1.0.0/Clippex.1.0.zip",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/Vintage(1.0).zip",
       "Description": "Soft clip pluginmode patch for saturation & peak control in plugdata",
       "Price": "Free",
       "Version": "1.0",
       "StoreThumb": "clippex"
-    },
+    }
     {
       "Title": "Elements",
       "Author": "Diego Serrano",
       "Release date": "2025-07-16",
-      "Download": "https://github.com/DSBhproject/Elements/releases/download/1.0.0/Elements.1.0.zip",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/Elements(1.0).zip",
       "Description": "Texture synthesis module inspired by the four natural elements with a 2D vector based mixing plane in plugdata",
       "Price": "Free",
       "Version": "1.0",
@@ -577,11 +577,11 @@
       "Title": "Vintage",
       "Author": "Diego Serrano",
       "Release date": "2025-07-16",
-      "Download": "https://github.com/DSBhproject/Vintage/releases/download/1.0.0/Vintage.1.0.zip",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/Vintage(1.0).zip",
       "Description": "Lo-fi vinyl textures and character in plugdata",
       "Price": "Free",
       "Version": "1.0",
       "StoreThumb": "vintage"
-    }
+    },
   ]
 }
