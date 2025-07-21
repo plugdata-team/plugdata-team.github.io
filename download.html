@@ -376,37 +376,35 @@
                 let onHashUpdate = [];
 
                 let latest_hash = "";
+
                 const getLatestHash = async () => {
-                    fetch(
-                        `https://api.github.com/repos/plugdata-team/plugdata/commits/develop`,
-                    )
-                        .then((response) => response.json())
-                        .then((data) => {
-                            latest_hash = data.sha;
-                            console.log("Last Commit Hash:", latest_hash);
-                            for (let i = 0; i < onHashUpdate.length; i++) {
-                                onHashUpdate[i]();
-                            }
-                        })
-                        .catch((error) => console.error("Error:", error));
+                    try {
+                        const response = await fetch(
+                            `https://api.github.com/repos/plugdata-team/plugdata/commits/develop`,
+                        );
+                        const data = await response.json();
+                        latest_hash = data.sha;
+                        console.log("Last Commit Hash:", latest_hash);
+                        onHashUpdate.forEach((fn) => fn());
+                    } catch (error) {
+                        console.error("Error:", error);
+                    }
                 };
 
                 const table = document.getElementById("nightly-table");
 
-                for (let i = 0; i < unstable_downloads.length; i++) {
+                const getDownloadInfo = async (download, i) => {
                     const downloadRow = document.createElement("tr");
 
                     let name = document.createElement("td");
-                    name.textContent = unstable_downloads[i][0];
+                    name.textContent = download[0];
 
                     let link = document.createElement("td");
                     let clickableLink = document.createElement("a");
 
-                    clickableLink.href = unstable_downloads[i][1];
-                    clickableLink.textContent = unstable_downloads[i][2];
+                    clickableLink.href = download[1];
+                    clickableLink.textContent = download[2];
                     link.appendChild(clickableLink);
-
-                    let has_info = unstable_downloads[i][3];
 
                     const dummy1 = document.createElement("td");
                     const dummy2 = document.createElement("td");
@@ -416,64 +414,61 @@
                     downloadRow.appendChild(dummy2);
                     downloadRow.appendChild(link);
 
-                    const getDownloadInfo = async () => {
-                        let url = unstable_downloads[i][1] + ".txt";
+                    table.appendChild(downloadRow);
+
+                    if (!download[3]) return;
+
+                    try {
+                        let url = download[1] + ".txt";
                         console.log(url);
                         let response = await fetch(url);
-                        const result = await response.text().then((str) => {
-                            return str.split("\n"); // return the string after splitting it.
-                        });
+                        let result = await response.text();
+                        result = result.split("\n");
 
-                        // Create new cells and set their content
+                        // Create new cells
                         const date = document.createElement("td");
                         date.textContent = result[0];
                         date.style.minWidth = "200px";
 
                         const hash = result[1];
-                        let color = hash == latest_hash ? "#006400" : "#FFA500";
-
                         const commit_hash = document.createElement("td");
                         const commit_link = document.createElement("a");
 
                         commit_link.textContent = hash.substring(0, 7);
-                        commit_link.style.cssText = `color: ${color}`;
-                        commit_link.href =
-                            "https://github.com/plugdata-team/plugdata/commits/" +
-                            hash;
+                        commit_link.href = `https://github.com/plugdata-team/plugdata/commits/${hash}`;
                         commit_hash.appendChild(commit_link);
 
-                        onHashUpdate.push(() => {
-                            let color =
-                                hash == latest_hash ? "#006400" : "#FFA500";
-                            commit_hash.style.cssText = `color: ${color}`;
-                            console.log(
-                                hash == latest_hash
-                                    ? "hash was equal"
-                                    : "hash was not equal",
-                            );
-                        });
+                        // Set initial color (will update later)
+                        const updateColor = () => {
+                            const color =
+                                hash === latest_hash ? "#006400" : "#FFA500";
+                            commit_link.style.cssText = `color: ${color}`;
+                        };
+                        updateColor(); // set now
+                        onHashUpdate.push(updateColor); // also set later
 
-                        downloadRow.removeChild(name);
-                        downloadRow.removeChild(dummy1);
-                        downloadRow.removeChild(dummy2);
-                        downloadRow.removeChild(link);
-
-                        // Append the cells to the row
+                        // Replace old cells
+                        downloadRow.innerHTML = "";
                         downloadRow.appendChild(name);
                         downloadRow.appendChild(date);
                         downloadRow.appendChild(commit_hash);
                         downloadRow.appendChild(link);
-                    };
-
-                    if (has_info) {
-                        getDownloadInfo();
+                    } catch (e) {
+                        console.error(
+                            "Error fetching info for",
+                            download[0],
+                            e,
+                        );
                     }
+                };
 
-                    // Append the row to the table
-                    table.appendChild(downloadRow);
-                }
+                // Main loop: fetch all info
+                const promises = unstable_downloads.map((download, i) =>
+                    getDownloadInfo(download, i),
+                );
 
-                getLatestHash();
+                // After all info is fetched, get the latest hash
+                Promise.all(promises).then(() => getLatestHash());
             }
 
             main();
