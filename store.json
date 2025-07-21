@@ -552,6 +552,36 @@
       "Price": "Free",
       "Version": "1.0",
       "StoreThumb": "red_krush"
+    },
+    {
+      "Title": "Clippex",
+      "Author": "Diego Serrano",
+      "Release date": "2025-07-16",
+      "Download": "https://github.com/DSBhproject/Clippex/releases/download/1.0.0/Clippex.1.0.zip",
+      "Description": "Soft clip pluginmode patch for saturation & peak control in plugdata",
+      "Price": "Free",
+      "Version": "1.0",
+      "StoreThumb": "clippex"
+    },
+    {
+      "Title": "Elements",
+      "Author": "Diego Serrano",
+      "Release date": "2025-07-16",
+      "Download": "https://github.com/DSBhproject/Elements/releases/download/1.0.0/Elements.1.0.zip",
+      "Description": "Texture synthesis module inspired by the four natural elements with a 2D vector based mixing plane in plugdata",
+      "Price": "Free",
+      "Version": "1.0",
+      "StoreThumb": "elements"
+    },
+    {
+      "Title": "Vintage",
+      "Author": "Diego Serrano",
+      "Release date": "2025-07-16",
+      "Download": "https://github.com/DSBhproject/Vintage/releases/download/1.0.0/Vintage.1.0.zip",
+      "Description": "Lo-fi vinyl textures and character in plugdata",
+      "Price": "Free",
+      "Version": "1.0",
+      "StoreThumb": "vintage"
     }
   ]
 }
