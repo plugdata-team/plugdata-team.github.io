@@ -557,7 +557,7 @@
       "Title": "Clippex",
       "Author": "Diego Serrano",
       "Release date": "2025-07-16",
-      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/Vintage(1.0).zip",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/Clippex(1.0).zip",
       "Description": "Soft clip pluginmode patch for saturation & peak control in plugdata",
       "Price": "Free",
       "Version": "1.0",
@@ -582,6 +582,16 @@
       "Price": "Free",
       "Version": "1.0",
       "StoreThumb": "vintage"
+    },
+    {
+      "Title": "Nouveau Plate Reverb",
+      "Author": "Bryan Lake",
+      "Release date": "2025-07-25",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/nouveau.zip",
+      "Description": "A modernized version of the classic Dattorro Plate reverb algorithm",
+      "Price": "Free",
+      "Version": "1.0",
+      "StoreThumb": "nouveau"
     }
   ]
 }
