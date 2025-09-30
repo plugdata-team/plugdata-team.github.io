@@ -88,6 +88,24 @@
       "StoreThumb": "chameleon-x"
     },
     {
+      "Title": "N-CURVE COMP",
+      "Author": "Nasko",
+      "Release date": "2025-09-25",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/N-CURVE+COMP.zip",
+      "Description": "Versatile Curvature Compressor",
+      "Price": "Free",
+      "StoreThumb": "n_curve_comp"
+    },
+    {
+      "Title": "N-IRIS",
+      "Author": "Nasko",
+      "Release date": "2025-09-25",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/N-IRIS.zip",
+      "Description": "Convolution based Spectrum Disperser",
+      "Price": "Free",
+      "StoreThumb": "n_iris"
+    },
+    {
       "Title": "N-SUB",
       "Author": "Nasko",
       "Release date": "2024-11-09",
@@ -116,13 +134,22 @@
       "StoreThumb": "n_phase_shift"
     },
     {
-      "Title": "N-SPEC COMP LITE",
+      "Title": "N-SPEC COMP LITE 2",
       "Author": "Nasko",
       "Release date": "2024-08-18",
-      "Download": "https://www.patreon.com/posts/n-spec-comp-lite-110333394",
+      "Download": "https://www.patreon.com/posts/110333394",
       "Description": "Efficient spectral compressor",
       "Price": "Paid",
-      "StoreThumb": "spec"
+      "StoreThumb": "n_spec_comp_lite_2"
+    },
+    {
+      "Title": "N-SILK",
+      "Author": "Nasko",
+      "Release date": "2024-08-18",
+      "Download": "https://www.patreon.com/posts/124379376",
+      "Description": "Easy Dynamic Resonance Suppression",
+      "Price": "Paid",
+      "StoreThumb": "n_silk"
     },
     {
       "Title": "N-SPEC CLIP",
@@ -236,7 +263,7 @@
       "Description": "Seamless halftime effect",
       "Price": "Free",
       "Version": "1.0",
-      "StoreThumb": "n_slo_mo"
+      "StoreThumb": "n_slomo"
     },
     {
       "Title": "Disperse-X",
