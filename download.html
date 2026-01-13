@@ -403,7 +403,6 @@
                         );
                         const data = await response.json();
                         latest_hash = data.sha;
-                        console.log("Last Commit Hash:", latest_hash);
                         onHashUpdate.forEach((fn) => fn());
                     } catch (error) {
                         console.error("Error:", error);
@@ -439,7 +438,6 @@
 
                     try {
                         let url = download[1] + ".txt";
-                        console.log(url);
                         let response = await fetch(url);
                         let result = await response.text();
                         result = result.split("\n");
