@@ -619,6 +619,16 @@
       "Price": "Free",
       "Version": "1.0",
       "StoreThumb": "nouveau"
+    },
+    {
+      "Title": "Spira",
+      "Author": "Ben Cheal",
+      "Release date": "2025-1-10",
+      "Download": "https://koil.uk/spira",
+      "Description": "The spiral resonator",
+      "Price": "£8.99",
+      "Version": "1.0",
+      "StoreThumb": "spira"
     }
   ]
 }
