@@ -94,6 +94,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/N-CURVE+COMP.zip",
       "Description": "Versatile Curvature Compressor",
       "Price": "Free",
+      "Version": "1.5",
       "StoreThumb": "n_curve_comp"
     },
     {
@@ -103,6 +104,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/N-IRIS.zip",
       "Description": "Convolution based Spectrum Disperser",
       "Price": "Free",
+      "Version": "1.1",
       "StoreThumb": "n_iris"
     },
     {
@@ -130,7 +132,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/N-PHASE+SHIFT.zip",
       "Description": "Freeform spectral delay",
       "Price": "Free",
-      "Version": "1.0",
+      "Version": "1.3",
       "StoreThumb": "n_phase_shift"
     },
     {
@@ -262,7 +264,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/N-SloMo.zip",
       "Description": "Seamless halftime effect",
       "Price": "Free",
-      "Version": "1.0",
+      "Version": "1.3",
       "StoreThumb": "n_slomo"
     },
     {
@@ -355,7 +357,7 @@
       "Title": "QWERTY-Beats",
       "Author": "jimfrize",
       "Release date": "2024-11-16",
-      "Download": "https://github.com/jimfrize/qwerty-beats",
+      "Download": "https://github.com/jimfrize/qwerty-beats/archive/refs/heads/main.zip",
       "Description": "Realtime beat mashing tool",
       "Price": "Free",
       "StoreThumb": "jf_qwerty-beats"
@@ -567,7 +569,7 @@
       "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/N-TILT.zip",
       "Description": "Flat spectrum tilt filter with unipolar modes, center frequency offset and a fast workflow",
       "Price": "Free",
-      "Version": "1.0",
+      "Version": "1.1",
       "StoreThumb": "n_tilt"
     },
     {
