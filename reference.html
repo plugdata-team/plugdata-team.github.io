@@ -1,0 +1,1386 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Object Reference — plugdata</title>
+  <meta name="description" content="Searchable reference documentation for every Pure Data object included with plugdata — ELSE, Cyclone, Gem, heavylib, pdlua, plugdata and vanilla." />
+  <link rel="icon" href="assets/plugdata-logo.png" type="image/png" />
+  <meta property="og:title" content="Object Reference — plugdata" />
+  <meta property="og:description" content="Searchable reference documentation for every Pure Data object included with plugdata." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Reference page specific styles (extending styles.css) -->
+  <style>
+    /* ===== Search + toolbar ===== */
+    .ref-toolbar {
+      position: sticky;
+      top: 3.5rem;
+      z-index: 20;
+      background: hsl(var(--background) / 0.9);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid hsl(var(--border));
+      padding: 1rem 0;
+    }
+    .ref-search {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .ref-search svg.icon-search {
+      position: absolute;
+      left: 1rem;
+      width: 1rem;
+      height: 1rem;
+      color: hsl(var(--muted-foreground));
+      pointer-events: none;
+    }
+    .ref-search input {
+      flex: 1;
+      width: 100%;
+      height: 2.75rem;
+      padding: 0 2.75rem 0 2.75rem;
+      border: 1px solid hsl(var(--border));
+      border-radius: 9999px;
+      background: hsl(var(--card));
+      color: hsl(var(--foreground));
+      font: inherit;
+      font-size: 0.9375rem;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .ref-search input:focus {
+      border-color: hsl(var(--primary));
+      box-shadow: 0 0 0 3px hsl(var(--primary) / 0.12);
+    }
+    .ref-search .clear {
+      position: absolute;
+      right: 0.5rem;
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: hsl(var(--muted-foreground));
+    }
+    .ref-search .clear:hover {
+      background: hsl(var(--secondary));
+      color: hsl(var(--foreground));
+    }
+    .ref-search .kbd {
+      position: absolute;
+      right: 1rem;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: hsl(var(--muted-foreground));
+      background: hsl(var(--secondary));
+      border: 1px solid hsl(var(--border));
+      padding: 1px 6px;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+    .ref-filters {
+      margin-top: 0.75rem;
+      display: flex;
+      gap: 0.375rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .ref-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      height: 2rem;
+      padding: 0 0.875rem;
+      border: 1px solid hsl(var(--border));
+      border-radius: 9999px;
+      background: hsl(var(--card));
+      color: hsl(var(--muted-foreground));
+      font-size: 0.8125rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+    .ref-chip:hover {
+      color: hsl(var(--foreground));
+      border-color: hsl(var(--foreground) / 0.25);
+    }
+    .ref-chip.active {
+      background: hsl(var(--foreground));
+      color: hsl(var(--background));
+      border-color: hsl(var(--foreground));
+    }
+    .ref-chip .count {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      opacity: 0.7;
+    }
+    .ref-status {
+      margin-top: 0.75rem;
+      font-size: 0.8125rem;
+      color: hsl(var(--muted-foreground));
+      font-family: var(--font-mono);
+    }
+
+    /* ===== Object list ===== */
+    .ref-main {
+      padding: 2rem 0 5rem;
+    }
+    .ref-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: hsl(var(--border));
+      border: 1px solid hsl(var(--border));
+      border-radius: 0.75rem;
+      overflow: hidden;
+    }
+    @media (min-width: 640px) {
+      .ref-list { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .ref-list { grid-template-columns: repeat(3, 1fr); }
+    }
+    .ref-card {
+      background: hsl(var(--card));
+      padding: 1.125rem 1.25rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+      transition: background 0.12s;
+      text-align: left;
+      width: 100%;
+      border: 0;
+      font-family: inherit;
+      min-height: 5rem;
+    }
+    .ref-card:hover {
+      background: hsl(var(--secondary) / 0.6);
+    }
+    .ref-card .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+    .ref-card .name {
+      font-family: var(--font-mono);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: hsl(var(--foreground));
+      letter-spacing: -0.01em;
+      word-break: break-all;
+    }
+    .ref-card .origin {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: hsl(var(--muted-foreground));
+      padding: 2px 6px;
+      border: 1px solid hsl(var(--border));
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .ref-card .desc {
+      font-size: 0.8125rem;
+      color: hsl(var(--muted-foreground));
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .ref-card .desc.empty::before {
+      content: "— loading —";
+      opacity: 0.4;
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+
+    .ref-empty {
+      padding: 4rem 1rem;
+      text-align: center;
+      color: hsl(var(--muted-foreground));
+    }
+    .ref-empty h3 {
+      font-size: 1.125rem;
+      color: hsl(var(--foreground));
+      margin-bottom: 0.5rem;
+    }
+    .ref-empty p {
+      font-size: 0.9375rem;
+      max-width: 28rem;
+      margin: 0 auto;
+    }
+
+    .ref-loading {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: hsl(var(--muted-foreground));
+    }
+    .ref-spinner {
+      width: 12px;
+      height: 12px;
+      border: 1.5px solid hsl(var(--border));
+      border-top-color: hsl(var(--foreground));
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ===== Detail view ===== */
+    .ref-detail {
+      padding: 3rem 0 5rem;
+    }
+    .ref-detail .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.875rem;
+      color: hsl(var(--muted-foreground));
+      padding: 0.375rem 0.625rem;
+      margin-left: -0.625rem;
+      border-radius: 0.375rem;
+      margin-bottom: 2rem;
+      transition: background 0.12s, color 0.12s;
+    }
+    .ref-detail .back:hover {
+      background: hsl(var(--secondary));
+      color: hsl(var(--foreground));
+    }
+    .ref-detail .meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .ref-detail h1 {
+      font-family: var(--font-mono);
+      font-size: clamp(2rem, 4vw + 1rem, 3rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      word-break: break-all;
+      margin-bottom: 0.75rem;
+    }
+    .ref-detail h1 .brackets {
+      color: hsl(var(--muted-foreground) / 0.45);
+      font-weight: 400;
+    }
+    .ref-detail .tagline {
+      font-size: 1.125rem;
+      color: hsl(var(--muted-foreground));
+      max-width: 40rem;
+      line-height: 1.5;
+    }
+    .ref-detail .aliases {
+      margin-top: 0.75rem;
+      font-size: 0.875rem;
+      color: hsl(var(--muted-foreground));
+    }
+    .ref-detail .aliases code {
+      font-family: var(--font-mono);
+      background: hsl(var(--secondary));
+      border: 1px solid hsl(var(--border));
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-size: 0.8125rem;
+      margin: 0 0.125rem;
+      color: hsl(var(--foreground));
+    }
+
+    .ref-object-viz {
+      margin: 2.5rem 0;
+      padding: 2rem;
+      border: 1px solid hsl(var(--border));
+      background: hsl(var(--card));
+      border-radius: 0.75rem;
+      background-image: radial-gradient(hsl(var(--grid-dot)) 1px, transparent 1px);
+      background-size: 22px 22px;
+      background-position: -1px -1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 11rem;
+    }
+
+    .ref-sections {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+    @media (min-width: 900px) {
+      .ref-sections { grid-template-columns: 2fr 3fr; gap: 3rem; }
+      .ref-sections .full { grid-column: 1 / -1; }
+    }
+    .ref-sec {
+      min-width: 0;
+    }
+    .ref-sec h2 {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: hsl(var(--muted-foreground));
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid hsl(var(--border));
+    }
+    .ref-sec .body {
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      color: hsl(var(--foreground));
+      white-space: pre-wrap;
+    }
+    .ref-sec .body code, .ref-sec .body .obj-link {
+      font-family: var(--font-mono);
+      background: hsl(var(--secondary));
+      border: 1px solid hsl(var(--border));
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 0.875em;
+      color: hsl(var(--foreground));
+      white-space: nowrap;
+    }
+    .ref-sec .body .obj-link {
+      cursor: pointer;
+      transition: background 0.12s, border-color 0.12s, color 0.12s;
+    }
+    .ref-sec .body .obj-link:hover {
+      background: hsl(var(--primary-soft));
+      border-color: hsl(var(--primary) / 0.4);
+      color: hsl(var(--primary));
+    }
+
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+    .ref-table th, .ref-table td {
+      text-align: left;
+      padding: 0.75rem 0.875rem;
+      border-bottom: 1px solid hsl(var(--border));
+      vertical-align: top;
+    }
+    .ref-table th {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: hsl(var(--muted-foreground));
+      background: hsl(var(--secondary) / 0.5);
+    }
+    .ref-table tr:last-child td { border-bottom: 0; }
+    .ref-table td code, .ref-table .mono {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: hsl(var(--primary));
+    }
+    .ref-table-wrap {
+      border: 1px solid hsl(var(--border));
+      border-radius: 0.5rem;
+      overflow: hidden;
+      background: hsl(var(--card));
+    }
+
+    .ref-io {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .ref-io-port {
+      border: 1px solid hsl(var(--border));
+      border-radius: 0.5rem;
+      padding: 0.875rem 1rem;
+      background: hsl(var(--card));
+    }
+    .ref-io-port .title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.625rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: hsl(var(--muted-foreground));
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .ref-io-port .title .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.25rem;
+      height: 1.25rem;
+      background: hsl(var(--foreground));
+      color: hsl(var(--background));
+      border-radius: 3px;
+      font-weight: 600;
+      font-size: 10px;
+    }
+    .ref-io-port ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .ref-io-port li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem;
+      align-items: baseline;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+    .ref-io-port li .msg-type {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: hsl(var(--primary));
+      background: hsl(var(--primary-soft));
+      padding: 1px 6px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    .ref-footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid hsl(var(--border));
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* Origin color accents */
+    .origin-ELSE { color: hsl(22 92% 54%); border-color: hsl(22 92% 54% / 0.3); background: hsl(22 92% 96%); }
+    .origin-cyclone { color: hsl(212 90% 48%); border-color: hsl(212 90% 48% / 0.3); background: hsl(212 90% 96%); }
+    .origin-vanilla { color: hsl(160 60% 35%); border-color: hsl(160 60% 35% / 0.3); background: hsl(160 60% 95%); }
+    .origin-Gem { color: hsl(280 60% 50%); border-color: hsl(280 60% 50% / 0.3); background: hsl(280 60% 96%); }
+    .origin-heavylib { color: hsl(340 70% 50%); border-color: hsl(340 70% 50% / 0.3); background: hsl(340 70% 96%); }
+    .origin-pdlua { color: hsl(200 70% 45%); border-color: hsl(200 70% 45% / 0.3); background: hsl(200 70% 96%); }
+    .origin-plugdata { color: hsl(48 80% 40%); border-color: hsl(48 80% 40% / 0.3); background: hsl(48 80% 96%); }
+
+    /* hidden state */
+    [hidden] { display: none !important; }
+
+    /* Reduce page-hero bottom for this page */
+    .page-hero.compact .inner { padding: 3rem 0 1.5rem; }
+  </style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <div class="container">
+    <div class="bar">
+      <a href="index.html" class="brand">
+        <img src="assets/plugdata-logo.png" alt="" />
+        <span>plugdata</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="download.html">Download</a>
+        <a href="documentation.html">Documentation</a>
+        <a href="support.html">Support</a>
+        <a href="store.html">Store</a>
+      </nav>
+      <div class="icon-links">
+        <a class="icon-btn" href="https://github.com/plugdata-team/plugdata" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"/>
+          </svg>
+        </a>
+        <a class="icon-btn" href="https://discord.gg/eT2RxdF9Nq" target="_blank" rel="noreferrer" aria-label="Discord">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.27 5.33A18 18 0 0 0 14.9 4l-.2.42a16.6 16.6 0 0 0-4.9 0L9.6 4a18 18 0 0 0-4.37 1.33C2.5 9.32 1.76 13.2 2.13 17a18.5 18.5 0 0 0 5.6 2.83l.45-.62a13 13 0 0 1-2.13-1.03l.52-.41a13 13 0 0 0 11.16 0l.52.41c-.66.4-1.38.74-2.13 1.03l.45.62A18.5 18.5 0 0 0 21.87 17c.46-4.55-.74-8.4-2.6-11.67zM9.34 14.6a1.78 1.78 0 0 1-1.66-1.86 1.7 1.7 0 1 1 3.32 0c0 1.03-.74 1.86-1.66 1.86zm5.32 0a1.78 1.78 0 0 1-1.66-1.86 1.7 1.7 0 1 1 3.32 0c0 1.03-.74 1.86-1.66 1.86z"/></svg>
+        </a>
+      </div>
+      <button class="icon-btn menu-toggle" data-menu-toggle aria-label="Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" data-mobile-nav aria-label="Mobile">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="download.html">Download</a>
+      <a href="documentation.html">Documentation</a>
+      <a href="reference.html" class="active">Reference</a>
+      <a href="support.html">Support</a>
+      <a href="store.html">Store</a>
+      <div class="row">
+        <a class="btn btn-outline sm" href="https://github.com/plugdata-team/plugdata" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn btn-outline sm" href="https://discord.gg/eT2RxdF9Nq" target="_blank" rel="noreferrer">Discord</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== LIST VIEW ===== -->
+<div id="list-view">
+
+  <!-- Page hero -->
+  <section class="page-hero compact">
+    <div class="dot-grid-fade"></div>
+    <div class="container">
+      <div class="inner">
+        <p class="eyebrow">Reference</p>
+        <h1 class="text-balance">Every object, in one place.</h1>
+        <p class="sub">Search all objects shipped with plugdata — ELSE, Cyclone, Gem, heavylib, pdlua and vanilla Pd.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky toolbar: search + filters -->
+  <div class="ref-toolbar">
+    <div class="container">
+      <label class="ref-search">
+        <svg class="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="search-input" type="search" placeholder="Search objects — try &quot;osc&quot;, &quot;filter&quot;, &quot;reverb&quot;…" autocomplete="off" spellcheck="false" />
+        <button class="clear" id="search-clear" type="button" aria-label="Clear search" hidden>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+        <span class="kbd" id="search-kbd">/</span>
+      </label>
+
+      <div class="ref-filters" id="filters">
+        <!-- populated by JS -->
+      </div>
+
+      <div class="ref-status" id="status">Loading catalogue…</div>
+    </div>
+  </div>
+
+  <!-- Main list -->
+  <section class="ref-main">
+    <div class="container">
+      <div id="list" class="ref-list" aria-live="polite"></div>
+      <div id="empty" class="ref-empty" hidden>
+        <h3>No objects match your search</h3>
+        <p>Try a shorter query, remove a filter, or check the spelling. Object names in Pd often use <code style="font-family:var(--font-mono);font-size:0.875em;">~</code> for audio-rate versions.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== DETAIL VIEW ===== -->
+<div id="detail-view" hidden>
+  <section class="ref-detail">
+    <div class="container">
+      <a class="back" href="#" id="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to all objects
+      </a>
+
+      <div id="detail-content">
+        <!-- populated by JS -->
+      </div>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="top">
+      <div>
+        <a href="index.html" class="brand"><img src="assets/plugdata-logo.png" alt="" width="28" height="28" /><span>plugdata</span></a>
+        <p class="blurb">A free, open-source visual programming environment for audio.</p>
+      </div>
+      <div>
+        <h4>Project</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="documentation.html">Documentation</a></li>
+          <li><a href="reference.html">Reference</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get plugdata</h4>
+        <ul>
+          <li><a href="download.html">Download</a></li>
+          <li><a href="store.html">Store</a></li>
+          <li><a href="https://github.com/plugdata-team/plugdata/releases" target="_blank" rel="noreferrer">Releases</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community</h4>
+        <ul>
+          <li><a href="https://github.com/plugdata-team/plugdata" target="_blank" rel="noreferrer">GitHub</a></li>
+          <li><a href="https://discord.gg/eT2RxdF9Nq" target="_blank" rel="noreferrer">Discord</a></li>
+          <li><a href="https://github.com/sponsors/timothyschoen" target="_blank" rel="noreferrer">Sponsor</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <p class="copy">© <span data-year>2025</span> plugdata. Released under the GPL-3.0 license. Based on Pure Data by Miller Puckette.</p>
+      <div class="socials">
+        <a href="https://github.com/plugdata-team/plugdata" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"/></svg>
+        </a>
+        <a href="https://discord.gg/eT2RxdF9Nq" target="_blank" rel="noreferrer" aria-label="Discord">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.27 5.33A18 18 0 0 0 14.9 4l-.2.42a16.6 16.6 0 0 0-4.9 0L9.6 4a18 18 0 0 0-4.37 1.33C2.5 9.32 1.76 13.2 2.13 17a18.5 18.5 0 0 0 5.6 2.83l.45-.62a13 13 0 0 1-2.13-1.03l.52-.41a13 13 0 0 0 11.16 0l.52.41c-.66.4-1.38.74-2.13 1.03l.45.62A18.5 18.5 0 0 0 21.87 17c.46-4.55-.74-8.4-2.6-11.67zM9.34 14.6a1.78 1.78 0 0 1-1.66-1.86 1.7 1.7 0 1 1 3.32 0c0 1.03-.74 1.86-1.66 1.86zm5.32 0a1.78 1.78 0 0 1-1.66-1.86 1.7 1.7 0 1 1 3.32 0c0 1.03-.74 1.86-1.66 1.86z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<svg>
+    <defs>
+      <clipPath id="inletClip">
+        <rect x="0" y="0" width="100%" height="50%" />
+      </clipPath>
+      <clipPath id="outletClip">
+        <rect x="0" y="50%" width="100%" height="50%" />
+      </clipPath>
+    </defs>
+</svg>
+
+<!-- ====== Reference logic ====== -->
+<script>
+(function() {
+  'use strict';
+
+  // ---------- Config ----------
+  const REPO = 'plugdata-team/plugdata';
+  const BRANCH = 'develop';
+  const DOC_PREFIX = 'Resources/Documentation/';
+  const TREES_URL = `https://api.github.com/repos/${REPO}/git/trees/${BRANCH}?recursive=1`;
+  const RAW_BASE = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/`;
+  const EDIT_BASE = `https://github.com/${REPO}/blob/${BRANCH}/`;
+  const CACHE_KEY_INDEX = 'plugdata:ref-index:v1';
+  const CACHE_KEY_JSONS = 'plugdata:ref-jsons:v1';
+  const INDEX_TTL = 30 * 60 * 1000; // 30 min
+  const PRELOAD_CONCURRENCY = 12; // concurrent fetches when building full search index
+
+  // ---------- State ----------
+  /** @type {{ name: string, origin: string, path: string, data?: any }[]} */
+  let items = [];
+  const byKey = new Map(); // key = origin+'/'+name -> item
+  let activeFilter = 'all'; // 'all' or origin
+  let searchQuery = '';
+  let filterCounts = {};
+  let fullIndexBuilt = false;
+
+  // ---------- DOM ----------
+  const listEl = document.getElementById('list');
+  const emptyEl = document.getElementById('empty');
+  const statusEl = document.getElementById('status');
+  const filtersEl = document.getElementById('filters');
+  const searchInput = document.getElementById('search-input');
+  const searchClear = document.getElementById('search-clear');
+  const searchKbd = document.getElementById('search-kbd');
+  const listView = document.getElementById('list-view');
+  const detailView = document.getElementById('detail-view');
+  const detailContent = document.getElementById('detail-content');
+  const backLink = document.getElementById('back-link');
+  const yearEl = document.querySelector('[data-year]');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // ---------- Mobile menu wiring (mirrors main site) ----------
+  const menuBtn = document.querySelector('[data-menu-toggle]');
+  const mobileNav = document.querySelector('[data-mobile-nav]');
+  if (menuBtn && mobileNav) {
+    menuBtn.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      mobileNav.style.display = open ? 'flex' : 'none';
+    });
+  }
+
+  // ---------- Helpers ----------
+  function itemKey(item) { return item.origin + '/' + item.name; }
+
+  function encodeKey(k) { return encodeURIComponent(k); }
+
+  function parseHash() {
+    const h = location.hash.replace(/^#/, '');
+    if (!h) return null;
+    try { return decodeURIComponent(h); } catch { return h; }
+  }
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, c =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])
+    );
+  }
+
+  // Linkify [object] references inside body text. Must run on escaped text only.
+  function linkifyRefs(escapedHtml) {
+    // Match [name] where name contains typical Pd object chars.
+    return escapedHtml.replace(/\[([A-Za-z0-9_][A-Za-z0-9_.~\/\-]*)\]/g, (full, name) => {
+      // Try to find this name in our index (any origin). Prefer exact match.
+      const candidates = items.filter(it => it.name === name);
+      if (!candidates.length) return full; // leave as plain text
+      const target = candidates[0];
+      const key = itemKey(target);
+      return `[<a class="obj-link" href="#${encodeKey(key)}" data-obj-link="${esc(key)}">${esc(name)}</a>]`;
+    });
+  }
+
+  // ---------- sessionStorage cache ----------
+  function readCache(key) {
+    try {
+      const raw = sessionStorage.getItem(key);
+      if (!raw) return null;
+      return JSON.parse(raw);
+    } catch { return null; }
+  }
+  function writeCache(key, value) {
+    try { sessionStorage.setItem(key, JSON.stringify(value)); } catch { /* quota */ }
+  }
+
+  // ---------- Fetch catalogue ----------
+  async function loadIndex() {
+    // Try cache first
+    const cached = readCache(CACHE_KEY_INDEX);
+    if (cached && (Date.now() - cached.fetchedAt < INDEX_TTL) && Array.isArray(cached.items)) {
+      return cached.items;
+    }
+    statusEl.innerHTML = '<span class="ref-loading"><span class="ref-spinner"></span>Fetching catalogue from GitHub…</span>';
+    const res = await fetch(TREES_URL, { headers: { Accept: 'application/vnd.github+json' } });
+    if (!res.ok) {
+      throw new Error(`GitHub tree API returned ${res.status}. You may be rate-limited — try again in an hour.`);
+    }
+    const json = await res.json();
+    if (!json.tree) throw new Error('Unexpected API response (no tree).');
+    const result = [];
+    for (const node of json.tree) {
+      if (node.type !== 'blob') continue;
+      if (!node.path.startsWith(DOC_PREFIX)) continue;
+      if (!node.path.endsWith('.json')) continue;
+      const rel = node.path.slice(DOC_PREFIX.length); // e.g. ELSE/add.json
+      const slash = rel.indexOf('/');
+      if (slash < 0) continue;
+      const origin = rel.slice(0, slash);
+      const filename = rel.slice(slash + 1);
+      const name = filename.replace(/\.json$/, '');
+      result.push({ name, origin, path: node.path });
+    }
+    // Sort: by name (case-insensitive), stable
+    result.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+    writeCache(CACHE_KEY_INDEX, { fetchedAt: Date.now(), items: result });
+    return result;
+  }
+
+  async function fetchJSON(path) {
+    const url = RAW_BASE + path;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Failed to fetch ${path}: ${res.status}`);
+    return res.json();
+  }
+
+  // ---------- Background preload for full-text search ----------
+  async function preloadAll() {
+    if (fullIndexBuilt) return;
+    // Reuse any json data already in session cache
+    const cachedJsons = readCache(CACHE_KEY_JSONS) || {};
+    // Merge into items
+    for (const it of items) {
+      const k = itemKey(it);
+      if (cachedJsons[k] && !it.data) it.data = cachedJsons[k];
+    }
+    // Find missing
+    const todo = items.filter(it => !it.data);
+    if (!todo.length) {
+      fullIndexBuilt = true;
+      return;
+    }
+    // Fetch with concurrency cap
+    let cursor = 0;
+    const workers = Array.from({ length: PRELOAD_CONCURRENCY }, async () => {
+      while (cursor < todo.length) {
+        const i = cursor++;
+        const it = todo[i];
+        try {
+          it.data = await fetchJSON(it.path);
+          cachedJsons[itemKey(it)] = it.data;
+        } catch (e) {
+          // Mark as errored to avoid retry in same session
+          it.data = { __error: true };
+        }
+      }
+    });
+    await Promise.all(workers);
+    // Persist bulk (may exceed quota — wrap in try)
+    try { writeCache(CACHE_KEY_JSONS, cachedJsons); } catch { /* ignore */ }
+    fullIndexBuilt = true;
+  }
+
+  // ---------- Rendering: filters ----------
+  function renderFilters() {
+    const origins = Array.from(new Set(items.map(i => i.origin))).sort();
+    filterCounts = { all: items.length };
+    for (const o of origins) filterCounts[o] = items.filter(i => i.origin === o).length;
+
+    const chips = [
+      { id: 'all', label: 'All' },
+      ...origins.map(o => ({ id: o, label: o }))
+    ];
+    filtersEl.innerHTML = chips.map(c =>
+      `<button class="ref-chip ${activeFilter === c.id ? 'active' : ''}" data-filter="${esc(c.id)}">
+        ${esc(c.label)}
+        <span class="count">${filterCounts[c.id]}</span>
+      </button>`
+    ).join('');
+  }
+
+  // ---------- Rendering: list ----------
+  function normalize(s) { return (s || '').toLowerCase(); }
+
+  // Score an item against the query tokens.
+  // Returns -1 if any token fails to match anywhere.
+  // Higher is better. Name-based matches dominate; shorter names break ties.
+  //   exact name match ............... 1000
+  //   name starts with token .........  500
+  //   name contains token ............  200
+  //   description contains token .....   50
+  //   category contains token ........   30
+  //   body contains token ............   10
+  function scoreItem(it, tokens) {
+    const name = normalize(it.name);
+    const d = it.data;
+    const desc = normalize(d && d.description);
+    const cats = normalize(d && d.categories ? d.categories.join(' ') : '');
+    const body = normalize(d && d.body);
+
+    let total = 0;
+    for (const t of tokens) {
+      let s;
+      if (name === t) s = 1000;
+      else if (name.startsWith(t)) s = 500;
+      else if (name.includes(t)) s = 200;
+      else if (desc.includes(t)) s = 50;
+      else if (cats.includes(t)) s = 30;
+      else if (body.includes(t)) s = 10;
+      else return -1; // token unmatched → filter out
+      total += s;
+    }
+    // Small length penalty: breaks ties in favour of shorter, more specific names.
+    // Bounded so it never flips between tiers (<< 50, the smallest inter-tier gap).
+    return total - Math.min(name.length, 40) * 0.2;
+  }
+
+  function filterItems() {
+    const q = normalize(searchQuery).trim();
+    const tokens = q.split(/\s+/).filter(Boolean);
+    const scoped = activeFilter === 'all'
+      ? items
+      : items.filter(it => it.origin === activeFilter);
+
+    if (!tokens.length) return scoped; // already sorted by name
+
+    const scored = [];
+    for (const it of scoped) {
+      const s = scoreItem(it, tokens);
+      if (s >= 0) scored.push({ it, s });
+    }
+    scored.sort((a, b) => b.s - a.s || a.it.name.localeCompare(b.it.name));
+    return scored.map(r => r.it);
+  }
+
+  function renderList() {
+    const filtered = filterItems();
+    if (!filtered.length) {
+      listEl.innerHTML = '';
+      emptyEl.hidden = false;
+    } else {
+      emptyEl.hidden = true;
+      // Cap the DOM to keep things snappy; add "and N more" footer if needed
+      const MAX = 600;
+      const toRender = filtered.slice(0, MAX);
+      listEl.innerHTML = toRender.map(it => {
+        const key = itemKey(it);
+        const desc = it.data && it.data.description ? esc(it.data.description) : '';
+        const descClass = desc ? '' : ' empty';
+        return `<button class="ref-card" data-key="${esc(key)}">
+          <div class="row">
+            <span class="name">${esc(it.name)}</span>
+            <span class="origin origin-${esc(it.origin)}">${esc(it.origin)}</span>
+          </div>
+          <div class="desc${descClass}">${desc}</div>
+        </button>`;
+      }).join('');
+    }
+    const total = items.length;
+    const shown = filtered.length;
+    const extra = fullIndexBuilt ? '' : ' · <span class="ref-loading"><span class="ref-spinner"></span>indexing descriptions</span>';
+    statusEl.innerHTML = `${shown.toLocaleString()} / ${total.toLocaleString()} objects${extra}`;
+  }
+
+
+  function renderPdObject(item, data) {
+    const name = item.name;
+    const inlets = Array.isArray(data.inlets) ? data.inlets : [];
+    const outlets = Array.isArray(data.outlets) ? data.outlets : [];
+
+    // Signal iolets accept audio; data iolets accept messages (float, bang, list, etc.)
+    function isSignal(port) {
+      if (!port || !Array.isArray(port.messages)) return false;
+      return port.messages.some(m => m && typeof m.type === 'string' && m.type.toLowerCase().includes('signal'));
+    }
+
+    function getTextWidth(text, font) {
+      // re-use canvas object for better performance
+      const canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+      const context = canvas.getContext("2d");
+      context.font = font;
+      const metrics = context.measureText(text);
+      return metrics.width;
+    }
+
+    function getCssStyle(element, prop) {
+        return window.getComputedStyle(element, null).getPropertyValue(prop);
+    }
+
+    function getCanvasFont(el = document.body) {
+      const fontWeight = getCssStyle(el, 'font-weight') || 'normal';
+      const fontSize = getCssStyle(el, 'font-size') || '16px';
+      const fontFamily = getCssStyle(el, 'font-family') || 'Times New Roman';
+
+      return `${fontWeight} ${fontSize} ${fontFamily}`;
+    }
+
+
+    // Dimensions
+    // Inter at 15/500 runs ~7.5px per char on average; use 9 to be generous for wide glyphs
+    const w = Math.max(outlets.length * 20, inlets.length * 20, getTextWidth(name, getCanvasFont()) + 11);
+    const h = 24;
+    const portW = 11, portH = 4;
+    const edgePad = 14;
+
+    // Position a port. If there's only one iolet, place it on the left as if a second existed.
+    function portX(i, count, totalW) {
+      const effectiveCount = Math.max(count, 2);
+      const gap = (totalW - 2 * edgePad) / (effectiveCount - 1);
+      return edgePad + gap * i - portW / 2;
+    }
+
+    const PRIMARY = 'hsl(212 90% 48%)'; // data — blue
+    const ACCENT  = 'hsl(22 92% 54%)';  // signal — orange
+
+    let inletRects = '';
+    for (let i = 0; i < inlets.length; i++) {
+      const fill = isSignal(inlets[i]) ? ACCENT : PRIMARY;
+
+      const x = portX(i, inlets.length, w);
+      const r = portW / 2;
+
+      const cx = x + r;
+      const cy = 0; // center on top edge
+
+      inletRects += `
+        <!-- filled semicircle -->
+        <path
+          d="
+            M ${cx - r} ${cy}
+            A ${r} ${r} 0 0 0 ${cx + r} ${cy}
+            L ${cx - r} ${cy}
+            Z
+          "
+          fill="${fill}"
+        />
+
+        <!-- stroke only on arc -->
+        <path
+          d="
+            M ${cx - r} ${cy}
+            A ${r} ${r} 0 0 0 ${cx + r} ${cy}
+          "
+          fill="none"
+          stroke="rgb(183,183,183)"
+        />
+      `;
+    }
+
+    let outletRects = '';
+    for (let i = 0; i < outlets.length; i++) {
+      const fill = isSignal(outlets[i]) ? ACCENT : PRIMARY;
+
+      const x = portX(i, outlets.length, w);
+      const r = portW / 2;
+
+      const cx = x + r;
+      const cy = h;
+
+      outletRects += `
+        <!-- filled semicircle -->
+        <path
+          d="
+            M ${cx - r} ${cy}
+            A ${r} ${r} 0 0 1 ${cx + r} ${cy}
+            L ${cx - r} ${cy}
+            Z
+          "
+          fill="${fill}"
+        />
+
+        <!-- arc stroke -->
+        <path
+          d="
+            M ${cx - r} ${cy}
+            A ${r} ${r} 0 0 1 ${cx + r} ${cy}
+          "
+          fill="none"
+          stroke="rgb(183,183,183)"
+        />
+      `;
+    }
+    return `
+      <svg width="${w}" height="${h + 4}" viewBox="0 0 ${w} ${h + 4}" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+        <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" rx="3" ry="3"
+              fill="hsl(0 0% 100%)" stroke="rgb(183, 183, 183)" stroke-width="1" />
+        <text x="8" y="${h/2 + 1}" text-anchor="start" dominant-baseline="middle"
+              font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif"
+              font-size="15" font-weight="500" fill="hsl(220 18% 14%)">
+          ${esc(name)}
+        </text>
+        ${inletRects}
+        ${outletRects}
+      </svg>
+    `;
+  }
+
+
+  function renderInletsOutlets(title, ports) {
+    if (!Array.isArray(ports) || !ports.length) {
+      return `<div class="ref-io"><div class="ref-io-port"><div class="title">${esc(title)}</div><ul><li style="font-size:0.875rem;color:hsl(var(--muted-foreground))">None documented.</li></ul></div></div>`;
+    }
+    return `<div class="ref-io">
+      ${ports.map((p, i) => {
+        const msgs = Array.isArray(p.messages) ? p.messages : [];
+        return `<div class="ref-io-port">
+          <div class="title">
+            <span class="num">${i + 1}</span>
+            ${esc(title.toLowerCase().replace(/s$/, ''))} ${i + 1}${p.repeat ? ' (repeats)' : ''}
+          </div>
+          <ul>
+            ${msgs.length ? msgs.map(m => `
+              <li>
+                <span class="msg-type">${esc(m.type || '')}</span>
+                <span>${linkifyRefs(esc(m.description || ''))}</span>
+              </li>
+            `).join('') : '<li style="font-size:0.875rem;color:hsl(var(--muted-foreground))">No messages documented.</li>'}
+          </ul>
+        </div>`;
+      }).join('')}
+    </div>`;
+  }
+
+  function renderArguments(args) {
+    if (!Array.isArray(args) || !args.length) return '';
+    return `
+      <div class="ref-sec full">
+        <h2>Arguments</h2>
+        <div class="ref-table-wrap">
+          <table class="ref-table">
+            <thead><tr><th style="width:3rem">#</th><th style="width:6rem">Type</th><th style="width:8rem">Default</th><th>Description</th></tr></thead>
+            <tbody>
+              ${args.map((a, i) => `
+                <tr>
+                  <td class="mono">${i + 1}</td>
+                  <td><code>${esc(a.type || '')}</code></td>
+                  <td><code>${esc(a.default != null ? a.default : '—')}</code></td>
+                  <td>${linkifyRefs(esc(a.description || ''))}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderMethods(methods) {
+    if (!Array.isArray(methods) || !methods.length) return '';
+    return `
+      <div class="ref-sec full">
+        <h2>Methods</h2>
+        <div class="ref-table-wrap">
+          <table class="ref-table">
+            <thead><tr><th style="width:14rem">Message</th><th>Description</th></tr></thead>
+            <tbody>
+              ${methods.map(m => `
+                <tr>
+                  <td><code>${esc(m.type || '')}</code></td>
+                  <td>${linkifyRefs(esc(m.description || ''))}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderFlags(flags) {
+    if (!Array.isArray(flags) || !flags.length) return '';
+    return `
+      <div class="ref-sec full">
+        <h2>Flags</h2>
+        <div class="ref-table-wrap">
+          <table class="ref-table">
+            <thead><tr><th style="width:14rem">Flag</th><th>Description</th></tr></thead>
+            <tbody>
+              ${flags.map(f => `
+                <tr>
+                  <td><code>${esc(f.type || f.name || '')}</code></td>
+                  <td>${linkifyRefs(esc(f.description || ''))}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `;
+  }
+
+  // ---------- Rendering: detail ----------
+  async function renderDetail(key) {
+    const item = byKey.get(key);
+    listView.hidden = true;
+    detailView.hidden = false;
+    window.scrollTo({ top: 0, behavior: 'instant' });
+
+    if (!item) {
+      detailContent.innerHTML = `
+        <div class="meta"><span class="origin">not found</span></div>
+        <h1>Object not found</h1>
+        <p class="tagline">No object named <code>${esc(key)}</code> in the catalogue. Try going back and searching.</p>
+      `;
+      return;
+    }
+
+    // Skeleton while loading
+    detailContent.innerHTML = `
+      <div class="meta">
+        <span class="origin origin-${esc(item.origin)}">${esc(item.origin)}</span>
+      </div>
+      <h1><span class="brackets">[</span>${esc(item.name)}<span class="brackets">]</span></h1>
+      <p class="tagline"><span class="ref-loading"><span class="ref-spinner"></span>Loading documentation…</span></p>
+    `;
+
+    let data = item.data;
+    if (!data || data.__error) {
+      try {
+        data = await fetchJSON(item.path);
+        item.data = data;
+      } catch (e) {
+        detailContent.innerHTML = `
+          <div class="meta"><span class="origin origin-${esc(item.origin)}">${esc(item.origin)}</span></div>
+          <h1><span class="brackets">[</span>${esc(item.name)}<span class="brackets">]</span></h1>
+          <p class="tagline">Could not load documentation: ${esc(e.message)}</p>
+          <div class="ref-footer">
+            <a class="btn btn-outline" href="${EDIT_BASE + item.path}" target="_blank" rel="noreferrer">
+              View JSON on GitHub
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        `;
+        return;
+      }
+    }
+
+    // Title(s): the JSON can have multiple titles (aliases)
+    const titles = Array.isArray(data.title) && data.title.length ? data.title : [item.name];
+    const primaryName = item.name; // always use filename for the big title
+    const aliases = titles.filter(t => t !== primaryName);
+    const desc = data.description || '';
+    const cats = Array.isArray(data.categories) ? data.categories : [];
+    const body = data.body || '';
+
+    const html = `
+      <div class="meta">
+        <span class="origin origin-${esc(item.origin)}">${esc(item.origin)}</span>
+        ${cats.map(c => `<span class="badge">${esc(c)}</span>`).join('')}
+      </div>
+      <h1><span class="brackets">[</span>${esc(primaryName)}<span class="brackets">]</span></h1>
+      ${desc ? `<p class="tagline">${esc(desc)}</p>` : ''}
+      ${aliases.length ? `<p class="aliases">Also known as ${aliases.map(a => `<code>${esc(a)}</code>`).join(' ')}</p>` : ''}
+
+      <div class="ref-object-viz">${renderPdObject(item, data)}</div>
+
+      <div class="ref-sections">
+
+      ${body ? `
+        <div class="ref-sec full">
+          <h2>Description</h2>
+          <div class="body">${linkifyRefs(esc(body))}</div>
+        </div>
+      ` : ''}
+
+        <div class="ref-sec">
+          <h2>Inlets</h2>
+          ${renderInletsOutlets('Inlets', data.inlets)}
+        </div>
+        <div class="ref-sec">
+          <h2>Outlets</h2>
+          ${renderInletsOutlets('Outlets', data.outlets)}
+        </div>
+
+        ${renderArguments(data.arguments)}
+        ${renderMethods(data.methods)}
+        ${renderFlags(data.flags)}
+      </div>
+    `;
+    detailContent.innerHTML = html;
+  }
+
+  // ---------- Routing ----------
+  function route() {
+    const key = parseHash();
+    if (key) {
+      renderDetail(key);
+    } else {
+      detailView.hidden = true;
+      listView.hidden = false;
+      // Restore focus
+      requestAnimationFrame(() => {
+        if (searchInput.value !== searchQuery) {
+          searchInput.value = searchQuery;
+        }
+      });
+    }
+  }
+
+  // ---------- Event wiring ----------
+  function onSearchInput(e) {
+    searchQuery = e.target.value;
+    searchClear.hidden = !searchQuery;
+    searchKbd.hidden = !!searchQuery;
+    renderList();
+  }
+
+  searchInput.addEventListener('input', onSearchInput);
+  searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    searchQuery = '';
+    searchClear.hidden = true;
+    searchKbd.hidden = false;
+    renderList();
+    searchInput.focus();
+  });
+
+  // Keyboard shortcut: "/" focuses search when the list is visible
+  document.addEventListener('keydown', (e) => {
+    if (e.key === '/' && !e.target.matches('input, textarea, select') && !listView.hidden) {
+      e.preventDefault();
+      searchInput.focus();
+      searchInput.select();
+    }
+    if (e.key === 'Escape' && document.activeElement === searchInput) {
+      searchInput.blur();
+    }
+  });
+
+  filtersEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-filter]');
+    if (!btn) return;
+    activeFilter = btn.dataset.filter;
+    renderFilters();
+    renderList();
+  });
+
+  listEl.addEventListener('click', (e) => {
+    const card = e.target.closest('[data-key]');
+    if (!card) return;
+    const key = card.dataset.key;
+    location.hash = '#' + encodeKey(key);
+  });
+
+  // In detail view, obj-link navigation
+  detailContent.addEventListener('click', (e) => {
+    const a = e.target.closest('[data-obj-link]');
+    if (a) {
+      // The anchor's href handles navigation; ensure we scroll to top
+      setTimeout(() => window.scrollTo({ top: 0, behavior: 'instant' }), 0);
+      return;
+    }
+    const copy = e.target.closest('[data-copy-link]');
+    if (copy) {
+      const url = location.href;
+      navigator.clipboard?.writeText(url);
+      copy.innerHTML = `
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12l4 4L20 6"/></svg>
+        Copied
+      `;
+      setTimeout(() => {
+        copy.innerHTML = `
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          Copy link
+        `;
+      }, 1500);
+    }
+  });
+
+  backLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    history.pushState({}, '', location.pathname + location.search);
+    route();
+  });
+
+  window.addEventListener('hashchange', route);
+
+  // ---------- Bootstrap ----------
+  async function boot() {
+    try {
+      items = await loadIndex();
+      if (!items.length) {
+        statusEl.textContent = 'No documentation files found.';
+        return;
+      }
+      byKey.clear();
+      for (const it of items) byKey.set(itemKey(it), it);
+
+      // Hydrate any JSON we already have in session cache
+      const cachedJsons = readCache(CACHE_KEY_JSONS) || {};
+      for (const it of items) {
+        const k = itemKey(it);
+        if (cachedJsons[k]) it.data = cachedJsons[k];
+      }
+
+      renderFilters();
+      route(); // either list or detail
+
+      // Kick off background preload for richer search
+      if (!fullIndexBuilt) {
+        renderList(); // show list immediately with what we have
+        preloadAll().then(() => {
+          renderList(); // re-render with descriptions
+        });
+      }
+    } catch (e) {
+      statusEl.innerHTML = `<span style="color: hsl(0 70% 45%)">${esc(e.message)}</span>`;
+      listEl.innerHTML = `
+        <div class="ref-empty" style="grid-column: 1 / -1">
+          <h3>Could not load catalogue</h3>
+          <p>${esc(e.message)}</p>
+        </div>
+      `;
+    }
+  }
+
+  boot();
+})();
+</script>
+
+</body>
+</html>
