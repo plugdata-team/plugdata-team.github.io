@@ -1,246 +1,370 @@
-<!DOCTYPE html>
-<!--[if IE]><html lang="en" class="ie-legacy"><![endif]-->
-<!--[if !IE]><!-->
-<html lang="en"><!--<![endif]--><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<meta name="description" content="A visual programming environment for audio experimentation, prototyping and education">
-<meta name="author" content="plugdata">
-<meta name="theme-color" content="#3689e6">
-<meta property="og:title" content="A visual programming environment for audio experimentation, prototyping and education ⋅ plugdata">
-<meta property="og:description" content="A visual programming environment for audio experimentation, prototyping and education">
-<meta itemprop="name" content="A visual programming environment for audio experimentation, prototyping and education ⋅ plugdata">
-<meta itemprop="description" content="A visual programming environment for audio experimentation, prototyping and education">
-<meta name="apple-mobile-web-app-title" content="plugdata">
-<!-- <link rel="manifest" href="MANIFEST_LINK"> -->
-<title>A visual programming environment for audio experimentation, prototyping and education ⋅ plugdata</title>
-<link rel="shortcut icon" href="https://plugdata.org/images/favicon.ico">
-<!--<link rel="apple-touch-icon" href="TOUCH_ICON_LINK"> -->
-<!-- <link rel="icon" type="image/png" href="FAVICON_LINK" sizes="256x256">-->
-<link rel="alternate" type="text/html" hreflang="en" href="https://plugdata.org/">
-<link rel="stylesheet" type="text/css" media="all" href="./main.css">
-<link rel="stylesheet" type="text/css" media="all" href="./home.css">
-<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>plugdata — A visual programming environment for audio</title>
+  <meta name="description" content="plugdata is a free, open-source visual audio programming environment. A modern fork of Pure Data with VST3, AU, CLAP & LV2 plugin export, ELSE & Cyclone libraries, and Daisy hardware support." />
+  <meta name="author" content="plugdata" />
+  <link rel="icon" href="assets/plugdata-logo.png" type="image/png" />
+  <meta property="og:title" content="plugdata — A visual programming environment for audio" />
+  <meta property="og:description" content="Free, open-source visual audio patching. A modern fork of Pure Data with VST3, AU, CLAP & LV2 plugin export." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="page-index">
-<nav>
-<script type="text/javascript">function toggleMenu(){var e=document.getElementById("menu-button").getAttribute("aria-expanded");e="true"==e?"false":"true",document.getElementById("menu-button").setAttribute("aria-expanded",e)}</script>
-<button class="menu-button enabled" title="Toggle navigation menu" aria-label="Toggle navigation menu" aria-expanded="false" id="menu-button" onclick="toggleMenu()"><svg aria-hidden="true" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 6v1h24V6zm0 6v1h24v-1zm0 6v1h24v-1z"></path></svg></button>
-<div class="nav-content">
-<ul>
+<body>
 
-<li><a href="https://plugdata.org/" class="logomark"><img src="./images/logo_small.png" alt="plugdata" style="width: 24px; height: auto;"></a></li>
-<li><a href="https://plugdata.org/">Home</a></li>
-<li><a href="https://plugdata.org/about.html" target="_self">About</a></li>
-<li><a href="https://plugdata.org/support.html">Support</a></li>
-<li><a href="https://plugdata.org/download.html" target="_self">Download</a></li>
-<li><a href="https://plugdata.org/documentation.html" target="_self">Documentation</a></li>
-<li><a href="https://plugdata.org/store.html" target="_self">Store</a></li>
-</ul>
-
-<style>
-    .social {
-      display: inline-block;
-      cursor: pointer;
-      margin-right: 12px;
-    }
-
-    .logo {
-      display: inline-block;
-      height: 28px;
-      width: auto;
-      position: relative;
-      margin-right: -8px;
-      top: 8px;
-    }
-  </style>
-
-<div class="right">
-    <div class="social" onclick="location.href = 'https://github.com/plugdata-team/plugdata';">
-    <img src="./images/github.png" class="logo">
-    <a>View on GitHub</a>
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <div class="container">
+    <div class="bar">
+      <a href="index.html" class="brand">
+        <img src="assets/plugdata-logo.png" alt="" />
+        <span>plugdata</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" data-nav-link>Home</a>
+        <a href="about.html" data-nav-link>About</a>
+        <a href="download.html" data-nav-link>Download</a>
+        <a href="documentation.html" data-nav-link>Documentation</a>
+        <a href="support.html" data-nav-link>Support</a>
+        <a href="store.html" data-nav-link>Store</a>
+      </nav>
+      <div class="icon-links">
+        <a class="icon-btn" href="https://github.com/plugdata-team/plugdata" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <svg width="16" height="16" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z" transform="scale(64)" fill="#1B1F23"/>
+        </svg>
+        </a>
+        <a class="icon-btn" href="https://discord.gg/eT2RxdF9Nq" target="_blank" rel="noreferrer" aria-label="Discord">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.27 5.33A18 18 0 0 0 14.9 4l-.2.42a16.6 16.6 0 0 0-4.9 0L9.6 4a18 18 0 0 0-4.37 1.33C2.5 9.32 1.76 13.2 2.13 17a18.5 18.5 0 0 0 5.6 2.83l.45-.62a13 13 0 0 1-2.13-1.03l.52-.41a13 13 0 0 0 11.16 0l.52.41c-.66.4-1.38.74-2.13 1.03l.45.62A18.5 18.5 0 0 0 21.87 17c.46-4.55-.74-8.4-2.6-11.67zM9.34 14.6a1.78 1.78 0 0 1-1.66-1.86 1.7 1.7 0 1 1 3.32 0c0 1.03-.74 1.86-1.66 1.86zm5.32 0a1.78 1.78 0 0 1-1.66-1.86 1.7 1.7 0 1 1 3.32 0c0 1.03-.74 1.86-1.66 1.86z"/></svg>
+        </a>
+      </div>
+      <button class="icon-btn menu-toggle" data-menu-toggle aria-label="Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
+    <nav class="mobile-nav" data-mobile-nav aria-label="Mobile">
+      <a href="index.html" data-nav-link>Home</a>
+      <a href="about.html" data-nav-link>About</a>
+      <a href="download.html" data-nav-link>Download</a>
+      <a href="documentation.html" data-nav-link>Documentation</a>
+      <a href="support.html" data-nav-link>Support</a>
+      <a href="store.html" data-nav-link>Store</a>
+      <div class="row">
+        <a class="btn btn-outline sm" href="https://github.com/plugdata-team/plugdata" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn btn-outline sm" href="https://discord.gg/eT2RxdF9Nq" target="_blank" rel="noreferrer">Discord</a>
+      </div>
+    </nav>
+  </div>
+</header>
 
-    <div class="social" onclick="location.href = 'https://discord.gg/eT2RxdF9Nq';">
-    <img src="./images/discord.png" class="logo">
-    <a>Join our Discord</a>
+<main>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="dot-grid-fade"></div>
+  <div class="container">
+    <div class="inner">
+      <div class="logo"><img src="assets/plugdata-logo.png" alt="plugdata" width="92" height="92" /></div>
+      <h1 class="text-balance">A visual programming environment for audio.</h1>
+      <p class="sub">plugdata is a free, open-source patching environment based on Pure Data. Reimagined with a modern interface, DAW plugin version, code export and a curated set of objects.</p>
+      <div class="ctas">
+        <a class="btn btn-primary lg" href="download.html" data-os-cta>
+          Download for <span data-os-label>your platform</span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-outline lg" href="https://github.com/plugdata-team/plugdata" target="_blank" rel="noreferrer">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.84.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.91.68 1.84v2.72c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+      <p class="fine">Free &amp; open source · GPL-3.0 · No account required</p>
+      <div class="badges">
+        <span class="badge">macOS</span>
+        <span class="badge">Windows</span>
+        <span class="badge">Linux</span>
+        <span class="badge">iOS</span>
+        <span class="badge">BSD</span>
+        <span class="sep">·</span>
+        <span class="badge">Standalone</span>
+        <span class="badge">VST3</span>
+        <span class="badge">AU</span>
+        <span class="badge">CLAP</span>
+        <span class="badge">LV2</span>
+      </div>
     </div>
-</div>
-
-</div>
-</nav>
-<div id="content-container">
-<script>
-            </script>
-<section class="section--hero section--stretched">
-<div class="section__detail grid">
-<div class="whole">
-<h1 alt="plugdata"><img src="./images/logo.png" alt="plugdata" style="width: 10%; height: auto; margin-bottom: 10px;"></h1>
-<h1>plugdata</h1>
-<h2>A visual programming environment for audio experimentation, prototyping and education</h2>
-</div>
-</div>
-<div class="section__showcase">
-<img class="bg" src="./images/app.png" alt="plugdata app">
-<div class="gif-container">
-  <img src="./images/oscope.gif" alt="GIF Overlay">
-</div>
-</div>
-</section></div>
-
-<section id="whats-new" class="grey">
-<div class="grid">
-<div class="section__detail grid">
-<div class="two-thirds">
-<p>plugdata is a free/open-source visual programming environment based on pure-data. It is available for a wide range of operating systems, and can be used both as a standalone app, or as a VST3, LV2, CLAP or AU plugin. <br><br> plugdata allows you to create and manipulate audio systems using visual elements, rather than writing code. Think of it as building with virtual blocks – simply connect them together to design your unique audio setups. It's a user-friendly and intuitive way to experiment with audio and programming.</bar></p>
-</div>
-<div class="row">
-<a class="button suggested-action" href="https://plugdata.org/download.html">Download plugdata</a>
-<p class="small-label">
-<!--<a href="FAQ_LINK" target="_blank" rel="noopener">FAQ</a> --->
-</p>
-</div>
-<div style="clear:both;"></div>
-</div>
-</div>
-<section id="home-card">
-<div class="app-display app-display--overflow">
-  <div class="grid-container app-display__image">
-    <img class="grid-image" id="grid-image" src="./images/object_grid.png" alt="Grid of Objects">
   </div>
-<script>
-function updateScroll() {
-  const image = document.getElementById('grid-image');
-
-  const scrollPosition = (((window.scrollY - 700) / 2) % 1000)
-  image.style.webkitMaskPositionX = `${scrollPosition - 500}px`;
-  image.style.maskPositionX = `${scrollPosition - 500}px`;
-  image.style.transform = `translateX(-${scrollPosition}px)`;
-}
-
-window.addEventListener('scroll', updateScroll);
-</script>
-<div class="app-display__description">
-<h2>Many, Many Objects</h2>
-<p>plugdata comes with the ELSE library installed by default, providing a wide range of general-purpose objects that offer high-level abstraction on top of pure-data. plugdata also ships with the cyclone library, to make Max users feel at home when they use plugdata.</p>
-<div class="buttons">
-<a href="https://github.com/porres/pd-else/" class="button flat">About ELSE</a>
-<a href="https://github.com/porres/pd-cyclone/" target="_blank" rel="noopener" class="button flat">About Cyclone</a>
-</div>
-</div>
-</div>
-</section>
-<section id="workflow" class="grey">
-<div class="grid">
-<div class="two-thirds">
-<h1>Run Your Patches Anywhere.</h1>
-<p>With Heavy integration, audio plugin capabilities and cross-platform builds, your patches are going places.</p>
-</div>
-</div>
-<div class="grid">
-<div class="third">
-<img class="app-display__image" src="./images/hvcc.png" alt="hvcc" width="auto" height="100px" style="max-width:100%">
-<h4>Heavy Integration</h4>
-<p>plugdata integrates with the Heavy/hvcc project to allow patches to be converted into C/C++ code. It ships with a compiler toolchain to make exporting plugins, or running patches on the Electro-Smith Daisy platform a piece of cake.</p>
-</div>
-<div class="third">
-<figure class="pip">
-<div class="workspace">
-<img class="app-display__image" src="./images/daw.png" alt="daw" width="auto" height="100px" style="max-width:100%">
-</div>
-</figure>
-<h4>Plugin Capabilities</h4>
-<p>Seamlessly integrate plugdata into your DAW workflow as a VST3, AU, LV2, or CLAP plugin. Mix and match with other plugins or control them with MIDI: the possibilities are endless! </p>
-</div>
-<div class="third">
-<figure class="dnd">
-<div class="workspace">
-<img class="app-display__image" src="./images/cross_platform.png" alt="cross-platform" width="auto" height="100px" style="max-width:100%; padding: 50px">
-</div>
-</figure>
-<h4>Cross-platform</h4>
-<p>plugdata is fully cross-platform, and is available for most common processor architectures. Officially supporter operating systems are Windows, macOS and a wide variety of Linux distros. Run your patches on a PC, Mac and even Raspberry Pi. plugdata can also run on FreeBSD when compiled from scratch.</p>
-</div>
-</div>
-</section>
-<section>
-<div class="grid">
-<div class="two-thirds" style="margin: 80px">
-<h1>Community Made</h1>
-<p>plugdata is fueled by a passionate group of volunteers who are dedicated to providing an exceptional user experience. Our commitment to open-source principles ensures that plugdata will always be free and open for everyone to use and contribute to. </p>
-</div>
-</section>
-<section>
-</div>
-<div class="grid">
-<div class="half">
-<img src="images/education.svg" alt="education" width="20%" style="padding: 30px;">
-<h2>plugdata for education</h2>
-<p>From high schools to universities, plugdata has found its place in classrooms and workshops, providing a simple yet powerful environment to learn the fundamentals of programming and explore the depths of audio creation.</p>
-</div>
-<div class="half">
-<img src="images/music.svg" alt="arts" width="20%" style="padding: 30px;">
-<h2>plugdata for artists</h2>
-<p>For artists seeking to push the boundaries of sonic expression, plugdata offers limitless possibilities. Craft unique soundscapes, experiment with audio synthesis, or encorporate it into your effects chain. plugdata provides the tools and freedom you need to bring your artistic vision to life.</p>
-</div>
-</div>
-</section>
-<section id="home-card" style="background-color: #333333; background-image: linear-gradient(to right bottom,#222222,#333333);">
-<div class="app-display app-display--overflow">
-<img class="app-display__image" src="./images/darkmode.png" alt="plugdata dark mode" width="1165" height="912">
-<div class="app-display__description">
-<h2>Fully Themable</h2>
-<p>Customizability and accessibility are at the core of our platform. Adapt plugdata to your style with full theming, including a light and dark mode. Or use the font, color, and scaling features to enhance accessibility and cater to your specific needs. </p>
-</div>
-</div>
-</section>
-<section id="shortcuts" class="grey">
-<div class="app-display app-display--horizontal">
-<img class="app-display__image" src="images/pd-vanilla.png" alt="pd-vanilla" width="885" height="656">
-<div class="app-display__description">
-<h1>Vanilla Compatible</h1>
-<p>plugdata is directly based on pd-vanilla, with minimal modifications to the original source code. This ensures very high compatibility between pure-data and plugdata patches. This also means that your pure-data skills seamlessly transfer to plugdata, and vice versa!</p>
-</div>
-</div>
-</section>
-<section>
-<div id="showcase" class="row grey initialized" style="height: 420.2px; background-color: #222222">
-<div id="showcase-index" class="active">
-<div>
-  <h2>A Rock-Solid Foundation</h2>
-  <p> We have built plugdata on top of JUCE, the industry standard framework for plugin and audio application development.<br><br> On top of that, plugdata integrates with some of the best projects in the pure-data ecosystem to expand upon its capabilities.</p>
+  <div class="section__showcase">
+  <img class="bg" src="./assets/app.png" alt="plugdata app">
+  <div class="gif-container">
+    <img src="./assets/oscope.gif" alt="GIF Overlay">
   </div>
-  <ul id="showcase-grid">
-  <a href="https://puredata.info"><li class="read-more"><img src="./images/pd.png" alt="pure-data logo">pure-data</li></a>
-  <a href="https://juce.com"><li class="read-more"><img src="./images/juce.png" alt="JUCE logo">JUCE</li></a>
-  <a href="https://github.com/Wasted-Audio/hvcc"><li class="read-more"><img src="./images/hvcc_logo.png" alt="Heavy logo">Heavy</li></a>
-  <a href="https://github.com/porres/pd-else/"><li class="read-more"><img src="./images/else.png" alt="ELSE logo">ELSE</li></a>
-  <a href="https://github.com/porres/pd-cyclone/"><li class="read-more"><img src="./images/cyclone.png" alt="Cyclone logo">Cyclone</li></a>
-  </ul>
   </div>
-</div>
-</div>
 </section>
-<section class="cta">
-  <img src="./images/logo.png" alt="plugdata logo" style="max-width:12%; padding:30px;">
-  <h1>Get plugdata</h1>
-  <p>A visual programming environment for audio experimentation, prototyping and education</p>
-  <a class="button suggested-action" href="https://plugdata.org/download.html">Go to downloads</a>
-  </section>
-<section>
-<footer>
-<div>
-<p> Copyright © 2025 Timothy Schoen. </p>
-</div>
-<ul>
-<li><a href="https://plugdata.org/">Home</a></li>
-<li><a href="https://plugdata.org/about.html" target="_self">About</a></li>
-<li><a href="https://plugdata.org/support.html">Support</a></li>
-<li><a href="https://plugdata.org/download.html" target="_self">Download</a></li>
-<li><a href="https://plugdata.org/documentation.html" target="_self">Documentation</a></li>
-</ul>
+
+
+<!-- ===== What is visual patching ===== -->
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div>
+        <p class="eyebrow" style="margin-bottom: 0.75rem;">What is patching?</p>
+        <h2 style="font-size: clamp(1.875rem, 2vw + 1rem, 2.25rem);">Build with blocks, not code.</h2>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 1.25rem; color: hsl(var(--muted-foreground)); line-height: 1.7;">
+        <p>plugdata lets you create and manipulate audio systems using visual elements rather than writing code. Think of it as building with virtual blocks: drop them onto a canvas, connect them with cables, and hear the result instantly.</p>
+        <p>It's a friendly, intuitive way to experiment with sound and programming, whether you're designing a synth, prototyping an effect, or teaching the fundamentals of digital audio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Object wall ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow" style="margin-bottom: 0.75rem;">Many, many objects</p>
+      <h2>Batteries included: ELSE, Cyclone and Gem in the box.</h2>
+      <p>plugdata ships with the ELSE library for high-level abstractions on top of Pure Data, and the Cyclone library so Max users feel right at home.</p>
+    </div>
+    <div class="object-wall">
+      <div class="inner dot-grid">
+        <div class="wrap" id="object-wall"></div>
+      </div>
+      <div class="fade-top"></div>
+      <div class="fade-bottom"></div>
+    </div>
+    <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; font-size: 0.875rem; flex-wrap: wrap;">
+        <a class="btn btn-outline" href="https://github.com/porres/pd-else/">About ELSE
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-outline" href="https://github.com/porres/pd-cyclone/">About Cyclone
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+  </div>
+</section>
+
+<!-- ===== Run anywhere ===== -->
+<section class="section" style="background: hsl(var(--secondary) / 0.4);">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow" style="margin-bottom: 0.75rem;">Run your patches anywhere</p>
+      <h2>Standalone app, plugin in your DAW, or embedded hardware.</h2>
+      <p>With Heavy/hvcc integration, full plugin support, and cross-platform builds, your patches are going places.</p>
+    </div>
+    <div class="tile-grid cols-4">
+      <div class="tile">
+        <p class="mono" style="font-size: 0.75rem; color: hsl(var(--muted-foreground));">target / standalone</p>
+        <h3>A native desktop app</h3>
+        <p>Open plugdata, create a patch, and run it as a regular desktop application on macOS, Windows, Linux.</p>
+      </div>
+      <div class="tile">
+        <p class="mono" style="font-size: 0.75rem; color: hsl(var(--muted-foreground));">target / mobile</p>
+        <h3>An iOS app</h3>
+        <p>plugdata is available as a native iOS app for iPad or iPhone, directly in the App Store</p>
+      </div>
+      <div class="tile">
+        <p class="mono" style="font-size: 0.75rem; color: hsl(var(--muted-foreground));">target / plugin</p>
+        <h3>Drop it into your DAW</h3>
+        <p>Load the same patch as a VST3, AU, CLAP or LV2 plugin. Mix it with other plugins and automate it with MIDI like any other instrument.</p>
+      </div>
+      <div class="tile">
+        <p class="mono" style="font-size: 0.75rem; color: hsl(var(--muted-foreground));">target / hardware</p>
+        <h3>Compile to embedded</h3>
+        <p>Use the built-in Heavy/hvcc toolchain to export C/C++ code, flash it to an Electro-Smith Daisy, or export real audio plugins.</p>
+      </div>
+    </div>
+    <div style="margin-top: 2rem;">
+      <a class="btn btn-outline" href="documentation.html">Read the documentation
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-outline" href="https://wasted-audio.github.io/hvcc">About the Heavy compiler
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Featured carousel (revealed by JS when highlights exist) -->
+<section class="section" data-carousel-section hidden>
+  <div class="container">
+    <div class="section-head">
+        <p class="eyebrow" style="margin-bottom: 0.75rem;">Made with plugdata</p>
+        <h2>Community-made patches</h2>
+    </div>
+    <div class="carousel" data-carousel>
+      <div class="carousel-viewport">
+        <div class="carousel-track" data-carousel-track></div>
+      </div>
+      <button type="button" class="carousel-btn prev" data-carousel-prev aria-label="Previous slide">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button type="button" class="carousel-btn next" data-carousel-next aria-label="Next slide">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+      <div class="carousel-dots" data-carousel-dots></div>
+    </div>
+    <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; font-size: 0.875rem; flex-wrap: wrap;">
+        <a class="btn btn-outline" href="store.html">Find more in the store
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Education / Artists ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow" style="margin-bottom: 0.75rem;">Who it's for</p>
+      <h2>A tool for classrooms and stages alike.</h2>
+    </div>
+    <div class="tile-grid cols-2">
+      <div class="tile">
+        <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7l10-4 10 4-10 4-10-4zM6 9v6c0 1.66 2.69 3 6 3s6-1.34 6-3V9"/></svg></div>
+        <h3 style="font-size: 1.25rem;">plugdata for education</h3>
+        <p>From high schools to universities, plugdata has found its place in classrooms and workshops, providing a simple yet powerful environment to learn the fundamentals of programming and explore the depths of audio creation.</p>
+      </div>
+      <div class="tile">
+        <div class="icon-box accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM21 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/></svg></div>
+        <h3 style="font-size: 1.25rem;">plugdata for artists</h3>
+        <p>For artists pushing the boundaries of sonic expression, plugdata offers limitless possibilities. Craft unique soundscapes, experiment with synthesis, or weave it into your live effects chain. Bring your artistic vision to life.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Vanilla compatible ===== -->
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div>
+        <p class="eyebrow" style="margin-bottom: 0.75rem;">Vanilla compatible</p>
+        <h2>Built directly on pd-vanilla.</h2>
+        <p style="margin-top: 1.25rem; color: hsl(var(--muted-foreground)); line-height: 1.7; max-width: 32rem;">plugdata is based directly on pd-vanilla, with minimal modifications to the original source. Your Pure Data patches open in plugdata, and your plugdata patches open in Pure Data, and your skills carry over either way.</p>
+        <ul class="check-list">
+          <li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L20 6"/></svg> Reads and writes the standard .pd patch format</li>
+          <li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L20 6"/></svg> Same runtime behaviour as upstream Pure Data</li>
+          <li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L20 6"/></svg> Everything you learn here transfers to vanilla Pd</li>
+          <li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L20 6"/></svg> All plugdata's objects objects are available in vanilla Pd through the ELSE, Cyclone and Gem externals</li>
+        </ul>
+      </div>
+      <div class="code-block">
+        <p class="label">my-patch.pd</p>
+<pre>#N canvas 0 0 450 300 12;
+#X obj 90 80 osc~ 440;
+#X obj 90 130 *~ 0.5;
+#X obj 90 180 dac~;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 0 2 1;</pre>
+        <p class="caption">The same file opens in plugdata and in Pure Data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow" style="margin-bottom: 0.75rem;">Principles</p>
+      <h2>What we care about.</h2>
+    </div>
+    <div class="tile-grid cols-3">
+      <div class="tile"><h3>Free and open</h3><p>Released under the GPL-3.0. No accounts, no telemetry, no lock-in.</p></div>
+      <div class="tile"><h3>Welcoming to everyone </h3><p>Learn using built-in documentation and tooltips. Better accesibility through theming options and clear visual feedback. Protect your ears with the safety limiter. A welcoming community. </p></div>
+      <div class="tile"><h3>Compatible</h3><p> Everything you learn about plugdata or pure-data transfers over. </p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Community ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center">
+      <p class="eyebrow" style="margin-bottom: 0.75rem;">Community</p>
+      <h2>Built in the open. By patchers, for patchers.</h2>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem;">
+      <a class="btn btn-outline" href="https://github.com/plugdata-team/plugdata" target="_blank" rel="noreferrer">★ Star on GitHub</a>
+      <a class="btn btn-outline" href="https://discord.gg/eT2RxdF9Nq" target="_blank" rel="noreferrer">Join Discord</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="top">
+      <div>
+        <a href="index.html" class="brand"><img src="assets/plugdata-logo.png" alt="" width="28" height="28" /><span>plugdata</span></a>
+        <p class="blurb">A free, open-source visual programming environment for audio.</p>
+      </div>
+      <div>
+        <h4>Project</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="documentation.html">Documentation</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get plugdata</h4>
+        <ul>
+          <li><a href="download.html">Download</a></li>
+          <li><a href="store.html">Store</a></li>
+          <li><a href="https://github.com/plugdata-team/plugdata/releases" target="_blank" rel="noreferrer">Releases</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community</h4>
+        <ul>
+          <li><a href="https://github.com/plugdata-team/plugdata" target="_blank" rel="noreferrer">GitHub</a></li>
+          <li><a href="https://discord.gg/eT2RxdF9Nq" target="_blank" rel="noreferrer">Discord</a></li>
+          <li><a href="https://github.com/sponsors/timothyschoen" target="_blank" rel="noreferrer">Sponsor</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <p class="copy">© <span data-year>2025</span> plugdata. Released under the GPL-3.0 license. Based on Pure Data by Miller Puckette.</p>
+      <div class="socials">
+        <a href="https://github.com/plugdata-team/plugdata" target="_blank" rel="noreferrer" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z" transform="scale(64)" fill="#1B1F23"/>
+        </svg></a>
+        <a href="https://discord.gg/eT2RxdF9Nq" target="_blank" rel="noreferrer" aria-label="Discord"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.27 5.33A18 18 0 0 0 14.9 4l-.2.42a16.6 16.6 0 0 0-4.9 0L9.6 4a18 18 0 0 0-4.37 1.33C2.5 9.32 1.76 13.2 2.13 17a18.5 18.5 0 0 0 5.6 2.83l.45-.62a13 13 0 0 1-2.13-1.03l.52-.41a13 13 0 0 0 11.16 0l.52.41c-.66.4-1.38.74-2.13 1.03l.45.62A18.5 18.5 0 0 0 21.87 17c.46-4.55-.74-8.4-2.6-11.67zM9.34 14.6a1.78 1.78 0 0 1-1.66-1.86 1.7 1.7 0 1 1 3.32 0c0 1.03-.74 1.86-1.66 1.86zm5.32 0a1.78 1.78 0 0 1-1.66-1.86 1.7 1.7 0 1 1 3.32 0c0 1.03-.74 1.86-1.66 1.86z"/></svg></a>
+      </div>
+    </div>
+  </div>
 </footer>
 
 
-</section></section></body></html>
+<!-- Inline object-wall builder (page-specific) -->
+<script>
+  (function(){
+    var OBJECTS = ["osc~","phasor~","noise~","sig~","line~","vline~","snapshot~","lop~","hip~","bp~","vcf~","biquad~","svf~","comb~","delay~","delread~","delwrite~","tabread~","tabwrite~","tabosc4~","+~","*~","-~","/~","clip~","wrap~","abs~","dac~","adc~","throw~","catch~","send~","receive~","metro","delay","pipe","trigger","select","route","spigot","f","i","+","*","moses","until","random","pack","unpack","list","expr","expr~","fexpr~","loadbang","bang","float","symbol","int","key","sine~","saw~","tri~","pulse~","impulse~","blsquare~","blsaw~","envgen~","asr~","adsr~","lag~","slew~","decay~","reverb~","freeverb~","plate.rev~","click~","drive~","fold~","wrap2~","rotate~","pan2~","pan4~","cycle~","phasor","thresh~","minimum~","maximum~","gate~","selector~","matrix~","buffir~"];
+    var wall = document.getElementById('object-wall');
+    if (!wall) return;
+    var html = '';
+    for (var i = 0; i < OBJECTS.length; i++) {
+      var cls = 'obj';
+      if (i % 17 === 0) cls += ' primary';
+      else if (i % 23 === 0) cls += ' accent';
+      html += '<span class="' + cls + '">' + OBJECTS[i] + '</span>';
+    }
+    wall.innerHTML = html;
+  })();
+</script>
+<script src="main.js"></script>
+<script>
+spawnPatchCarousel();
+</script>
+</body>
+</html>

@@ -1,533 +1,586 @@
 <!doctype html>
-<html>
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <title>plugdata - Download</title>
-        <link
-            rel="icon"
-            type="image/x-icon"
-            href="https://plugdata.org/images/favicon.ico"
-        />
-        <link rel="stylesheet" href="download_files/font-awesome.min.css" />
-        <link rel="stylesheet" type="text/css" media="all" href="./main.css" />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            media="all"
-            href="./downloads.css"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-    </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Download — plugdata</title>
+  <meta name="description" content="Download plugdata 0.9.3 for macOS, Windows, Linux and BSD. Standalone application plus VST3, AU, CLAP and LV2 plugins." />
+  <link rel="icon" href="assets/plugdata-logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* OS picker active state */
+    .os-picker a.active,
+    .os-picker button.active {
+      background: hsl(var(--primary-soft));
+      border-color: hsl(var(--primary) / 0.4);
+      color: hsl(var(--primary));
+    }
+    .os-picker button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      width: 100%;
+      border: 1px solid hsl(var(--border)); background: hsl(var(--background));
+      border-radius: 0.5rem; padding: 0.75rem 1rem; cursor: pointer;
+      color: inherit; font-size: 0.875rem; font-weight: 500; line-height: 1;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .os-picker button img { flex: 0 0 auto; }
+    .os-picker button:hover { background: hsl(var(--secondary) / 0.5); }
 
-    <body style="background: rgb(255, 255, 255)">
-        <nav>
-            <script type="text/javascript">
-                function toggleMenu() {
-                    var e = document
-                        .getElementById("menu-button")
-                        .getAttribute("aria-expanded");
-                    (e = "true" == e ? "false" : "true"),
-                        document
-                            .getElementById("menu-button")
-                            .setAttribute("aria-expanded", e);
-                }
-            </script>
-            <button
-                class="menu-button enabled"
-                title="Toggle navigation menu"
-                aria-label="Toggle navigation menu"
-                aria-expanded="false"
-                id="menu-button"
-                onclick="toggleMenu()"
-            >
-                <svg
-                    aria-hidden="true"
-                    height="24"
-                    width="24"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path d="M0 6v1h24V6zm0 6v1h24v-1zm0 6v1h24v-1z"></path>
-                </svg>
-            </button>
-            <div class="nav-content">
-                <ul>
-                    <li>
-                        <a href="https://plugdata.org/" class="logomark"
-                            ><img
-                                src="./images/logo.png"
-                                alt="plugdata"
-                                style="width: 24px; height: auto"
-                        /></a>
-                    </li>
-                    <li><a href="https://plugdata.org/">Home</a></li>
-                    <li>
-                        <a href="https://plugdata.org/about.html" target="_self"
-                            >About</a
-                        >
-                    </li>
-                    <li>
-                        <a href="https://plugdata.org/support.html">Support</a>
-                    </li>
-                    <li>
-                        <a
-                            href="https://plugdata.org/download.html"
-                            target="_self"
-                            >Download</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="https://plugdata.org/documentation.html"
-                            target="_self"
-                            >Documentation</a
-                        >
-                    </li>
-                    <li>
-                        <a href="https://plugdata.org/store.html" target="_self"
-                            >Store</a
-                        >
-                    </li>
-                </ul>
+    [data-os-panel][hidden] { display: none; }
 
-                <style>
-                    .social {
-                        display: inline-block;
-                        cursor: pointer;
-                        margin-right: 12px;
-                    }
+    .linux-matrix { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .linux-matrix th, .linux-matrix td {
+      text-align: left; padding: 0.625rem 0.875rem;
+      border-bottom: 1px solid hsl(var(--border));
+    }
+    .linux-matrix tbody tr:last-child td { border-bottom: 0; }
+    .linux-matrix th {
+      font-weight: 500; color: hsl(var(--muted-foreground));
+      font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.08em;
+      background: hsl(var(--secondary) / 0.5);
+    }
+    .linux-matrix th.right, .linux-matrix td.right { text-align: right; }
+    .linux-matrix td a { color: hsl(var(--primary)); font-weight: 500; font-size: 0.8125rem; }
+    .linux-matrix td a:hover { text-decoration: underline; }
+    .linux-matrix-wrap {
+      border: 1px solid hsl(var(--border)); border-radius: 0.75rem;
+      overflow: hidden; background: hsl(var(--card));
+    }
 
-                    .logo {
-                        display: inline-block;
-                        height: 28px;
-                        width: auto;
-                        position: relative;
-                        margin-right: -8px;
-                        top: 8px;
-                    }
-                </style>
+    .external-repos {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem;
+    }
 
-                <div class="right">
-                    <div
-                        class="social"
-                        onclick="location.href = 'https://github.com/plugdata-team/plugdata';"
-                    >
-                        <img src="./images/github.png" class="logo" />
-                        <a>View on GitHub</a>
-                    </div>
+    /* App Store badge */
+    .appstore-btn {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      padding: 0.5rem 1.125rem;
+      background: #000; color: #fff;
+      border: 1px solid #000;
+      border-radius: 0.625rem;
+      height: 3rem;
+      transition: background 0.15s;
+    }
+    .appstore-btn:hover { background: #1a1a1a; }
+    .appstore-btn .label { display: flex; flex-direction: column; line-height: 1.1; text-align: left; }
+    .appstore-btn .label .sm { font-size: 0.6875rem; font-weight: 400; }
+    .appstore-btn .label .lg { font-size: 1.125rem; font-weight: 500; letter-spacing: -0.01em; margin-top: 1px; }
 
-                    <div
-                        class="social"
-                        onclick="location.href = 'https://discord.gg/eT2RxdF9Nq';"
-                    >
-                        <img src="./images/discord.png" class="logo" />
-                        <a>Join our Discord</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <h2
-            style="
-                text-align: center;
-                font-family: Inter;
-                font-weight: 700;
-                border-radius: 0%;
-                border: medium none;
-                outline: none;
-                font-size: 48px;
-                color: rgb(51, 51, 51);
-                background-color: transparent;
-                margin-top: 70px;
-            "
-        >
-            Download plugdata
-        </h2>
-        <h1
-            style="
-                top: 50px;
-                text-align: center;
-                font-family: Inter;
-                font-weight: 500;
-                padding-top: 20px;
-                padding-bottom: 20px;
-                font-size: 32px;
-                color: rgb(51, 51, 51);
-                background-color: transparent;
-            "
-        >
-            Latest stable (v0.9.3)
-        </h1>
-        <section class="docs">
-            <div class="card" target="_blank">
-                <img class="os_logo" src="./images/windows.svg" alt="Windows" />
-                <div class="download_container">
-                    <div class="download_text">Windows (x64)</div>
-                    <a
-                        class="download_button"
-                        href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3-2/plugdata-Win64.msi"
-                        >Download</a
-                    >
-                </div>
-                <div class="download_container">
-                    <div class="download_text">Windows (x86)</div>
-                    <a
-                        class="download_button"
-                        href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3-2/plugdata-Win32.msi"
-                        >Download</a
-                    >
-                </div>
-                <div style="font-size: 12px; margin-top: 60px">
-                    Requires Windows 7 or later.
-                </div>
-            </div>
-            <div class="card" target="_blank">
-                <img class="os_logo" src="./images/macos.svg" alt="macOS" />
-                <div class="download_container">
-                    <div class="download_text">macOS Universal</div>
-                    <a
-                        class="download_button"
-                        href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3-2/plugdata-macOS-Universal.pkg"
-                        >Download</a
-                    >
-                </div>
-                <div class="download_container">
-                    <div class="download_text">macOS Legacy</div>
-                    <a
-                        class="download_button"
-                        href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3-2/plugdata-macOS-Legacy.pkg"
-                        >Download</a
-                    >
-                </div>
-                <div class="download_container">
-                    <div class="download_text">Homebrew Cask</div>
-                    <a
-                        class="download_button"
-                        href="https://formulae.brew.sh/cask/plugdata"
-                        >View</a
-                    >
-                </div>
-                <div style="font-size: 12px; margin-top: 50px">
-                    Homebrew package is unofficial and may be outdated. Choose
-                    macOS Universal for macOS 10.15 or later. Choose macOS
-                    Legacy for macOS 10.11 or later.
-                </div>
-            </div>
-            <div class="card" target="_blank">
-                <img class="os_logo" src="./images/linux.svg" alt="Linux" />
-                <div class="download_container">
-                    <div class="download_text">Repositories</div>
-                    <a
-                        class="download_button"
-                        href="https://software.opensuse.org//download.html?project=home%3Aplugdata&package=plugdata"
-                        >View</a
-                    >
-                </div>
-                <div class="download_container">
-                    <div class="download_text">Arch AUR Repository</div>
-                    <a
-                        class="download_button"
-                        href="https://aur.archlinux.org/packages/plugdata-bin"
-                        >View</a
-                    >
-                </div>
-                <div class="download_container">
-                    <div class="download_text">More downloads</div>
-                    <a
-                        class="download_button"
-                        href="https://github.com/plugdata-team/plugdata/releases/tag/v0.9.3-2"
-                        >View</a
-                    >
-                </div>
-            </div>
-        </section>
+    /* Nightly modal */
+    .modal-backdrop {
+      position: fixed; inset: 0; z-index: 50;
+      background: hsl(220 18% 14% / 0.45);
+      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.5rem;
+      animation: fade-in 0.18s ease-out both;
+    }
+    .modal-backdrop[hidden] { display: none; }
+    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
 
-        <h1
-            style="
-                top: 50px;
-                text-align: center;
-                font-family: Inter;
-                font-weight: 500;
-                padding-top: 20px;
-                padding-bottom: 20px;
-                font-size: 32px;
-                color: rgb(51, 51, 51);
-                background-color: transparent;
-            "
-        >
-            Latest nightly
-        </h1>
-        <h2
-            style="
-                top: 50px;
-                text-align: center;
-                font-family: Inter;
-                font-weight: 470;
-                font-size: 18px;
-                color: rgb(209, 146, 51);
-                background-color: transparent;
-            "
-        >
-            Warning: These builds serve as a preview of the latest experimental
-            changes. Stability is not guaranteed.
-        </h2>
-        <div class="table-container">
-            <table id="nightly-table">
-                <tr>
-                    <th>Platform</th>
-                    <th>Date</th>
-                    <th>Commit</th>
-                    <th>Download</th>
-                </tr>
-                <!-- Add more rows as needed -->
-            </table>
+    .modal-window {
+      width: 100%; max-width: 52rem; max-height: 85vh;
+      display: flex; flex-direction: column;
+      background: hsl(var(--card)); border: 1px solid hsl(var(--border));
+      border-radius: 0.75rem; box-shadow: 0 20px 60px -20px hsl(220 18% 14% / 0.3);
+      overflow: hidden;
+      animation: fade-up 0.2s ease-out both;
+    }
+    .modal-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 1rem; padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid hsl(var(--border));
+      flex: 0 0 auto;
+    }
+    .modal-header h3 { font-size: 1.125rem; margin-top: 0.25rem; }
+    .modal-header .eyebrow { font-size: 11px; }
+    .modal-close {
+      flex: 0 0 auto;
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 2rem; height: 2rem; border-radius: 0.5rem;
+      color: hsl(var(--muted-foreground));
+      transition: color 0.15s, background 0.15s;
+    }
+    .modal-close:hover { color: hsl(var(--foreground)); background: hsl(var(--secondary)); }
+
+    .modal-warn {
+      flex: 0 0 auto;
+      display: flex; gap: 0.625rem; align-items: flex-start;
+      margin: 1rem 1.5rem;
+      font-size: 0.8125rem; color: hsl(var(--foreground) / 0.85);
+      background: hsl(40 90% 55% / 0.1);
+      padding: 0.75rem 0.875rem; border-radius: 0.5rem;
+      border: 1px solid hsl(40 90% 55% / 0.25);
+      line-height: 1.5;
+    }
+    .modal-warn svg { flex: 0 0 auto; margin-top: 2px; color: hsl(40 85% 40%); }
+
+    .modal-body { flex: 1 1 auto; overflow-y: auto; padding: 0 1.5rem 1.5rem; }
+
+    table.nightly { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    table.nightly th, table.nightly td {
+      text-align: left; padding: 0.75rem 0.875rem;
+      border-bottom: 1px solid hsl(var(--border));
+    }
+    table.nightly tbody tr:last-child td { border-bottom: 0; }
+    table.nightly thead th {
+      font-weight: 500; color: hsl(var(--muted-foreground));
+      font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.08em;
+      background: hsl(var(--card));
+      position: sticky; top: 0; z-index: 2;
+    }
+    table.nightly thead th::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -1px;
+      height: 1px; background: hsl(var(--border));
+    }
+    table.nightly th.right, table.nightly td.right { text-align: right; }
+    table.nightly td.mono, table.nightly td.muted {
+      font-family: var(--font-mono); font-size: 0.75rem; color: hsl(var(--muted-foreground));
+    }
+    table.nightly .commit-latest { color: hsl(140 50% 32%); font-weight: 500; }
+    table.nightly .commit-old { color: hsl(30 85% 38%); font-weight: 500; }
+    table.nightly .commit-latest:hover, table.nightly .commit-old:hover { text-decoration: underline; }
+
+    /* Keep feature card content top-aligned so the Linux matrix doesn't float oddly */
+    .feature-card .pad { align-items: start; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="bar">
+      <a href="index.html" class="brand"><img src="assets/plugdata-logo.png" alt=""/><span>plugdata</span></a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" data-nav-link>Home</a>
+        <a href="about.html" data-nav-link>About</a>
+        <a href="download.html" data-nav-link>Download</a>
+        <a href="documentation.html" data-nav-link>Documentation</a>
+        <a href="support.html" data-nav-link>Support</a>
+        <a href="store.html" data-nav-link>Store</a>
+      </nav>
+      <div class="icon-links">
+        <a class="icon-btn" href="https://github.com/plugdata-team/plugdata" target="_blank" rel="noreferrer" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z" transform="scale(64)" fill="#1B1F23"/>
+        </svg></a>
+        <a class="icon-btn" href="https://discord.gg/eT2RxdF9Nq" target="_blank" rel="noreferrer" aria-label="Discord"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.27 5.33A18 18 0 0 0 14.9 4l-.2.42a16.6 16.6 0 0 0-4.9 0L9.6 4a18 18 0 0 0-4.37 1.33C2.5 9.32 1.76 13.2 2.13 17a18.5 18.5 0 0 0 5.6 2.83l.45-.62a13 13 0 0 1-2.13-1.03l.52-.41a13 13 0 0 0 11.16 0l.52.41c-.66.4-1.38.74-2.13 1.03l.45.62A18.5 18.5 0 0 0 21.87 17c.46-4.55-.74-8.4-2.6-11.67zM9.34 14.6a1.78 1.78 0 0 1-1.66-1.86 1.7 1.7 0 1 1 3.32 0c0 1.03-.74 1.86-1.66 1.86zm5.32 0a1.78 1.78 0 0 1-1.66-1.86 1.7 1.7 0 1 1 3.32 0c0 1.03-.74 1.86-1.66 1.86z"/></svg></a>
+      </div>
+      <button class="icon-btn menu-toggle" data-menu-toggle aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+    <nav class="mobile-nav" data-mobile-nav>
+      <a href="index.html" data-nav-link>Home</a>
+      <a href="about.html" data-nav-link>About</a>
+      <a href="download.html" data-nav-link>Download</a>
+      <a href="documentation.html" data-nav-link>Documentation</a>
+      <a href="support.html" data-nav-link>Support</a>
+      <a href="store.html" data-nav-link>Store</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <div class="dot-grid-fade"></div>
+  <div class="container">
+    <div class="inner">
+      <p class="eyebrow">Download</p>
+      <h1 class="text-balance">Get plugdata 0.9.3</h1>
+      <p class="sub">Free, open source, and available for every major desktop platform. We picked a download for you based on your system — but you can grab anything below.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding: 3rem 0;">
+  <div class="container">
+    <div class="feature-card" data-os-recommended>
+      <div class="pad" style="grid-template-columns: 1fr; gap: 1.75rem;">
+        <div class="os-picker" data-os-picker>
+          <button type="button" data-os="macos"><img src="assets/macos.svg" alt="" width="24" height="24" /><span>macOS</span></button>
+          <button type="button" data-os="windows"><img src="assets/windows.svg" alt="" width="24" height="24" /><span>Windows</span></button>
+          <button type="button" data-os="linux"><img src="assets/linux.svg" alt="" width="24" height="24" /><span>Linux</span></button>
         </div>
 
-        <div id="nightly-div" style="margin: 15px"></div>
-        <script type="text/javascript">
-            function main() {
-                let unstable_downloads = [
-                    [
-                        "macOS Universal",
-                        "https://downloads.plugdata.org/plugdata-macOS-Universal.pkg",
-                        "Download",
-                        true,
-                    ],
-                    [
-                        "macOS Legacy",
-                        "https://downloads.plugdata.org/plugdata-macOS-Legacy.pkg",
-                        "Download",
-                        true,
-                    ],
-                    [
-                        "Windows (x64)",
-                        "https://downloads.plugdata.org/plugdata-Win64.msi",
-                        "Download",
-                        true,
-                    ],
-                    [
-                        "Windows (x86)",
-                        "https://downloads.plugdata.org/plugdata-Win32.msi",
-                        "Download",
-                        true,
-                    ],
-                    [
-                        "Arch (x64)",
-                        "https://downloads.plugdata.org/plugdata-Arch-x64.tar.xz",
-                        "Download",
-                        true,
-                    ],
-                    [
-                        "Debian (x64)",
-                        "https://downloads.plugdata.org/plugdata-Debian-x64.tar.xz",
-                        "Download",
-                        true,
-                    ],
-                    [
-                        "Fedora 41 (x64)",
-                        "https://downloads.plugdata.org/plugdata-Fedora-41-x64.tar.xz",
-                        "Download",
-                        true,
-                    ],
-                    [
-                        "Fedora 42 (x64)",
-                        "https://downloads.plugdata.org/plugdata-Fedora-42-x64.tar.xz",
-                        "Download",
-                        true,
-                    ],
-                    [
-                        "Ubuntu 22.04 (x64)",
-                        "https://downloads.plugdata.org/plugdata-Ubuntu-22.04-x64.tar.xz",
-                        "Download",
-                        true,
-                    ],
-                    [
-                        "Ubuntu 24.04 (x64)",
-                        "https://downloads.plugdata.org/plugdata-Ubuntu-24.04-x64.tar.xz",
-                        "Download",
-                        true,
-                    ],
-                    [
-                        "OpenSUSE Tumbleweed (x64)",
-                        "https://downloads.plugdata.org/plugdata-OpenSUSE-Tumbleweed-x64.tar.xz",
-                        "Download",
-                        true,
-                    ],
-                    [
-                        "Arch (aarch64)",
-                        "https://downloads.plugdata.org/plugdata-Arch-aarch64.tar.xz",
-                        "Download",
-                        true,
-                    ],
-                    [
-                        "Debian (aarch64)",
-                        "https://downloads.plugdata.org/plugdata-Debian-aarch64.tar.xz",
-                        "Download",
-                        true,
-                    ],
-                    [
-                        "Fedora 41 (aarch64)",
-                        "https://downloads.plugdata.org/plugdata-Fedora-41-aarch64.tar.xz",
-                        "Download",
-                        true,
-                    ],
-                    [
-                        "Fedora 42 (aarch64)",
-                        "https://downloads.plugdata.org/plugdata-Fedora-42-aarch64.tar.xz",
-                        "Download",
-                        true,
-                    ],
-                    [
-                        "Ubuntu 22.04 (aarch64)",
-                        "https://downloads.plugdata.org/plugdata-Ubuntu-22.04-aarch64.tar.xz",
-                        "Download",
-                        true,
-                    ],
-                    [
-                        "Ubuntu 24.04 (aarch64)",
-                        "https://downloads.plugdata.org/plugdata-Ubuntu-24.04-aarch64.tar.xz",
-                        "Download",
-                        true,
-                    ],
-                    [
-                        "OpenSUSE Tumbleweed (aarch64)",
-                        "https://downloads.plugdata.org/plugdata-OpenSUSE-Tumbleweed-aarch64.tar.xz",
-                        "Download",
-                        true,
-                    ],
-                    [
-                        "Arch Linux AUR Repository",
-                        "https://aur.archlinux.org/packages/plugdata-git",
-                        "View",
-                        false,
-                    ],
-                ];
-
-                let unstable_container = document.getElementById("nightly-div");
-                unstable_container.style.margin = "15px";
-
-                let onHashUpdate = [];
-
-                let latest_hash = "";
-
-                const getLatestHash = async () => {
-                    try {
-                        const response = await fetch(
-                            `https://api.github.com/repos/plugdata-team/plugdata/commits/develop`,
-                        );
-                        const data = await response.json();
-                        latest_hash = data.sha;
-                        onHashUpdate.forEach((fn) => fn());
-                    } catch (error) {
-                        console.error("Error:", error);
-                    }
-                };
-
-                const table = document.getElementById("nightly-table");
-
-                const getDownloadInfo = async (download, i) => {
-                    const downloadRow = document.createElement("tr");
-
-                    let name = document.createElement("td");
-                    name.textContent = download[0];
-
-                    let link = document.createElement("td");
-                    let clickableLink = document.createElement("a");
-
-                    clickableLink.href = download[1];
-                    clickableLink.textContent = download[2];
-                    link.appendChild(clickableLink);
-
-                    const dummy1 = document.createElement("td");
-                    const dummy2 = document.createElement("td");
-
-                    downloadRow.appendChild(name);
-                    downloadRow.appendChild(dummy1);
-                    downloadRow.appendChild(dummy2);
-                    downloadRow.appendChild(link);
-
-                    table.appendChild(downloadRow);
-
-                    if (!download[3]) return;
-
-                    try {
-                        let url = download[1] + ".txt";
-                        let response = await fetch(url);
-                        let result = await response.text();
-                        result = result.split("\n");
-
-                        // Create new cells
-                        const date = document.createElement("td");
-                        date.textContent = result[0];
-                        date.style.minWidth = "200px";
-
-                        const hash = result[1];
-                        const commit_hash = document.createElement("td");
-                        const commit_link = document.createElement("a");
-
-                        commit_link.textContent = hash.substring(0, 7);
-                        commit_link.href = `https://github.com/plugdata-team/plugdata/commits/${hash}`;
-                        commit_hash.appendChild(commit_link);
-
-                        // Set initial color (will update later)
-                        const updateColor = () => {
-                            const color =
-                                hash === latest_hash ? "#006400" : "#FFA500";
-                            commit_link.style.cssText = `color: ${color}`;
-                        };
-                        updateColor(); // set now
-                        onHashUpdate.push(updateColor); // also set later
-
-                        // Replace old cells
-                        downloadRow.innerHTML = "";
-                        downloadRow.appendChild(name);
-                        downloadRow.appendChild(date);
-                        downloadRow.appendChild(commit_hash);
-                        downloadRow.appendChild(link);
-                    } catch (e) {
-                        console.error(
-                            "Error fetching info for",
-                            download[0],
-                            e,
-                        );
-                    }
-                };
-
-                // Main loop: fetch all info
-                const promises = unstable_downloads.map((download, i) =>
-                    getDownloadInfo(download, i),
-                );
-
-                // After all info is fetched, get the latest hash
-                Promise.all(promises).then(() => getLatestHash());
-            }
-
-            main();
-        </script>
-
-        <footer>
-            <div>
-                <p>Copyright © 2025 Timothy Schoen.</p>
+        <div>
+          <div style="display: flex; align-items: center; gap: 0.875rem;">
+            <div data-os-icon style="display: inline-flex; line-height: 0; flex: 0 0 auto;">
+              <!-- Swapped by JS -->
+              <img src="assets/macos.svg" alt="" width="40" height="40" />
             </div>
-            <ul>
-                <li><a href="https://plugdata.org/">Home</a></li>
-                <li>
-                    <a href="https://plugdata.org/about.html" target="_self"
-                        >About</a
-                    >
-                </li>
-                <li><a href="https://plugdata.org/support.html">Support</a></li>
-                <li>
-                    <a href="https://plugdata.org/download.html" target="_self"
-                        >Download</a
-                    >
-                </li>
-                <li>
-                    <a
-                        href="https://plugdata.org/documentation.html"
-                        target="_self"
-                        >Documentation</a
-                    >
-                </li>
-            </ul>
-        </footer>
-    </body>
+            <div>
+              <p class="eyebrow">Recommended for you</p>
+              <h2 style="font-size: 1.5rem;">plugdata for <span data-os-name>your platform</span></h2>
+            </div>
+          </div>
+          <!-- macOS panel -->
+          <div data-os-panel="macos" hidden>
+            <div style="margin-top: 1.75rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;">
+              <a class="btn btn-primary lg" href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3/plugdata-macOS-Universal.pkg">Download Universal (.pkg)</a>
+              <a class="btn btn-outline lg" href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3/plugdata-macOS-Legacy.pkg">Legacy (.pkg)</a>
+              <a class="btn btn-ghost" href="https://formulae.brew.sh/cask/plugdata" target="_blank" rel="noreferrer">Homebrew cask</a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.75rem; color: hsl(var(--muted-foreground)); line-height: 1.6;">
+              Choose <strong style="color: hsl(var(--foreground));">Universal</strong> for macOS 10.15 or later (Apple Silicon + Intel). Choose <strong style="color: hsl(var(--foreground));">Legacy</strong> for macOS 10.11 or later (Intel only). The Homebrew cask is maintained by the community and may be outdated.
+            </p>
+          </div>
+
+          <!-- Windows panel -->
+          <div data-os-panel="windows" hidden>
+            <div style="margin-top: 1.75rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;">
+              <a class="btn btn-primary lg" href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3/plugdata-Win64.msi">Download Windows x64 (.msi)</a>
+              <a class="btn btn-outline lg" href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3/plugdata-Win32.msi">Windows x86 (.msi)</a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.75rem; color: hsl(var(--muted-foreground)); line-height: 1.6;">
+              Requires Windows 7 or later. Pick <strong style="color: hsl(var(--foreground));">x64</strong> on any modern PC; <strong style="color: hsl(var(--foreground));">x86</strong> is for older 32-bit systems.
+            </p>
+          </div>
+
+          <!-- Linux panel -->
+          <div data-os-panel="linux" hidden>
+            <p style="margin-top: 1.75rem; margin-bottom: 0.75rem; font-size: 0.8125rem; color: hsl(var(--muted-foreground));">
+              Pick your distribution and architecture:
+            </p>
+            <div class="linux-matrix-wrap">
+              <table class="linux-matrix">
+                <thead>
+                  <tr><th>Distribution</th><th class="right">x64</th><th class="right">aarch64</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Arch</td>
+                    <td class="right"><a href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3/plugdata-Arch-x64.tar.xz">Download</a></td>
+                    <td class="right"><a href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3/plugdata-Arch-aarch64.tar.xz">Download</a></td>
+                  </tr>
+                  <tr>
+                    <td>Debian</td>
+                    <td class="right"><a href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3/plugdata-Debian-x64.tar.xz">Download</a></td>
+                    <td class="right"><a href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3/plugdata-Debian-aarch64.tar.xz">Download</a></td>
+                  </tr>
+                  <tr>
+                    <td>Fedora 41</td>
+                    <td class="right"><a href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3/plugdata-Fedora-41-x64.tar.xz">Download</a></td>
+                    <td class="right"><a href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3/plugdata-Fedora-41-aarch64.tar.xz">Download</a></td>
+                  </tr>
+                  <tr>
+                    <td>Fedora 42</td>
+                    <td class="right"><a href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3/plugdata-Fedora-42-x64.tar.xz">Download</a></td>
+                    <td class="right"><a href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3/plugdata-Fedora-42-aarch64.tar.xz">Download</a></td>
+                  </tr>
+                  <tr>
+                    <td>Ubuntu 22.04</td>
+                    <td class="right"><a href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3/plugdata-Ubuntu-22.04-x64.tar.xz">Download</a></td>
+                    <td class="right"><a href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3/plugdata-Ubuntu-22.04-aarch64.tar.xz">Download</a></td>
+                  </tr>
+                  <tr>
+                    <td>Ubuntu 24.04</td>
+                    <td class="right"><a href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3/plugdata-Ubuntu-24.04-x64.tar.xz">Download</a></td>
+                    <td class="right"><a href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3/plugdata-Ubuntu-24.04-aarch64.tar.xz">Download</a></td>
+                  </tr>
+                  <tr>
+                    <td>OpenSUSE Tumbleweed</td>
+                    <td class="right"><a href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3/plugdata-OpenSUSE-Tumbleweed-x64.tar.xz">Download</a></td>
+                    <td class="right"><a href="https://github.com/plugdata-team/plugdata/releases/download/v0.9.3/plugdata-OpenSUSE-Tumbleweed-aarch64.tar.xz">Download</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="external-repos">
+              <a class="btn btn-outline sm" href="https://software.opensuse.org//download.html?project=home%3Aplugdata&package=plugdata" target="_blank" rel="noreferrer">OBS Repositories and Packages</a>
+              <a class="btn btn-outline sm" href="https://aur.archlinux.org/packages/plugdata-bin" target="_blank" rel="noreferrer">AUR · plugdata-bin</a>
+              <a class="btn btn-outline sm" href="https://aur.archlinux.org/packages/plugdata-git" target="_blank" rel="noreferrer">AUR · plugdata-git</a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.75rem; color: hsl(var(--muted-foreground)); line-height: 1.6;">
+              AUR packages are maintained by Lejun Min. OBS packages are maintained by Konstantin Voinov.
+            </p>
+          </div>
+
+          <p data-os-unknown-note style="display:none; margin-top: 1rem; font-size: 0.75rem; color: hsl(var(--muted-foreground));">Couldn't detect your OS — pick one above.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- iOS section -->
+<section style="padding: 0;">
+  <div class="container">
+    <div class="feature-card">
+      <div class="pad" style="align-items: center; padding: 1.75rem 2.5rem; gap: 2rem;">
+        <div>
+          <p class="eyebrow">Also available</p>
+          <h2 style="font-size: 1.5rem; margin-top: 0.5rem;">plugdata for iPad &amp; iPhone</h2>
+          <p style="margin-top: 0.75rem; font-size: 0.875rem; color: hsl(var(--muted-foreground)); max-width: 34rem; line-height: 1.6;">
+            The plugdata experience on iPad and iPhone. Create, edit and play patches anywhere. Still in development, may have some rough edges!
+          </p>
+        </div>
+        <div style="display: flex; justify-content: flex-end;">
+          <a class="appstore-btn" href="https://apps.apple.com/us/app/plugdata/id6473122351" target="_blank" rel="noreferrer">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+            </svg>
+            <span class="label">
+              <span class="sm">Download on the</span>
+              <span class="lg">App Store</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 3rem;">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow" style="margin-bottom: 0.75rem;">Source &amp; nightly</p>
+      <h2>Build it yourself, or live on the edge.</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
+      <a class="doc-card" href="https://github.com/plugdata-team/plugdata" target="_blank" rel="noreferrer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color: hsl(var(--muted-foreground));"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.84.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.91.68 1.84v2.72c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+        <h3>Source code</h3><p>Clone the repo and build plugdata from source.</p>
+      </a>
+      <a class="doc-card" href="#" data-nightly-btn>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="color: hsl(var(--muted-foreground));"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 14l2 2 4-4"/></svg>
+        <h3>Nightly builds</h3><p>Latest commit, fresh from CI. Expect rough edges.</p>
+      </a>
+    </div>
+    <style>@media (min-width: 768px){section.section > .container > div[style*="grid-template-columns: 1fr"]{grid-template-columns: 1fr 1fr !important;}}</style>
+  </div>
+</section>
+
+</main>
+
+<!-- Nightly builds modal -->
+<div class="modal-backdrop" id="nightly-modal" hidden role="dialog" aria-modal="true" aria-labelledby="nightly-modal-title">
+  <div class="modal-window">
+    <div class="modal-header">
+      <div>
+        <p class="eyebrow">Nightly builds</p>
+        <h3 id="nightly-modal-title">Latest from the develop branch</h3>
+      </div>
+      <button type="button" class="modal-close" data-modal-close aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-warn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 9v4M12 17h.01M4.93 19h14.14a2 2 0 0 0 1.73-3L13.73 4a2 2 0 0 0-3.46 0L3.2 16a2 2 0 0 0 1.73 3z"/></svg>
+      <span>These builds are a preview of the latest experimental changes — stability is not guaranteed.</span>
+    </div>
+    <div class="modal-body">
+      <table class="nightly" id="nightly-table">
+        <thead>
+          <tr><th>Platform</th><th>Date</th><th>Commit</th><th class="right">Download</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="top">
+      <div><a href="index.html" class="brand"><img src="assets/plugdata-logo.png" alt="" width="28" height="28" /><span>plugdata</span></a><p class="blurb">A free, open-source visual programming environment for audio.</p></div>
+      <div><h4>Project</h4><ul><li><a href="about.html">About</a></li><li><a href="documentation.html">Documentation</a></li><li><a href="support.html">Support</a></li></ul></div>
+      <div><h4>Get plugdata</h4><ul><li><a href="download.html">Download</a></li><li><a href="store.html">Store</a></li><li><a href="https://github.com/plugdata-team/plugdata/releases" target="_blank" rel="noreferrer">Releases</a></li></ul></div>
+      <div><h4>Community</h4><ul><li><a href="https://github.com/plugdata-team/plugdata" target="_blank" rel="noreferrer">GitHub</a></li><li><a href="https://discord.gg/eT2RxdF9Nq" target="_blank" rel="noreferrer">Discord</a></li><li><a href="https://github.com/sponsors/timothyschoen" target="_blank" rel="noreferrer">Sponsor</a></li></ul></div>
+    </div>
+    <div class="bottom"><p class="copy">© <span data-year>2025</span> plugdata. Released under the GPL-3.0 license. Based on Pure Data by Miller Puckette.</p></div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+/* ---------- OS detection + panel switching ---------- */
+(function () {
+  const OS_NAMES = { macos: 'macOS', windows: 'Windows', linux: 'Linux' };
+  const OS_ICONS = {
+    macos:   '<img src="assets/macos.svg" alt="" width="40" height="40" />',
+    windows: '<img src="assets/windows.svg" alt="" width="40" height="40" />',
+    linux:   '<img src="assets/linux.svg" alt="" width="40" height="40" />'
+  };
+
+  function detectOS() {
+    const ua = (navigator.userAgent || '').toLowerCase();
+    const plat = (navigator.platform || '').toLowerCase();
+    if (plat.includes('mac') || ua.includes('mac os') || ua.includes('macintosh')) return 'macos';
+    if (plat.includes('win') || ua.includes('windows')) return 'windows';
+    if (plat.includes('linux') || ua.includes('linux') || ua.includes('x11')) return 'linux';
+    return null;
+  }
+
+  function selectOS(os) {
+    document.querySelectorAll('[data-os-panel]').forEach(p => {
+      p.hidden = p.dataset.osPanel !== os;
+    });
+    document.querySelectorAll('[data-os]').forEach(b => {
+      b.classList.toggle('active', b.dataset.os === os);
+    });
+    const nameEl = document.querySelector('[data-os-name]');
+    if (nameEl) nameEl.textContent = OS_NAMES[os];
+    const iconEl = document.querySelector('[data-os-icon]');
+    if (iconEl && OS_ICONS[os]) iconEl.innerHTML = OS_ICONS[os];
+  }
+
+  const detected = detectOS();
+  if (detected) {
+    selectOS(detected);
+  } else {
+    selectOS('macos');
+    const note = document.querySelector('[data-os-unknown-note]');
+    if (note) note.style.display = 'block';
+  }
+
+  document.querySelectorAll('[data-os]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      selectOS(btn.dataset.os);
+    });
+  });
+})();
+
+/* ---------- Nightly builds modal ---------- */
+(function () {
+  const modal     = document.getElementById('nightly-modal');
+  const openBtn   = document.querySelector('[data-nightly-btn]');
+  const closeBtns = modal.querySelectorAll('[data-modal-close]');
+  const tbody     = modal.querySelector('#nightly-table tbody');
+
+  const NIGHTLY_BASE = 'https://downloads.plugdata.org/';
+  // [label, filename, button-text, fetch-metadata?]
+  const nightlyDownloads = [
+    ['macOS Universal',              'plugdata-macOS-Universal.pkg',                 'Download', true],
+    ['macOS Legacy',                 'plugdata-macOS-Legacy.pkg',                    'Download', true],
+    ['Windows (x64)',                'plugdata-Win64.msi',                           'Download', true],
+    ['Windows (x86)',                'plugdata-Win32.msi',                           'Download', true],
+    ['Arch (x64)',                   'plugdata-Arch-x64.tar.xz',                     'Download', true],
+    ['Debian (x64)',                 'plugdata-Debian-x64.tar.xz',                   'Download', true],
+    ['Fedora 41 (x64)',              'plugdata-Fedora-41-x64.tar.xz',                'Download', true],
+    ['Fedora 42 (x64)',              'plugdata-Fedora-42-x64.tar.xz',                'Download', true],
+    ['Ubuntu 22.04 (x64)',           'plugdata-Ubuntu-22.04-x64.tar.xz',             'Download', true],
+    ['Ubuntu 24.04 (x64)',           'plugdata-Ubuntu-24.04-x64.tar.xz',             'Download', true],
+    ['OpenSUSE Tumbleweed (x64)',    'plugdata-OpenSUSE-Tumbleweed-x64.tar.xz',      'Download', true],
+    ['Arch (aarch64)',               'plugdata-Arch-aarch64.tar.xz',                 'Download', true],
+    ['Debian (aarch64)',             'plugdata-Debian-aarch64.tar.xz',               'Download', true],
+    ['Fedora 41 (aarch64)',          'plugdata-Fedora-41-aarch64.tar.xz',            'Download', true],
+    ['Fedora 42 (aarch64)',          'plugdata-Fedora-42-aarch64.tar.xz',            'Download', true],
+    ['Ubuntu 22.04 (aarch64)',       'plugdata-Ubuntu-22.04-aarch64.tar.xz',         'Download', true],
+    ['Ubuntu 24.04 (aarch64)',       'plugdata-Ubuntu-24.04-aarch64.tar.xz',         'Download', true],
+    ['OpenSUSE Tumbleweed (aarch64)', 'plugdata-OpenSUSE-Tumbleweed-aarch64.tar.xz', 'Download', true],
+    ['Arch Linux AUR Repository',    'https://aur.archlinux.org/packages/plugdata-git', 'View', false]
+  ];
+
+  let populated  = false;
+  let latestHash = '';
+  const hashRefreshers = [];
+
+  async function fetchLatestHash() {
+    try {
+      const r = await fetch('https://api.github.com/repos/plugdata-team/plugdata/commits/develop');
+      const d = await r.json();
+      latestHash = d.sha || '';
+      hashRefreshers.forEach(fn => fn());
+    } catch (err) {
+      console.error('Failed to fetch latest commit hash:', err);
+    }
+  }
+
+  async function buildRow([label, pathOrUrl, btnText, fetchInfo]) {
+    const url = fetchInfo ? (NIGHTLY_BASE + pathOrUrl) : pathOrUrl;
+
+    const tr = document.createElement('tr');
+    const tdName   = document.createElement('td');
+    const tdDate   = document.createElement('td');
+    const tdCommit = document.createElement('td');
+    const tdLink   = document.createElement('td');
+    tdLink.className = 'right';
+
+    tdName.textContent   = label;
+    tdDate.className     = 'muted';
+    tdDate.textContent   = fetchInfo ? '…' : '—';
+    tdCommit.className   = 'muted';
+    tdCommit.textContent = fetchInfo ? '…' : '—';
+
+    const a = document.createElement('a');
+    a.className = 'btn btn-outline sm';
+    a.href = url;
+    a.textContent = btnText;
+    if (!fetchInfo) { a.target = '_blank'; a.rel = 'noreferrer'; }
+    tdLink.appendChild(a);
+
+    tr.append(tdName, tdDate, tdCommit, tdLink);
+    tbody.appendChild(tr);
+
+    if (!fetchInfo) return;
+
+    try {
+      const resp = await fetch(url + '.txt');
+      if (!resp.ok) throw new Error('no metadata');
+      const [date, hash] = (await resp.text()).split('\n');
+
+      tdDate.className   = '';
+      tdDate.textContent = date || '—';
+
+      if (hash) {
+        const link = document.createElement('a');
+        link.href = `https://github.com/plugdata-team/plugdata/commits/${hash}`;
+        link.target = '_blank';
+        link.rel = 'noreferrer';
+        link.textContent = hash.substring(0, 7);
+        tdCommit.className = 'mono';
+        tdCommit.textContent = '';
+        tdCommit.appendChild(link);
+
+        const applyColor = () => {
+          link.classList.remove('commit-latest', 'commit-old');
+          link.classList.add(hash === latestHash ? 'commit-latest' : 'commit-old');
+        };
+        applyColor();
+        hashRefreshers.push(applyColor);
+      } else {
+        tdCommit.textContent = '—';
+      }
+    } catch (err) {
+      tdDate.textContent   = '—';
+      tdCommit.textContent = '—';
+    }
+  }
+
+  async function populate() {
+    if (populated) return;
+    populated = true;
+    tbody.innerHTML = '';
+    await Promise.all(nightlyDownloads.map(buildRow));
+    fetchLatestHash();
+  }
+
+  function openModal() {
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    populate();
+  }
+
+  function closeModal() {
+    modal.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  openBtn.addEventListener('click', e => {
+    e.preventDefault();
+    openModal();
+  });
+  closeBtns.forEach(b => b.addEventListener('click', closeModal));
+  modal.addEventListener('click', e => {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !modal.hidden) closeModal();
+  });
+})();
+</script>
+</body>
 </html>
