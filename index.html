@@ -355,9 +355,15 @@
     var html = '';
     for (var i = 0; i < OBJECTS.length; i++) {
       var cls = 'obj';
-      if (i % 17 === 0) cls += ' primary';
-      else if (i % 23 === 0) cls += ' accent';
-      html += '<span class="' + cls + '">' + OBJECTS[i] + '</span>';
+      var name = OBJECTS[i];
+      var hasTilde = name.includes('~');
+      if (!hasTilde && i % 9 === 0) {
+        cls += ' primary';
+      }
+      if (hasTilde && i % 11 === 0) {
+        cls += ' accent';
+      }
+      html += '<span class="' + cls + '">' + name + '</span>';
     }
     wall.innerHTML = html;
   })();
