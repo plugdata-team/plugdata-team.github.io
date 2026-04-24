@@ -45,6 +45,132 @@
       padding: 3rem 1rem; text-align: center;
       color: hsl(var(--muted-foreground)); font-size: 0.875rem;
     }
+
+    /* ---------- Item view ---------- */
+    .back-link {
+      display: inline-flex; align-items: center; gap: 0.375rem;
+      font-size: 0.8125rem; font-weight: 500;
+      color: hsl(var(--muted-foreground));
+      margin-bottom: 2rem;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .back-link:hover { color: hsl(var(--foreground)); }
+
+    .price-badge {
+      display: inline-flex; align-items: center;
+      padding: 0.3rem 0.75rem;
+      font-size: 0.8125rem; font-weight: 500;
+      border-radius: 9999px;
+      background: hsl(var(--primary-soft));
+      color: hsl(var(--primary));
+      border: 1px solid hsl(var(--primary) / 0.25);
+    }
+    .price-badge.free {
+      background: hsl(140 60% 95%);
+      color: hsl(140 55% 28%);
+      border-color: hsl(140 50% 55% / 0.4);
+    }
+
+    .screenshot-frame {
+      border-radius: 0.75rem; overflow: hidden;
+      border: 1px solid hsl(var(--border));
+      background: hsl(var(--secondary) / 0.4);
+      box-shadow: var(--shadow-soft);
+    }
+    .screenshot-frame img {
+      width: 100%; height: auto; display: block;
+    }
+
+    .item-sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
+    .item-sidebar .download-row {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem;
+    }
+
+    .download-split {
+      position: relative; display: inline-flex; align-items: stretch;
+    }
+    .download-split .btn { white-space: nowrap; }
+    .download-split .main {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      padding-right: 1.125rem;
+    }
+    .download-split .toggle {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left: 1px solid hsl(0 0% 100% / 0.18);
+      padding: 0 0.75rem;
+    }
+    .download-menu {
+      position: absolute; top: calc(100% + 0.5rem); right: 0;
+      min-width: 15rem;
+      background: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: 0.5rem;
+      padding: 0.3rem;
+      box-shadow: var(--shadow-soft);
+      z-index: 20;
+    }
+    .download-menu[hidden] { display: none; }
+    .download-menu-item {
+      display: flex; align-items: center; gap: 0.625rem;
+      padding: 0.55rem 0.625rem;
+      font-size: 0.875rem;
+      color: hsl(var(--foreground));
+      text-decoration: none;
+      border-radius: 0.375rem;
+      cursor: pointer;
+    }
+    .download-menu-item:hover { background: hsl(var(--secondary)); }
+    .download-menu-item svg { color: hsl(var(--muted-foreground)); flex: 0 0 auto; }
+
+    .item-meta {
+      margin-top: 0.5rem;
+      display: flex; flex-direction: column;
+      gap: 0.75rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid hsl(var(--border));
+    }
+    .item-meta-row {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.875rem;
+    }
+    .item-meta-row > svg { color: hsl(var(--muted-foreground) / 0.8); flex: 0 0 auto; }
+    .item-meta-row .label { color: hsl(var(--muted-foreground)); }
+    .item-meta-row .value {
+      margin-left: auto; font-weight: 500;
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: hsl(var(--foreground));
+    }
+
+    .item-description {
+      font-size: 0.9375rem; line-height: 1.65;
+      color: hsl(var(--foreground));
+      white-space: pre-wrap;
+      padding-top: 1.25rem;
+      border-top: 1px solid hsl(var(--border));
+    }
+    .item-description:empty { display: none; }
+
+    .split.item-split { grid-template-columns: 1fr; gap: 2rem; }
+    @media (min-width: 1024px) {
+      .split.item-split { grid-template-columns: 7fr 5fr; gap: 2.5rem; align-items: start; }
+    }
+
+    /* ---------- Download view ---------- */
+    .status-actions {
+      margin-top: 2rem;
+      display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center;
+    }
+    .status-note {
+      margin-top: 1.25rem;
+      font-size: 0.8125rem; color: hsl(var(--muted-foreground));
+    }
+    [data-status-error] {
+      color: hsl(0 65% 45%);
+    }
   </style>
 </head>
 <body>
@@ -82,47 +208,145 @@
 
 <main>
 
-<section class="page-hero">
-  <div class="dot-grid-fade"></div>
-  <div class="container">
-    <div class="inner">
-      <p class="eyebrow">Store</p>
-      <h1 class="text-balance">Patches for plugdata.</h1>
-      <p class="sub">A growing library of instruments and effects, made by the community.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Featured carousel (revealed by JS when highlights exist) -->
-<section class="section" style="padding-bottom: 3rem;" data-carousel-section hidden>
-  <div class="container">
-    <div class="carousel" data-carousel>
-      <div class="carousel-viewport">
-        <div class="carousel-track" data-carousel-track></div>
+<!-- ===== LIST VIEW ===== -->
+<div id="view-list">
+  <section class="page-hero">
+    <div class="dot-grid-fade"></div>
+    <div class="container">
+      <div class="inner">
+        <p class="eyebrow">Store</p>
+        <h1 class="text-balance">Patches for plugdata.</h1>
+        <p class="sub">A growing library of instruments and effects, made by the community.</p>
       </div>
-      <button type="button" class="carousel-btn prev" data-carousel-prev aria-label="Previous slide">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
-      <button type="button" class="carousel-btn next" data-carousel-next aria-label="Next slide">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
-      <div class="carousel-dots" data-carousel-dots></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- All patches grid -->
-<section class="section" style="padding-top: 3rem;">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow" style="margin-bottom: 0.75rem;">All patches</p>
-      <h2>Browse the store.</h2>
+  <!-- Featured carousel (revealed by main.js when highlights exist) -->
+  <section class="section" style="padding-bottom: 3rem;" data-carousel-section hidden>
+    <div class="container">
+      <div class="carousel" data-carousel>
+        <div class="carousel-viewport">
+          <div class="carousel-track" data-carousel-track></div>
+        </div>
+        <button type="button" class="carousel-btn prev" data-carousel-prev aria-label="Previous slide">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" class="carousel-btn next" data-carousel-next aria-label="Next slide">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+        <div class="carousel-dots" data-carousel-dots></div>
+      </div>
     </div>
-    <div class="store-grid" data-store-grid>
-      <div class="grid-state" data-grid-state>Loading patches…</div>
+  </section>
+
+  <!-- All patches grid (populated by main.js) -->
+  <section class="section" style="padding-top: 3rem;">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" style="margin-bottom: 0.75rem;">All patches</p>
+        <h2>Browse the store.</h2>
+      </div>
+      <div class="store-grid" data-store-grid>
+        <div class="grid-state" data-grid-state>Loading patches…</div>
+      </div>
     </div>
+  </section>
+</div>
+
+<!-- ===== ITEM VIEW ===== -->
+<div id="view-item" hidden>
+  <!-- Loading state -->
+  <div data-item-state="loading">
+    <section class="page-hero">
+      <div class="dot-grid-fade"></div>
+      <div class="container">
+        <div class="inner">
+          <p class="eyebrow">Store</p>
+          <h1 class="text-balance">Loading…</h1>
+        </div>
+      </div>
+    </section>
   </div>
-</section>
+
+  <!-- Not-found state -->
+  <div data-item-state="not-found" hidden>
+    <section class="page-hero">
+      <div class="dot-grid-fade"></div>
+      <div class="container">
+        <div class="inner">
+          <a href="#" class="back-link" data-back-to-store>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            Back to store
+          </a>
+          <p class="eyebrow">Store</p>
+          <h1 class="text-balance">Patch not found</h1>
+          <p class="sub">We couldn't find that patch. It may have been removed, or the link might be incorrect.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Loaded item -->
+  <div data-item-state="ready" hidden>
+    <section class="page-hero">
+      <div class="dot-grid-fade"></div>
+      <div class="container">
+        <div class="inner">
+          <a href="#" class="back-link" data-back-to-store>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            Back to store
+          </a>
+          <p class="eyebrow">Store</p>
+          <h1 class="text-balance" data-item-title></h1>
+          <p class="sub" data-item-author></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 3rem;">
+      <div class="container">
+        <div class="split item-split">
+          <div class="screenshot-frame">
+            <img data-item-thumb src="" alt="" />
+          </div>
+          <aside class="item-sidebar">
+            <div data-price-slot></div>
+            <div class="download-row" data-item-actions></div>
+            <div class="item-meta" data-item-meta></div>
+            <div class="item-description" data-item-description></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow" style="margin-bottom: 0.75rem;">More</p>
+          <h2 data-related-heading>More patches</h2>
+        </div>
+        <div class="store-grid" data-related-grid></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ===== DOWNLOAD VIEW ===== -->
+<div id="view-download" hidden>
+  <section class="page-hero">
+    <div class="dot-grid-fade"></div>
+    <div class="container">
+      <div class="inner" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+        <p class="eyebrow" data-status-eyebrow>Store</p>
+        <h1 class="text-balance" data-status-title>Starting download…</h1>
+        <p class="sub" data-status-sub></p>
+        <div class="status-actions">
+          <a class="btn btn-primary lg" href="#" data-back-to-store>Return to store</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
 </main>
 
@@ -138,9 +362,394 @@
   </div>
 </footer>
 
+<!-- main.js still handles the list-view carousel + grid -->
 <script src="main.js"></script>
 <script>
-spawnPatchCarousel();
+  // Spawn the list-view carousel exactly as before.
+  if (typeof spawnPatchCarousel === 'function') spawnPatchCarousel();
 </script>
+
+<!-- ===== Unified store router ===== -->
+<script>
+(function () {
+  'use strict';
+
+  // ---------- DOM ----------
+  const views = {
+    list:     document.getElementById('view-list'),
+    item:     document.getElementById('view-item'),
+    download: document.getElementById('view-download')
+  };
+  const itemStates = {
+    loading:    document.querySelector('#view-item [data-item-state="loading"]'),
+    notFound:   document.querySelector('#view-item [data-item-state="not-found"]'),
+    ready:      document.querySelector('#view-item [data-item-state="ready"]')
+  };
+
+  // ---------- Helpers ----------
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, c =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])
+    );
+  }
+  function thumbUrl(name) {
+    return 'thumbnails/webp/' + encodeURIComponent(name) + '.webp';
+  }
+  function itemHref(title) {
+    return 'store.html#item/' + encodeURIComponent(title);
+  }
+  function downloadHelperUrl(item, type) {
+    const p = new URLSearchParams();
+    p.set('title', item.Title);
+    p.set('download', item.Download);
+    p.set('type', type);
+    return 'store.html#download?' + p.toString();
+  }
+
+  // ---------- store.json cache (one fetch per tab, shared across views) ----------
+  let patchesPromise = null;
+  function loadPatches() {
+    if (!patchesPromise) {
+      patchesPromise = fetch('store.json')
+        .then(r => {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        })
+        .then(data => (data && data.Patches) || [])
+        .catch(err => {
+          patchesPromise = null; // allow retry on next navigation
+          throw err;
+        });
+    }
+    return patchesPromise;
+  }
+
+  // ---------- Routing ----------
+  function parseHash() {
+    const raw = location.hash.replace(/^#/, '');
+    if (!raw) return { view: 'list' };
+    if (raw.startsWith('item/')) {
+      let id = raw.slice('item/'.length);
+      try { id = decodeURIComponent(id); } catch {}
+      return { view: 'item', id };
+    }
+    if (raw.startsWith('download?')) {
+      const p = new URLSearchParams(raw.slice('download?'.length));
+      return {
+        view: 'download',
+        title: p.get('title'),
+        download: p.get('download'),
+        type: p.get('type')
+      };
+    }
+    return { view: 'list' };
+  }
+
+  function showView(which) {
+    for (const key of Object.keys(views)) {
+      views[key].hidden = (key !== which);
+    }
+  }
+  function showItemState(which) {
+    const map = { loading: 'loading', 'not-found': 'notFound', ready: 'ready' };
+    for (const [attr, propKey] of Object.entries(map)) {
+      itemStates[propKey].hidden = (attr !== which);
+    }
+  }
+
+  function route() {
+    const r = parseHash();
+    window.scrollTo(0, 0);
+
+    if (r.view === 'list') {
+      document.title = 'Store — plugdata';
+      showView('list');
+      return;
+    }
+
+    if (r.view === 'item') {
+      showView('item');
+      if (!r.id) { showItemState('not-found'); return; }
+      showItemState('loading');
+      loadPatches()
+        .then(patches => {
+          const item = patches.find(p => p.Title === r.id);
+          if (!item) { showItemState('not-found'); return; }
+          renderItem(item, patches);
+          showItemState('ready');
+        })
+        .catch(err => {
+          console.error('Error loading store.json:', err);
+          showItemState('not-found');
+        });
+      return;
+    }
+
+    if (r.view === 'download') {
+      showView('download');
+      document.title = (r.title || 'Download') + ' — plugdata Store';
+      runDownloadFlow(r);
+      return;
+    }
+
+    showView('list');
+  }
+
+  // Clicks on any "back to store" link clear the hash without a reload.
+  document.addEventListener('click', e => {
+    const link = e.target.closest('[data-back-to-store]');
+    if (!link) return;
+    e.preventDefault();
+    history.pushState({}, '', location.pathname + location.search);
+    route();
+  });
+
+  window.addEventListener('hashchange', route);
+
+  // ---------- Item rendering ----------
+  function renderItem(item, allPatches) {
+    document.title = item.Title + ' — plugdata Store';
+
+    document.querySelector('[data-item-title]').textContent = item.Title;
+    document.querySelector('[data-item-author]').textContent = item.Author ? 'By ' + item.Author : '';
+
+    const thumbEl = document.querySelector('[data-item-thumb]');
+    if (item.StoreThumb) {
+      thumbEl.src = thumbUrl(item.StoreThumb);
+      thumbEl.alt = item.Title;
+    } else {
+      thumbEl.removeAttribute('src');
+      thumbEl.alt = '';
+    }
+
+    document.querySelector('[data-item-description]').textContent = item.Description || '';
+
+    renderPriceBadge(item);
+    renderActions(item);
+    renderMeta(item);
+    renderRelated(item, allPatches);
+  }
+
+  function renderPriceBadge(item) {
+    const slot = document.querySelector('[data-price-slot]');
+    if (!item.Price) { slot.innerHTML = ''; return; }
+    const isFree = /^free$/i.test(String(item.Price).trim());
+    slot.innerHTML =
+      '<span class="price-badge' + (isFree ? ' free' : '') + '">' + esc(item.Price) + '</span>';
+  }
+
+  function renderActions(item) {
+    const holder = document.querySelector('[data-item-actions]');
+    const download = String(item.Download || '');
+    const canDirect = /^free$/i.test(String(item.Price || '').trim()) &&
+      (download.toLowerCase().endsWith('.zip') || download.toLowerCase().endsWith('.plugdata'));
+
+    if (canDirect) {
+      holder.innerHTML = `
+        <div class="download-split">
+          <button type="button" class="btn btn-primary lg main" data-dl-main>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Download</span>
+          </button>
+          <button type="button" class="btn btn-primary lg toggle" data-dl-toggle aria-label="More download options" aria-haspopup="true" aria-expanded="false">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="download-menu" data-dl-menu hidden role="menu">
+            <a href="#" class="download-menu-item" data-dl-plugdata role="menuitem">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Download as .plugdata
+            </a>
+            <a href="#" class="download-menu-item" data-dl-zip role="menuitem">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="7"/><line x1="12" y1="10" x2="12" y2="14"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              Download as .zip
+            </a>
+          </div>
+        </div>
+      `;
+
+      const mainBtn   = holder.querySelector('[data-dl-main]');
+      const toggleBtn = holder.querySelector('[data-dl-toggle]');
+      const menu      = holder.querySelector('[data-dl-menu]');
+      const optPlug   = holder.querySelector('[data-dl-plugdata]');
+      const optZip    = holder.querySelector('[data-dl-zip]');
+
+      mainBtn.addEventListener('click', () => {
+        window.open(item.Download, '_blank');
+        window.open(downloadHelperUrl(item, 'plugdata'), '_blank');
+      });
+
+      toggleBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        const isOpen = !menu.hidden;
+        menu.hidden = isOpen;
+        toggleBtn.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      document.addEventListener('click', () => {
+        menu.hidden = true;
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      });
+
+      optPlug.addEventListener('click', e => {
+        e.preventDefault();
+        window.open(downloadHelperUrl(item, 'plugdata'), '_blank');
+        menu.hidden = true;
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      });
+
+      optZip.addEventListener('click', e => {
+        e.preventDefault();
+        window.open(item.Download, '_blank');
+        window.open(downloadHelperUrl(item, 'zip'), '_blank');
+        menu.hidden = true;
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      });
+    } else {
+      holder.innerHTML = `
+        <a class="btn btn-primary lg" href="${esc(item.Download)}" target="_blank" rel="noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          <span>Go to store</span>
+        </a>
+      `;
+    }
+  }
+
+  function renderMeta(item) {
+    const el = document.querySelector('[data-item-meta]');
+    const rows = [];
+
+    if (item['Release date']) {
+      rows.push({
+        label: 'Released', value: item['Release date'],
+        icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>'
+      });
+    }
+    if (item.Size) {
+      rows.push({
+        label: 'Size', value: item.Size,
+        icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>'
+      });
+    }
+    if (item.Author) {
+      rows.push({
+        label: 'Author', value: item.Author,
+        icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>'
+      });
+    }
+
+    if (!rows.length) { el.style.display = 'none'; return; }
+    el.style.display = '';
+    el.innerHTML = rows.map(r => `
+      <div class="item-meta-row">
+        ${r.icon}
+        <span class="label">${esc(r.label)}</span>
+        <span class="value">${esc(r.value)}</span>
+      </div>
+    `).join('');
+  }
+
+  function renderRelated(item, allPatches) {
+    const grid = document.querySelector('[data-related-grid]');
+    const heading = document.querySelector('[data-related-heading]');
+
+    const pool = allPatches.slice();
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+
+    let related = pool.filter(p => p.Author === item.Author && p.Title !== item.Title).slice(0, 4);
+    let fromSameAuthor = related.length > 0;
+    if (related.length === 0) {
+      related = pool.filter(p => p.Title !== item.Title).slice(0, 4);
+    }
+
+    heading.textContent = fromSameAuthor && item.Author
+      ? 'More from ' + item.Author
+      : 'More patches';
+
+    if (related.length === 0) {
+      grid.innerHTML = '<p style="grid-column: 1 / -1; color: hsl(var(--muted-foreground)); font-size: 0.875rem; text-align: center; padding: 2rem;">No other patches available yet.</p>';
+      return;
+    }
+
+    grid.innerHTML = related.map(p => `
+      <a class="store-item" href="${esc(itemHref(p.Title))}">
+        <div class="preview">
+          <img src="${esc(thumbUrl(p.StoreThumb))}" alt="" loading="lazy" />
+        </div>
+        <div class="body">
+          <div class="row">
+            <h3>${esc(p.Title)}</h3>
+            ${p.Price ? `<span class="price">${esc(p.Price)}</span>` : ''}
+          </div>
+          ${p.Author ? `<p class="author">By ${esc(p.Author)}</p>` : ''}
+          ${p.Description ? `<p>${esc(p.Description)}</p>` : ''}
+        </div>
+      </a>
+    `).join('');
+  }
+
+  // ---------- Download flow ----------
+  function setStatus(eyebrow, heading, sub, isError) {
+    const elEyebrow = document.querySelector('[data-status-eyebrow]');
+    const elTitle   = document.querySelector('[data-status-title]');
+    const elSub     = document.querySelector('[data-status-sub]');
+    if (eyebrow) elEyebrow.textContent = eyebrow;
+    if (heading) elTitle.textContent   = heading;
+    if (sub != null) elSub.textContent = sub;
+    if (isError) elTitle.setAttribute('data-status-error', '');
+    else         elTitle.removeAttribute('data-status-error');
+  }
+
+  function runDownloadFlow(r) {
+    if (!r.title || !r.download || !r.type) {
+      setStatus('Store', 'Missing download info',
+        'This link appears to be incomplete. Head back to the store and try again.', true);
+      return;
+    }
+
+    if (r.type === 'zip') {
+      setStatus('Download', r.title + ' download started',
+        'Check your browser for the downloaded .zip file.');
+      return;
+    }
+
+    // type === 'plugdata' — fetch the binary and save it with a .plugdata extension
+    setStatus('Download', 'Downloading ' + r.title + '…',
+      'Please keep this tab open while we prepare your patch.');
+
+    fetch(r.download)
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok: ' + response.statusText);
+        return response.blob();
+      })
+      .then(blob => {
+        const link = document.createElement('a');
+        link.download = r.title + '.plugdata';
+        link.href = URL.createObjectURL(blob);
+        document.body.appendChild(link);
+        link.click();
+        URL.revokeObjectURL(link.href);
+        document.body.removeChild(link);
+
+        setStatus('Download', 'Download complete',
+          r.title + ' has been saved to your downloads folder.');
+      })
+      .catch(err => {
+        console.error('Download failed:', err);
+        setStatus('Download', 'Download failed',
+          'Something went wrong while fetching the patch. Please try again or return to the store.', true);
+      });
+  }
+
+  // ---------- Bootstrap ----------
+  const yearEl = document.querySelector('[data-year]');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  route();
+})();
+</script>
+
 </body>
 </html>

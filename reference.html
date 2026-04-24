@@ -496,6 +496,7 @@
         <a href="about.html">About</a>
         <a href="download.html">Download</a>
         <a href="documentation.html">Documentation</a>
+        <a href="reference.html" class="active">Reference</a>
         <a href="support.html">Support</a>
         <a href="store.html">Store</a>
       </nav>
@@ -631,17 +632,6 @@
   </div>
 </footer>
 
-<svg>
-    <defs>
-      <clipPath id="inletClip">
-        <rect x="0" y="0" width="100%" height="50%" />
-      </clipPath>
-      <clipPath id="outletClip">
-        <rect x="0" y="50%" width="100%" height="50%" />
-      </clipPath>
-    </defs>
-</svg>
-
 <!-- ====== Reference logic ====== -->
 <script>
 (function() {
@@ -657,16 +647,16 @@
   const CACHE_KEY_INDEX = 'plugdata:ref-index:v1';
   const CACHE_KEY_JSONS = 'plugdata:ref-jsons:v1';
   const INDEX_TTL = 30 * 60 * 1000; // 30 min
-  const PRELOAD_CONCURRENCY = 12; // concurrent fetches when building full search index
 
   // ---------- State ----------
-  /** @type {{ name: string, origin: string, path: string, data?: any }[]} */
+  /** @type {{ name: string, origin: string, path: string, data?: any, titles?: string[], displayName?: string, __loading?: boolean }[]} */
   let items = [];
   const byKey = new Map(); // key = origin+'/'+name -> item
   let activeFilter = 'all'; // 'all' or origin
   let searchQuery = '';
   let filterCounts = {};
-  let fullIndexBuilt = false;
+  let cardObserver = null;
+  let persistTimer = null;
 
   // ---------- DOM ----------
   const listEl = document.getElementById('list');
@@ -775,41 +765,88 @@
     return res.json();
   }
 
-  // ---------- Background preload for full-text search ----------
-  async function preloadAll() {
-    if (fullIndexBuilt) return;
-    // Reuse any json data already in session cache
-    const cachedJsons = readCache(CACHE_KEY_JSONS) || {};
-    // Merge into items
-    for (const it of items) {
-      const k = itemKey(it);
-      if (cachedJsons[k] && !it.data) it.data = cachedJsons[k];
+  // ---------- Lazy loading: per-item, driven by visibility ----------
+  // When the JSON arrives we may discover the object's real name differs from
+  // its filename (e.g. mul.json → "*"). We apply the data, patch the rendered
+  // card in place, and schedule a debounced write to session cache.
+  function applyItemData(item, data) {
+    item.data = data;
+    if (Array.isArray(data.title) && data.title.length) {
+      item.titles = data.title.slice();
+      item.displayName = data.title[0];
+    } else {
+      item.titles = [item.name];
+      item.displayName = item.name;
     }
-    // Find missing
-    const todo = items.filter(it => !it.data);
-    if (!todo.length) {
-      fullIndexBuilt = true;
-      return;
+  }
+
+  async function loadItemData(item) {
+    if (item.__loading) return;
+    if (item.data && !item.data.__error) return;
+    item.__loading = true;
+    try {
+      const data = await fetchJSON(item.path);
+      applyItemData(item, data);
+      updateCardInPlace(item);
+      schedulePersist();
+    } catch (e) {
+      item.data = { __error: true };
+    } finally {
+      item.__loading = false;
     }
-    // Fetch with concurrency cap
-    let cursor = 0;
-    const workers = Array.from({ length: PRELOAD_CONCURRENCY }, async () => {
-      while (cursor < todo.length) {
-        const i = cursor++;
-        const it = todo[i];
-        try {
-          it.data = await fetchJSON(it.path);
-          cachedJsons[itemKey(it)] = it.data;
-        } catch (e) {
-          // Mark as errored to avoid retry in same session
-          it.data = { __error: true };
-        }
+  }
+
+  function updateCardInPlace(item) {
+    const key = itemKey(item);
+    // CSS.escape handles "/", "~", "*", etc. in the key
+    const sel = `[data-key="${CSS.escape(key)}"]`;
+    const card = listEl.querySelector(sel);
+    if (!card) return;
+    const nameEl = card.querySelector('.name');
+    const descEl = card.querySelector('.desc');
+    const display = item.displayName || item.name;
+    if (nameEl && nameEl.textContent !== display) nameEl.textContent = display;
+    if (descEl) {
+      const desc = item.data && item.data.description;
+      if (desc) {
+        descEl.textContent = desc;
+        descEl.classList.remove('empty');
       }
-    });
-    await Promise.all(workers);
-    // Persist bulk (may exceed quota — wrap in try)
-    try { writeCache(CACHE_KEY_JSONS, cachedJsons); } catch { /* ignore */ }
-    fullIndexBuilt = true;
+    }
+  }
+
+  function ensureObserver() {
+    if (cardObserver || typeof IntersectionObserver === 'undefined') return;
+    cardObserver = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const key = entry.target.dataset.key;
+        const item = byKey.get(key);
+        if (item) loadItemData(item);
+      }
+    }, { rootMargin: '400px 0px', threshold: 0 });
+  }
+
+  function observeListCards() {
+    if (!cardObserver) return;
+    cardObserver.disconnect();
+    const cards = listEl.querySelectorAll('[data-key]');
+    for (const card of cards) cardObserver.observe(card);
+  }
+
+  // Debounced write-back: avoid serialising the whole cache on every fetch.
+  function schedulePersist() {
+    if (persistTimer) return;
+    persistTimer = setTimeout(() => {
+      persistTimer = null;
+      try {
+        const cache = {};
+        for (const it of items) {
+          if (it.data && !it.data.__error) cache[itemKey(it)] = it.data;
+        }
+        writeCache(CACHE_KEY_JSONS, cache);
+      } catch { /* quota — ignore */ }
+    }, 2000);
   }
 
   // ---------- Rendering: filters ----------
@@ -842,8 +879,18 @@
   //   description contains token .....   50
   //   category contains token ........   30
   //   body contains token ............   10
+  //
+  // "Name" means any known name for the object: the filename-derived name
+  // plus every entry in data.title once the JSON is loaded. So once "mul.json"
+  // loads and reveals title ["*"], searching "*" finds it and scores it as a
+  // name match, not a body match.
   function scoreItem(it, tokens) {
-    const name = normalize(it.name);
+    const nameCandidates = (it.titles && it.titles.length ? it.titles : [it.name]).map(normalize);
+    // Include the filename-derived name as a fallback match, in case titles
+    // differ and the user searches by filename.
+    const filenameNorm = normalize(it.name);
+    if (!nameCandidates.includes(filenameNorm)) nameCandidates.push(filenameNorm);
+
     const d = it.data;
     const desc = normalize(d && d.description);
     const cats = normalize(d && d.categories ? d.categories.join(' ') : '');
@@ -851,19 +898,25 @@
 
     let total = 0;
     for (const t of tokens) {
-      let s;
-      if (name === t) s = 1000;
-      else if (name.startsWith(t)) s = 500;
-      else if (name.includes(t)) s = 200;
-      else if (desc.includes(t)) s = 50;
-      else if (cats.includes(t)) s = 30;
-      else if (body.includes(t)) s = 10;
-      else return -1; // token unmatched → filter out
-      total += s;
+      // Best score across all name candidates for this token.
+      let nameScore = 0;
+      for (const n of nameCandidates) {
+        let s = 0;
+        if (n === t) s = 1000;
+        else if (n.startsWith(t)) s = 500;
+        else if (n.includes(t)) s = 200;
+        if (s > nameScore) nameScore = s;
+      }
+      if (nameScore > 0) { total += nameScore; continue; }
+      if (desc.includes(t)) { total += 50; continue; }
+      if (cats.includes(t)) { total += 30; continue; }
+      if (body.includes(t)) { total += 10; continue; }
+      return -1; // token unmatched → filter out
     }
-    // Small length penalty: breaks ties in favour of shorter, more specific names.
-    // Bounded so it never flips between tiers (<< 50, the smallest inter-tier gap).
-    return total - Math.min(name.length, 40) * 0.2;
+    // Small length penalty: breaks ties in favour of shorter, more specific
+    // names. Bounded so it never flips between tiers (<< 50, smallest tier gap).
+    const display = it.displayName || it.name;
+    return total - Math.min(display.length, 40) * 0.2;
   }
 
   function filterItems() {
@@ -891,28 +944,26 @@
       emptyEl.hidden = false;
     } else {
       emptyEl.hidden = true;
-      // Cap the DOM to keep things snappy; add "and N more" footer if needed
-      const MAX = 600;
-      const toRender = filtered.slice(0, MAX);
-      listEl.innerHTML = toRender.map(it => {
+      listEl.innerHTML = filtered.map(it => {
         const key = itemKey(it);
+        const display = it.displayName || it.name;
         const desc = it.data && it.data.description ? esc(it.data.description) : '';
         const descClass = desc ? '' : ' empty';
         return `<button class="ref-card" data-key="${esc(key)}">
           <div class="row">
-            <span class="name">${esc(it.name)}</span>
+            <span class="name">${esc(display)}</span>
             <span class="origin origin-${esc(it.origin)}">${esc(it.origin)}</span>
           </div>
           <div class="desc${descClass}">${desc}</div>
         </button>`;
       }).join('');
+      // Re-attach visibility observer to the new cards.
+      observeListCards();
     }
     const total = items.length;
     const shown = filtered.length;
-    const extra = fullIndexBuilt ? '' : ' · <span class="ref-loading"><span class="ref-spinner"></span>indexing descriptions</span>';
-    statusEl.innerHTML = `${shown.toLocaleString()} / ${total.toLocaleString()} objects${extra}`;
+    statusEl.textContent = `${shown.toLocaleString()} / ${total.toLocaleString()} objects`;
   }
-
 
   function renderPdObject(item, data) {
     const name = item.name;
@@ -1046,7 +1097,6 @@
     `;
   }
 
-
   function renderInletsOutlets(title, ports) {
     if (!Array.isArray(ports) || !ports.length) {
       return `<div class="ref-io"><div class="ref-io-port"><div class="title">${esc(title)}</div><ul><li style="font-size:0.875rem;color:hsl(var(--muted-foreground))">None documented.</li></ul></div></div>`;
@@ -1157,11 +1207,12 @@
     }
 
     // Skeleton while loading
+    const skeletonName = item.displayName || item.name;
     detailContent.innerHTML = `
       <div class="meta">
         <span class="origin origin-${esc(item.origin)}">${esc(item.origin)}</span>
       </div>
-      <h1><span class="brackets">[</span>${esc(item.name)}<span class="brackets">]</span></h1>
+      <h1><span class="brackets">[</span>${esc(skeletonName)}<span class="brackets">]</span></h1>
       <p class="tagline"><span class="ref-loading"><span class="ref-spinner"></span>Loading documentation…</span></p>
     `;
 
@@ -1169,11 +1220,11 @@
     if (!data || data.__error) {
       try {
         data = await fetchJSON(item.path);
-        item.data = data;
+        applyItemData(item, data);
       } catch (e) {
         detailContent.innerHTML = `
           <div class="meta"><span class="origin origin-${esc(item.origin)}">${esc(item.origin)}</span></div>
-          <h1><span class="brackets">[</span>${esc(item.name)}<span class="brackets">]</span></h1>
+          <h1><span class="brackets">[</span>${esc(skeletonName)}<span class="brackets">]</span></h1>
           <p class="tagline">Could not load documentation: ${esc(e.message)}</p>
           <div class="ref-footer">
             <a class="btn btn-outline" href="${EDIT_BASE + item.path}" target="_blank" rel="noreferrer">
@@ -1186,10 +1237,14 @@
       }
     }
 
-    // Title(s): the JSON can have multiple titles (aliases)
-    const titles = Array.isArray(data.title) && data.title.length ? data.title : [item.name];
-    const primaryName = item.name; // always use filename for the big title
-    const aliases = titles.filter(t => t !== primaryName);
+    // Titles: the JSON can list multiple names for the same object. The first
+    // is the canonical name; the rest are genuine aliases.
+    const titles = Array.isArray(data.title) && data.title.length ? data.title.slice() : [item.name];
+    const primaryName = titles[0];
+    const aliases = titles.slice(1).filter(t => t && t !== primaryName);
+    // Keep items in sync so search results use the real name going forward.
+    if (!item.displayName) applyItemData(item, data);
+
     const desc = data.description || '';
     const cats = Array.isArray(data.categories) ? data.categories : [];
     const body = data.body || '';
@@ -1206,14 +1261,6 @@
       <div class="ref-object-viz">${renderPdObject(item, data)}</div>
 
       <div class="ref-sections">
-
-      ${body ? `
-        <div class="ref-sec full">
-          <h2>Description</h2>
-          <div class="body">${linkifyRefs(esc(body))}</div>
-        </div>
-      ` : ''}
-
         <div class="ref-sec">
           <h2>Inlets</h2>
           ${renderInletsOutlets('Inlets', data.inlets)}
@@ -1226,6 +1273,24 @@
         ${renderArguments(data.arguments)}
         ${renderMethods(data.methods)}
         ${renderFlags(data.flags)}
+
+        ${body ? `
+          <div class="ref-sec full">
+            <h2>Description</h2>
+            <div class="body">${linkifyRefs(esc(body))}</div>
+          </div>
+        ` : ''}
+      </div>
+
+      <div class="ref-footer">
+        <a class="btn btn-outline" href="${EDIT_BASE + item.path}" target="_blank" rel="noreferrer">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2v6h6M18 13v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8M18 17v-3l4 4-4 4v-3"/></svg>
+          Edit on GitHub
+        </a>
+        <button class="btn btn-outline" type="button" data-copy-link>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          Copy link
+        </button>
       </div>
     `;
     detailContent.innerHTML = html;
@@ -1239,6 +1304,7 @@
     } else {
       detailView.hidden = true;
       listView.hidden = false;
+      renderList();
       // Restore focus
       requestAnimationFrame(() => {
         if (searchInput.value !== searchQuery) {
@@ -1337,23 +1403,17 @@
       byKey.clear();
       for (const it of items) byKey.set(itemKey(it), it);
 
-      // Hydrate any JSON we already have in session cache
+      // Hydrate any JSON we already have in session cache — this gives
+      // return visitors instant descriptions and correct display names.
       const cachedJsons = readCache(CACHE_KEY_JSONS) || {};
       for (const it of items) {
-        const k = itemKey(it);
-        if (cachedJsons[k]) it.data = cachedJsons[k];
+        const cached = cachedJsons[itemKey(it)];
+        if (cached) applyItemData(it, cached);
       }
 
+      ensureObserver();
       renderFilters();
-      route(); // either list or detail
-
-      // Kick off background preload for richer search
-      if (!fullIndexBuilt) {
-        renderList(); // show list immediately with what we have
-        preloadAll().then(() => {
-          renderList(); // re-render with descriptions
-        });
-      }
+      route(); // either list or detail — renderList (when called) will observe cards
     } catch (e) {
       statusEl.innerHTML = `<span style="color: hsl(0 70% 45%)">${esc(e.message)}</span>`;
       listEl.innerHTML = `

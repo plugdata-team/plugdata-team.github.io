@@ -23,7 +23,7 @@ function spawnPatchCarousel() {
   }
 
   function itemHref(title) {
-    return 'store-item.html?id=' + encodeURIComponent(title);
+    return 'store.html#item/' + encodeURIComponent(title);
   }
 
   function thumbUrl(name) {
