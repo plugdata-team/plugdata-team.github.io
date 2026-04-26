@@ -496,7 +496,6 @@
         <a href="about.html">About</a>
         <a href="download.html">Download</a>
         <a href="documentation.html">Documentation</a>
-        <a href="reference.html" class="active">Reference</a>
         <a href="support.html">Support</a>
         <a href="store.html">Store</a>
       </nav>
@@ -1260,6 +1259,12 @@
 
       <div class="ref-object-viz">${renderPdObject(item, data)}</div>
 
+      ${body ? `
+        <div class="ref-sec full">
+          <h2>Description</h2>
+          <div class="body">${linkifyRefs(esc(body))}</div>
+        </div>
+      ` : ''}
       <div class="ref-sections">
         <div class="ref-sec">
           <h2>Inlets</h2>
@@ -1273,24 +1278,6 @@
         ${renderArguments(data.arguments)}
         ${renderMethods(data.methods)}
         ${renderFlags(data.flags)}
-
-        ${body ? `
-          <div class="ref-sec full">
-            <h2>Description</h2>
-            <div class="body">${linkifyRefs(esc(body))}</div>
-          </div>
-        ` : ''}
-      </div>
-
-      <div class="ref-footer">
-        <a class="btn btn-outline" href="${EDIT_BASE + item.path}" target="_blank" rel="noreferrer">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2v6h6M18 13v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8M18 17v-3l4 4-4 4v-3"/></svg>
-          Edit on GitHub
-        </a>
-        <button class="btn btn-outline" type="button" data-copy-link>
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-          Copy link
-        </button>
       </div>
     `;
     detailContent.innerHTML = html;
