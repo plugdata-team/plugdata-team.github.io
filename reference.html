@@ -747,7 +747,7 @@
   // page hydrates in one fetch instead of ~1,150 lazy ones, and search can
   // hit body content from the very first keystroke. If the bundle 404s
   // (forks, dev, before first deploy) we fall back to the live trees API.
-  const BUNDLE_URL = 'data/reference-data.json';
+  const BUNDLE_URL = 'assets/reference-data.json';
 
   // ---------- State ----------
   /** @type {{ name: string, origin: string, path: string, data?: any, titles?: string[], displayName?: string }[]} */
