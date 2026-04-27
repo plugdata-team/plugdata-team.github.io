@@ -42,11 +42,6 @@ jobs:
       - name: Build bundle
         run: node .github/scripts/build-reference-data.mjs .plugdata assets
 
-      - name: Show output sizes
-        run: |
-          ls -lh assets/reference-data.json assets/reference-data.meta.json
-          gzip -c assets/reference-data.json | wc -c | awk '{ printf "gzipped (what users download): %.1f KiB\n", $1/1024 }'
-
       - name: Commit if changed
         run: |
           git config user.name 'github-actions[bot]'
