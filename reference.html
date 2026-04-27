@@ -296,11 +296,8 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    .ref-card .desc.empty::before {
-      content: "— loading —";
-      opacity: 0.4;
-      font-family: var(--font-mono);
-      font-size: 11px;
+    .ref-card .desc:empty {
+      display: none;
     }
 
     .ref-empty {
@@ -744,32 +741,27 @@
   const RAW_BASE = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/`;
   const EDIT_BASE = `https://github.com/${REPO}/blob/${BRANCH}/`;
   const CACHE_KEY_INDEX = 'plugdata:ref-index:v1';
-  const CACHE_KEY_JSONS = 'plugdata:ref-jsons:v1';
   const INDEX_TTL = 30 * 60 * 1000; // 30 min
 
   // Pre-built bundle (committed by the GitHub Action). When present, the
   // page hydrates in one fetch instead of ~1,150 lazy ones, and search can
   // hit body content from the very first keystroke. If the bundle 404s
   // (forks, dev, before first deploy) we fall back to the live trees API.
-  const BUNDLE_URL = 'assets/reference-data.json';
+  const BUNDLE_URL = 'data/reference-data.json';
 
   // ---------- State ----------
-  /** @type {{ name: string, origin: string, path: string, data?: any, titles?: string[], displayName?: string, __loading?: boolean }[]} */
+  /** @type {{ name: string, origin: string, path: string, data?: any, titles?: string[], displayName?: string }[]} */
   let items = [];
   const byKey = new Map(); // key = origin+'/'+name -> item
   let activeFilter = 'all'; // 'all' or origin
   let searchQuery = '';
   let filterCounts = {};
-  let cardObserver = null;
-  let persistTimer = null;
 
   // Filter panel state
   let signalFilter = 'all';                  // 'all' | 'signal' | 'data'
   const categoryFilters = new Set();         // active category names
   const knownCategories = new Set();         // categories seen across loaded items
   let filtersOpen = false;
-  let prefetchPromise = null;
-  let panelRefreshTimer = null;
 
   // ---------- DOM ----------
   const listEl = document.getElementById('list');
@@ -906,10 +898,9 @@
     return res.json();
   }
 
-  // ---------- Lazy loading: per-item, driven by visibility ----------
-  // When the JSON arrives we may discover the object's real name differs from
-  // its filename (e.g. mul.json → "*"). We apply the data, patch the rendered
-  // card in place, and schedule a debounced write to session cache.
+  // ---------- Item data ----------
+  // Apply a parsed JSON to an item: capture titles, display name, and
+  // contribute its categories to the panel's known set.
   function applyItemData(item, data) {
     item.data = data;
     if (Array.isArray(data.title) && data.title.length) {
@@ -919,92 +910,43 @@
       item.titles = [item.name];
       item.displayName = item.name;
     }
-    // Track categories for the filter panel.
     if (Array.isArray(data.categories)) {
-      let added = false;
       for (const c of data.categories) {
-        if (typeof c !== 'string') continue;
-        const trimmed = c.trim();
-        if (!trimmed || knownCategories.has(trimmed)) continue;
-        knownCategories.add(trimmed);
-        added = true;
-      }
-      if (added) scheduleFilterPanelRefresh();
-    }
-  }
-
-  async function loadItemData(item) {
-    if (item.__loading) return;
-    if (item.data && !item.data.__error) return;
-    item.__loading = true;
-    try {
-      const data = await fetchJSON(item.path);
-      applyItemData(item, data);
-      updateCardInPlace(item);
-      schedulePersist();
-    } catch (e) {
-      item.data = { __error: true };
-    } finally {
-      item.__loading = false;
-    }
-  }
-
-  function updateCardInPlace(item) {
-    const key = itemKey(item);
-    // CSS.escape handles "/", "~", "*", etc. in the key
-    const sel = `[data-key="${CSS.escape(key)}"]`;
-    const card = listEl.querySelector(sel);
-    if (!card) return;
-    const nameEl = card.querySelector('.name');
-    const descEl = card.querySelector('.desc');
-    const display = item.displayName || item.name;
-    if (nameEl && nameEl.textContent !== display) nameEl.textContent = display;
-    if (descEl) {
-      const desc = item.data && item.data.description;
-      if (desc) {
-        descEl.textContent = desc;
-        descEl.classList.remove('empty');
+        if (typeof c === 'string' && c.trim()) knownCategories.add(c.trim());
       }
     }
   }
 
-  function ensureObserver() {
-    if (cardObserver || typeof IntersectionObserver === 'undefined') return;
-    cardObserver = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        const key = entry.target.dataset.key;
-        const item = byKey.get(key);
-        if (item) loadItemData(item);
-      }
-    }, { rootMargin: '400px 0px', threshold: 0 });
-  }
-
-  function observeListCards() {
-    if (!cardObserver) return;
-    cardObserver.disconnect();
-    const cards = listEl.querySelectorAll('[data-key]');
-    for (const card of cards) cardObserver.observe(card);
-  }
-
-  // Debounced write-back: avoid serialising the whole cache on every fetch.
-  function schedulePersist() {
-    if (persistTimer) return;
-    persistTimer = setTimeout(() => {
-      persistTimer = null;
-      try {
-        const cache = {};
-        for (const it of items) {
-          if (it.data && !it.data.__error) cache[itemKey(it)] = it.data;
+  // Fallback path only: when the pre-built bundle is unavailable we have to
+  // pull every JSON individually from raw.githubusercontent.com. Done in
+  // parallel with bounded concurrency, with progress in the status line.
+  async function loadAllJsonsEagerly(items) {
+    const concurrency = 8;
+    let cursor = 0;
+    let done = 0;
+    const tick = () => {
+      statusEl.innerHTML = `<span class="ref-loading"><span class="ref-spinner"></span>Loading documentation… ${done.toLocaleString()} / ${items.length.toLocaleString()}</span>`;
+    };
+    tick();
+    await Promise.all(Array.from({ length: concurrency }, async () => {
+      while (cursor < items.length) {
+        const item = items[cursor++];
+        try {
+          const data = await fetchJSON(item.path);
+          applyItemData(item, data);
+        } catch {
+          item.data = { __error: true };
         }
-        writeCache(CACHE_KEY_JSONS, cache);
-      } catch { /* quota — ignore */ }
-    }, 2000);
+        done++;
+        if (done % 25 === 0 || done === items.length) tick();
+      }
+    }));
   }
 
   // ---------- Filter helpers ----------
-  // Signal-rate detection: when JSON is loaded we look at inlets/outlets;
-  // otherwise fall back to Pure Data convention (the `~` suffix marks audio).
+  // With the bundle loaded, every item already has data, so we can read
+  // signal-rate from the actual port definitions. The `~` heuristic is kept
+  // as a safety net for the rare case where data is missing or errored.
   function isSignalObject(item) {
     const d = item.data;
     if (d && !d.__error && (Array.isArray(d.inlets) || Array.isArray(d.outlets))) {
@@ -1014,45 +956,11 @@
       const outlets = Array.isArray(d.outlets) ? d.outlets : [];
       return inlets.some(portIsSignal) || outlets.some(portIsSignal);
     }
-    return /~/.test(item.name); // heuristic when data isn't loaded yet
+    return /~/.test(item.name);
   }
 
   function categoriesOf(item) {
     return (item.data && Array.isArray(item.data.categories)) ? item.data.categories : [];
-  }
-
-  // Re-render the filter panel after categories grow, debounced so we don't
-  // thrash while many JSONs are arriving.
-  function scheduleFilterPanelRefresh() {
-    if (panelRefreshTimer) return;
-    panelRefreshTimer = setTimeout(() => {
-      panelRefreshTimer = null;
-      if (filtersOpen) renderFilterPanel();
-      // If a category filter is active, the result set may have changed.
-      if (categoryFilters.size > 0 || signalFilter !== 'all') renderList();
-    }, 250);
-  }
-
-  // Background prefetch — kicks in when the user opens the filter panel or
-  // applies a category filter, so categories become comprehensive.
-  function startPrefetch() {
-    if (prefetchPromise) return;
-    const queue = items.filter(it => !it.data);
-    if (!queue.length) return;
-    const concurrency = 6;
-    let cursor = 0;
-    prefetchPromise = Promise.all(
-      Array.from({ length: Math.min(concurrency, queue.length) }, async () => {
-        while (cursor < queue.length) {
-          const it = queue[cursor++];
-          if (it.data || it.__loading) continue;
-          try { await loadItemData(it); } catch { /* loadItemData already marks errors */ }
-        }
-      })
-    ).then(() => {
-      prefetchPromise = null;
-      if (filtersOpen) renderFilterPanel();
-    });
   }
 
   // ---------- Rendering: filters ----------
@@ -1100,9 +1008,6 @@
     filterPanelEl.hidden = false;
 
     const cats = Array.from(knownCategories).sort((a, b) => a.localeCompare(b));
-    const loadedCount = items.filter(it => it.data && !it.data.__error).length;
-    const totalCount = items.length;
-    const stillLoading = prefetchPromise !== null && loadedCount < totalCount;
 
     const sigChip = (id, label, swatchColor) => `
       <button type="button" class="ref-chip ${signalFilter === id ? 'active' : ''}" data-signal="${id}">
@@ -1117,21 +1022,16 @@
         <div class="ref-fp-label">Type</div>
         <div class="ref-fp-chips">
           ${sigChip('all', 'All', null)}
-          ${sigChip('data', 'Data', 'hsl(212 90% 48%)')}
           ${sigChip('signal', 'Signal', 'hsl(22 92% 54%)')}
+          ${sigChip('data', 'Data', 'hsl(212 90% 48%)')}
         </div>
       </div>
 
       <div class="ref-fp-section">
-        <div class="ref-fp-label">
-          <span>Categories</span>
-          ${stillLoading
-            ? `<span class="ref-loading"><span class="ref-spinner"></span>indexing ${loadedCount.toLocaleString()} of ${totalCount.toLocaleString()}</span>`
-            : ''}
-        </div>
+        <div class="ref-fp-label">Categories</div>
         <div class="ref-fp-chips">
           ${cats.length === 0
-            ? `<p class="ref-fp-hint">${stillLoading ? 'Loading categories…' : 'No categories indexed yet — scroll the list to load more objects.'}</p>`
+            ? `<p class="ref-fp-hint">No categories found.</p>`
             : cats.map(c => `<button type="button" class="ref-chip ${categoryFilters.has(c) ? 'active' : ''}" data-category="${esc(c)}">${esc(c)}</button>`).join('')}
         </div>
       </div>
@@ -1228,7 +1128,6 @@
           <div class="desc${descClass}">${desc}</div>
         </button>`;
       }).join('');
-      observeListCards();
     }
     const total = items.length;
     const shown = filtered.length;
@@ -1558,8 +1457,6 @@
     const toggle = e.target.closest('[data-toggle-filters]');
     if (toggle) {
       filtersOpen = !filtersOpen;
-      // First open kicks off background loading so categories become complete.
-      if (filtersOpen) startPrefetch();
       renderFilters();
       renderFilterPanel();
       return;
@@ -1580,9 +1477,6 @@
       const cat = catBtn.dataset.category;
       if (categoryFilters.has(cat)) categoryFilters.delete(cat);
       else categoryFilters.add(cat);
-      // Once the user filters by category, ensure the rest of the catalogue
-      // gets loaded so the filter is comprehensive.
-      if (categoryFilters.size > 0) startPrefetch();
       renderFilters();
       renderFilterPanel();
       renderList();
@@ -1641,8 +1535,13 @@
   async function boot() {
     try {
       items = await tryLoadBundle();
-      const fromBundle = !!items;
-      if (!items) items = await loadIndex();
+      if (!items) {
+        // Bundle missing — fall back to the live trees API and pull every
+        // JSON eagerly. Slow path; only hit in dev or if the build action
+        // hasn't run yet.
+        items = await loadIndex();
+        if (items.length) await loadAllJsonsEagerly(items);
+      }
       if (!items.length) {
         statusEl.textContent = 'No documentation files found.';
         return;
@@ -1650,17 +1549,6 @@
       byKey.clear();
       for (const it of items) byKey.set(itemKey(it), it);
 
-      // Hydrate any JSON we already have in session cache (fallback path only —
-      // bundle items already carry data).
-      if (!fromBundle) {
-        const cachedJsons = readCache(CACHE_KEY_JSONS) || {};
-        for (const it of items) {
-          const cached = cachedJsons[itemKey(it)];
-          if (cached) applyItemData(it, cached);
-        }
-      }
-
-      ensureObserver();
       renderFilters();
       route();
     } catch (e) {
