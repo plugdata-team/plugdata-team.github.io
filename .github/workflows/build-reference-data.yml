@@ -6,8 +6,7 @@ on:
     - cron: '0 0 * * 0'
   push:
     branches: [main]
-    # Only re-run on changes to the build itself; the workflow commits to
-    # `data/` so we *don't* trigger on that to avoid a loop.
+    # Only re-run on changes to the build itself
     paths:
       - '.github/scripts/build-reference-data.mjs'
       - '.github/workflows/build-reference-data.yml'
@@ -41,7 +40,7 @@ jobs:
           node-version: '20'
 
       - name: Build bundle
-        run: node .github/scripts/build-reference-data.mjs .plugdata data
+        run: node .github/scripts/build-reference-data.mjs .plugdata assets
 
       - name: Show output sizes
         run: |
