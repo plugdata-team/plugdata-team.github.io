@@ -130,6 +130,102 @@
       font-family: var(--font-mono);
     }
 
+    /* ===== Filters toggle + panel ===== */
+    .ref-filters .filters-toggle {
+      gap: 0.375rem;
+    }
+    .ref-filters .filters-toggle .chev {
+      width: 11px;
+      height: 11px;
+      transition: transform 0.15s;
+    }
+    .ref-filters .filters-toggle[aria-expanded="true"] .chev {
+      transform: rotate(180deg);
+    }
+    .ref-filters .filters-toggle.has-active {
+      color: hsl(var(--foreground));
+      border-color: hsl(var(--foreground) / 0.35);
+      background: hsl(var(--secondary));
+    }
+    .ref-filters .filters-toggle.has-active .count {
+      background: hsl(var(--foreground));
+      color: hsl(var(--background));
+      padding: 0 5px;
+      border-radius: 9999px;
+      opacity: 1;
+      min-width: 16px;
+      text-align: center;
+    }
+
+    .ref-filter-panel {
+      margin-top: 0.75rem;
+      padding: 1rem 1.125rem 1.125rem;
+      background: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: 0.625rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.125rem;
+      box-shadow: var(--shadow-soft);
+    }
+    .ref-fp-section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .ref-fp-label {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: hsl(var(--muted-foreground));
+    }
+    .ref-fp-label .ref-loading {
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 11px;
+    }
+    .ref-fp-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem;
+      align-items: center;
+    }
+    .ref-fp-hint {
+      font-size: 0.8125rem;
+      color: hsl(var(--muted-foreground));
+      font-family: var(--font-mono);
+      padding: 0.25rem 0;
+    }
+    .ref-fp-actions {
+      display: flex;
+      gap: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid hsl(var(--border));
+    }
+    .ref-fp-clear {
+      font-size: 0.8125rem;
+      color: hsl(var(--muted-foreground));
+      padding: 0.25rem 0.625rem;
+      border-radius: 0.25rem;
+      font-family: inherit;
+      transition: background 0.12s, color 0.12s;
+    }
+    .ref-fp-clear:hover {
+      color: hsl(var(--foreground));
+      background: hsl(var(--secondary));
+    }
+    .ref-chip .swatch {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      margin-right: 0.125rem;
+    }
+
     /* ===== Object list ===== */
     .ref-main {
       padding: 2rem 0 5rem;
@@ -549,6 +645,10 @@
         <!-- populated by JS -->
       </div>
 
+      <div class="ref-filter-panel" id="filter-panel" hidden>
+        <!-- populated by JS when open -->
+      </div>
+
       <div class="ref-status" id="status">Loading catalogue…</div>
     </div>
   </div>
@@ -647,6 +747,12 @@
   const CACHE_KEY_JSONS = 'plugdata:ref-jsons:v1';
   const INDEX_TTL = 30 * 60 * 1000; // 30 min
 
+  // Pre-built bundle (committed by the GitHub Action). When present, the
+  // page hydrates in one fetch instead of ~1,150 lazy ones, and search can
+  // hit body content from the very first keystroke. If the bundle 404s
+  // (forks, dev, before first deploy) we fall back to the live trees API.
+  const BUNDLE_URL = 'assets/reference-data.json';
+
   // ---------- State ----------
   /** @type {{ name: string, origin: string, path: string, data?: any, titles?: string[], displayName?: string, __loading?: boolean }[]} */
   let items = [];
@@ -657,11 +763,20 @@
   let cardObserver = null;
   let persistTimer = null;
 
+  // Filter panel state
+  let signalFilter = 'all';                  // 'all' | 'signal' | 'data'
+  const categoryFilters = new Set();         // active category names
+  const knownCategories = new Set();         // categories seen across loaded items
+  let filtersOpen = false;
+  let prefetchPromise = null;
+  let panelRefreshTimer = null;
+
   // ---------- DOM ----------
   const listEl = document.getElementById('list');
   const emptyEl = document.getElementById('empty');
   const statusEl = document.getElementById('status');
   const filtersEl = document.getElementById('filters');
+  const filterPanelEl = document.getElementById('filter-panel');
   const searchInput = document.getElementById('search-input');
   const searchClear = document.getElementById('search-clear');
   const searchKbd = document.getElementById('search-kbd');
@@ -725,6 +840,33 @@
   }
 
   // ---------- Fetch catalogue ----------
+  // Try the pre-built bundle first. Returns a fully-hydrated items array
+  // (data already attached) or null on miss. Cheap to call: a single HTTP
+  // request, validated against the cache via If-None-Match.
+  async function tryLoadBundle() {
+    try {
+      statusEl.innerHTML = '<span class="ref-loading"><span class="ref-spinner"></span>Loading reference bundle…</span>';
+      const res = await fetch(BUNDLE_URL, { cache: 'no-cache' });
+      if (!res.ok) return null;
+      const bundle = await res.json();
+      if (!bundle || !bundle.objects || typeof bundle.objects !== 'object') return null;
+      const result = [];
+      for (const [key, data] of Object.entries(bundle.objects)) {
+        const slash = key.indexOf('/');
+        if (slash < 0) continue;
+        const origin = key.slice(0, slash);
+        const name = key.slice(slash + 1);
+        const item = { name, origin, path: 'Resources/Documentation/' + key + '.json' };
+        applyItemData(item, data);
+        result.push(item);
+      }
+      result.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+      return result;
+    } catch {
+      return null;
+    }
+  }
+
   async function loadIndex() {
     // Try cache first
     const cached = readCache(CACHE_KEY_INDEX);
@@ -776,6 +918,18 @@
     } else {
       item.titles = [item.name];
       item.displayName = item.name;
+    }
+    // Track categories for the filter panel.
+    if (Array.isArray(data.categories)) {
+      let added = false;
+      for (const c of data.categories) {
+        if (typeof c !== 'string') continue;
+        const trimmed = c.trim();
+        if (!trimmed || knownCategories.has(trimmed)) continue;
+        knownCategories.add(trimmed);
+        added = true;
+      }
+      if (added) scheduleFilterPanelRefresh();
     }
   }
 
@@ -848,6 +1002,59 @@
     }, 2000);
   }
 
+  // ---------- Filter helpers ----------
+  // Signal-rate detection: when JSON is loaded we look at inlets/outlets;
+  // otherwise fall back to Pure Data convention (the `~` suffix marks audio).
+  function isSignalObject(item) {
+    const d = item.data;
+    if (d && !d.__error && (Array.isArray(d.inlets) || Array.isArray(d.outlets))) {
+      const portIsSignal = (p) => p && Array.isArray(p.messages) &&
+        p.messages.some(m => m && typeof m.type === 'string' && m.type.toLowerCase().includes('signal'));
+      const inlets  = Array.isArray(d.inlets)  ? d.inlets  : [];
+      const outlets = Array.isArray(d.outlets) ? d.outlets : [];
+      return inlets.some(portIsSignal) || outlets.some(portIsSignal);
+    }
+    return /~/.test(item.name); // heuristic when data isn't loaded yet
+  }
+
+  function categoriesOf(item) {
+    return (item.data && Array.isArray(item.data.categories)) ? item.data.categories : [];
+  }
+
+  // Re-render the filter panel after categories grow, debounced so we don't
+  // thrash while many JSONs are arriving.
+  function scheduleFilterPanelRefresh() {
+    if (panelRefreshTimer) return;
+    panelRefreshTimer = setTimeout(() => {
+      panelRefreshTimer = null;
+      if (filtersOpen) renderFilterPanel();
+      // If a category filter is active, the result set may have changed.
+      if (categoryFilters.size > 0 || signalFilter !== 'all') renderList();
+    }, 250);
+  }
+
+  // Background prefetch — kicks in when the user opens the filter panel or
+  // applies a category filter, so categories become comprehensive.
+  function startPrefetch() {
+    if (prefetchPromise) return;
+    const queue = items.filter(it => !it.data);
+    if (!queue.length) return;
+    const concurrency = 6;
+    let cursor = 0;
+    prefetchPromise = Promise.all(
+      Array.from({ length: Math.min(concurrency, queue.length) }, async () => {
+        while (cursor < queue.length) {
+          const it = queue[cursor++];
+          if (it.data || it.__loading) continue;
+          try { await loadItemData(it); } catch { /* loadItemData already marks errors */ }
+        }
+      })
+    ).then(() => {
+      prefetchPromise = null;
+      if (filtersOpen) renderFilterPanel();
+    });
+  }
+
   // ---------- Rendering: filters ----------
   function renderFilters() {
     const origins = Array.from(new Set(items.map(i => i.origin))).sort();
@@ -858,35 +1065,91 @@
       { id: 'all', label: 'All' },
       ...origins.map(o => ({ id: o, label: o }))
     ];
+
+    // Count of active "extra" filters (signal/data + categories), for the badge
+    const extraCount = (signalFilter !== 'all' ? 1 : 0) + categoryFilters.size;
+    const toggleClasses = ['ref-chip', 'filters-toggle']
+      .concat(extraCount > 0 ? ['has-active'] : [])
+      .join(' ');
+
     filtersEl.innerHTML = chips.map(c =>
       `<button class="ref-chip ${activeFilter === c.id ? 'active' : ''}" data-filter="${esc(c.id)}">
         ${esc(c.label)}
         <span class="count">${filterCounts[c.id]}</span>
       </button>`
-    ).join('');
+    ).join('') + `
+      <button type="button" class="${toggleClasses}" data-toggle-filters aria-expanded="${filtersOpen}">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+        </svg>
+        Filters
+        ${extraCount > 0 ? `<span class="count">${extraCount}</span>` : ''}
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+    `;
+  }
+
+  function renderFilterPanel() {
+    if (!filtersOpen) {
+      filterPanelEl.hidden = true;
+      filterPanelEl.innerHTML = '';
+      return;
+    }
+    filterPanelEl.hidden = false;
+
+    const cats = Array.from(knownCategories).sort((a, b) => a.localeCompare(b));
+    const loadedCount = items.filter(it => it.data && !it.data.__error).length;
+    const totalCount = items.length;
+    const stillLoading = prefetchPromise !== null && loadedCount < totalCount;
+
+    const sigChip = (id, label, swatchColor) => `
+      <button type="button" class="ref-chip ${signalFilter === id ? 'active' : ''}" data-signal="${id}">
+        ${swatchColor ? `<span class="swatch" style="background:${swatchColor}"></span>` : ''}
+        ${esc(label)}
+      </button>`;
+
+    const anyExtraActive = signalFilter !== 'all' || categoryFilters.size > 0;
+
+    filterPanelEl.innerHTML = `
+      <div class="ref-fp-section">
+        <div class="ref-fp-label">Type</div>
+        <div class="ref-fp-chips">
+          ${sigChip('all', 'All', null)}
+          ${sigChip('data', 'Data', 'hsl(212 90% 48%)')}
+          ${sigChip('signal', 'Signal', 'hsl(22 92% 54%)')}
+        </div>
+      </div>
+
+      <div class="ref-fp-section">
+        <div class="ref-fp-label">
+          <span>Categories</span>
+          ${stillLoading
+            ? `<span class="ref-loading"><span class="ref-spinner"></span>indexing ${loadedCount.toLocaleString()} of ${totalCount.toLocaleString()}</span>`
+            : ''}
+        </div>
+        <div class="ref-fp-chips">
+          ${cats.length === 0
+            ? `<p class="ref-fp-hint">${stillLoading ? 'Loading categories…' : 'No categories indexed yet — scroll the list to load more objects.'}</p>`
+            : cats.map(c => `<button type="button" class="ref-chip ${categoryFilters.has(c) ? 'active' : ''}" data-category="${esc(c)}">${esc(c)}</button>`).join('')}
+        </div>
+      </div>
+
+      ${anyExtraActive ? `
+        <div class="ref-fp-actions">
+          <button type="button" class="ref-fp-clear" data-clear-filters>Clear filters</button>
+        </div>
+      ` : ''}
+    `;
   }
 
   // ---------- Rendering: list ----------
   function normalize(s) { return (s || '').toLowerCase(); }
 
   // Score an item against the query tokens.
-  // Returns -1 if any token fails to match anywhere.
-  // Higher is better. Name-based matches dominate; shorter names break ties.
-  //   exact name match ............... 1000
-  //   name starts with token .........  500
-  //   name contains token ............  200
-  //   description contains token .....   50
-  //   category contains token ........   30
-  //   body contains token ............   10
-  //
-  // "Name" means any known name for the object: the filename-derived name
-  // plus every entry in data.title once the JSON is loaded. So once "mul.json"
-  // loads and reveals title ["*"], searching "*" finds it and scores it as a
-  // name match, not a body match.
   function scoreItem(it, tokens) {
     const nameCandidates = (it.titles && it.titles.length ? it.titles : [it.name]).map(normalize);
-    // Include the filename-derived name as a fallback match, in case titles
-    // differ and the user searches by filename.
     const filenameNorm = normalize(it.name);
     if (!nameCandidates.includes(filenameNorm)) nameCandidates.push(filenameNorm);
 
@@ -897,7 +1160,6 @@
 
     let total = 0;
     for (const t of tokens) {
-      // Best score across all name candidates for this token.
       let nameScore = 0;
       for (const n of nameCandidates) {
         let s = 0;
@@ -910,10 +1172,8 @@
       if (desc.includes(t)) { total += 50; continue; }
       if (cats.includes(t)) { total += 30; continue; }
       if (body.includes(t)) { total += 10; continue; }
-      return -1; // token unmatched → filter out
+      return -1;
     }
-    // Small length penalty: breaks ties in favour of shorter, more specific
-    // names. Bounded so it never flips between tiers (<< 50, smallest tier gap).
     const display = it.displayName || it.name;
     return total - Math.min(display.length, 40) * 0.2;
   }
@@ -921,11 +1181,23 @@
   function filterItems() {
     const q = normalize(searchQuery).trim();
     const tokens = q.split(/\s+/).filter(Boolean);
-    const scoped = activeFilter === 'all'
-      ? items
-      : items.filter(it => it.origin === activeFilter);
 
-    if (!tokens.length) return scoped; // already sorted by name
+    // Apply scope filters: origin, signal/data, categories.
+    const scoped = items.filter(it => {
+      if (activeFilter !== 'all' && it.origin !== activeFilter) return false;
+      if (signalFilter !== 'all') {
+        const isSig = isSignalObject(it);
+        if (signalFilter === 'signal' && !isSig) return false;
+        if (signalFilter === 'data'   &&  isSig) return false;
+      }
+      if (categoryFilters.size > 0) {
+        const cats = categoriesOf(it);
+        if (!cats.some(c => categoryFilters.has(c))) return false;
+      }
+      return true;
+    });
+
+    if (!tokens.length) return scoped;
 
     const scored = [];
     for (const it of scoped) {
@@ -956,7 +1228,6 @@
           <div class="desc${descClass}">${desc}</div>
         </button>`;
       }).join('');
-      // Re-attach visibility observer to the new cards.
       observeListCards();
     }
     const total = items.length;
@@ -969,14 +1240,12 @@
     const inlets = Array.isArray(data.inlets) ? data.inlets : [];
     const outlets = Array.isArray(data.outlets) ? data.outlets : [];
 
-    // Signal iolets accept audio; data iolets accept messages (float, bang, list, etc.)
     function isSignal(port) {
       if (!port || !Array.isArray(port.messages)) return false;
       return port.messages.some(m => m && typeof m.type === 'string' && m.type.toLowerCase().includes('signal'));
     }
 
     function getTextWidth(text, font) {
-      // re-use canvas object for better performance
       const canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
       const context = canvas.getContext("2d");
       context.font = font;
@@ -992,93 +1261,46 @@
       const fontWeight = getCssStyle(el, 'font-weight') || 'normal';
       const fontSize = getCssStyle(el, 'font-size') || '16px';
       const fontFamily = getCssStyle(el, 'font-family') || 'Times New Roman';
-
       return `${fontWeight} ${fontSize} ${fontFamily}`;
     }
 
-
-    // Dimensions
-    // Inter at 15/500 runs ~7.5px per char on average; use 9 to be generous for wide glyphs
     const w = Math.max(outlets.length * 20, inlets.length * 20, getTextWidth(name, getCanvasFont()) + 11);
     const h = 24;
     const portW = 11, portH = 4;
     const edgePad = 14;
 
-    // Position a port. If there's only one iolet, place it on the left as if a second existed.
     function portX(i, count, totalW) {
       const effectiveCount = Math.max(count, 2);
       const gap = (totalW - 2 * edgePad) / (effectiveCount - 1);
       return edgePad + gap * i - portW / 2;
     }
 
-    const PRIMARY = 'hsl(212 90% 48%)'; // data — blue
-    const ACCENT  = 'hsl(22 92% 54%)';  // signal — orange
+    const PRIMARY = 'hsl(212 90% 48%)';
+    const ACCENT  = 'hsl(22 92% 54%)';
 
     let inletRects = '';
     for (let i = 0; i < inlets.length; i++) {
       const fill = isSignal(inlets[i]) ? ACCENT : PRIMARY;
-
       const x = portX(i, inlets.length, w);
       const r = portW / 2;
-
       const cx = x + r;
-      const cy = 0; // center on top edge
-
+      const cy = 0;
       inletRects += `
-        <!-- filled semicircle -->
-        <path
-          d="
-            M ${cx - r} ${cy}
-            A ${r} ${r} 0 0 0 ${cx + r} ${cy}
-            L ${cx - r} ${cy}
-            Z
-          "
-          fill="${fill}"
-        />
-
-        <!-- stroke only on arc -->
-        <path
-          d="
-            M ${cx - r} ${cy}
-            A ${r} ${r} 0 0 0 ${cx + r} ${cy}
-          "
-          fill="none"
-          stroke="rgb(183,183,183)"
-        />
+        <path d="M ${cx - r} ${cy} A ${r} ${r} 0 0 0 ${cx + r} ${cy} L ${cx - r} ${cy} Z" fill="${fill}" />
+        <path d="M ${cx - r} ${cy} A ${r} ${r} 0 0 0 ${cx + r} ${cy}" fill="none" stroke="rgb(183,183,183)" />
       `;
     }
 
     let outletRects = '';
     for (let i = 0; i < outlets.length; i++) {
       const fill = isSignal(outlets[i]) ? ACCENT : PRIMARY;
-
       const x = portX(i, outlets.length, w);
       const r = portW / 2;
-
       const cx = x + r;
       const cy = h;
-
       outletRects += `
-        <!-- filled semicircle -->
-        <path
-          d="
-            M ${cx - r} ${cy}
-            A ${r} ${r} 0 0 1 ${cx + r} ${cy}
-            L ${cx - r} ${cy}
-            Z
-          "
-          fill="${fill}"
-        />
-
-        <!-- arc stroke -->
-        <path
-          d="
-            M ${cx - r} ${cy}
-            A ${r} ${r} 0 0 1 ${cx + r} ${cy}
-          "
-          fill="none"
-          stroke="rgb(183,183,183)"
-        />
+        <path d="M ${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy} L ${cx - r} ${cy} Z" fill="${fill}" />
+        <path d="M ${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy}" fill="none" stroke="rgb(183,183,183)" />
       `;
     }
     return `
@@ -1205,7 +1427,6 @@
       return;
     }
 
-    // Skeleton while loading
     const skeletonName = item.displayName || item.name;
     detailContent.innerHTML = `
       <div class="meta">
@@ -1236,12 +1457,9 @@
       }
     }
 
-    // Titles: the JSON can list multiple names for the same object. The first
-    // is the canonical name; the rest are genuine aliases.
     const titles = Array.isArray(data.title) && data.title.length ? data.title.slice() : [item.name];
     const primaryName = titles[0];
     const aliases = titles.slice(1).filter(t => t && t !== primaryName);
-    // Keep items in sync so search results use the real name going forward.
     if (!item.displayName) applyItemData(item, data);
 
     const desc = data.description || '';
@@ -1292,7 +1510,6 @@
       detailView.hidden = true;
       listView.hidden = false;
       renderList();
-      // Restore focus
       requestAnimationFrame(() => {
         if (searchInput.value !== searchQuery) {
           searchInput.value = searchQuery;
@@ -1319,7 +1536,6 @@
     searchInput.focus();
   });
 
-  // Keyboard shortcut: "/" focuses search when the list is visible
   document.addEventListener('keydown', (e) => {
     if (e.key === '/' && !e.target.matches('input, textarea, select') && !listView.hidden) {
       e.preventDefault();
@@ -1332,11 +1548,55 @@
   });
 
   filtersEl.addEventListener('click', (e) => {
-    const btn = e.target.closest('[data-filter]');
-    if (!btn) return;
-    activeFilter = btn.dataset.filter;
-    renderFilters();
-    renderList();
+    const originBtn = e.target.closest('[data-filter]');
+    if (originBtn) {
+      activeFilter = originBtn.dataset.filter;
+      renderFilters();
+      renderList();
+      return;
+    }
+    const toggle = e.target.closest('[data-toggle-filters]');
+    if (toggle) {
+      filtersOpen = !filtersOpen;
+      // First open kicks off background loading so categories become complete.
+      if (filtersOpen) startPrefetch();
+      renderFilters();
+      renderFilterPanel();
+      return;
+    }
+  });
+
+  filterPanelEl.addEventListener('click', (e) => {
+    const sigBtn = e.target.closest('[data-signal]');
+    if (sigBtn) {
+      signalFilter = sigBtn.dataset.signal;
+      renderFilters();        // refresh the toggle's count badge
+      renderFilterPanel();    // refresh active chip state
+      renderList();
+      return;
+    }
+    const catBtn = e.target.closest('[data-category]');
+    if (catBtn) {
+      const cat = catBtn.dataset.category;
+      if (categoryFilters.has(cat)) categoryFilters.delete(cat);
+      else categoryFilters.add(cat);
+      // Once the user filters by category, ensure the rest of the catalogue
+      // gets loaded so the filter is comprehensive.
+      if (categoryFilters.size > 0) startPrefetch();
+      renderFilters();
+      renderFilterPanel();
+      renderList();
+      return;
+    }
+    const clearBtn = e.target.closest('[data-clear-filters]');
+    if (clearBtn) {
+      signalFilter = 'all';
+      categoryFilters.clear();
+      renderFilters();
+      renderFilterPanel();
+      renderList();
+      return;
+    }
   });
 
   listEl.addEventListener('click', (e) => {
@@ -1346,11 +1606,9 @@
     location.hash = '#' + encodeKey(key);
   });
 
-  // In detail view, obj-link navigation
   detailContent.addEventListener('click', (e) => {
     const a = e.target.closest('[data-obj-link]');
     if (a) {
-      // The anchor's href handles navigation; ensure we scroll to top
       setTimeout(() => window.scrollTo({ top: 0, behavior: 'instant' }), 0);
       return;
     }
@@ -1382,7 +1640,9 @@
   // ---------- Bootstrap ----------
   async function boot() {
     try {
-      items = await loadIndex();
+      items = await tryLoadBundle();
+      const fromBundle = !!items;
+      if (!items) items = await loadIndex();
       if (!items.length) {
         statusEl.textContent = 'No documentation files found.';
         return;
@@ -1390,17 +1650,19 @@
       byKey.clear();
       for (const it of items) byKey.set(itemKey(it), it);
 
-      // Hydrate any JSON we already have in session cache — this gives
-      // return visitors instant descriptions and correct display names.
-      const cachedJsons = readCache(CACHE_KEY_JSONS) || {};
-      for (const it of items) {
-        const cached = cachedJsons[itemKey(it)];
-        if (cached) applyItemData(it, cached);
+      // Hydrate any JSON we already have in session cache (fallback path only —
+      // bundle items already carry data).
+      if (!fromBundle) {
+        const cachedJsons = readCache(CACHE_KEY_JSONS) || {};
+        for (const it of items) {
+          const cached = cachedJsons[itemKey(it)];
+          if (cached) applyItemData(it, cached);
+        }
       }
 
       ensureObserver();
       renderFilters();
-      route(); // either list or detail — renderList (when called) will observe cards
+      route();
     } catch (e) {
       statusEl.innerHTML = `<span style="color: hsl(0 70% 45%)">${esc(e.message)}</span>`;
       listEl.innerHTML = `

@@ -1,0 +1,61 @@
+name: Build reference data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 0'
+  push:
+    branches: [main]
+    # Only re-run on changes to the build itself; the workflow commits to
+    # `data/` so we *don't* trigger on that to avoid a loop.
+    paths:
+      - '.github/scripts/build-reference-data.mjs'
+      - '.github/workflows/build-reference-data.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-reference-data
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout website
+        uses: actions/checkout@v4
+
+      - name: Checkout plugdata docs (sparse)
+        uses: actions/checkout@v4
+        with:
+          repository: plugdata-team/plugdata
+          ref: develop
+          path: .plugdata
+          sparse-checkout: Resources/Documentation
+          sparse-checkout-cone-mode: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build bundle
+        run: node scripts/build-reference-data.mjs .plugdata data
+
+      - name: Show output sizes
+        run: |
+          ls -lh assets/reference-data.json assets/reference-data.meta.json
+          gzip -c assets/reference-data.json | wc -c | awk '{ printf "gzipped (what users download): %.1f KiB\n", $1/1024 }'
+
+      - name: Commit if changed
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/reference-data.json assets/reference-data.meta.json
+          if git diff --cached --quiet; then
+            echo 'No changes to commit.'
+          else
+            git commit -m 'chore(data): rebuild reference bundle'
+            git push
+          fi
