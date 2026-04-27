@@ -41,7 +41,7 @@ jobs:
           node-version: '20'
 
       - name: Build bundle
-        run: node scripts/build-reference-data.mjs .plugdata data
+        run: node .github/scripts/build-reference-data.mjs .plugdata data
 
       - name: Show output sizes
         run: |
