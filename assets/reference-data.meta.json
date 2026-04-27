@@ -1,0 +1,14 @@
+{
+  "generatedAt": "2026-04-27T12:30:04.338Z",
+  "count": 1653,
+  "bytes": 1490188,
+  "origins": {
+    "ELSE": 573,
+    "Gem": 529,
+    "cyclone": 223,
+    "heavylib": 29,
+    "pdlua": 2,
+    "plugdata": 3,
+    "vanilla": 294
+  }
+}
