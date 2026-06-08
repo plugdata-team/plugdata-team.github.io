@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Redirecting to store item - plugdata</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="assets/plugdata-logo.png" type="image/png" />
+  <link rel="canonical" href="store.html" />
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+      const target = id
+        ? 'store.html#item/' + encodeURIComponent(id)
+        : 'store.html';
+
+      window.location.replace(target);
+    }());
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="store.html">the plugdata store</a>...</p>
+</body>
+</html>
