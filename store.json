@@ -631,6 +631,16 @@
       "Price": "£8.99",
       "Version": "1.0",
       "StoreThumb": "spira"
+    },
+    {
+      "Title": "SERPENT",
+      "Author": "Borrasca & Nasko",
+      "Release date": "2026-11-07",
+      "Download": "https://plugdata-discovery.s3.eu-north-1.amazonaws.com/SERPENT.zip",
+      "Description": "Versatile Sidechain Ducker",
+      "Price": "Free",
+      "Version": "1.0",
+      "StoreThumb": "SERPENT"
     }
   ]
 }
