@@ -6,4 +6,7 @@ npx honkit build
 
 mv _book book
 
-sed -i.bak -e 's/<a href=/<a target="frame" href=/g' ./book/*.html && rm -f ./book/*.bak
+# Open internal links inside the docs iframe. External links are left alone (honkit already marks
+# them target="_blank"), since sites like GitHub refuse to be embedded in a frame.
+sed -i.bak -E -e 's#<a href=#<a target="frame" href=#g' \
+  -e 's#<a target="frame" href="(https?:[^"]*)"#<a href="\1"#g' ./book/*.html && rm -f ./book/*.bak
