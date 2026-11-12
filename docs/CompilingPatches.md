@@ -13,11 +13,11 @@ WARNING: Ensure that the destination path for exporting code or plugin binaries 
 
 ## Compiled Mode
 
-In the main plugdata menu, you'll find a toggle box labeled ***Compiled Mode***. This mode checks your patch for compliance with plugdata compilation tools. It uses the [Heavy hvcc compiler](https://wasted-audio.github.io/hvcc/docs/01.introduction.html#what-is-heavy), which is limited to a subset of Pure Data Vanilla objects.
+In the main plugdata menu, you'll find a toggle box labeled ***Compiled Mode***. This mode checks your patch for compliance with plugdata compilation tools. It uses the [Heavy hvcc compiler](https://wasted-audio.github.io/hvcc/latest/getting-started/#what-is-heavy), which is limited to a subset of Pure Data Vanilla objects.
 
 ***Compiled Mode*** identifies unsupported objects in your patch, posting a message to the console and providing auto-completion only for compatible objects. 
 
-By downloading the compilation toolchain, the [Heavy hvcc compiler](https://wasted-audio.github.io/hvcc/docs/01.introduction.html#what-is-heavy) maintained by [Wasted Audio](https://wasted.audio/) will be installed, along with additional compilation utilities. hvcc can only generate code for a portion of the objects included with plugdata, which are a subset of the Pure Data Vanilla set of objects.
+By downloading the compilation toolchain, the [Heavy hvcc compiler](https://wasted-audio.github.io/hvcc/latest/getting-started/#what-is-heavy) maintained by [Wasted Audio](https://wasted.audio/) will be installed, along with additional compilation utilities. hvcc can only generate code for a portion of the objects included with plugdata, which are a subset of the Pure Data Vanilla set of objects.
 
 ***Compiled Mode*** indicates if there are objects in your patch that cannot be used in a compiled patch by posting a message to the console, and outlining the object in question. The auto-completion in plugdata will also only provide compatible objects when this mode is activated.
 
@@ -48,7 +48,7 @@ Common fields in this section include:
 
 ![C++ Code Configuration](images/heavy_cpp_menu.png)
 
-In C++ Code mode, your plugdata patch is transpiled to generic C/C++ code. Adapt the raw code for specific applications. Learn more in the [official documentation](https://wasted-audio.github.io/hvcc/docs/05.c.html).
+In C++ Code mode, your plugdata patch is transpiled to generic C/C++ code. Adapt the raw code for specific applications. Learn more in the [official documentation](https://wasted-audio.github.io/hvcc/latest/reference/c/).
 
 ### Electro-Smith Daisy
 
@@ -68,4 +68,4 @@ DPF mode exports self-contained versions of your patch in various formats (VST2,
 
 Export your patch as a Pd external for optimized performance. Choose export type (Binary or Source Code) and enable copying to the externals path.
 
-Refer to the [official documentation](https://wasted-audio.github.io/hvcc/docs/03.gen.pdext.html) for more details on each export option.
+Refer to the [official documentation](https://wasted-audio.github.io/hvcc/latest/generators/pdext/) for more details on each export option.
