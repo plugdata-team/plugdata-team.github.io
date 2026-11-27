@@ -14,7 +14,7 @@ This documentation is a work-in-progress, and we are still looking for more cont
 
 ## Note on Development
 
-As an evolving project, **plugdata** may still contain some bugs. Your feedback is important in refining and enhancing the user experience. You can report bugs on our [GitHub page](https://github.com/**plugdata**-team/**plugdata**/issues).
+As an evolving project, **plugdata** may still contain some bugs. Your feedback is important in refining and enhancing the user experience. You can report bugs on our [GitHub page](https://github.com/plugdata-team/plugdata/issues).
 
 ## Project Goals
 
